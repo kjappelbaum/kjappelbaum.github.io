@@ -30,3 +30,12 @@ publishdir="docs"
         icon = "google-scholar"
         title = "Google Scholar"
         url = "https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en"
+    [[params.links]]
+        iconorigin = "ai"
+        iconset = "ai"
+        icon = "orcid"
+        title = "ORCID"
+        url = "https://orcid.org/0000-0003-4894-4660n"
+
+
+

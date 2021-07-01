@@ -1,0 +1,32 @@
+theme = "hallo"
+baseURL = "https://kjappelbaum.github.io"
+languageCode = "en-us"
+title = "Kevin Maik Jablonka"
+publishdir="docs"
+
+[Author]
+    name = "Kevin"
+
+[params]
+    [params.colors]
+        background = "#13293D"
+        foreground = "#006494"
+        hover = "#E8F1F2"
+    [[params.links]]
+        icon = "github"
+        title = "Github"
+        url = "https://github.com/kjappelbaum"
+    [[params.links]]
+        icon = "twitter"
+        title = "Twitter"
+        url = "https://twitter.com/kmjablonka"
+    [[params.links]]
+        icon = "linkedin"
+        title = "LinkedIn"
+        url = "https://www.linkedin.com/in/kevin-maik-jablonka-538655200/"
+    [[params.links]]
+        iconorigin = "ai"
+        iconset = "ai"
+        icon = "google-scholar"
+        title = "Google Scholar"
+        url = "https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en"

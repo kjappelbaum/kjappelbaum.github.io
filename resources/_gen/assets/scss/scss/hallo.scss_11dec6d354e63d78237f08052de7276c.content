@@ -1,6 +1,6 @@
 html,
 body {
-  color: #006494;
+  color: #E0BB88;
   margin: 1rem;
   padding: 0; }
 
@@ -10,13 +10,13 @@ html {
   overflow-y: auto; }
 
 body {
-  background-color: #13293D; }
+  background-color: #1F4477; }
 
 a {
   -webkit-transition: color 0.2s ease-out;
   -moz-transition: color 0.2s ease-out;
   transition: color 0.2s ease-out;
-  color: #006494; }
+  color: #E0BB88; }
   a:hover {
     color: #E8F1F2; }
 
@@ -40,7 +40,7 @@ h3 {
 img.portrait {
   box-sizing: border-box;
   border-radius: 50%;
-  border: 10px solid #006494;
+  border: 10px solid #E0BB88;
   margin: 2em 3em;
   width: 100%;
   height: auto;

@@ -8,9 +8,10 @@ publishdir="docs"
     name = "Kevin"
 
 [params]
+    greeting = "Hello." 
     [params.colors]
-        background = "#13293D"
-        foreground = "#006494"
+        background = "#1F4477"
+        foreground = "#E0BB88"
         hover = "#E8F1F2"
     [[params.links]]
         icon = "github"

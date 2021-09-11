@@ -42,7 +42,9 @@ publishdir="docs"
         title = "email"
         url = "https://mailhide.io/e/ypP8Znjd"
     [[params.links]]
-        iconset = "cv"
+        icon = "cv"
+        iconset = "ai"
+        iconorigin = "ai"
         title = "CV"
         url = "https://www.dropbox.com/s/5052x7fak63w5m4/cv_no_email_phone.pdf?dl=0"
 

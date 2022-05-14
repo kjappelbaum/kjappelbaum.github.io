@@ -48,5 +48,9 @@ publishdir="docs"
         iconorigin = "ai"
         title = "CV"
         url = "https://www.dropbox.com/s/8om2gjyc7ab5v9d/cv.pdf?dl=0"
-
+    [[params.links]]
+        icon = "calendar"
+        iconset = "fas"
+        title = "Talk to me"
+        url = "https://calendly.com/kjappelbaum"
 

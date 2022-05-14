@@ -8,7 +8,7 @@ publishdir="docs"
     name = "Kevin"
 
 [params]
-    greeting = "Hello." 
+    greeting = "Hi." 
     [params.colors]
         background = "#1F4477"
         foreground = "#E0BB88"

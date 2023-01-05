@@ -17,6 +17,8 @@ website:
         href: https://github.com/kjappelbaum
       - icon: envelope
         href: https://mailhide.io/e/o4LeOUlq
+      - icon: bi-mortarboard-fill
+        href: https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en
   favicon: favicon.ico
   open-graph: true
   twitter-card:

@@ -1,0 +1,48 @@
+project:
+  type: website
+
+exeucte:
+  eval: false
+
+website:
+  title: "Kevin's Homepage"
+  image: quarto.png
+  page-footer:
+    center:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/kevin-maik-jablonka/
+      - icon: twitter
+        href: https://twitter.com/kmjablonka
+      - icon: github
+        href: https://github.com/kjappelbaum
+      - icon: envelope
+        href: https://mailhide.io/e/o4LeOUlq
+  favicon: favicon.ico
+  open-graph: true
+  twitter-card:
+    creator: "@kmjablonka"
+  site-url: "https://kjablonka.com/"
+  description: "Kevin Maik Jablonka's homepage."
+  repo-url: https://github.com/kjappelbaum/kjappelbaum.github.io
+  repo-actions: [edit]
+  repo-branch: master
+  navbar:
+    title: false
+    background: dark
+    pinned: false
+    collapse: false
+    left:
+      # # 🏠 📮 👨🏽‍💻 🍎 🎤 📚
+      - icon: home
+        text: "Home"
+        href: index.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "CV"
+        href: cv.qmd
+format:
+  html:
+    theme: [solar, custom.scss]
+    css:
+      - styles.css
+    toc: true

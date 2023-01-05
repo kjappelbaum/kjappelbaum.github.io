@@ -1,0 +1,40 @@
+---
+sidebar: false
+description: "Kevin Maik Jablonka's personal homepage"
+image: quarto.png
+toc: true
+# listing:
+#   date-format: short
+#   feed: true
+#   filter-ui: false
+#   type: table
+#   sort-ui: false
+#   sort: "date desc"
+#   categories: false
+#   fields: [date, title]
+#   id: blog-listings
+#   contents: [blog_data/blogs.yml, blog/posts]
+# aliases: ["blog/"]
+# format:
+#   html:
+#     anchor-sections: true
+---
+
+::: {layout="[25,80]" .profile-header}
+
+![](JABLONKA_portrait.jpg){.profile-pic}
+
+I'm a PhD student in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focussed on the digititzation of chemistry: I'm using computational tools and machine learning to capture the
+tacit dimension of chemistry.
+I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem](http://cheminfo.github.io) and other 
+open source projects (see [my GitHub](https://github.com/kjappelbaum)).
+
+:::
+
+## 💼 Get In Touch
+
+[Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-twitter.png){width="3%"}](https://twitter.com/kmjablonka) if you'd like to chat!
+
+ <!-- If you want, you can also book a slot in my [calendar](https://calendly.com/kjappelbaum) to chat. -->
+---
+

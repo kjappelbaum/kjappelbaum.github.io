@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Kevin's Homepage",
     "section": "",
-    "text": "I’m a PhD student in the group of Berend Smit at EPFL focussed on the digititzation of chemistry: I’m using computational tools and machine learning to capture the tacit dimension of chemistry. I’m also a contributor to the cheminfo electronic lab notebook (ELN) ecosystem and other open source projects (see my GitHub)."
+    "text": "I’m at the final touches of my Ph.D. in the group of Berend Smit at EPFL focussed on the digititzation of chemistry: I’m using computational tools and machine learning to capture the tacit dimension of chemistry. I’m also a contributor to the cheminfo electronic lab notebook (ELN) ecosystem and other open source projects (see my GitHub)."
   },
   {
     "objectID": "index.html#get-in-touch",
     "href": "index.html#get-in-touch",
     "title": "Kevin's Homepage",
     "section": "💼 Get In Touch",
-    "text": "💼 Get In Touch\nEmail me, or DM me on  or  if you’d like to chat!"
+    "text": "💼 Get In Touch\nEmail me, or DM me on  or  if you’d like to chat!\nIf you need a short bio, you can find one here."
   },
   {
     "objectID": "index.html#publications",
@@ -47,5 +47,12 @@
     "title": "Kevin's Homepage",
     "section": "",
     "text": "You can also find me on Google Scholar and ORCID."
+  },
+  {
+    "objectID": "bio.html",
+    "href": "bio.html",
+    "title": "Bio",
+    "section": "",
+    "text": "More\nIf you need more info, see my CV. If you need a headshot, you can use this one: portrait.jpg."
   }
 ]

@@ -1,0 +1,13 @@
+---
+title: 'Bio'
+description: <i>A short bio you can use for talk announcements.</i>
+image: "portrait.jpg"
+sidebar: false
+---
+
+Kevin Jablonka obtained his Bachelor’s degree in chemistry at TU Munich. He joined EPFL for his master studies (and an extended studies degree in applied machine learning), after which he joined Berend Smit’s group for a Ph.D.
+Kevin’s research interests are in the digitization of chemistry. For this, he got involved in the cheminfo ELN ecosystem. He also developed a toolbox for digital reticular chemistry. Using tools from this toolbox, he addressed questions from the atom up to the pilot-plant scale. 
+
+### More 
+If you need more info, see my [CV](cv.qmd).
+If you need a headshot, you can use this one: [portrait.jpg](portrait.jpg). 

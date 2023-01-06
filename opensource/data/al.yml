@@ -1,0 +1,9 @@
+- title: '<span class="text-nowrap">PyePAL</span>'
+  image: "img/pyepal_logo.png"
+  path: https://github.com/kjappelbaum/pyepal
+  other: "[Paper](https://www.nature.com/articles/s41467-021-22437-0)"
+  description: |
+    PyePAL implements the e-PAL algorithm for Pareto active learning. 
+    It comes with interfaces for a range of machine learning models, including scikit-learn, GPy, and jax. 
+    It generalizes to any number of objectives and also supports batches sampling as well as various 
+    schedulers for (re)-training the model.

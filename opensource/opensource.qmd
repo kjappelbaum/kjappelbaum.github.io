@@ -22,8 +22,27 @@ listing:
       description: Description
       other: "Other References"
     image-height: 100px
+  - id: al-listings
+    contents: data/al.yml
+    type: table
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    fields: 
+    - image
+    - title
+    - description
+    - other
+    field-links:
+    - title
+    field-display-names:
+      title: Name
+      description: Description
+      other: "Other References"
+    image-height: 50px
 ---
 
+Most of the code I develop is written in Python. But I also have some experience in TypeScript/JavaScript and started fiddeling with Julia.
 
 ## ![](img/mofworld.png){width="10%"} Digital reticular chemistry -- ["MOFworld"](mof.world) 
 
@@ -32,3 +51,16 @@ I have been very active in developing tools for "digital reticular chemistry" (s
 ::: {#mofworld-listings}
 :::
 
+
+##  ![](img/natcomm.png){width="10%"} Active learning 
+
+::: {#al-listings}
+:::
+
+
+## Chemical Data management
+
+I have been an active contributor to the [cheminfo](cheminfo.github.io) ecosystem. 
+
+
+## Other

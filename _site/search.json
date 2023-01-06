@@ -54,5 +54,12 @@
     "title": "Bio",
     "section": "",
     "text": "More\nIf you need more info, see my CV. If you need a headshot, you can use this one: portrait.jpg."
+  },
+  {
+    "objectID": "opensource/opensource.html",
+    "href": "opensource/opensource.html",
+    "title": " Open Source",
+    "section": "",
+    "text": "I have been very active in developing tools for “digital reticular chemistry” (see also this article by Yaghi and collaborators), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nmofdscribe\n\n\nAn easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.\n\n\nPaper\n\n\n\n\n\n\nNo matching items"
   }
 ]

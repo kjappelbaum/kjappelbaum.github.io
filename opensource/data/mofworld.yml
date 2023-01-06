@@ -1,0 +1,8 @@
+- title: '<span class="text-nowrap">mofdscribe</span>'
+  image: "img/mofdscribe.png"
+  path: https://github.com/kjappelbaum/mofdscribe
+  other: "[Paper](https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2)"
+  description: |
+    An easy to use tool that accompanies digital reticular chemists on all stages of their work. 
+    It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage,
+    as well as tools for evaluating models and comparing them on a leaderboard.

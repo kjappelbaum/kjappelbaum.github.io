@@ -5,5 +5,9 @@
       "/publications.html",
       "/cv.html"
     ]
+  },
+  {
+    "listing": "/opensource/opensource.html",
+    "items": []
   }
 ]

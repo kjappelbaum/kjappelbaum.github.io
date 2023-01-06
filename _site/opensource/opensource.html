@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A collection of open source projects I’ve been involved with.">
 
-<title>Kevin's Homepage – publications</title>
+<title>Kevin’s Homepage -  Open Source</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,9 +62,48 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-mofworld-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="styles.css">
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-image","listing-path","listing-other","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-mofworld-listings'] = new List('listing-mofworld-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Kevin’s Homepage -  Open Source">
+<meta property="og:description" content="A collection of open source projects I’ve been involved with.">
+<meta property="og:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
+<meta property="og:site-name" content="Kevin's Homepage">
+<meta name="twitter:title" content="Kevin’s Homepage -  Open Source">
+<meta name="twitter:description" content="A collection of open source projects I’ve been involved with.">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
+<meta name="twitter:creator" content="@kmjablonka">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -72,19 +114,19 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Home</a>
+    <a class="nav-link" href="../index.html">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./publications.html" aria-current="page">Publications</a>
+    <a class="nav-link" href="../publications.html">Publications</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html">CV</a>
+    <a class="nav-link" href="../cv.html">CV</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html">Research</a>
+    <a class="nav-link" href="../research.html">Research</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./opensource/opensource.html">Open Source</a>
+    <a class="nav-link active" href="../opensource/opensource.html" aria-current="page">Open Source</a>
   </li>  
 </ul>
             <div id="quarto-search" class="" title="Search"></div>
@@ -100,27 +142,80 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#publications" id="toc-publications" class="nav-link active" data-scroll-target="#publications">📚 Publications</a>
-  <ul class="collapse">
-  <li><a href="#other-publication-lists" id="toc-other-publication-lists" class="nav-link" data-scroll-target="#other-publication-lists">Other publication lists</a></li>
-  </ul></li>
+  <li><a href="#digital-reticular-chemistry-mofworld" id="toc-digital-reticular-chemistry-mofworld" class="nav-link active" data-scroll-target="#digital-reticular-chemistry-mofworld"><img src="img/mofworld.png" class="img-fluid" style="width:10.0%"> Digital reticular chemistry – “MOFworld”</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/publications.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/opensource/opensource.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><i class="bi bi-github"></i> Open Source</h1>
+</div>
+
+<div>
+  <div class="description">
+    A collection of open source projects I’ve been involved with.
+  </div>
+</div>
 
 
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">📚 Publications</h2>
-<script src="https://bibbase.org/show?bib=https%3A%2F%2Fapi.zotero.org%2Fusers%2F5547450%2Fcollections%2FKYP3WIGT%2Fitems%3Fkey%3D0FxZIDxan0XB1IJwBqRw7Zmy%26format%3Dbibtex%26limit%3D100&amp;jsonp=1&amp;showSearch=true&amp;hidemenu=true"></script>
-<section id="other-publication-lists" class="level3">
-<h3 class="anchored" data-anchor-id="other-publication-lists">Other publication lists</h3>
-<p>You can also find me on <a href="https://scholar.google.com/citations?user=R2ntI8IAAAAJ&amp;hl=en">Google Scholar</a> and <a href="https://orcid.org/0000-0003-4894-4660">ORCID</a>.</p>
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="digital-reticular-chemistry-mofworld" class="level2">
+<h2 class="anchored" data-anchor-id="digital-reticular-chemistry-mofworld"><img src="img/mofworld.png" class="img-fluid" style="width:10.0%"> Digital reticular chemistry – <a href="mof.world">“MOFworld”</a></h2>
+<p>I have been very active in developing tools for “digital reticular chemistry” (see also <a href="https://www.cell.com/chem/fulltext/S2451-9294(20)30418-6">this article by Yaghi and collaborators</a>), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).</p>
+<div id="listing-mofworld-listings" class="quarto-listing quarto-listing-container-table">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Name
+</th>
+<th>
+Description
+</th>
+<th>
+Other References
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>mofdscribe</span>">
+<td class="listing-image">
+<img src="img/mofdscribe.png" style="height: 100px;">
+</td>
+<td class="listing-title">
+<a href="https://github.com/kjappelbaum/mofdscribe" class="title"><span class="text-nowrap">mofdscribe</span></a>
+</td>
+<td class="listing-description">
+An easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.
+</td>
+<td class="listing-other">
+<a href="https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2">Paper</a>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 
 
-</section>
+
 </section>
 
 </main> <!-- /main -->

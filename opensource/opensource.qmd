@@ -1,0 +1,34 @@
+---
+title: '<i class="bi bi-github"></i> Open Source'
+description: A collection of open source projects I've been involved with.
+image: "https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png"
+sidebar: false
+listing: 
+  - id: mofworld-listings
+    contents: data/mofworld.yml
+    type: table
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    fields: 
+    - image
+    - title
+    - description
+    - other
+    field-links:
+    - title
+    field-display-names:
+      title: Name
+      description: Description
+      other: "Other References"
+    image-height: 100px
+---
+
+
+## ![](img/mofworld.png){width="10%"} Digital reticular chemistry -- ["MOFworld"](mof.world) 
+
+I have been very active in developing tools for "digital reticular chemistry" (see also [this article by Yaghi and collaborators](https://www.cell.com/chem/fulltext/S2451-9294(20)30418-6)), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).
+
+::: {#mofworld-listings}
+:::
+

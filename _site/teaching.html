@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.165">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,19 +72,29 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Home</a>
+    <a class="nav-link" href="./index.html"><i class="bi bi-home" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html">Publications</a>
+    <a class="nav-link" href="./publications.html">
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html">CV</a>
+    <a class="nav-link" href="./cv.html">
+ <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html">Research</a>
+    <a class="nav-link" href="./research.html">
+ <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./opensource/opensource.html">Open Source</a>
+    <a class="nav-link" href="./opensource/opensource.html">
+ <span class="menu-text">Open Source</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./teaching.html" aria-current="page">
+ <span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
             <div id="quarto-search" class="" title="Search"></div>
@@ -100,7 +110,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#teaching" id="toc-teaching" class="nav-link active" data-scroll-target="#teaching">👨🏼‍🏫 Teaching</a></li>
+  <li><a href="#teaching" id="toc-teaching" class="nav-link active" data-scroll-target="#teaching">👨🏼‍🏫 Teaching</a>
+  <ul class="collapse">
+  <li><a href="#making-molecules-vibrate" id="toc-making-molecules-vibrate" class="nav-link" data-scroll-target="#making-molecules-vibrate">Making molecules vibrate</a></li>
+  <li><a href="#introduction-to-machine-learning" id="toc-introduction-to-machine-learning" class="nav-link" data-scroll-target="#introduction-to-machine-learning">Introduction to machine learning</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -111,8 +125,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="teaching" class="level1">
 <h1>👨🏼‍🏫 Teaching</h1>
+<p>I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim Wintschool. Starting from my undergrad at TU Munich, I have been teaching assistant and mentoring students.</p>
+<section id="making-molecules-vibrate" class="level2">
+<h2 class="anchored" data-anchor-id="making-molecules-vibrate">Making molecules vibrate</h2>
+<p>One of my favorite teaching experiences was developing of what we call “virtual laboratory”.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://player.vimeo.com/video/669548437?embedded=true&amp;source=vimeo_logo&amp;owner=164535089" frameborder="0" allow="autoplay; title=" "="" fullscreen;="" picture-in-picture"="" allowfullscreen=""></iframe></div>
+<p>For more details, you can check our <a href="https://pubs.acs.org/doi/full/10.1021/acs.jchemed.1c01101">paper in J. Chem. Educ.</a></p>
+</section>
+<section id="introduction-to-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-machine-learning">Introduction to machine learning</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -157,7 +181,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -193,24 +234,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

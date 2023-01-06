@@ -81,7 +81,7 @@
     "href": "opensource/opensource.html#chemical-data-management",
     "title": " Open Source",
     "section": "Chemical Data management",
-    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are in the"
+    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are listed below:"
   },
   {
     "objectID": "opensource/opensource.html#other",
@@ -103,5 +103,12 @@
     "title": "Kevin's Homepage",
     "section": "",
     "text": "My current research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form — which is pivotal to power data-driven approaches.\n\n\nFor an overview of this research, see our Chem. Rev. as well as our perspective in JACS.\n\n\n\n\n\n\n\n\n\nHow can we generate an effective assistent for chemists that can answer questions such as “find all MOFs that can made in one step in a solvothermal synthesis in water?”\n\nTo answer questions like these, we need data in a form that cannot only be read by a machine, but also understood in order to perform actions.\nIn order to ensure that data is an afterthought in chemistry, I got involved in the development of an open-source ELN, the cheminfo ELN (which development is lead by Luc Patiny, our perspective article gives a good overview of our vision for the development of this platform). In contrast to many other ELNs, machine-actionable data is at the core of the ELN. This enables us to perform various actions on the data, directly in the browser."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim Wintschool. Starting from my undergrad at TU Munich, I have been teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing of what we call “virtual laboratory”.\n\nFor more details, you can check our paper in J. Chem. Educ."
   }
 ]

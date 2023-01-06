@@ -1,6 +1,15 @@
 # 👨🏼‍🏫 Teaching 
 
+I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim Wintschool.
+Starting from my undergrad at TU Munich, I have been teaching assistant and mentoring students.
+
 ## Making molecules vibrate
+
+One of my favorite teaching experiences was developing of what we call "virtual laboratory". 
+
+{{< video https://vimeo.com/669548437?embedded=true&source=vimeo_logo&owner=164535089 >}}
+
+For more details, you can check our [paper in J. Chem. Educ.](https://pubs.acs.org/doi/full/10.1021/acs.jchemed.1c01101)
 
 
 ## Introduction to machine learning

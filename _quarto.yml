@@ -46,6 +46,8 @@ website:
         href: research.qmd
       - text: Open Source
         file: opensource/opensource.qmd
+      - text: Teaching
+        href: teaching.qmd
 format:
   html:
     theme: [solar, custom.scss]

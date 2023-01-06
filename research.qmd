@@ -1,5 +1,29 @@
 # 🧪 Research
 
+My current research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form --- which is pivotal to power data-driven approaches.
+
 ## Data-driven material design
 
-## Making data machine actionable 
+For an overview of this research, see our [Chem. Rev.]() as well as our [perspective in JACS]().
+
+#### From atom to pilot plant
+
+#### What simulation or experiment should I perform next?
+
+
+## Making data machine actionable
+
+How can we generate an effective assistent for chemists that can answer questions such as "find all MOFs that can made in one step in a solvothermal synthesis in water?"
+
+![](img/natchem_toc.png)
+
+To answer questions like these, we need data in a form that cannot only be _read_ by a machine, but also _understood_ in order to perform actions. 
+
+In order to ensure that data is an afterthought in chemistry, I got involved in the development of an open-source ELN, the [cheminfo ELN](cheminfo.github.io) (which development is lead by Luc Patiny, our [perspective article](https://www.nature.com/articles/s41557-022-00910-7) gives a good overview of our vision for the development of this platform).
+In contrast to many other ELNs, machine-actionable data is at the core of the ELN. This enables us to perform various actions on the data, directly in the browser.
+
+
+#### Request simulations to compare experimental data with theoretical predictions
+
+
+#### Create digital supporting information documents

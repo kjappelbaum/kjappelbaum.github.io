@@ -60,7 +60,12 @@ I have been very active in developing tools for "digital reticular chemistry" (s
 
 ## Chemical Data management
 
-I have been an active contributor to the [cheminfo](cheminfo.github.io) ecosystem. 
+I have been an active contributor to the [cheminfo](cheminfo.github.io) ecosystem. For more details about it, you can give our [perspective article](https://www.nature.com/articles/s41557-022-00910-7) a look.
+
+Some of my contributions are listed below:
 
 
-## Other
+::: {#cheminfo-listings}
+:::
+
+<!-- ## Other -->

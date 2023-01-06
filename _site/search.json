@@ -81,7 +81,7 @@
     "href": "opensource/opensource.html#chemical-data-management",
     "title": " Open Source",
     "section": "Chemical Data management",
-    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem."
+    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are in the"
   },
   {
     "objectID": "opensource/opensource.html#other",
@@ -96,5 +96,12 @@
     "title": " Open Source",
     "section": " Digital reticular chemistry – “MOFworld”",
     "text": "Digital reticular chemistry – “MOFworld”\nI have been very active in developing tools for “digital reticular chemistry” (see also this article by Yaghi and collaborators), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nmofdscribe\n\n\nAn easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.\n\n\nPaper\n\n\n\n\n\n\n\nmofchecker\n\n\nThe mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an AiiDAlab app.\n\n\nWeb deployment of an earlier version\n\n\n\n\n\n\n\nmoffragmentor\n\n\nThe moffragmentor is a tool that allows to fragment MOF structures into building blocks.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "My current research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form — which is pivotal to power data-driven approaches.\n\n\nFor an overview of this research, see our Chem. Rev. as well as our perspective in JACS.\n\n\n\n\n\n\n\n\n\nHow can we generate an effective assistent for chemists that can answer questions such as “find all MOFs that can made in one step in a solvothermal synthesis in water?”\n\nTo answer questions like these, we need data in a form that cannot only be read by a machine, but also understood in order to perform actions.\nIn order to ensure that data is an afterthought in chemistry, I got involved in the development of an open-source ELN, the cheminfo ELN (which development is lead by Luc Patiny, our perspective article gives a good overview of our vision for the development of this platform). In contrast to many other ELNs, machine-actionable data is at the core of the ELN. This enables us to perform various actions on the data, directly in the browser."
   }
 ]

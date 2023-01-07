@@ -13,3 +13,5 @@ For more details, you can check our [paper in J. Chem. Educ.](https://pubs.acs.o
 
 
 ## Introduction to machine learning
+
+I have been lucky to introduce students to machine learning. 

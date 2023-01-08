@@ -112,8 +112,17 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#research" id="toc-research" class="nav-link active" data-scroll-target="#research">🧪 Research</a>
   <ul class="collapse">
-  <li><a href="#data-driven-material-design" id="toc-data-driven-material-design" class="nav-link" data-scroll-target="#data-driven-material-design">Data-driven material design</a></li>
-  <li><a href="#making-data-machine-actionable" id="toc-making-data-machine-actionable" class="nav-link" data-scroll-target="#making-data-machine-actionable">Making data machine actionable</a></li>
+  <li><a href="#data-driven-material-design" id="toc-data-driven-material-design" class="nav-link" data-scroll-target="#data-driven-material-design">Data-driven material design</a>
+  <ul class="collapse">
+  <li><a href="#an-ecosystem-system-for-data-driven-material-design" id="toc-an-ecosystem-system-for-data-driven-material-design" class="nav-link" data-scroll-target="#an-ecosystem-system-for-data-driven-material-design">An ecosystem system for data-driven material design</a></li>
+  <li><a href="#from-atom-to-pilot-plant" id="toc-from-atom-to-pilot-plant" class="nav-link" data-scroll-target="#from-atom-to-pilot-plant">From atom to pilot plant</a></li>
+  <li><a href="#what-simulation-or-experiment-should-i-perform-next" id="toc-what-simulation-or-experiment-should-i-perform-next" class="nav-link" data-scroll-target="#what-simulation-or-experiment-should-i-perform-next">What simulation or experiment should I perform next?</a></li>
+  </ul></li>
+  <li><a href="#making-data-machine-actionable" id="toc-making-data-machine-actionable" class="nav-link" data-scroll-target="#making-data-machine-actionable">Making data machine actionable</a>
+  <ul class="collapse">
+  <li><a href="#request-simulations-to-compare-experimental-data-with-theoretical-predictions" id="toc-request-simulations-to-compare-experimental-data-with-theoretical-predictions" class="nav-link" data-scroll-target="#request-simulations-to-compare-experimental-data-with-theoretical-predictions">Request simulations to compare experimental data with theoretical predictions</a></li>
+  <li><a href="#create-digital-supporting-information-documents" id="toc-create-digital-supporting-information-documents" class="nav-link" data-scroll-target="#create-digital-supporting-information-documents">Create digital supporting information documents</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/research.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -125,28 +134,87 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="research" class="level1">
 <h1>🧪 Research</h1>
-<p>My current research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form — which is pivotal to power data-driven approaches.</p>
+<p>My current and past research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form — which is pivotal to power data-driven approaches.</p>
+<p>The central theme of my research is that material design is a very complex, mulitscale process that often involves questions that are not easily answered by simulations. Machine learning can help to address these questions and thereby accelerate material design and discovery and enable the development of new materials and yield to new insights.</p>
 <section id="data-driven-material-design" class="level2">
 <h2 class="anchored" data-anchor-id="data-driven-material-design">Data-driven material design</h2>
-<p>For an overview of this research, see our <a href="">Chem. Rev.</a> as well as our <a href="">perspective in JACS</a>.</p>
-<section id="from-atom-to-pilot-plant" class="level4">
-<h4 class="anchored" data-anchor-id="from-atom-to-pilot-plant">From atom to pilot plant</h4>
+<p>For an overview of this research, see our <a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00004">Chem. Rev.</a> as well as our <a href="https://pubs.acs.org/doi/10.1021/jacs.0c09105">perspective in JACS</a>.</p>
+<section id="an-ecosystem-system-for-data-driven-material-design" class="level3">
+<h3 class="anchored" data-anchor-id="an-ecosystem-system-for-data-driven-material-design">An ecosystem system for data-driven material design</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/mofworld.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">An ecosystem for digital reticular chemistry.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<p>A key challenge in data-driven material design, in particular for reticular chemistry, has been the lack of a comprehensive and open-source ecosystem for machine learning on reticular materials. To address this we have been developing an open-source ecosystem for digital reticular chemistry, called <a href="https://github.com/kjappelbaum/mofdscribe">mofdscribe</a>. This ecosystem provides tools that accompany practioners along the entire data-driven design workflow: from data to publication. For this toolbox, we also developed and generalized a range of featurizers, i.e., methods to convert crystal structures into fixed-length vectors, which can be used to train machine learning models. For multiple featurizers, we could show that the generalization greatly improves the performance of the models.</p>
+</div>
+</div>
+</div>
+<p>Another interesting aspect of this work is that we have shown that it is very easy to do machine-learning on crystallographic data incorrectly—and that this can lead to very misleading results.</p>
+<p>You can find more details in the <a href="https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2">paper</a> and on the <a href="./opensource/opensource.html">open source page</a>.</p>
 </section>
-<section id="what-simulation-or-experiment-should-i-perform-next" class="level4">
-<h4 class="anchored" data-anchor-id="what-simulation-or-experiment-should-i-perform-next">What simulation or experiment should I perform next?</h4>
+<section id="from-atom-to-pilot-plant" class="level3">
+<h3 class="anchored" data-anchor-id="from-atom-to-pilot-plant">From atom to pilot plant</h3>
+<p>Given the tools and datasets mofdscribe provides of this, we can now use machine learning tools to address challenging material design problems.</p>
+<p>Over the last years, we have been doing this from the atom scale up to the pilot plant scale:</p>
+<ul>
+<li>For instance, we have developed a machine learning model that can predict the oxidation state of metal-cations in MOFs. This is interesting, because oxidation states are key part of chemical reasoning (they are even part of the names of the chemicals) but not quantum-mechanical observable. Using a chemically-informed model, we could greatly outperform the state-of-the-art and show that the model reasons about the oxidation state in a way that is consistent with chemical intuition. For more details, see the <a href="https://www.nature.com/articles/s41557-021-00717-y">paper</a>.</li>
+<li>Beyond this, we have also been using machine learning to predict the color (see <a href="https://pubs.rsc.org/en/content/articlelanding/2021/sc/d0sc05337f">paper</a>) as well as gas adsorption properties (see <a href="10.1038/s41467-020-17755-8">paper</a>) of MOFs.</li>
+<li>Recently, we have shown how we can use machine-learning to forecast the amine emission from a carbon capture pilot plant, that is fed using a slipstream from a real power plant (see <a href="https://www.science.org/doi/10.1126/sciadv.adc9576">paper</a>).</li>
+</ul>
+</section>
+<section id="what-simulation-or-experiment-should-i-perform-next" class="level3">
+<h3 class="anchored" data-anchor-id="what-simulation-or-experiment-should-i-perform-next">What simulation or experiment should I perform next?</h3>
 </section>
 </section>
 <section id="making-data-machine-actionable" class="level2">
 <h2 class="anchored" data-anchor-id="making-data-machine-actionable">Making data machine actionable</h2>
-<p>How can we generate an effective assistent for chemists that can answer questions such as “find all MOFs that can made in one step in a solvothermal synthesis in water?”</p>
-<p><img src="img/natchem_toc.png" class="img-fluid"></p>
-<p>To answer questions like these, we need data in a form that cannot only be <em>read</em> by a machine, but also <em>understood</em> in order to perform actions.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/natchem_toc.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A digital assistant for chemists.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p>How can we generate an effective assistent for chemists that can answer questions such as “find all MOFs that can made in one step in a solvothermal synthesis in water?” To answer questions like these, we need data in a form that cannot only be <em>read</em> by a machine, but also <em>understood</em> in order to perform actions.</p>
+</div>
+</div>
+</div>
 <p>In order to ensure that data is an afterthought in chemistry, I got involved in the development of an open-source ELN, the <a href="cheminfo.github.io">cheminfo ELN</a> (which development is lead by Luc Patiny, our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective article</a> gives a good overview of our vision for the development of this platform). In contrast to many other ELNs, machine-actionable data is at the core of the ELN. This enables us to perform various actions on the data, directly in the browser.</p>
-<section id="request-simulations-to-compare-experimental-data-with-theoretical-predictions" class="level4">
-<h4 class="anchored" data-anchor-id="request-simulations-to-compare-experimental-data-with-theoretical-predictions">Request simulations to compare experimental data with theoretical predictions</h4>
+<section id="request-simulations-to-compare-experimental-data-with-theoretical-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="request-simulations-to-compare-experimental-data-with-theoretical-predictions">Request simulations to compare experimental data with theoretical predictions</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://player.vimeo.com/video/787353780" frameborder="0" allow="autoplay; title=" "="" fullscreen;="" picture-in-picture"="" allowfullscreen=""></iframe></div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/xrd.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Predict or look up XRD patterns on the fly.</figcaption><p></p>
+</figure>
+</div>
 </section>
-<section id="create-digital-supporting-information-documents" class="level4">
-<h4 class="anchored" data-anchor-id="create-digital-supporting-information-documents">Create digital supporting information documents</h4>
+<section id="create-digital-supporting-information-documents" class="level3">
+<h3 class="anchored" data-anchor-id="create-digital-supporting-information-documents">Create digital supporting information documents</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/zenodo_si.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Digital supporting information. The data is machine actionable and alive.</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>

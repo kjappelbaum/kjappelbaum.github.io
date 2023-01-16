@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kevin's Homepage</title>
+<link>https://hamel.dev/index.html</link>
+<atom:link href="https://hamel.dev/index.xml" rel="self" type="application/rss+xml"/>
+<description>Kevin Maik Jablonka's personal homepage</description>
+<image>
+<url>https://hamel.dev/quarto.png</url>
+<title>Kevin's Homepage</title>
+<link>https://hamel.dev/index.html</link>
+</image>
+<generator>quarto-1.1.165</generator>
+<lastBuildDate>Thu, 05 Jan 2023 22:03:34 GMT</lastBuildDate>
+<item>
+  <title>{B4F502887207:/publications.html}</title>
+  <link>https://hamel.dev/publications.html</link>
+  <description>{B4F502887207:/publications.html}</description>
+  <guid>https://hamel.dev/publications.html</guid>
+  <pubDate>Thu, 05 Jan 2023 22:03:34 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/cv.html}</title>
+  <link>https://hamel.dev/cv.html</link>
+  <description>{B4F502887207:/cv.html}</description>
+  <guid>https://hamel.dev/cv.html</guid>
+  <pubDate>Thu, 05 Jan 2023 22:03:34 GMT</pubDate>
+</item>
+</channel>
+</rss>

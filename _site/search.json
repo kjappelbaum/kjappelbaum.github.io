@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "I’m at the final touches of my Ph.D. in the group of Berend Smit at EPFL focused on the digitization of chemistry: I’m using computational tools and machine learning to capture the tacit dimension of chemistry. I’m also a contributor to the cheminfo electronic lab notebook (ELN) ecosystem and other open-source projects (see my GitHub)."
+  },
+  {
+    "objectID": "index.html#get-in-touch",
+    "href": "index.html#get-in-touch",
+    "title": "Kevin's Homepage",
+    "section": "💼 Get in Touch",
+    "text": "💼 Get in Touch\nEmail me, or DM me on  or  if you’d like to chat!\nIf you are looking for a short bio or a headshot, you can find them here."
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Kevin's Homepage",
+    "section": "📚 Publications",
+    "text": "📚 Publications"
+  },
+  {
+    "objectID": "index.html#cv",
+    "href": "index.html#cv",
+    "title": "Kevin's Homepage",
+    "section": "CV",
+    "text": "CV\nYou can download my CV here."
+  },
+  {
+    "objectID": "index.html#contact-links",
+    "href": "index.html#contact-links",
+    "title": "Kevin's Homepage",
+    "section": "Contact Links",
+    "text": "Contact Links"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "This browser does not support PDFs. Please download the PDF to view it: Download PDF."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "You can also find me on Google Scholar and ORCID."
+  },
+  {
+    "objectID": "bio.html",
+    "href": "bio.html",
+    "title": "Bio",
+    "section": "",
+    "text": "Kevin Jablonka obtained his bachelor’s degree in chemistry at TU Munich. He joined EPFL for his master’s studies (and an extended study degree in applied machine learning), after which he joined Berend Smit’s group for a Ph.D. Kevin’s research interests are in the digitization of chemistry. For this, he got involved in the cheminfo ELN ecosystem. He also developed a toolbox for digital reticular chemistry. Using tools from this toolbox, he addressed questions from the atom up to the pilot-plant scale.\n\nMore\nIf you need more info, see my CV. If you need a headshot, you can use this one: portrait.jpg."
+  },
+  {
+    "objectID": "opensource/opensource.html",
+    "href": "opensource/opensource.html",
+    "title": " Open Source",
+    "section": "",
+    "text": "I believe that computational science relies on open code on data and subscribe to the Manifesto put out by Jonathan B. Buckheit and David L. Donoho:"
+  },
+  {
+    "objectID": "opensource/opensource.html#active-learning",
+    "href": "opensource/opensource.html#active-learning",
+    "title": " Open Source",
+    "section": " Active learning",
+    "text": "Active learning\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nPyePAL\n\n\nPyePAL implements the e-PAL algorithm for Pareto active learning. It comes with interfaces for a range of machine learning models, including scikit-learn, GPy, and jax. It generalizes to any number of objectives and also supports batches sampling as well as various schedulers for (re)-training the model.\n\n\nPaper\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "opensource/opensource.html#eln",
+    "href": "opensource/opensource.html#eln",
+    "title": " Open Source",
+    "section": "ELN",
+    "text": "ELN"
+  },
+  {
+    "objectID": "opensource/opensource.html#chemical-data-management",
+    "href": "opensource/opensource.html#chemical-data-management",
+    "title": " Open Source",
+    "section": " Chemical Data management",
+    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are listed below:\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nisotherm-analysis\n\n\nisotherm-analysis allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.\n\n\nUsed in our preprint\n\n\n\n\n\n\n\npubchem\n\n\nJavaScript interface to the PubChem API. In the cheminfo ELN, we use this to display safety information.\n\n\n\n\n\n\n\n\n\nxrd-analysis\n\n\nxrd-analysis can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms.\n\n\nDiscussed in our perspective\n\n\n\n\n\n\n\ntga-analysis\n\n\ntga-analysis provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis).\n\n\n\n\n\n\n\n\n\nbaselines\n\n\nBaselines provides a collection of baseline correction methods.\n\n\n\n\n\n\n\n\n\ncheminfo.github.io\n\n\nI created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond.\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "opensource/opensource.html#other",
+    "href": "opensource/opensource.html#other",
+    "title": " Open Source",
+    "section": "Other",
+    "text": "Other"
+  },
+  {
+    "objectID": "opensource/opensource.html#digital-reticular-chemistry-mofworld",
+    "href": "opensource/opensource.html#digital-reticular-chemistry-mofworld",
+    "title": " Open Source",
+    "section": " Digital reticular chemistry – “MOFworld”",
+    "text": "Digital reticular chemistry – “MOFworld”\nI have been very active in developing tools for “digital reticular chemistry” (see also this article by Yaghi and collaborators), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nmofdscribe\n\n\nAn easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.\n\n\nPaper\n\n\n\n\n\n\n\nmofchecker\n\n\nThe mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an AiiDAlab app.\n\n\nWeb deployment of an earlier version\n\n\n\n\n\n\n\nmoffragmentor\n\n\nThe moffragmentor is a tool that allows to fragment MOF structures into building blocks.\n\n\n\n\n\n\n\n\n\nelement-coder\n\n\nElement coder is a tool that allows to encode elements into a vector space—but to also decode them back into the original element. This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design).\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "My current and past research focuses on data-driven material design as well as the capture of (experimental) data in a machine-actionable form — which is pivotal to power data-driven approaches.\nThe central theme of my research is that material design is a very complex, mulitscale process that often involves questions that are not easily answered by simulations. Machine learning can help to address these questions and thereby accelerate material design and discovery and enable the development of new materials and yield to new insights.\n\n\nFor an overview of this research, see our Chem. Rev. as well as our perspective in JACS.\n\n\n\n\n\n\n\n\nAn ecosystem for digital reticular chemistry.\n\n\n\n\nA key challenge in data-driven material design, in particular for reticular chemistry, has been the lack of a comprehensive and open-source ecosystem for machine learning on reticular materials. To address this, we have been developing an open-source ecosystem for digital reticular chemistry, called mofdscribe. This ecosystem provides tools that accompany practioners along the entire data-driven design workflow: from data to publication. For this toolbox, we also developed and generalized a range of featurizers, i.e., methods to convert crystal structures into fixed-length vectors, which can be used to train machine learning models. For multiple featurizers, we could show that the generalization greatly improves the performance of the models.\n\n\n\nAnother exciting aspect of this work is that we have shown that it is straightforward to do machine-learning on crystallographic data incorrectly—and that this can lead to very misleading results.\nYou can find more details in the paper and on the open source page.\n\n\n\nGiven the tools and datasets mofdscribe provides of this, we can now use machine learning tools to address challenging material design problems.\nOver the last years, we have been doing this from the atom scale up to the pilot plant scale:\n\nFor instance, we have developed a machine learning model that can predict the oxidation state of metal cations in MOFs. This is interesting because oxidation states are a key part of chemical reasoning (they are even part of the names of the chemicals) but not quantum-mechanical observable. Using a chemically informed model, we could vastly outperform the state-of-the-art and show that the model reasons about the oxidation state in a way that is consistent with chemical intuition. For more details, see the paper.\nBeyond this, we have also been using machine learning to predict the color (see paper) as well as gas adsorption properties (see paper) of MOFs.\nRecently, we have shown how we can use machine learning to forecast the amine emission from a carbon capture pilot plant that is fed using a slipstream from a real power plant (see paper).\n\n\n\n\nThe power of machine learning in material discovery is that it can help us build a map of the chemical space. Equipped with this map, we can explore the chemical space more efficiently.\n\nDoing this for the design of materials is, however, complicated by the fact that we need to optimize multiple properties at the same time. There are often trade-offs between the properties we want to optimize, i.e., we cannot find a single optimum spot on the map, and the best we can do is to find the set of the best compromises. To avoid introducing biases in this process, we have implemented a method that allows to identify this set of best compromises (the Pareto frontier) with high confidence. You can find more information about this in our paper and an open-source implementation on GitHub.\n\n\n\n\n\n\n\n\n\n\nA digital assistant for chemists.\n\n\n\n\nHow can we generate an effective assistant for chemists to answer questions such as “find all MOFs that can be made in one step in a solvothermal synthesis in water?” To answer questions like these, we need data in a form that cannot only be read by a machine but also understood in order to perform actions.\n\n\n\nIn order to ensure that data is an afterthought in chemistry, I got involved in the development of an open-source ELN, the cheminfo ELN (which development is led by Luc Patiny, our perspective article gives a good overview of our vision for the development of this platform). In contrast to many other ELNs, machine-actionable data is at the core of the ELN. This enables us to perform various actions on the data directly in the browser.\n\n\n\n\n\n\n\n\nIn many cases, we can only make sense of experimental data if we compare it to theoretical predictions. For instance, isotherms measure how much gas a material can adsorb as a function of pressure. Clearly, it can adsorb more if there are defects, such as missing linkers, and less if it is incompletely activated. However, to make those statements, one needs to compare to the isotherm of the “ideal” material. This is something one can do with simulations.\n\n\n\n\n\n\n\nPredict or look up XRD patterns on the fly.\n\n\n\n\nTo make such comparisons routine — but also to create rich datasets with data from both simulations and experiments — we made it very easy to “request” simulations from within the ELN, by linking it to simulation platforms such as AiiDAlab or web services.\n\n\n\n\n\n\n\n\n\n\n\n\nDigital supporting information. The data is machine actionable and alive.\n\n\n\n\nOnce data is stored in a digital and machine-actionable form, we can use it to create electronic supporting information documents with just one click. In the cheminfo ELN, we make this possible by allowing users to export all their data to Zenodo. There, the data is accessible in a machine-actionable form and can interactively be explored in the browser. You can find an example of such a supporting information document here."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim winterschool. Starting from my undergrad at TU Munich, I have been a teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing what we call a “virtual laboratory.”\n\nFor more details, you can check out our paper in J. Chem. Educ.\n\n\n\nI have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on GitHub."
+  }
+]

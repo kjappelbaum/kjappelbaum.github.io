@@ -1,0 +1,9 @@
+## CV 
+
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="ff1d7rnp4gvajkj"></script>
+
+<a 
+  href="https://www.dropbox.com/s/sr0ck0kmn3c4pkd/cv.pdf?dl=0" 
+  class="dropbox-embed"
+   data-height="800px"
+></a>

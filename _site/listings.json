@@ -1,0 +1,13 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/publications.html",
+      "/cv.html"
+    ]
+  },
+  {
+    "listing": "/opensource/opensource.html",
+    "items": []
+  }
+]

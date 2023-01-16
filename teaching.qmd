@@ -1,0 +1,17 @@
+# 👨🏼‍🏫 Teaching 
+
+I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the [MolSim winterschool](https://www.acmm.nl/events/molsim2023/).
+Starting from my undergrad at TU Munich, I have been a teaching assistant and mentoring students.
+
+## Making molecules vibrate
+
+One of my favorite teaching experiences was developing what we call a “virtual laboratory.” 
+
+{{< video https://vimeo.com/669548437?embedded=true&source=vimeo_logo&owner=164535089 >}}
+
+For more details, you can check out our [paper in J. Chem. Educ.](https://pubs.acs.org/doi/full/10.1021/acs.jchemed.1c01101)
+
+
+## Introduction to machine learning
+
+I have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on [GitHub](https://github.com/kjappelbaum/ml_molsim).

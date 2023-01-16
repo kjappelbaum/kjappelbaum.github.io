@@ -1,0 +1,32 @@
+- title: '<span class="text-nowrap">mofdscribe</span>'
+  image: "img/mofdscribe.png"
+  path: https://github.com/kjappelbaum/mofdscribe
+  other: "[Paper](https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2)"
+  description: |
+    An easy to use tool that accompanies digital reticular chemists on all stages of their work. 
+    It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage,
+    as well as tools for evaluating models and comparing them on a leaderboard.
+
+- title: '<span class="text-nowrap">mofchecker</span>'
+  image: "img/mofchecker.png"
+  path: https://github.com/kjappelbaum/mofchecker
+  other: "[Web deployment of an earlier version]()"
+  description: |
+    The mofchecker is a tool that allows to check the "sanity" of a MOF structure.
+    If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface.
+    Some of the checks also have automatic fixes and are implemented in a graphical interface in an [AiiDAlab app](https://aiidalab.materialscloud.org/).
+
+- title: '<span class="text-nowrap">moffragmentor</span>'
+  image: "img/moffragmentor.png"
+  path: https://github.com/kjappelbaum/moffragmentor
+  other: ""
+  description: |
+    The moffragmentor is a tool that allows to fragment MOF structures into building blocks.
+
+- title: '<span class="text-nowrap">element-coder</span>'
+  image: "img/elementcoder.png"
+  path: https://github.com/kjappelbaum/element_coder
+  other: ""
+  description: |
+    Element coder is a tool that allows to encode elements into a vector space---but to also decode them back into the original element.
+    This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design).

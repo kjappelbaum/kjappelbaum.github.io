@@ -1,4 +1,4 @@
-- title: '<span class="text-nowrap">isotherm_analysis</span>'
+- title: '<span class="text-nowrap">isotherm-analysis</span>'
   image: "img/isotherm.svg"
   path: https://github.com/cheminfo/isotherm-analysis
   other: Used in our [preprint]()
@@ -6,8 +6,8 @@
     `isotherm-analysis` allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.
 
 - title: '<span class="text-nowrap">pubchem</span>'
-  image: "img/mofdscribe.png"
-  path: https://github.com/kjappelbaum/pubchem.svg
+  image: "img/pubchem.svg"
+  path: https://github.com/cheminfo/pubchem
   other:
   description: |
     JavaScript interface to the PubChem API.
@@ -16,7 +16,7 @@
 - title: '<span class="text-nowrap">xrd-analysis</span>'
   image: "img/xrd.svg"
   path: https://github.com/cheminfo/xrd-analysis
-  other:
+  other: Discussed in our [perspective](https://www.nature.com/articles/s41557-022-00910-7)
   description: |
     `xrd-analysis` can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, ...) on the diffractograms.
 

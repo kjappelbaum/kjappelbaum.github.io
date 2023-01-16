@@ -63,6 +63,13 @@
     "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are listed below:\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nisotherm-analysis\n\n\nisotherm-analysis allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.\n\n\nUsed in our preprint\n\n\n\n\n\n\n\npubchem\n\n\nJavaScript interface to the PubChem API. In the cheminfo ELN, we use this to display safety information.\n\n\n\n\n\n\n\n\n\nxrd-analysis\n\n\nxrd-analysis can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms.\n\n\nDiscussed in our perspective\n\n\n\n\n\n\n\ntga-analysis\n\n\ntga-analysis provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis).\n\n\n\n\n\n\n\n\n\nbaselines\n\n\nBaselines provides a collection of baseline correction methods.\n\n\n\n\n\n\n\n\n\ncheminfo.github.io\n\n\nI created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Kevin's Homepage",
+    "section": "",
+    "text": "In case you can’t see the embedded document, you can download it here."
+  },
+  {
     "objectID": "bio.html",
     "href": "bio.html",
     "title": "Bio",

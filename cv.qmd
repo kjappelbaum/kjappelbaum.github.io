@@ -7,3 +7,5 @@
   class="dropbox-embed"
    data-height="800px"
 ></a>
+
+In case you can’t see the embedded document, you can download it [here](https://www.dropbox.com/s/sr0ck0kmn3c4pkd/cv.pdf?dl=0).

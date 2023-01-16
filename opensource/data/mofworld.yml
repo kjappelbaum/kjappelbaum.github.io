@@ -22,3 +22,11 @@
   other: ""
   description: |
     The moffragmentor is a tool that allows to fragment MOF structures into building blocks.
+
+- title: '<span class="text-nowrap">element-coder</span>'
+  image: "img/elementcoder.png"
+  path: https://github.com/kjappelbaum/element_coder
+  other: ""
+  description: |
+    Element coder is a tool that allows to encode elements into a vector space---but to also decode them back into the original element.
+    This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design).

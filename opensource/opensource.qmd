@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-github"></i> Open Source'
-description: A collection of open source projects I've been involved with.
+description: ""
 image: "https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png"
 sidebar: false
 listing: 
@@ -40,9 +40,31 @@ listing:
       description: Description
       other: "Other References"
     image-height: 50px
+  - id: cheminfo-listings
+    contents: data/cheminfo.yml
+    type: table
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    fields: 
+    - image
+    - title
+    - description
+    - other
+    field-links:
+    - title
+    field-display-names:
+      title: Name
+      description: Description
+      other: "Other References"
+    image-height: 50px
 ---
 
-Most of the code I develop is written in Python. But I also have some experience in TypeScript/JavaScript and started fiddeling with Julia.
+I believe that computational science relies on open code on data and subscribe to the [Manifesto put out by Jonathan B. Buckheit and David L. Donoho](https://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf):
+
+> An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.
+>
+> -- <cite>Jonathan B. Buckheit and David L. Donoho</cite>
 
 ## ![](img/mofworld.png){width="10%"} Digital reticular chemistry -- ["MOFworld"](mof.world) 
 
@@ -58,7 +80,7 @@ I have been very active in developing tools for "digital reticular chemistry" (s
 :::
 
 
-## Chemical Data management
+## ![](img/cheminfo_logo.svg){width="10%"}  Chemical Data management
 
 I have been an active contributor to the [cheminfo](cheminfo.github.io) ecosystem. For more details about it, you can give our [perspective article](https://www.nature.com/articles/s41557-022-00910-7) a look.
 

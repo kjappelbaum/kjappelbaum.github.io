@@ -35,7 +35,7 @@ open source projects (see [my GitHub](https://github.com/kjappelbaum)).
 
 [Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-twitter.png){width="3%"}](https://twitter.com/kmjablonka) if you'd like to chat!
 
-If you need a short bio, you can find one [here](bio.qmd).
+If you are looking for a short bio or a headshot, you can find them [here](bio.qmd).
 
  <!-- If you want, you can also book a slot in my [calendar](https://calendly.com/kjappelbaum) to chat. -->
 ---

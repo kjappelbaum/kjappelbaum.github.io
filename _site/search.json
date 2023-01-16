@@ -60,7 +60,7 @@
     "href": "opensource/opensource.html",
     "title": " Open Source",
     "section": "",
-    "text": "Most of the code I develop is written in Python. But I also have some experience in TypeScript/JavaScript and started fiddeling with Julia."
+    "text": "I believe that computational science relies on open code on data and subscribe to the Manifesto put out by Jonathan B. Buckheit and David L. Donoho:"
   },
   {
     "objectID": "opensource/opensource.html#active-learning",
@@ -80,8 +80,8 @@
     "objectID": "opensource/opensource.html#chemical-data-management",
     "href": "opensource/opensource.html#chemical-data-management",
     "title": " Open Source",
-    "section": "Chemical Data management",
-    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are listed below:"
+    "section": " Chemical Data management",
+    "text": "Chemical Data management\nI have been an active contributor to the cheminfo ecosystem. For more details about it, you can give our perspective article a look.\nSome of my contributions are listed below:\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nisotherm_analysis\n\n\nisotherm-analysis allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.\n\n\nUsed in our preprint\n\n\n\n\n\n\n\npubchem\n\n\nJavaScript interface to the PubChem API.\n\n\n\n\n\n\n\n\n\nxrd-analysis\n\n\nxrd-analysis can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms.\n\n\n\n\n\n\n\n\n\ntga-analysis\n\n\ntga-analysis provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis).\n\n\n\n\n\n\n\n\n\ncheminfo.github.io\n\n\nI created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond.\n\n\n\n\n\n\n\n\n\nbaselines\n\n\nBaselines provides a collection of baseline correction methods.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "opensource/opensource.html#other",
@@ -95,7 +95,7 @@
     "href": "opensource/opensource.html#digital-reticular-chemistry-mofworld",
     "title": " Open Source",
     "section": " Digital reticular chemistry – “MOFworld”",
-    "text": "Digital reticular chemistry – “MOFworld”\nI have been very active in developing tools for “digital reticular chemistry” (see also this article by Yaghi and collaborators), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nmofdscribe\n\n\nAn easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.\n\n\nPaper\n\n\n\n\n\n\n\nmofchecker\n\n\nThe mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an AiiDAlab app.\n\n\nWeb deployment of an earlier version\n\n\n\n\n\n\n\nmoffragmentor\n\n\nThe moffragmentor is a tool that allows to fragment MOF structures into building blocks.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Digital reticular chemistry – “MOFworld”\nI have been very active in developing tools for “digital reticular chemistry” (see also this article by Yaghi and collaborators), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\nOther References\n\n\n\n\n\n\n\n\n\nmofdscribe\n\n\nAn easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.\n\n\nPaper\n\n\n\n\n\n\n\nmofchecker\n\n\nThe mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an AiiDAlab app.\n\n\nWeb deployment of an earlier version\n\n\n\n\n\n\n\nmoffragmentor\n\n\nThe moffragmentor is a tool that allows to fragment MOF structures into building blocks.\n\n\n\n\n\n\n\n\n\nelement-coder\n\n\nElement coder is a tool that allows to encode elements into a vector space—but to also decode them back into the original element. This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design).\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "research.html",
@@ -109,6 +109,6 @@
     "href": "teaching.html",
     "title": "Kevin's Homepage",
     "section": "",
-    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim Wintschool. Starting from my undergrad at TU Munich, I have been teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing of what we call “virtual laboratory”.\n\nFor more details, you can check our paper in J. Chem. Educ.\n\n\n\nI have been lucky to introduce students to machine learning. For this, I have developed a series of lectures as well as a Hands-on exercise."
+    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim Wintschool. Starting from my undergrad at TU Munich, I have been teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing of what we call “virtual laboratory”.\n\nFor more details, you can check our paper in J. Chem. Educ.\n\n\n\nI have been lucky to introduce students to machine learning. For this, I have developed a series of lectures as well as a Hands-on exercise, which you can find on GitHub."
   }
 ]

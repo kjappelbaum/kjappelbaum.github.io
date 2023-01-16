@@ -1,0 +1,42 @@
+- title: '<span class="text-nowrap">isotherm_analysis</span>'
+  image: "img/isotherm.svg"
+  path: https://github.com/cheminfo/isotherm-analysis
+  other: Used in our [preprint]()
+  description: |
+    `isotherm-analysis` allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.
+
+- title: '<span class="text-nowrap">pubchem</span>'
+  image: "img/mofdscribe.png"
+  path: https://github.com/kjappelbaum/pubchem.svg
+  other:
+  description: |
+    JavaScript interface to the PubChem API.
+    In the cheminfo ELN, we use this to display safety information.
+
+- title: '<span class="text-nowrap">xrd-analysis</span>'
+  image: "img/xrd.svg"
+  path: https://github.com/cheminfo/xrd-analysis
+  other:
+  description: |
+    `xrd-analysis` can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, ...) on the diffractograms.
+
+- title: '<span class="text-nowrap">tga-analysis</span>'
+  image: "img/tga.svg"
+  path: https://github.com/cheminfo/tga-spectrum
+  other:
+  description: |
+    `tga-analysis` provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis).
+
+- title: '<span class="text-nowrap">baselines</span>'
+  image: "img/baselines.svg"
+  path: https://github.com/cheminfo/baselines
+  other:
+  description: |
+    Baselines provides a collection of baseline correction methods.
+
+- title: '<span class="text-nowrap">cheminfo.github.io</span>'
+  image: "img/cheminfo.png"
+  path: https://cheminfo.github.io
+  other:
+  description: |
+    I created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond.

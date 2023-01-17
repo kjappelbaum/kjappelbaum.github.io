@@ -4,7 +4,7 @@
     "href": "teaching.html",
     "title": "Kevin's Homepage",
     "section": "",
-    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim winterschool. Starting from my undergrad at TU Munich, I have been a teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing what we call a “virtual laboratory.”\n\nFor more details, you can check out our paper in J. Chem. Educ.\n\n\n\nI have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on GitHub."
+    "text": "I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the MolSim winterschool. Starting from my undergrad at TU Munich, I have been a teaching assistant and mentoring students.\n\n\nOne of my favorite teaching experiences was developing what we call a “virtual laboratory.”\n\nFor more details, you can check out our paper in J. Chem. Educ.\n\n\n\nI have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on GitHub. Typically, I like to add some live-coding examples to the lecture. You can find the notebooks for those examples on GitHub."
   },
   {
     "objectID": "research.html",

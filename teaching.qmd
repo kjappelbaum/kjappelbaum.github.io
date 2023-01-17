@@ -15,4 +15,5 @@ For more details, you can check out our [paper in J. Chem. Educ.](https://pubs.a
 ## Introduction to machine learning
 
 I have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on [GitHub](https://github.com/kjappelbaum/ml_molsim).
+Usually, we also host a Kaggle competition as part of the hands-on exercise. You can find an example of the competition [here](https://www.kaggle.com/competitions/molsim-2023-ml-challenge/overview).
 Typically, I like to add some live-coding examples to the lecture. You can find the notebooks for those examples on [GitHub](https://github.com/kjappelbaum/molsim-ml-code-examples).

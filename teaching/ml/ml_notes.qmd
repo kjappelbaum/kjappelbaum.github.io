@@ -168,15 +168,70 @@ This is not what we expect. Our model shows completly unphysical behavior and pr
 
 To fix this, and related problems, we need to use a more elaborate approach to building a model.
 
-#### Approaches for making predictions invariant/equivariant to transformations
+#### Mmaking predictions invariant/equivariant to transformations
 [Invariance and equivariance are terms that have become very relevant in ML. It is always important to mention with respect to what operation something is invariant and equivariant; if people don't mention this they often refer to the symmetry operations of the Euclidean group which comprises all translations, rotations, and reflection.  Invariant means that the property of interest does not change under those operations. Equivariant means that it changes in the same way. The energy, for example, is invariant and the forces are equivariant.]{.aside}
 
+##### What are symmetries we would like to respect?
+Before we can talk about how to build a model that respects symmetries, we need to know what symmetries we would like to respect.
+
+In the case of molecules, we would like to respect the following symmetries:
+
+- translation: that is, if we move a molecule along a vector, the energy should not change (see above)
+- rotation: that is, if we rotate a molecule, the energy should not change
+- permutation of atoms: that is the order with which we put the atoms in the model does not matter
+
+For crystals, we additionally need to respect periodicity. That is, for intensive properties, there should be no difference between using a unit cell or a super cell of that unit cell as input for a model.
+
+
+Broadly speaking, there are three different ways to build models that respect symmetries.
+
+1. _Data augmentation_: This is the most straightforward approach. We can generate new data points by applying the symmetries to the existing data points. For example, we can generate new conformers by rotating the existing conformers. This approach is very simple to implement, but it can be very expensive. For example, if we want to generate new conformers by rotating the existing conformers, we need to generate a new conformer for every rotation.
+This approach is often used for computer vision pipelines in which you might want to detect a cat in an image independent of the orientation. In this case, you can generate new images by rotating the existing images.
+2. _Features that are invariant/equivariant_ : This approach is more sophisticated. We can build features that are invariant/equivariant to the symmetries we want to respect. For example, we can build features that are invariant to rotation. In the case of force field such features are bond lengths and angles. This is approach is widely used in ML for chemistry and materials science.
+3. _Models that are invariant/equivariant_: Alternatively, one can build special models that can consume point clouds as inputs and are equivariant to the symmetries we want to respect. We will not discuss this in detail, but you can find starting points in this [perspective by Tess Smidt](https://www.sciencedirect.com/science/article/pii/S2589597420302641).
+
+##### Invariant/equivariant features
+
+###### Symmetry functions 
+
+###### Fingerprints 
+
+###### Correlation functions
+
+###### Symmetry functions 
+
+###### Cheaper computations 
 
 
 ## Training a model
 
 ### How to know if a model is good?
 
+Before we can proceed to building models, we need to estabilsh a way to measure how good a model is.
+
+Interestingly, this is not as trivial as it may sound. To realize this, it is useful to formally write down what we mean by a good model.
+
+#### Empirical risk minimization
+
+Let's assume we have some input space $\mathcal{X}$ and some output space $\mathcal{Y}$. We can think of $\mathcal{X}$ as the space of all possible inputs and $\mathcal{Y}$ as the space of all possible outputs. For example, $\mathcal{X}$ could be the space of all possible molecules and $\mathcal{Y}$ could be the space of all possible energies.
+We want to learn a function $f: \mathcal{X} \rightarrow \mathcal{Y}$ that maps inputs to outputs. We can think of $f$ as a model that we want to train.
+
+To build this models we have samples of the joint distribution $p(x, y)$, where $x$ is an input and $y$ is the corresponding output. We can think of this as a set of data points $\{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}$.
+
+If we now define a loss function $L$ we can compute the risk, which is the expected value of the loss function:
+
+$$
+R(h)={\mathbf  {E}}[L(f(x),y)]=\int L(f(x),y)\,dP(x,y).
+$$
+
+our goal is to find a model $f$ that minimizes the risk:
+
+$$
+{\displaystyle h^{*}={\underset {h\in {\mathcal {H}}}{\operatorname {arg\,min} }}\,{R(h)}.}
+$$
+
+In practice we cannot compute this. 
+The reason is that we do not have access to the joint distribution $p(x, y)$, but only to a finite set of samples $\{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}$.
 
 ### Linear regression 
 
@@ -222,6 +277,17 @@ num_epochs = 1000
 ## Feature importance
 
 ## Feature selection 
+
+### Curse of dimensionality 
+
+For understanding the curse of dimensionality, it is useful to consider a very simple ML model, the $k$-nearest neighbors model. In this model, we have a set of training points $\{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}$, where $x_i$ is a vector of features and $y_i$ is the corresponding label. To make a prediction, we compute the distance between the input and all training points and return the mode of the labels of the $k$ closest training points.
+
+Clearly, in this algorithm it is important to find the nearest neighbor. In general, this is important in many algorithms, for instance also in kernel-based learning.
+
+Let's now ask ourself what part of the space we need to find the nearest neighbors.
+
+<!-- https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote02_kNN.html -->
+
 
 ## Feature projection 
 

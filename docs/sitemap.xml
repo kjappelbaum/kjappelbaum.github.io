@@ -2,50 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kjablonka.com/teaching.html</loc>
-    <lastmod>2023-01-17T14:08:48.718Z</lastmod>
+    <lastmod>2023-01-17T18:55:35.889Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/research.html</loc>
-    <lastmod>2023-01-17T08:58:34.734Z</lastmod>
+    <lastmod>2023-01-17T18:55:36.385Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/index.html</loc>
-    <lastmod>2023-01-17T08:58:35.102Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/plotting/index.html</loc>
-    <lastmod>2023-01-17T10:47:55.145Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/publications.html</loc>
-    <lastmod>2023-01-17T08:58:35.881Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/opensource/opensource.html</loc>
-    <lastmod>2023-01-17T08:58:36.341Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/cv.html</loc>
-    <lastmod>2023-01-17T08:58:36.679Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/bio.html</loc>
-    <lastmod>2023-01-17T08:58:36.992Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/ml_notes.html</loc>
-    <lastmod>2023-01-17T10:23:28.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
-    <lastmod>2023-01-17T14:29:57.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/how-much-data/index.html</loc>
-    <lastmod>2023-01-17T10:56:52.679Z</lastmod>
+    <lastmod>2023-01-17T18:55:36.798Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/blog/posts/coding-with-me/index.html</loc>
-    <lastmod>2023-01-17T11:27:09.230Z</lastmod>
+    <lastmod>2023-01-17T18:55:37.245Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/plotting/index.html</loc>
+    <lastmod>2023-01-17T18:55:37.649Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/how-much-data/index.html</loc>
+    <lastmod>2023-01-17T18:55:38.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/publications.html</loc>
+    <lastmod>2023-01-17T18:55:38.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/opensource/opensource.html</loc>
+    <lastmod>2023-01-17T18:55:38.943Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
+    <lastmod>2023-01-17T19:05:37.715Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/cv.html</loc>
+    <lastmod>2023-01-17T19:05:38.151Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/bio.html</loc>
+    <lastmod>2023-01-17T19:05:38.545Z</lastmod>
   </url>
 </urlset>

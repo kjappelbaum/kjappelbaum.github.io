@@ -1,0 +1,101 @@
+---
+title: 'Workshop on ML for materials science'
+description: <i>Some notes to accompany the ML workshop.</i>
+image: ""
+sidebar: false
+---
+
+## Motivation 
+
+To design new materials, we need to know their properties. 
+There are two main routes to get the properties of a material: 
+
+1. Perform an experiment to measure them 
+2. Perform a simulation to “measure” them in silico 
+
+In many cases, performing an experiment is time-consuming and, hence, expensive. Also high-fidelity simulations can be very costly. 
+[Fidelity expresses the exactness with which a surrogate represents the truth. In the context of ML you might also see the term multi-fidelity, which means that the approach uses multiple approximations with different levels of fidelity, e.g. density-functional theory and coupled cluster theory]{.aside}
+
+Therefore, there is a need for methods that can help us to predict the properties of materials with high fidelity and low cost. In this lecture, we will see that _supervised machine learning_ (ML) is a powerful tool to achieve this goal.
+
+Interestingly, this tool can be used in many different ways.
+
+### Where does ML fit in the design process?
+
+Machine learning can be used in multiple ways to make high-fidelity predictions of materials less expensive.
+[Note that reducing the cost has been a challenge for chemists and material scientists for a long time. Dirac famously said "The fundamental laws necessary for the mathematical treatment of a large part of physics and the whole of chemistry are thus completely known, and the difficulty lies only in the fact that application of these laws leads to equations that are too complex to be solved. [...] approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation"]{.aside}
+
+![Machine learning (green boxes) can be used at multiple places in the material design process.](images/ml_design_process.png)
+
+1. _Replace expensive evaluation of the potential energy surface $U(\mathbf{X}, \{\mathbf{Z}\})$_: Quantum chemistry as a field is concerned with the prediction of the potential energy surface $U(\mathbf{X}, \{\mathbf{Z}\})$ of a system of atoms of types $\mathbf{Z}$ at positions $\mathbf{X}$. Quantum chemists have developed different approximations to this problem. However, since they are all kinds of functions that map positions of atoms (and atom types, and in some cases electron densities/coordinates) to energies, we can learn those functions with ML.
+
+    Note that once we have done that, we generally still need to perform simulations to extract the properties of interest (e.g. as ensemble averages).
+
+    There are many good review articles about this. For example, see [this one by Unke et al.](https://pubs.acs.org/doi/10.1021/acs.chemrev.0c01111) as well as the ones by [Deringer et al.](https://pubs.acs.org/doi/10.1021/acs.chemrev.1c00022) and [Behler](https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00868) in the same [issue of Chemical Reviews](https://pubs.acs.org/toc/chreay/121/16).
+
+2. _Directly predict the properties of interest_
+
+Note that in the context of using ML for molecular simulations, it can also be used to address sampling problems. 
+We will not cover this in detail in this lecture. For a good introduction, see the [seminal paper by Noe](https://www.science.org/doi/10.1126/science.aaw1147) and a [piece about it by Tuckerman](https://www.science.org/doi/10.1126/science.aay2568).
+
+
+## Supervised ML workflow
+
+## Feeding structures into models 
+
+### Incorporating symmetries/invariances/equivariances
+
+
+## Training a model
+
+### How to know if a model is good?
+
+
+### Linear regression 
+
+```python
+import jax.numpy as jnp
+
+def linear_regression(x, w, b):
+    return jnp.dot(x, w) + b
+```
+
+
+```python
+def loss(w, b):
+    prediction = linear_regression(x, w, b)
+    return jnp.mean((prediction - y) ** 2)
+```
+
+
+```python
+def init_params(num_feat):
+    return np.random.normal(size=(num_feat,)), 0.0
+```
+
+```python 
+loss_grad = jax.grad(loss, argnums=(0, 1))
+```
+
+```python
+learning_rate = 1e-6
+num_epochs = 1000
+```
+
+
+## Bias-variance trade-off
+
+## Hyperparameters 
+
+
+## Kernel trick
+
+![Kernel-based machine learning can be thought of expressing the property of interest via an expansion in a basis spanned by the structures in the training set. Figure taken from M. A. Caro, _Arkhimedes_ *2018*, 3, 21.](images/kt_visual.png)
+
+## Feature importance
+
+## Feature selection 
+
+## Feature projection 
+
+## Feature learning 

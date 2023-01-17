@@ -75,5 +75,180 @@
     "title": "Bio",
     "section": "",
     "text": "Kevin Jablonka obtained his bachelor’s degree in chemistry at TU Munich. He joined EPFL for his master’s studies (and an extended study degree in applied machine learning), after which he joined Berend Smit’s group for a Ph.D. Kevin’s research interests are in the digitization of chemistry. For this, he got involved in the cheminfo ELN ecosystem. He also developed a toolbox for digital reticular chemistry. Using tools from this toolbox, he addressed questions from the atom up to the pilot-plant scale.\n\nMore\nIf you need more info, see my CV. If you need a headshot, you can use this one: portrait.jpg."
+  },
+  {
+    "objectID": "ml_notes.html",
+    "href": "ml_notes.html",
+    "title": "Workshop on ML for materials science",
+    "section": "",
+    "text": "To design new materials, we need to know their properties. There are two main routes to get the properties of a material:\n\nPerform an experiment to measure them\nPerform a simulation to “measure” them in silico\n\nIn many cases, performing an experiment is time-consuming and, hence, expensive. Also high-fidelity simulations can be very costly. Fidelity expresses the exactness with which a surrogate represents the truth. In the context of ML you might also see the term multi-fidelity, which means that the approach uses multiple approximations with different levels of fidelity, e.g. density-functional theory and coupled cluster theory\nTherefore, there is a need for methods that can help us to predict the properties of materials with high fidelity and low cost. In this lecture, we will see that supervised machine learning (ML) is a powerful tool to achieve this goal.\nInterestingly, this tool can be used in many different ways.\n\n\nMachine learning can be used in multiple ways to make high-fidelity predictions of materials less expensive. Note that reducing the cost has been a challenge for chemists and material scientists for a long time. Dirac famously said “The fundamental laws necessary for the mathematical treatment of a large part of physics and the whole of chemistry are thus completely known, and the difficulty lies only in the fact that application of these laws leads to equations that are too complex to be solved. […] approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation”\n\n\n\nMachine learning (green boxes) can be used at multiple places in the material design process.\n\n\n\nReplace expensive evaluation of the potential energy surface \\(U(\\mathbf{X}, \\{\\mathbf{Z}\\})\\): Quantum chemistry as a field is concerned with the prediction of the potential energy surface \\(U(\\mathbf{X}, \\{\\mathbf{Z}\\})\\) of a system of atoms of types \\(\\mathbf{Z}\\) at positions \\(\\mathbf{X}\\). Quantum chemists have developed different approximations to this problem. However, since they are all kinds of functions that map positions of atoms (and atom types, and in some cases electron densities/coordinates) to energies, we can learn those functions with ML.\nNote that once we have done that, we generally still need to perform simulations to extract the properties of interest (e.g. as ensemble averages).\nThere are many good review articles about this. For example, see this one by Unke et al. as well as the ones by Deringer et al. and Behler in the same issue of Chemical Reviews.\nDirectly predict the properties of interest\n\nNote that in the context of using ML for molecular simulations, it can also be used to address sampling problems. We will not cover this in detail in this lecture. For a good introduction, see the seminal paper by Noe and a piece about it by Tuckerman."
+  },
+  {
+    "objectID": "ml_notes.html#supervised-ml-workflow",
+    "href": "ml_notes.html#supervised-ml-workflow",
+    "title": "Workshop on ML for materials science",
+    "section": "Supervised ML workflow",
+    "text": "Supervised ML workflow"
+  },
+  {
+    "objectID": "ml_notes.html#training-a-basic-ml-model",
+    "href": "ml_notes.html#training-a-basic-ml-model",
+    "title": "ML lecture notes",
+    "section": "Training a basic ML model",
+    "text": "Training a basic ML model"
+  },
+  {
+    "objectID": "ml_notes.html#feeding-structures-into-models",
+    "href": "ml_notes.html#feeding-structures-into-models",
+    "title": "Workshop on ML for materials science",
+    "section": "Feeding structures into models",
+    "text": "Feeding structures into models"
+  },
+  {
+    "objectID": "ml_notes.html#training-a-basic-model",
+    "href": "ml_notes.html#training-a-basic-model",
+    "title": "ML lecture notes",
+    "section": "Training a basic model",
+    "text": "Training a basic model"
+  },
+  {
+    "objectID": "ml_notes.html#training-a-model",
+    "href": "ml_notes.html#training-a-model",
+    "title": "Workshop on ML for materials science",
+    "section": "Training a model",
+    "text": "Training a model\n\nHow to know if a model is good?\n\n\nLinear regression"
+  },
+  {
+    "objectID": "ml_notes.html#bias-variance-trade-off",
+    "href": "ml_notes.html#bias-variance-trade-off",
+    "title": "Workshop on ML for materials science",
+    "section": "Bias-variance trade-off",
+    "text": "Bias-variance trade-off"
+  },
+  {
+    "objectID": "ml_notes.html#hyperparameters",
+    "href": "ml_notes.html#hyperparameters",
+    "title": "Workshop on ML for materials science",
+    "section": "Hyperparameters",
+    "text": "Hyperparameters"
+  },
+  {
+    "objectID": "ml_notes.html#kernel-trick",
+    "href": "ml_notes.html#kernel-trick",
+    "title": "Workshop on ML for materials science",
+    "section": "Kernel trick",
+    "text": "Kernel trick"
+  },
+  {
+    "objectID": "ml_notes.html#feature-importance",
+    "href": "ml_notes.html#feature-importance",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature importance",
+    "text": "Feature importance"
+  },
+  {
+    "objectID": "ml_notes.html#feature-selection",
+    "href": "ml_notes.html#feature-selection",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature selection",
+    "text": "Feature selection"
+  },
+  {
+    "objectID": "ml_notes.html#feature-projection",
+    "href": "ml_notes.html#feature-projection",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature projection",
+    "text": "Feature projection"
+  },
+  {
+    "objectID": "ml_notes.html#feature-learning",
+    "href": "ml_notes.html#feature-learning",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature learning",
+    "text": "Feature learning"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html",
+    "href": "teaching/ml/ml_notes.html",
+    "title": "Workshop on ML for materials science",
+    "section": "",
+    "text": "To design new materials, we need to know their properties. There are two main routes to get the properties of a material:\n\nPerform an experiment to measure them\nPerform a simulation to “measure” them in silico\n\nIn many cases, performing an experiment is time-consuming and, hence, expensive. Also high-fidelity simulations can be very costly. Fidelity expresses the exactness with which a surrogate represents the truth. In the context of ML you might also see the term multi-fidelity, which means that the approach uses multiple approximations with different levels of fidelity, e.g. density-functional theory and coupled cluster theory\nTherefore, there is a need for methods that can help us to predict the properties of materials with high fidelity and low cost. In this lecture, we will see that supervised machine learning (ML) is a powerful tool to achieve this goal.\nInterestingly, this tool can be used in many different ways.\n\n\nMachine learning can be used in multiple ways to make high-fidelity predictions of materials less expensive. Note that reducing the cost has been a challenge for chemists and material scientists for a long time. Dirac famously said “The fundamental laws necessary for the mathematical treatment of a large part of physics and the whole of chemistry are thus completely known, and the difficulty lies only in the fact that application of these laws leads to equations that are too complex to be solved. […] approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation”\n\n\n\nMachine learning (green boxes) can be used at multiple places in the material design process.\n\n\n\nReplace expensive evaluation of the potential energy surface \\(U(\\mathbf{X}, \\{\\mathbf{Z}\\})\\): Quantum chemistry as a field is concerned with the prediction of the potential energy surface \\(U(\\mathbf{X}, \\{\\mathbf{Z}\\})\\) of a system of atoms of types \\(\\mathbf{Z}\\) at positions \\(\\mathbf{X}\\). Quantum chemists have developed different approximations to this problem. However, since they are all kinds of functions that map positions of atoms (and atom types, and in some cases electron densities/coordinates) to energies, we can learn those functions with ML.\nNote that once we have done that, we generally still need to perform simulations to extract the properties of interest (e.g. as ensemble averages).\nThere are many good review articles about this. For example, see this one by Unke et al. as well as the ones by Deringer et al. and Behler in the same issue of Chemical Reviews.\nDirectly predict the properties of interest\n\nNote that in the context of using ML for molecular simulations, it can also be used to address sampling problems. We will not cover this in detail in this lecture. For a good introduction, see the seminal paper by Noe and a piece about it by Tuckerman."
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#supervised-ml-workflow",
+    "href": "teaching/ml/ml_notes.html#supervised-ml-workflow",
+    "title": "Workshop on ML for materials science",
+    "section": "Supervised ML workflow",
+    "text": "Supervised ML workflow"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#feeding-structures-into-models",
+    "href": "teaching/ml/ml_notes.html#feeding-structures-into-models",
+    "title": "Workshop on ML for materials science",
+    "section": "Feeding structures into models",
+    "text": "Feeding structures into models\n\nIncorporating symmetries/invariances/equivariances"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#training-a-model",
+    "href": "teaching/ml/ml_notes.html#training-a-model",
+    "title": "Workshop on ML for materials science",
+    "section": "Training a model",
+    "text": "Training a model\n\nHow to know if a model is good?\n\n\nLinear regression\nimport jax.numpy as jnp\n\ndef linear_regression(x, w, b):\n    return jnp.dot(x, w) + b\ndef loss(w, b):\n    prediction = linear_regression(x, w, b)\n    return jnp.mean((prediction - y) ** 2)\ndef init_params(num_feat):\n    return np.random.normal(size=(num_feat,)), 0.0\nloss_grad = jax.grad(loss, argnums=(0, 1))\nlearning_rate = 1e-6\nnum_epochs = 1000"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#bias-variance-trade-off",
+    "href": "teaching/ml/ml_notes.html#bias-variance-trade-off",
+    "title": "Workshop on ML for materials science",
+    "section": "Bias-variance trade-off",
+    "text": "Bias-variance trade-off"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#hyperparameters",
+    "href": "teaching/ml/ml_notes.html#hyperparameters",
+    "title": "Workshop on ML for materials science",
+    "section": "Hyperparameters",
+    "text": "Hyperparameters"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#kernel-trick",
+    "href": "teaching/ml/ml_notes.html#kernel-trick",
+    "title": "Workshop on ML for materials science",
+    "section": "Kernel trick",
+    "text": "Kernel trick\n\n\n\nKernel-based machine learning can be thought of expressing the property of interest via an expansion in a basis spanned by the structures in the training set. Figure taken from M. A. Caro, Arkhimedes 2018, 3, 21."
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#feature-importance",
+    "href": "teaching/ml/ml_notes.html#feature-importance",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature importance",
+    "text": "Feature importance"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#feature-selection",
+    "href": "teaching/ml/ml_notes.html#feature-selection",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature selection",
+    "text": "Feature selection"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#feature-projection",
+    "href": "teaching/ml/ml_notes.html#feature-projection",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature projection",
+    "text": "Feature projection"
+  },
+  {
+    "objectID": "teaching/ml/ml_notes.html#feature-learning",
+    "href": "teaching/ml/ml_notes.html#feature-learning",
+    "title": "Workshop on ML for materials science",
+    "section": "Feature learning",
+    "text": "Feature learning"
+  },
+  {
+    "objectID": "blog/posts/plotting/index.html",
+    "href": "blog/posts/plotting/index.html",
+    "title": "Publication-ready plots with Python",
+    "section": "",
+    "text": "Over the last decade I’ve spent a lot of time plotting data. I’ve tried many different tools and workflows, and I’ve learned a lot.\nI started with gnuplot, explored pgfplots and large parts of the Python plotting ecosystem."
   }
 ]

@@ -69,7 +69,8 @@ from rdkit import Chem
 from rdkit.Chem import AllChem, PyMol
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
-
+import matplotx
+plt.style.use(['science', 'nature', matplotx.styles.dufte])
 
 def gen_conformers(mol, numConfs=10_000, maxAttempts=1000, 
     pruneRmsThresh=0.2, useExpTorsionAnglePrefs=True, 
@@ -145,6 +146,8 @@ Once we have trained a model, we can use it to predict the energies of new confo
 
 ```{python}
 train_predictions = model.predict(train_positions)
+
+
 density_scatter_with_hist(train_energies.values, train_predictions, xlabel='True energy', ylabel='Predicted energy')
 ```
 
@@ -152,6 +155,7 @@ This looks pretty good. But how well does it do on new conformers? Let's see.
 
 ```{python}
 test_predictions = model.predict(test_positions)
+
 density_scatter_with_hist(test_energies.values, test_predictions, xlabel='True energy', ylabel='Predicted energy')
 ```
 
@@ -276,6 +280,8 @@ num_epochs = 1000
 
 ## Feature importance
 
+### Permutation feature importance
+
 ## Feature selection 
 
 ### Curse of dimensionality 
@@ -288,7 +294,62 @@ Let's now ask ourself what part of the space we need to find the nearest neighbo
 
 <!-- https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote02_kNN.html -->
 
+For this, let's start considering a unit cube $[0,1]^d$ and $n$ data points $x_i$ sampled uniformly from this cube.
+
+The smallest hypercube that contains $k$ out of the $n$ points has the following edge length 
+
+$$
+l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d} 
+$$
+
+If we plot this for different values of $d$ we get the following plot:
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np 
+
+def length(d, k=5, n=10_000):
+    return (k/n)**(1/d)
+
+d = np.arange(1, 1000)
+
+plt.plot(d, length(d))
+plt.xlabel('numbr of dimensions')
+plt.ylabel('length of hypercube that contains k neighbors')
+```
+
+Clearly, for large $d$ the length approaches 1---which means that all points are now almost equally far apart and comparing distances no longer makes much sense.
+
+We can also check this by performing a simulation: Generating random $d$ dimensional points and computing the distance between them. We can then plot the distribution of distances.
+
+```{python}
+from scipy.spatial import distance_matrix
+dimensions = [2, 5, 10, 100, 10_000]
+num_points = 1000
+
+fig, axes = plt.subplots(1, len(dimensions), sharey='all')
+
+def get_distances(d, num_points):
+    points = np.random.uniform(size=(num_points, d))
+    distances = distance_matrix(points, points)
+    return np.array(distances).flatten()
+
+for d, ax in zip(dimensions, axes):
+    distances = get_distances(d, num_points)
+    ax.hist(distances, bins=20)
+    ax.set_title(f'd={d} \n cv={distances.std()/distances.mean():.2f}')
+```
+
+Clearly, for large $d$ the distances are almost the same (the histograms are much more peaked). 
+We can also see this in terms of the coefficient of variation (cv), which is the standard deviation divided by the mean. For large $d$ the cv is very small, which means that the distances are very similar.
+
+### Feature selection approaches
 
 ## Feature projection 
+
+### Principal component analysis
+
+### t-distributed stochastic neighbor embedding
+
 
 ## Feature learning 

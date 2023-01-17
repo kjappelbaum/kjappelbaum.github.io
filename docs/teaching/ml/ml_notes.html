@@ -205,7 +205,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#hyperparameters" id="toc-hyperparameters" class="nav-link" data-scroll-target="#hyperparameters">Hyperparameters</a></li>
   <li><a href="#kernel-trick" id="toc-kernel-trick" class="nav-link" data-scroll-target="#kernel-trick">Kernel trick</a></li>
   <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance">Feature importance</a></li>
-  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature selection</a></li>
+  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature selection</a>
+  <ul class="collapse">
+  <li><a href="#curse-of-dimensionality" id="toc-curse-of-dimensionality" class="nav-link" data-scroll-target="#curse-of-dimensionality">Curse of dimensionality</a></li>
+  </ul></li>
   <li><a href="#feature-projection" id="toc-feature-projection" class="nav-link" data-scroll-target="#feature-projection">Feature projection</a></li>
   <li><a href="#feature-learning" id="toc-feature-learning" class="nav-link" data-scroll-target="#feature-learning">Feature learning</a></li>
   </ul>
@@ -295,38 +298,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdkit.Chem <span class="im">import</span> AllChem, PyMol</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_conformers(mol, numConfs<span class="op">=</span><span class="dv">10_000</span>, maxAttempts<span class="op">=</span><span class="dv">1000</span>, </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    pruneRmsThresh<span class="op">=</span><span class="fl">0.2</span>, useExpTorsionAnglePrefs<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    useBasicKnowledge<span class="op">=</span><span class="va">True</span>, enforceChirality<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Use RDkit to generate conformers for a molecule."""</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> AllChem.EmbedMultipleConfs(mol, numConfs<span class="op">=</span>numConfs, maxAttempts<span class="op">=</span>maxAttempts, pruneRmsThresh<span class="op">=</span>pruneRmsThresh, useExpTorsionAnglePrefs<span class="op">=</span>useExpTorsionAnglePrefs, useBasicKnowledge<span class="op">=</span>useBasicKnowledge, enforceChirality<span class="op">=</span>enforceChirality, numThreads<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(ids)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_energy(mol, conformer_id, iterations<span class="op">=</span><span class="dv">0</span>):</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate the energy of a conformer using the Merck Molecular Force Field."""</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ff <span class="op">=</span> AllChem.MMFFGetMoleculeForceField(mol, AllChem.MMFFGetMoleculeProperties(mol), confId<span class="op">=</span>conformer_id)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ff.Initialize()</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ff.CalcEnergy()</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> {}</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> iterations <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        results[<span class="st">"converged"</span>] <span class="op">=</span> ff.Minimize(maxIts<span class="op">=</span>iterations)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"energy_abs"</span>] <span class="op">=</span> ff.CalcEnergy()</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># create a molecule</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>mol <span class="op">=</span> Chem.AddHs(Chem.MolFromSmiles(<span class="st">'CC(CCC)CC(C)(CCCC)O'</span>))</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize some conformers using PyMol</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>conformer_ids <span class="op">=</span> gen_conformers(mol)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>v<span class="op">=</span> PyMol.MolViewer()</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>v.DeleteAll()</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cid <span class="kw">in</span> conformer_ids[:<span class="dv">50</span>]: </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    v.ShowMol(mol,confId<span class="op">=</span>cid,name<span class="op">=</span><span class="st">'Conf-</span><span class="sc">%d</span><span class="st">'</span><span class="op">%</span>cid,showOnly<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'set grid_mode, on'</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'ray'</span>)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>v.GetPNG()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotx</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'nature'</span>, matplotx.styles.dufte])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_conformers(mol, numConfs<span class="op">=</span><span class="dv">10_000</span>, maxAttempts<span class="op">=</span><span class="dv">1000</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    pruneRmsThresh<span class="op">=</span><span class="fl">0.2</span>, useExpTorsionAnglePrefs<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    useBasicKnowledge<span class="op">=</span><span class="va">True</span>, enforceChirality<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Use RDkit to generate conformers for a molecule."""</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> AllChem.EmbedMultipleConfs(mol, numConfs<span class="op">=</span>numConfs, maxAttempts<span class="op">=</span>maxAttempts, pruneRmsThresh<span class="op">=</span>pruneRmsThresh, useExpTorsionAnglePrefs<span class="op">=</span>useExpTorsionAnglePrefs, useBasicKnowledge<span class="op">=</span>useBasicKnowledge, enforceChirality<span class="op">=</span>enforceChirality, numThreads<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(ids)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_energy(mol, conformer_id, iterations<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate the energy of a conformer using the Merck Molecular Force Field."""</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ff <span class="op">=</span> AllChem.MMFFGetMoleculeForceField(mol, AllChem.MMFFGetMoleculeProperties(mol), confId<span class="op">=</span>conformer_id)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ff.Initialize()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ff.CalcEnergy()</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> {}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> iterations <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        results[<span class="st">"converged"</span>] <span class="op">=</span> ff.Minimize(maxIts<span class="op">=</span>iterations)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"energy_abs"</span>] <span class="op">=</span> ff.CalcEnergy()</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># create a molecule</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>mol <span class="op">=</span> Chem.AddHs(Chem.MolFromSmiles(<span class="st">'CC(CCC)CC(C)(CCCC)O'</span>))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize some conformers using PyMol</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>conformer_ids <span class="op">=</span> gen_conformers(mol)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>v<span class="op">=</span> PyMol.MolViewer()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>v.DeleteAll()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cid <span class="kw">in</span> conformer_ids[:<span class="dv">50</span>]: </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    v.ShowMol(mol,confId<span class="op">=</span>cid,name<span class="op">=</span><span class="st">'Conf-</span><span class="sc">%d</span><span class="st">'</span><span class="op">%</span>cid,showOnly<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'set grid_mode, on'</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'ray'</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>v.GetPNG()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <p><img src="ml_notes_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
 </div>
@@ -379,124 +383,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody>
     <tr>
-      <th>2658</th>
-      <td>-1.929819</td>
-      <td>-1.307967</td>
-      <td>1.242577</td>
-      <td>-1.444403</td>
-      <td>-0.515365</td>
-      <td>0.097028</td>
-      <td>-2.400931</td>
-      <td>-0.447940</td>
-      <td>-1.069041</td>
-      <td>-3.727245</td>
+      <th>1046</th>
+      <td>-2.212281</td>
+      <td>-1.474999</td>
+      <td>-2.390409</td>
+      <td>-1.562491</td>
+      <td>-0.355279</td>
+      <td>-1.552936</td>
+      <td>-2.574018</td>
+      <td>0.279176</td>
+      <td>-0.658268</td>
+      <td>-3.217086</td>
       <td>...</td>
-      <td>4.933735</td>
-      <td>0.630401</td>
-      <td>-1.139714</td>
-      <td>4.103521</td>
-      <td>0.433141</td>
-      <td>0.447985</td>
-      <td>1.872133</td>
-      <td>-2.012869</td>
-      <td>-0.980951</td>
-      <td>52.065262</td>
+      <td>4.383762</td>
+      <td>-0.980267</td>
+      <td>0.056970</td>
+      <td>5.522230</td>
+      <td>-1.019915</td>
+      <td>1.414831</td>
+      <td>-0.100292</td>
+      <td>1.419222</td>
+      <td>1.300613</td>
+      <td>48.129356</td>
     </tr>
     <tr>
-      <th>2817</th>
-      <td>-1.838145</td>
-      <td>-1.816200</td>
-      <td>0.561768</td>
-      <td>-1.444788</td>
-      <td>-0.392108</td>
-      <td>0.897264</td>
-      <td>-2.611365</td>
-      <td>0.384535</td>
-      <td>1.449620</td>
-      <td>-3.811507</td>
+      <th>1791</th>
+      <td>-2.725521</td>
+      <td>-1.570268</td>
+      <td>-0.008617</td>
+      <td>-1.420433</td>
+      <td>-0.745241</td>
+      <td>0.167732</td>
+      <td>-1.761553</td>
+      <td>0.659563</td>
+      <td>0.457654</td>
+      <td>-2.569109</td>
       <td>...</td>
-      <td>4.529400</td>
-      <td>1.713778</td>
-      <td>-0.480201</td>
-      <td>3.144333</td>
-      <td>1.534239</td>
-      <td>0.621378</td>
-      <td>1.040180</td>
-      <td>-1.612633</td>
-      <td>-1.935694</td>
-      <td>61.596843</td>
+      <td>4.089157</td>
+      <td>0.909448</td>
+      <td>1.853696</td>
+      <td>2.290849</td>
+      <td>1.084068</td>
+      <td>1.508593</td>
+      <td>0.817653</td>
+      <td>-1.854129</td>
+      <td>-2.626004</td>
+      <td>70.779133</td>
     </tr>
     <tr>
-      <th>109</th>
-      <td>1.565336</td>
-      <td>2.362629</td>
-      <td>0.374221</td>
-      <td>0.965315</td>
-      <td>1.068814</td>
-      <td>-0.165104</td>
-      <td>1.993181</td>
-      <td>0.419676</td>
-      <td>-1.031094</td>
-      <td>3.271867</td>
+      <th>2690</th>
+      <td>2.106368</td>
+      <td>-1.556137</td>
+      <td>-0.275108</td>
+      <td>1.674815</td>
+      <td>-0.651654</td>
+      <td>0.795833</td>
+      <td>1.889560</td>
+      <td>0.782223</td>
+      <td>0.461278</td>
+      <td>3.278361</td>
       <td>...</td>
-      <td>-4.997682</td>
-      <td>0.504070</td>
-      <td>0.557561</td>
-      <td>-4.506039</td>
-      <td>1.874196</td>
-      <td>-0.578538</td>
-      <td>0.245208</td>
-      <td>-2.619539</td>
-      <td>-0.429942</td>
-      <td>42.314465</td>
+      <td>-2.118368</td>
+      <td>2.632123</td>
+      <td>-0.509996</td>
+      <td>-3.777892</td>
+      <td>3.014443</td>
+      <td>-1.202697</td>
+      <td>-1.944397</td>
+      <td>-2.422734</td>
+      <td>0.016038</td>
+      <td>63.048163</td>
     </tr>
     <tr>
-      <th>2533</th>
-      <td>-3.002066</td>
-      <td>-1.341106</td>
-      <td>-0.061789</td>
-      <td>-1.650306</td>
-      <td>-0.643639</td>
-      <td>-0.372583</td>
-      <td>-1.657359</td>
-      <td>0.610846</td>
-      <td>0.419468</td>
-      <td>-2.869604</td>
+      <th>577</th>
+      <td>-1.702710</td>
+      <td>-2.151021</td>
+      <td>0.018615</td>
+      <td>-1.161150</td>
+      <td>-0.845488</td>
+      <td>0.474544</td>
+      <td>-2.158003</td>
+      <td>-0.017822</td>
+      <td>1.223527</td>
+      <td>-3.410603</td>
       <td>...</td>
-      <td>2.115652</td>
-      <td>2.322620</td>
-      <td>-1.087563</td>
-      <td>3.482312</td>
-      <td>2.864956</td>
-      <td>-0.123603</td>
-      <td>1.149460</td>
-      <td>-3.091604</td>
-      <td>-1.069770</td>
-      <td>65.139654</td>
+      <td>2.625792</td>
+      <td>2.504632</td>
+      <td>1.879925</td>
+      <td>4.344447</td>
+      <td>2.221012</td>
+      <td>1.528942</td>
+      <td>0.789643</td>
+      <td>0.258301</td>
+      <td>-2.784349</td>
+      <td>56.945381</td>
     </tr>
     <tr>
-      <th>2900</th>
-      <td>-3.095372</td>
-      <td>-1.038234</td>
-      <td>0.029891</td>
-      <td>-1.706596</td>
-      <td>-1.143980</td>
-      <td>-0.599339</td>
-      <td>-1.543894</td>
-      <td>0.074069</td>
-      <td>-1.448744</td>
-      <td>-1.607648</td>
+      <th>2321</th>
+      <td>-2.410615</td>
+      <td>0.036347</td>
+      <td>-1.407882</td>
+      <td>-1.514375</td>
+      <td>0.715345</td>
+      <td>-0.483198</td>
+      <td>-2.071248</td>
+      <td>1.193091</td>
+      <td>0.824212</td>
+      <td>-2.629851</td>
       <td>...</td>
-      <td>1.931905</td>
-      <td>3.109944</td>
-      <td>0.018609</td>
-      <td>3.406252</td>
-      <td>2.910731</td>
-      <td>1.025620</td>
-      <td>0.666441</td>
-      <td>-2.973062</td>
-      <td>-1.307792</td>
-      <td>79.587517</td>
+      <td>4.279797</td>
+      <td>1.822461</td>
+      <td>1.492311</td>
+      <td>4.810844</td>
+      <td>0.133699</td>
+      <td>1.765070</td>
+      <td>0.220271</td>
+      <td>1.130136</td>
+      <td>-2.573808</td>
+      <td>69.120898</td>
     </tr>
     <tr>
       <th>...</th>
@@ -523,128 +527,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <td>...</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>1.975237</td>
-      <td>-0.940353</td>
-      <td>-2.458838</td>
-      <td>1.717318</td>
-      <td>0.116480</td>
-      <td>-1.401458</td>
-      <td>2.683640</td>
-      <td>0.025232</td>
-      <td>-0.302529</td>
-      <td>2.474425</td>
+      <th>1903</th>
+      <td>-1.874600</td>
+      <td>-1.729838</td>
+      <td>0.296233</td>
+      <td>-1.242327</td>
+      <td>-0.423624</td>
+      <td>0.662343</td>
+      <td>-2.360888</td>
+      <td>0.556635</td>
+      <td>0.935360</td>
+      <td>-3.274811</td>
       <td>...</td>
-      <td>-3.345808</td>
-      <td>1.892647</td>
-      <td>2.192382</td>
-      <td>-4.508283</td>
-      <td>2.394980</td>
-      <td>0.932422</td>
-      <td>-1.003007</td>
-      <td>-1.686171</td>
-      <td>-2.318438</td>
-      <td>51.953457</td>
+      <td>5.123665</td>
+      <td>0.348017</td>
+      <td>0.274119</td>
+      <td>4.824946</td>
+      <td>1.267063</td>
+      <td>-1.287177</td>
+      <td>0.989804</td>
+      <td>-0.061443</td>
+      <td>-2.574835</td>
+      <td>52.258451</td>
     </tr>
     <tr>
-      <th>247</th>
-      <td>2.015558</td>
-      <td>-2.272688</td>
-      <td>-0.761636</td>
-      <td>1.977917</td>
-      <td>-0.954700</td>
-      <td>-0.001156</td>
-      <td>3.234615</td>
-      <td>-0.241373</td>
-      <td>-0.374953</td>
-      <td>3.562457</td>
+      <th>2963</th>
+      <td>-2.085652</td>
+      <td>-1.522719</td>
+      <td>1.316025</td>
+      <td>-1.858266</td>
+      <td>-1.020026</td>
+      <td>-0.052872</td>
+      <td>-3.130666</td>
+      <td>-0.933779</td>
+      <td>-0.872329</td>
+      <td>-4.203947</td>
       <td>...</td>
-      <td>-3.640046</td>
-      <td>2.614766</td>
-      <td>-0.694365</td>
-      <td>-3.863170</td>
-      <td>0.934453</td>
-      <td>-1.418063</td>
-      <td>0.338145</td>
-      <td>-0.763670</td>
-      <td>2.101627</td>
-      <td>61.501703</td>
+      <td>6.026970</td>
+      <td>1.391672</td>
+      <td>-1.103528</td>
+      <td>5.360257</td>
+      <td>-0.211862</td>
+      <td>-0.469421</td>
+      <td>0.778024</td>
+      <td>-1.285147</td>
+      <td>-1.653611</td>
+      <td>56.778165</td>
     </tr>
     <tr>
-      <th>3166</th>
-      <td>-0.431365</td>
-      <td>1.543408</td>
-      <td>0.002874</td>
-      <td>-0.829497</td>
-      <td>0.352258</td>
-      <td>-0.795432</td>
-      <td>-2.341158</td>
-      <td>0.541621</td>
-      <td>-1.087519</td>
-      <td>-3.126403</td>
+      <th>1399</th>
+      <td>2.734858</td>
+      <td>-1.857506</td>
+      <td>0.436812</td>
+      <td>1.674471</td>
+      <td>-0.985306</td>
+      <td>-0.285730</td>
+      <td>1.895531</td>
+      <td>0.401886</td>
+      <td>0.230331</td>
+      <td>3.346859</td>
       <td>...</td>
-      <td>2.919436</td>
-      <td>2.685555</td>
-      <td>-0.340384</td>
-      <td>4.656813</td>
-      <td>2.052156</td>
-      <td>-0.410058</td>
-      <td>0.901917</td>
-      <td>-1.446365</td>
-      <td>-2.007443</td>
-      <td>80.858917</td>
+      <td>-4.408550</td>
+      <td>0.444544</td>
+      <td>1.670268</td>
+      <td>-4.406963</td>
+      <td>2.201135</td>
+      <td>1.983818</td>
+      <td>-1.392504</td>
+      <td>-3.008175</td>
+      <td>-0.388963</td>
+      <td>55.894580</td>
     </tr>
     <tr>
-      <th>326</th>
-      <td>-2.932387</td>
-      <td>-1.369837</td>
-      <td>-0.953724</td>
-      <td>-1.666902</td>
-      <td>-1.255114</td>
-      <td>-0.069629</td>
-      <td>-2.011988</td>
-      <td>-0.142548</td>
-      <td>0.875701</td>
-      <td>-2.331311</td>
+      <th>1826</th>
+      <td>2.249926</td>
+      <td>-1.031273</td>
+      <td>0.945958</td>
+      <td>1.432377</td>
+      <td>0.040120</td>
+      <td>0.330105</td>
+      <td>2.067005</td>
+      <td>1.406148</td>
+      <td>0.266247</td>
+      <td>3.294075</td>
       <td>...</td>
-      <td>4.657842</td>
-      <td>1.601257</td>
-      <td>-1.544815</td>
-      <td>3.914014</td>
-      <td>1.104181</td>
-      <td>0.014186</td>
-      <td>1.382411</td>
-      <td>-2.036314</td>
-      <td>-1.889156</td>
-      <td>63.221305</td>
+      <td>-3.437225</td>
+      <td>2.283544</td>
+      <td>-1.291475</td>
+      <td>-4.960940</td>
+      <td>1.550765</td>
+      <td>-0.582463</td>
+      <td>-0.201556</td>
+      <td>-1.938533</td>
+      <td>-0.920068</td>
+      <td>63.887687</td>
     </tr>
     <tr>
-      <th>749</th>
-      <td>2.265376</td>
-      <td>-0.960644</td>
-      <td>1.149413</td>
-      <td>1.784692</td>
-      <td>-0.944583</td>
-      <td>-0.246255</td>
-      <td>2.725641</td>
-      <td>-0.272306</td>
-      <td>-1.208655</td>
-      <td>3.032697</td>
+      <th>1926</th>
+      <td>-2.295382</td>
+      <td>-0.994476</td>
+      <td>0.655058</td>
+      <td>-1.329595</td>
+      <td>-0.011970</td>
+      <td>0.096757</td>
+      <td>-2.009801</td>
+      <td>0.916414</td>
+      <td>-0.871239</td>
+      <td>-3.080991</td>
       <td>...</td>
-      <td>-3.764369</td>
-      <td>2.646935</td>
-      <td>0.654438</td>
-      <td>-4.250415</td>
-      <td>2.765912</td>
-      <td>-1.111644</td>
-      <td>-0.317153</td>
-      <td>-2.510414</td>
-      <td>-1.215532</td>
-      <td>57.803012</td>
+      <td>3.449466</td>
+      <td>2.518873</td>
+      <td>-0.752006</td>
+      <td>4.822737</td>
+      <td>2.016511</td>
+      <td>0.328768</td>
+      <td>1.423537</td>
+      <td>-2.471398</td>
+      <td>-1.341771</td>
+      <td>60.188082</td>
     </tr>
   </tbody>
 </table>
-<p>3194 rows × 118 columns</p>
+<p>3208 rows × 118 columns</p>
 </div>
 </div>
 </div>
@@ -671,23 +675,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Once we have trained a model, we can use it to predict the energies of new conformers. Let’s first see how well it does on the data it was trained on.</p>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(train_positions)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, train_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, train_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;AxesSubplot: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-5-output-2.png" width="593" height="429"></p>
+<p><img src="ml_notes_files/figure-html/cell-5-output-2.png" width="308" height="240"></p>
 </div>
 </div>
 <p>This looks pretty good. But how well does it do on new conformers? Let’s see.</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(test_positions)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(test_energies.values, test_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(test_energies.values, test_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;AxesSubplot: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-6-output-2.png" width="585" height="429"></p>
+<p><img src="ml_notes_files/figure-html/cell-6-output-2.png" width="303" height="240"></p>
 </div>
 </div>
 <p>From physics we know that (without external field) the energy of a molecule does not depend on where in space it is. That is, if we translate a molecule along <span class="math inline">\([1, 1, 1]\)</span>, the energy should not change.</p>
@@ -700,7 +707,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>&lt;AxesSubplot: xlabel='Actual', ylabel='Predicted'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-7-output-2.png" width="585" height="429"></p>
+<p><img src="ml_notes_files/figure-html/cell-7-output-2.png" width="303" height="240"></p>
 </div>
 </div>
 <p>This is not what we expect. Our model shows completly unphysical behavior and predicts a different energy for the same conformers in different positions in space.</p>
@@ -805,6 +812,61 @@ R(h)={\mathbf  {E}}[L(f(x),y)]=\int L(f(x),y)\,dP(x,y).
 </section>
 <section id="feature-selection" class="level2">
 <h2 class="anchored" data-anchor-id="feature-selection">Feature selection</h2>
+<section id="curse-of-dimensionality" class="level3">
+<h3 class="anchored" data-anchor-id="curse-of-dimensionality">Curse of dimensionality</h3>
+<p>For understanding the curse of dimensionality, it is useful to consider a very simple ML model, the <span class="math inline">\(k\)</span>-nearest neighbors model. In this model, we have a set of training points <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}\)</span>, where <span class="math inline">\(x_i\)</span> is a vector of features and <span class="math inline">\(y_i\)</span> is the corresponding label. To make a prediction, we compute the distance between the input and all training points and return the mode of the labels of the <span class="math inline">\(k\)</span> closest training points.</p>
+<p>Clearly, in this algorithm it is important to find the nearest neighbor. In general, this is important in many algorithms, for instance also in kernel-based learning.</p>
+<p>Let’s now ask ourself what part of the space we need to find the nearest neighbors.</p>
+<!-- https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote02_kNN.html -->
+<p>For this, let’s start considering a unit cube <span class="math inline">\([0,1]^d\)</span> and <span class="math inline">\(n\)</span> data points <span class="math inline">\(x_i\)</span> sampled uniformly from this cube.</p>
+<p>The smallest hypercube that contains <span class="math inline">\(k\)</span> out of the <span class="math inline">\(n\)</span> points has the following edge length</p>
+<p><span class="math display">\[
+l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d}
+\]</span></p>
+<p>If we plot this for different values of <span class="math inline">\(d\)</span> we get the following plot:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> length(d, k<span class="op">=</span><span class="dv">5</span>, n<span class="op">=</span><span class="dv">10_000</span>):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (k<span class="op">/</span>n)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>d)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1000</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.plot(d, length(d))</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'numbr of dimensions'</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'length of hypercube that contains k neighbors'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>Text(0, 0.5, 'length of hypercube that contains k neighbors')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_notes_files/figure-html/cell-8-output-2.png" width="305" height="240"></p>
+</div>
+</div>
+<p>Clearly, for large <span class="math inline">\(d\)</span> the length approaches 1—which means that all points are now almost equally far apart and comparing distances no longer makes much sense.</p>
+<p>We can also check this by performing a simulation: Generating random <span class="math inline">\(d\)</span> dimensional points and computing the distance between them. We can then plot the distribution of distances.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance_matrix</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dimensions <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">10_000</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(dimensions), sharey<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_distances(d, num_points):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> np.random.uniform(size<span class="op">=</span>(num_points, d))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> distance_matrix(points, points)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(distances).flatten()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d, ax <span class="kw">in</span> <span class="bu">zip</span>(dimensions, axes):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> get_distances(d, num_points)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    ax.hist(distances, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'd=</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> cv=</span><span class="sc">{</span>distances<span class="sc">.</span>std()<span class="op">/</span>distances<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_notes_files/figure-html/cell-9-output-1.png" width="306" height="294"></p>
+</div>
+</div>
+<p>Clearly, for large <span class="math inline">\(d\)</span> the distances are almost the same (the histograms are much more peaked). We can also see this in terms of the coefficient of variation (cv), which is the standard deviation divided by the mean. For large <span class="math inline">\(d\)</span> the cv is very small, which means that the distances are very similar.</p>
+</section>
 </section>
 <section id="feature-projection" class="level2">
 <h2 class="anchored" data-anchor-id="feature-projection">Feature projection</h2>

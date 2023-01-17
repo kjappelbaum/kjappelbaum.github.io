@@ -1,0 +1,9 @@
+---
+title: ""
+description: Visualizing data is a central task of a scientist. Here, I share my workflow.
+categories: [science, publication, plotting, dataviz]
+author: Kevin Jablonka
+date: 2023-01-16
+image: https://user-images.githubusercontent.com/1483922/209075410-b31ad913-282c-4619-87ad-3a7679e92baf.png
+order: 0
+---

@@ -1,0 +1,15 @@
+---
+title: "How much data do I need?"
+description: The most common question I get asked about machine learning is "how much data do I need?" In this post, I am trying to approach this question from different perspectives.
+categories: [science, ml]
+author: Kevin Jablonka
+date: 2023-01-16
+image: ""
+order: 0
+---
+
+##  Curse of dimensionality
+
+## Inductive biases
+
+## Learning curves

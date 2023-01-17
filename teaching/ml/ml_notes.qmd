@@ -33,7 +33,9 @@ Machine learning can be used in multiple ways to make high-fidelity predictions 
 
     There are many good review articles about this. For example, see [this one by Unke et al.](https://pubs.acs.org/doi/10.1021/acs.chemrev.0c01111) as well as the ones by [Deringer et al.](https://pubs.acs.org/doi/10.1021/acs.chemrev.1c00022) and [Behler](https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00868) in the same [issue of Chemical Reviews](https://pubs.acs.org/toc/chreay/121/16).
 
-2. _Directly predict the properties of interest_
+2. _Directly predict the properties of interest_ Instead of computing the properties of interest using a molecular simulations, we can build models that learn the $f(\mathrm{structure}) \to \mathrm{property}$ mapping directly. The basis for this mapping might be experimental data or high-fidelity computational data.
+
+    Also about this approach, there are many review articles. I also wrote [one](https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00004), focussing on porous materials.
 
 Note that in the context of using ML for molecular simulations, it can also be used to address sampling problems. 
 We will not cover this in detail in this lecture. For a good introduction, see the [seminal paper by Noe](https://www.science.org/doi/10.1126/science.aaw1147) and a [piece about it by Tuckerman](https://www.science.org/doi/10.1126/science.aay2568).
@@ -41,9 +43,134 @@ We will not cover this in detail in this lecture. For a good introduction, see t
 
 ## Supervised ML workflow
 
+![The supervised ML workflow.](images/ml_workflow.png)
+
+For the main part of this lecture, we will assume that we use models that consume so-called tabular data, i.e. data that is stored in a table (feature matrix $\mathbf{X}$ and target/label vector/matrix $\mathbf{Y}$), where each row corresponds to a material and each of the $p$ columns corresponds to a so-called feature. We wil later see that this is not the only way to use ML for materials science, but it is the most common one. We will also explore in more detail how we obtain the features.
+
+We will use some data $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^N$ to train a model $f(\mathbf{x}) \to y$ that can predict the target $y$ for a new structure described with the feature vector $\mathbf{x}^*$.
+
 ## Feeding structures into models 
 
 ### Incorporating symmetries/invariances/equivariances
+
+#### Learning a very simple force field 
+
+To understand what it takes to feed structures into ML models, let us try to build a very simple force field. To make things simple and fast, we will just attempt to predict the energies of different conformers of the same molecule.
+
+We will create some data using [RDkit](https://rdkit.readthedocs.io) and then use [scikit-learn](https://scikit-learn.org/stable/) to train a model. 
+
+##### Generating data
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from pymatviz.parity import density_scatter_with_hist
+from rdkit import Chem
+from rdkit.Chem import AllChem, PyMol
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+
+def gen_conformers(mol, numConfs=10_000, maxAttempts=1000, 
+    pruneRmsThresh=0.2, useExpTorsionAnglePrefs=True, 
+    useBasicKnowledge=True, enforceChirality=True):
+    """Use RDkit to generate conformers for a molecule."""
+    ids = AllChem.EmbedMultipleConfs(mol, numConfs=numConfs, maxAttempts=maxAttempts, pruneRmsThresh=pruneRmsThresh, useExpTorsionAnglePrefs=useExpTorsionAnglePrefs, useBasicKnowledge=useBasicKnowledge, enforceChirality=enforceChirality, numThreads=0)
+    return list(ids)
+
+def calc_energy(mol, conformer_id, iterations=0):
+    """Calculate the energy of a conformer using the Merck Molecular Force Field."""
+    ff = AllChem.MMFFGetMoleculeForceField(mol, AllChem.MMFFGetMoleculeProperties(mol), confId=conformer_id)
+    ff.Initialize()
+    ff.CalcEnergy()
+    results = {}
+    if iterations > 0:
+        results["converged"] = ff.Minimize(maxIts=iterations)
+    results["energy_abs"] = ff.CalcEnergy()
+    return results
+
+# create a molecule
+mol = Chem.AddHs(Chem.MolFromSmiles('CC(CCC)CC(C)(CCCC)O'))
+
+# visualize some conformers using PyMol
+conformer_ids = gen_conformers(mol)
+v= PyMol.MolViewer()
+v.DeleteAll()
+for cid in conformer_ids[:50]: 
+    v.ShowMol(mol,confId=cid,name='Conf-%d'%cid,showOnly=False)
+v.server.do('set grid_mode, on')
+v.server.do('ray')
+v.GetPNG()
+```
+
+For those conformers, we can now retrieve the positions and energies and save them in a pandas dataframe. 
+
+```{python}
+# make column names
+coordinate_names = sum([[f'x_{n}',f'y_{n}', f'z_{n}'] for n in range(mol.GetNumAtoms())], []) 
+
+# make a dataframe
+data = []
+for conformer_id in conformer_ids:
+    energy = calc_energy(mol, conformer_id)['energy_abs']
+    positions = mol.GetConformer(conformer_id).GetPositions().flatten()
+    position_dict = dict(zip(coordinate_names, positions))
+    position_dict['energy'] = energy
+    data.append(position_dict)
+data = pd.DataFrame(data).sample(len(data))
+data
+```
+
+Given this data, we can build a model. We will use a gradient boosting regressor from scikit-learn. 
+We will also split the data into a training and a test set. In later sections, we will see why this is important.  But for now, let us us just appreciate that a test set---conformers we did not train on---will give us a measure of how well our model will perform on new, unseen, conformers.
+
+```{python}
+positions = data[coordinate_names] # X
+energies = data['energy'] # y
+
+# split into training and test set
+train_points = 3000
+train_positions = positions[:train_points]
+test_positions = positions[train_points:]
+train_energies = energies[:train_points]
+test_energies = energies[train_points:]
+
+# train a model
+from sklearn.ensemble import HistGradientBoostingRegressor
+model = HistGradientBoostingRegressor()
+model.fit(train_positions, train_energies)
+```
+
+Once we have trained a model, we can use it to predict the energies of new conformers. Let's first see how well it does on the data it was trained on.
+
+```{python}
+train_predictions = model.predict(train_positions)
+density_scatter_with_hist(train_energies.values, train_predictions, xlabel='True energy', ylabel='Predicted energy')
+```
+
+This looks pretty good. But how well does it do on new conformers? Let's see. 
+
+```{python}
+test_predictions = model.predict(test_positions)
+density_scatter_with_hist(test_energies.values, test_predictions, xlabel='True energy', ylabel='Predicted energy')
+```
+
+From physics we know that (without external field) the energy of a molecule does not depend on where in space it is. That is, if we translate a molecule along $[1, 1, 1]$, the energy should not change. 
+
+```{python}
+# translate the molecule along [1, 1, 1]
+translated_positions = train_positions + 1
+translated_predictions = model.predict(translated_positions)
+density_scatter_with_hist(train_energies.values, translated_predictions)
+```
+
+This is not what we expect. Our model shows completly unphysical behavior and predicts a different energy for the same conformers in different positions in space.
+
+To fix this, and related problems, we need to use a more elaborate approach to building a model.
+
+#### Approaches for making predictions invariant/equivariant to transformations
+[Invariance and equivariance are terms that have become very relevant in ML. It is always important to mention with respect to what operation something is invariant and equivariant; if people don't mention this they often refer to the symmetry operations of the Euclidean group which comprises all translations, rotations, and reflection.  Invariant means that the property of interest does not change under those operations. Equivariant means that it changes in the same way. The energy, for example, is invariant and the forces are equivariant.]{.aside}
+
 
 
 ## Training a model

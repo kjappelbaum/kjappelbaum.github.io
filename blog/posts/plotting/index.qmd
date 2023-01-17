@@ -13,3 +13,5 @@ I've tried many different tools and workflows, and I've learned a lot.
 
 I started with [gnuplot](http://www.gnuplot.info/), explored [pgfplots](https://ctan.org/pkg/pgfplots?lang=en) and large parts of the Python plotting ecosystem.
 
+My current setup went back to basics and uses [matplotlib](https://matplotlib.org) and is heavily inspired by the work of [Tufte](https://www.edwardtufte.com/tufte/) and 
+[Jean-Luc Doumont](https://www.principiae.be/) as well as journal requirements.

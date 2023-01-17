@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kjablonka.com/teaching.html</loc>
-    <lastmod>2023-01-17T08:58:34.289Z</lastmod>
+    <lastmod>2023-01-17T14:08:48.718Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/research.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://kjablonka.com/blog/posts/plotting/index.html</loc>
-    <lastmod>2023-01-17T10:33:56.521Z</lastmod>
+    <lastmod>2023-01-17T10:47:55.145Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/publications.html</loc>
@@ -38,6 +38,14 @@
   </url>
   <url>
     <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
-    <lastmod>2023-01-17T10:31:37.986Z</lastmod>
+    <lastmod>2023-01-17T14:29:57.721Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/how-much-data/index.html</loc>
+    <lastmod>2023-01-17T10:56:52.679Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/coding-with-me/index.html</loc>
+    <lastmod>2023-01-17T11:27:09.230Z</lastmod>
   </url>
 </urlset>

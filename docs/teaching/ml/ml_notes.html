@@ -123,6 +123,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -256,18 +259,458 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><em>Replace expensive evaluation of the potential energy surface <span class="math inline">\(U(\mathbf{X}, \{\mathbf{Z}\})\)</span></em>: Quantum chemistry as a field is concerned with the prediction of the potential energy surface <span class="math inline">\(U(\mathbf{X}, \{\mathbf{Z}\})\)</span> of a system of atoms of types <span class="math inline">\(\mathbf{Z}\)</span> at positions <span class="math inline">\(\mathbf{X}\)</span>. Quantum chemists have developed different approximations to this problem. However, since they are all kinds of functions that map positions of atoms (and atom types, and in some cases electron densities/coordinates) to energies, we can learn those functions with ML.</p>
 <p>Note that once we have done that, we generally still need to perform simulations to extract the properties of interest (e.g.&nbsp;as ensemble averages).</p>
 <p>There are many good review articles about this. For example, see <a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.0c01111">this one by Unke et al.</a> as well as the ones by <a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.1c00022">Deringer et al.</a> and <a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00868">Behler</a> in the same <a href="https://pubs.acs.org/toc/chreay/121/16">issue of Chemical Reviews</a>.</p></li>
-<li><p><em>Directly predict the properties of interest</em></p></li>
+<li><p><em>Directly predict the properties of interest</em> Instead of computing the properties of interest using a molecular simulations, we can build models that learn the <span class="math inline">\(f(\mathrm{structure}) \to \mathrm{property}\)</span> mapping directly. The basis for this mapping might be experimental data or high-fidelity computational data.</p>
+<p>Also about this approach, there are many review articles. I also wrote <a href="https://pubs.acs.org/doi/10.1021/acs.chemrev.0c00004">one</a>, focussing on porous materials.</p></li>
 </ol>
 <p>Note that in the context of using ML for molecular simulations, it can also be used to address sampling problems. We will not cover this in detail in this lecture. For a good introduction, see the <a href="https://www.science.org/doi/10.1126/science.aaw1147">seminal paper by Noe</a> and a <a href="https://www.science.org/doi/10.1126/science.aay2568">piece about it by Tuckerman</a>.</p>
 </section>
 </section>
 <section id="supervised-ml-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="supervised-ml-workflow">Supervised ML workflow</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ml_workflow.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The supervised ML workflow.</figcaption><p></p>
+</figure>
+</div>
+<p>For the main part of this lecture, we will assume that we use models that consume so-called tabular data, i.e.&nbsp;data that is stored in a table (feature matrix <span class="math inline">\(\mathbf{X}\)</span> and target/label vector/matrix <span class="math inline">\(\mathbf{Y}\)</span>), where each row corresponds to a material and each of the <span class="math inline">\(p\)</span> columns corresponds to a so-called feature. We wil later see that this is not the only way to use ML for materials science, but it is the most common one. We will also explore in more detail how we obtain the features.</p>
+<p>We will use some data <span class="math inline">\(\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^N\)</span> to train a model <span class="math inline">\(f(\mathbf{x}) \to y\)</span> that can predict the target <span class="math inline">\(y\)</span> for a new structure described with the feature vector <span class="math inline">\(\mathbf{x}^*\)</span>.</p>
 </section>
-<section id="feeding-structures-into-models" class="level2">
+<section id="feeding-structures-into-models" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="feeding-structures-into-models">Feeding structures into models</h2>
-<section id="incorporating-symmetriesinvariancesequivariances" class="level3">
+<section id="incorporating-symmetriesinvariancesequivariances" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="incorporating-symmetriesinvariancesequivariances">Incorporating symmetries/invariances/equivariances</h3>
+<section id="learning-a-very-simple-force-field" class="level4">
+<h4 class="anchored" data-anchor-id="learning-a-very-simple-force-field">Learning a very simple force field</h4>
+<p>To understand what it takes to feed structures into ML models, let us try to build a very simple force field. To make things simple and fast, we will just attempt to predict the energies of different conformers of the same molecule.</p>
+<p>We will create some data using <a href="https://rdkit.readthedocs.io">RDkit</a> and then use <a href="https://scikit-learn.org/stable/">scikit-learn</a> to train a model.</p>
+<section id="generating-data" class="level5">
+<h5 class="anchored" data-anchor-id="generating-data">Generating data</h5>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymatviz.parity <span class="im">import</span> density_scatter_with_hist</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdkit <span class="im">import</span> Chem</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rdkit.Chem <span class="im">import</span> AllChem, PyMol</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_conformers(mol, numConfs<span class="op">=</span><span class="dv">10_000</span>, maxAttempts<span class="op">=</span><span class="dv">1000</span>, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    pruneRmsThresh<span class="op">=</span><span class="fl">0.2</span>, useExpTorsionAnglePrefs<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    useBasicKnowledge<span class="op">=</span><span class="va">True</span>, enforceChirality<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Use RDkit to generate conformers for a molecule."""</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> AllChem.EmbedMultipleConfs(mol, numConfs<span class="op">=</span>numConfs, maxAttempts<span class="op">=</span>maxAttempts, pruneRmsThresh<span class="op">=</span>pruneRmsThresh, useExpTorsionAnglePrefs<span class="op">=</span>useExpTorsionAnglePrefs, useBasicKnowledge<span class="op">=</span>useBasicKnowledge, enforceChirality<span class="op">=</span>enforceChirality, numThreads<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(ids)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_energy(mol, conformer_id, iterations<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate the energy of a conformer using the Merck Molecular Force Field."""</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ff <span class="op">=</span> AllChem.MMFFGetMoleculeForceField(mol, AllChem.MMFFGetMoleculeProperties(mol), confId<span class="op">=</span>conformer_id)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ff.Initialize()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ff.CalcEnergy()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> {}</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> iterations <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        results[<span class="st">"converged"</span>] <span class="op">=</span> ff.Minimize(maxIts<span class="op">=</span>iterations)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"energy_abs"</span>] <span class="op">=</span> ff.CalcEnergy()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># create a molecule</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>mol <span class="op">=</span> Chem.AddHs(Chem.MolFromSmiles(<span class="st">'CC(CCC)CC(C)(CCCC)O'</span>))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize some conformers using PyMol</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>conformer_ids <span class="op">=</span> gen_conformers(mol)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>v<span class="op">=</span> PyMol.MolViewer()</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>v.DeleteAll()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cid <span class="kw">in</span> conformer_ids[:<span class="dv">50</span>]: </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    v.ShowMol(mol,confId<span class="op">=</span>cid,name<span class="op">=</span><span class="st">'Conf-</span><span class="sc">%d</span><span class="st">'</span><span class="op">%</span>cid,showOnly<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'set grid_mode, on'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'ray'</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>v.GetPNG()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><img src="ml_notes_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>For those conformers, we can now retrieve the positions and energies and save them in a pandas dataframe.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make column names</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coordinate_names <span class="op">=</span> <span class="bu">sum</span>([[<span class="ss">f'x_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>,<span class="ss">f'y_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'z_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>] <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(mol.GetNumAtoms())], []) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a dataframe</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> conformer_id <span class="kw">in</span> conformer_ids:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    energy <span class="op">=</span> calc_energy(mol, conformer_id)[<span class="st">'energy_abs'</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    positions <span class="op">=</span> mol.GetConformer(conformer_id).GetPositions().flatten()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    position_dict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(coordinate_names, positions))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    position_dict[<span class="st">'energy'</span>] <span class="op">=</span> energy</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    data.append(position_dict)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data).sample(<span class="bu">len</span>(data))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>x_0</th>
+      <th>y_0</th>
+      <th>z_0</th>
+      <th>x_1</th>
+      <th>y_1</th>
+      <th>z_1</th>
+      <th>x_2</th>
+      <th>y_2</th>
+      <th>z_2</th>
+      <th>x_3</th>
+      <th>...</th>
+      <th>x_36</th>
+      <th>y_36</th>
+      <th>z_36</th>
+      <th>x_37</th>
+      <th>y_37</th>
+      <th>z_37</th>
+      <th>x_38</th>
+      <th>y_38</th>
+      <th>z_38</th>
+      <th>energy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>612</th>
+      <td>2.176773</td>
+      <td>1.507991</td>
+      <td>0.759468</td>
+      <td>1.910533</td>
+      <td>0.229465</td>
+      <td>0.064596</td>
+      <td>2.898525</td>
+      <td>0.128807</td>
+      <td>-1.115043</td>
+      <td>4.321831</td>
+      <td>...</td>
+      <td>-5.528458</td>
+      <td>-1.250340</td>
+      <td>0.767369</td>
+      <td>-6.234667</td>
+      <td>-1.306236</td>
+      <td>-0.902658</td>
+      <td>-1.241861</td>
+      <td>-0.816315</td>
+      <td>2.025024</td>
+      <td>56.124825</td>
+    </tr>
+    <tr>
+      <th>805</th>
+      <td>-1.863988</td>
+      <td>-0.564018</td>
+      <td>1.796827</td>
+      <td>-1.608240</td>
+      <td>0.267071</td>
+      <td>0.545662</td>
+      <td>-2.620070</td>
+      <td>-0.020484</td>
+      <td>-0.491845</td>
+      <td>-4.037403</td>
+      <td>...</td>
+      <td>4.721388</td>
+      <td>0.911757</td>
+      <td>1.630463</td>
+      <td>5.069011</td>
+      <td>2.146710</td>
+      <td>0.380833</td>
+      <td>1.151296</td>
+      <td>-1.450578</td>
+      <td>1.609236</td>
+      <td>49.604154</td>
+    </tr>
+    <tr>
+      <th>1397</th>
+      <td>-1.468292</td>
+      <td>1.366818</td>
+      <td>0.212321</td>
+      <td>-1.616935</td>
+      <td>-0.117543</td>
+      <td>0.245578</td>
+      <td>-2.913290</td>
+      <td>-0.662823</td>
+      <td>-0.293697</td>
+      <td>-4.159081</td>
+      <td>...</td>
+      <td>4.732741</td>
+      <td>0.264783</td>
+      <td>-2.040776</td>
+      <td>3.157765</td>
+      <td>1.085543</td>
+      <td>-1.807972</td>
+      <td>0.582465</td>
+      <td>-2.403752</td>
+      <td>0.994111</td>
+      <td>72.690710</td>
+    </tr>
+    <tr>
+      <th>1839</th>
+      <td>-2.905175</td>
+      <td>-0.859985</td>
+      <td>1.152372</td>
+      <td>-1.707647</td>
+      <td>-0.433853</td>
+      <td>0.288656</td>
+      <td>-2.207487</td>
+      <td>-0.291955</td>
+      <td>-1.099185</td>
+      <td>-3.307977</td>
+      <td>...</td>
+      <td>4.107479</td>
+      <td>0.499643</td>
+      <td>1.642198</td>
+      <td>4.267373</td>
+      <td>2.341455</td>
+      <td>1.573465</td>
+      <td>0.769298</td>
+      <td>-0.677706</td>
+      <td>-2.171984</td>
+      <td>55.255156</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>1.937283</td>
+      <td>-0.854705</td>
+      <td>-0.978807</td>
+      <td>1.466347</td>
+      <td>-0.157736</td>
+      <td>0.272888</td>
+      <td>2.567013</td>
+      <td>-0.060816</td>
+      <td>1.306913</td>
+      <td>3.767652</td>
+      <td>...</td>
+      <td>-3.999858</td>
+      <td>1.257827</td>
+      <td>0.507234</td>
+      <td>-2.716148</td>
+      <td>2.525762</td>
+      <td>0.171242</td>
+      <td>-1.180125</td>
+      <td>-2.608270</td>
+      <td>-1.406562</td>
+      <td>48.668118</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1347</th>
+      <td>-2.250198</td>
+      <td>-1.184028</td>
+      <td>0.967300</td>
+      <td>-1.319600</td>
+      <td>-0.026601</td>
+      <td>1.017673</td>
+      <td>-2.073278</td>
+      <td>1.269655</td>
+      <td>0.956459</td>
+      <td>-2.881269</td>
+      <td>...</td>
+      <td>3.421164</td>
+      <td>2.655649</td>
+      <td>-0.215454</td>
+      <td>4.917851</td>
+      <td>1.734331</td>
+      <td>-0.761331</td>
+      <td>0.991211</td>
+      <td>-0.712925</td>
+      <td>2.004936</td>
+      <td>56.460424</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>-1.902600</td>
+      <td>-0.949441</td>
+      <td>-2.066379</td>
+      <td>-1.430863</td>
+      <td>-0.527413</td>
+      <td>-0.714617</td>
+      <td>-2.625858</td>
+      <td>-0.480984</td>
+      <td>0.190307</td>
+      <td>-2.298150</td>
+      <td>...</td>
+      <td>2.538970</td>
+      <td>-0.395114</td>
+      <td>2.693337</td>
+      <td>3.844625</td>
+      <td>0.815534</td>
+      <td>2.761915</td>
+      <td>0.806120</td>
+      <td>-0.215293</td>
+      <td>-3.245715</td>
+      <td>54.607593</td>
+    </tr>
+    <tr>
+      <th>1519</th>
+      <td>1.924889</td>
+      <td>0.193988</td>
+      <td>-1.575519</td>
+      <td>1.757754</td>
+      <td>0.168662</td>
+      <td>-0.067631</td>
+      <td>2.238243</td>
+      <td>-1.125079</td>
+      <td>0.464350</td>
+      <td>3.722355</td>
+      <td>...</td>
+      <td>-3.677762</td>
+      <td>-1.828672</td>
+      <td>0.293516</td>
+      <td>-3.387840</td>
+      <td>-0.547171</td>
+      <td>-1.012142</td>
+      <td>-1.316974</td>
+      <td>1.348714</td>
+      <td>-1.670129</td>
+      <td>85.733044</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>2.998924</td>
+      <td>-1.173210</td>
+      <td>-1.550026</td>
+      <td>1.652276</td>
+      <td>-0.992565</td>
+      <td>-0.812250</td>
+      <td>1.812535</td>
+      <td>-1.307871</td>
+      <td>0.632375</td>
+      <td>2.810983</td>
+      <td>...</td>
+      <td>-4.582511</td>
+      <td>1.272885</td>
+      <td>1.232148</td>
+      <td>-4.344381</td>
+      <td>0.095049</td>
+      <td>2.564855</td>
+      <td>-0.146250</td>
+      <td>1.732277</td>
+      <td>0.834183</td>
+      <td>57.301549</td>
+    </tr>
+    <tr>
+      <th>510</th>
+      <td>-2.748084</td>
+      <td>-1.949604</td>
+      <td>-0.040415</td>
+      <td>-1.587964</td>
+      <td>-0.916933</td>
+      <td>-0.283310</td>
+      <td>-2.170793</td>
+      <td>0.329054</td>
+      <td>0.386447</td>
+      <td>-3.480770</td>
+      <td>...</td>
+      <td>5.382101</td>
+      <td>0.984098</td>
+      <td>-1.074834</td>
+      <td>4.887047</td>
+      <td>1.447675</td>
+      <td>0.629464</td>
+      <td>1.048721</td>
+      <td>-0.431895</td>
+      <td>-1.527696</td>
+      <td>60.926390</td>
+    </tr>
+  </tbody>
+</table>
+<p>3208 rows × 118 columns</p>
+</div>
+</div>
+</div>
+<p>Given this data, we can build a model. We will use a gradient boosting regressor from scikit-learn. We will also split the data into a training and a test set. In later sections, we will see why this is important. But for now, let us us just appreciate that a test set—conformers we did not train on—will give us a measure of how well our model will perform on new, unseen, conformers.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> data[coordinate_names] <span class="co"># X</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>energies <span class="op">=</span> data[<span class="st">'energy'</span>] <span class="co"># y</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split into training and test set</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>train_points <span class="op">=</span> <span class="dv">3000</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>train_positions <span class="op">=</span> positions[:train_points]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>test_positions <span class="op">=</span> positions[train_points:]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>train_energies <span class="op">=</span> energies[:train_points]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>test_energies <span class="op">=</span> energies[train_points:]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># train a model</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> HistGradientBoostingRegressor</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> HistGradientBoostingRegressor()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>model.fit(train_positions, train_energies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<style>#sk-container-id-4 {color: black;background-color: white;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>HistGradientBoostingRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked=""><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">HistGradientBoostingRegressor</label><div class="sk-toggleable__content"><pre>HistGradientBoostingRegressor()</pre></div></div></div></div></div>
+</div>
+</div>
+<p>Once we have trained a model, we can use it to predict the energies of new conformers. Let’s first see how well it does on the data it was trained on.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(train_positions)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, train_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;AxesSubplot: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_notes_files/figure-html/cell-5-output-2.png" width="593" height="429"></p>
+</div>
+</div>
+<p>This looks pretty good. But how well does it do on new conformers? Let’s see.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(test_positions)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(test_energies.values, test_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>&lt;AxesSubplot: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_notes_files/figure-html/cell-6-output-2.png" width="585" height="429"></p>
+</div>
+</div>
+<p>From physics we know that (without external field) the energy of a molecule does not depend on where in space it is. That is, if we translate a molecule along <span class="math inline">\([1, 1, 1]\)</span>, the energy should not change.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># translate the molecule along [1, 1, 1]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>translated_positions <span class="op">=</span> train_positions <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>translated_predictions <span class="op">=</span> model.predict(translated_positions)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, translated_predictions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>&lt;AxesSubplot: xlabel='Actual', ylabel='Predicted'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_notes_files/figure-html/cell-7-output-2.png" width="585" height="429"></p>
+</div>
+</div>
+<p>This is not what we expect. Our model shows completly unphysical behavior and predicts a different energy for the same conformers in different positions in space.</p>
+<p>To fix this, and related problems, we need to use a more elaborate approach to building a model.</p>
+</section>
+</section>
+<section id="approaches-for-making-predictions-invariantequivariant-to-transformations" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="approaches-for-making-predictions-invariantequivariant-to-transformations">Approaches for making predictions invariant/equivariant to transformations</h4>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Invariance and equivariance are terms that have become very relevant in ML. It is always important to mention with respect to what operation something is invariant and equivariant and if people don’t mention this they often refer to the symmetry operations of the Euclidean group which comprises all translations, rotations, and reflections Invariant means that the property of interest does not change under those operations. Equivariant means that it changes in the same way. The energy, for example, is invariant and the forces are equivariant.</span></div></div>
+</section>
 </section>
 </section>
 <section id="training-a-model" class="level2">
@@ -277,18 +720,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="linear-regression" class="level3">
 <h3 class="anchored" data-anchor-id="linear-regression">Linear regression</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_regression(x, w, b):</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.dot(x, w) <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(w, b):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> linear_regression(x, w, b)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.mean((prediction <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_params(num_feat):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(size<span class="op">=</span>(num_feat,)), <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>loss_grad <span class="op">=</span> jax.grad(loss, argnums<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">1e-6</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_regression(x, w, b):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.dot(x, w) <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(w, b):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> linear_regression(x, w, b)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.mean((prediction <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_params(num_feat):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(size<span class="op">=</span>(num_feat,)), <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>loss_grad <span class="op">=</span> jax.grad(loss, argnums<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="bias-variance-trade-off" class="level2">

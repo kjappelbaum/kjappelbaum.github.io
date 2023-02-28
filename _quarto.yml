@@ -8,6 +8,7 @@ exeucte:
 website:
   title: "Kevin's Homepage"
   image: quarto.png
+  google-analytics: G-S9W9LVHXJK
   page-footer:
     center:
       - icon: linkedin

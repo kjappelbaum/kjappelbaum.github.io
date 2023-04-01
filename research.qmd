@@ -47,6 +47,15 @@ Doing this for the design of materials is, however, complicated by the fact that
 To avoid introducing biases in this process, we have implemented a method that allows to identify this set of best compromises (the Pareto frontier) with high confidence. You can find more information about this in our [paper](https://www.nature.com/articles/s41467-021-22437-0) and an open-source implementation on [GitHub](https://github.com/kjappelbaum/pyepal).
 
 
+### Represenations and models of chemistry 
+
+For machine learning to work, it is important to work on actionable representations that are predictive. 
+I think thank foundation models can help us reveal some of the tacit knowledge of chemistry. 
+
+
+{{< video https://www.youtube.com/embed/NhXmoYRZVk8 >}}
+
+
 ## Making data machine actionable
 
 ::: {layout="[60,40]"}

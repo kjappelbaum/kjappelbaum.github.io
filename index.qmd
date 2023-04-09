@@ -22,7 +22,7 @@ toc: true
 
 ::: {layout="[25,80]" .profile-header}
 
-![](avartar.jpg){.profile-pic}
+![](avartar.JPG){.profile-pic}
 
 I'm at the final touches of my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry: I'm using computational tools and machine learning to capture the
 tacit dimension of chemistry.

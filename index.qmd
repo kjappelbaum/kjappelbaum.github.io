@@ -24,8 +24,7 @@ toc: true
 
 ![](avartar.JPG){.profile-pic}
 
-I'm at the final touches of my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry: I'm using computational tools and machine learning to capture the
-tacit dimension of chemistry.
+I just defended my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry: I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
 I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem](http://cheminfo.github.io) and other open-source projects (see [my GitHub](https://github.com/kjappelbaum)).
 
 :::

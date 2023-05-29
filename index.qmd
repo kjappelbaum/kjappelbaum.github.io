@@ -33,6 +33,8 @@ I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem]
 
 [Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-twitter.png){width="3%"}](https://twitter.com/kmjablonka) if you'd like to chat!
 
+I appreciate any kind of feedback. If you want to leave some, you can do so anonymously [here](https://www.admonymous.co/kjappelbaum).
+
 If you are looking for a short bio or a headshot, you can find them [here](bio.qmd).
 
  <!-- If you want, you can also book a slot in my [calendar](https://calendly.com/kjappelbaum) to chat. -->

@@ -3,13 +3,13 @@ cap-location: margin
 ---
 #  Multiple PhD and PostDoc Positions
 
-[If you want to do a master thesis, internship or simply connect, please reach out, too.]{.aside}
+
 
 See also the [PDF version of this announcement](./job-opening.pdf).
 
 ::: {.callout-note icon=false}
 
-## At a newly founded research group at the University of Jena (Germany), led by Kevin Maik Jablonka.
+## Multiple PhD and PostDoc Positions at a newly founded research group at the University of Jena (Germany), led by Kevin Maik Jablonka.
 
 We are looking for highly motivated Ph.D. students and postdocs for projects at the intersection of machine learning and chemistry and material science (digital chemistry), with a focus on data-driven design of polymer materials for energy applications. We will have multiple fully funded positions starting in summer/fall 2023.
 
@@ -27,10 +27,11 @@ In our lab will develop data-driven strategies for designing materials that work
 
 Due to their unique tunability (and the correspondingly large design space) and functionality, we will focus on polymers, where we will closely collaborate with world-leading experimental partners to validate our predictions and build novel modeling and data frameworks.
 
-For more background on Kevin’s thinking see [his website](https://kjablonka.com/) and [publications](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en), you can contact him via [email](https://mailhide.io/e/o4LeOUlq) or [Twitter](https://twitter.com/kmjablonka).
+For more background on my thinking see [this website](https://kjablonka.com/) and [my publications](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en), you can contact him me [email](https://mailhide.io/e/o4LeOUlq) or on [Twitter](https://twitter.com/kmjablonka).
 
 ## Your profile 
 
+- Some background in chemistry, Chemical Engineering, Computer Science, Mathematics, Physics, or related fields. [List not exhaustive, if you are interested and think you might fit, please reach out.]{.aside} 
 - Motivation for working on challenging projects, passion for scientific research, and thrive for excellence.
 - Strong teamwork and communication skills.
 - Growth mindset and inclusive team culture.
@@ -57,14 +58,19 @@ University health promotion and a wide range of university sports activities.
 
 ## Application process
 
-1. Send a CV and a summary (max. 1 page) of your research interest (and past research) [via email](https://mailhide.io/e/32oy6NK5) with the subject "PhD in Digital Chemistry” or “Postdoc in Digital Chemistry”. Please highlight why you would like to join our group. If you would first like to learn more, reach out to Kevin.
+
+[If you want to do a master thesis, internship or simply connect, please reach out, too.]{.aside}
+
+1. Send a CV and a summary (max. 1 page) of your research interest (and past research) [via email](https://mailhide.io/e/32oy6NK5) with the subject "PhD in Digital Chemistry” or “Postdoc in Digital Chemistry”. Please highlight why you would like to join our group. If you would first like to learn more, reach out.
 
 2. Selected candidates will be invited first to a non-technical discussion and then in a second round of a technical interview (including a ~25 minutes presentation).
  
 Candidates with disabilities will be given preference in the case of equal qualifications and suitability.
 
 We will provide support for visa applications and any other potential relocation issues.
-We will also support fellowship applications if you would prefer joining the lab on your own funding. Contact Kevin for more details on suitable fellowships.
+
+We will also support fellowship applications if you would prefer joining the lab on your own funding. 
+Reach out for more details on suitable fellowships.
 
 
 ## Diversity and equity
@@ -83,7 +89,7 @@ At the Friedrich Schiller University (FSU) people from a wide range of (cultural
 ![](https://www.thueringer-staedte.de/fileadmin/_processed_/7/a/csm_panorama_skyline_saalestrand_dfad3a4107.jpg)
 
 The Friedrich Schiller University is a traditional university with a strong research profile rooted in Jena, at the heart of Germany. 
-Since its foundation, it has been one of Germany's most famous places to study, where outstanding academics like [Goethe](https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe) and [Schiller](https://en.wikipedia.org/wiki/Friedrich_Schiller) left their marks. As a university covering all disciplines, it offers a wide range of subjects. Its research is focused on the areas Light—Life—Liberty. It is closely networked with non-research institutions, research companies (links going back to [Carl Zeiss](https://en.wikipedia.org/wiki/Carl_Zeiss), [Otto Schott](https://en.wikipedia.org/wiki/Otto_Schott), and [Ernst Abbe](https://en.wikipedia.org/wiki/Ernst_Abbe)) and renowned cultural institutions. With around 18,000 students and more than 8,600 employees, the university plays a major role in shaping Jena’s character as a cosmopolitan and future-oriented city (of around ~100 000 inhabitants).
+Since its foundation, it has been one of Germany's most famous places to study, where outstanding academics like [Goethe](https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe) and [Schiller](https://en.wikipedia.org/wiki/Friedrich_Schiller) left their marks. As a university covering all disciplines, it offers a wide range of subjects. Its research is focused on the areas Light—Life—Liberty. It is closely networked with non-research institutions, research companies (links going back to [Carl Zeiss](https://en.wikipedia.org/wiki/Carl_Zeiss), [Otto Schott](https://en.wikipedia.org/wiki/Otto_Schott), and [Ernst Abbe](https://en.wikipedia.org/wiki/Ernst_Abbe)) and renowned cultural institutions. With around 18,000 students and more than 8,600 employees, the university plays a major role in shaping Jena’s character as a cosmopolitan and future-oriented city (of around ~100 000 inhabitants). [In Switzerland, I learned to love spending time in nature. One reason I like Jena is that you can be out in Nature by just walking a few minutes starting at the city center.]{.aside} 
 
 Overall, Germany is a beautiful and safe country with great work-life balance and life satisfaction. 
 

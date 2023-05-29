@@ -348,25 +348,28 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'set grid_mode, on'</span>)</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'ray'</span>)</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>v.GetPNG()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>OSError: image file is truncated</code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<p><img src="ml_notes_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+<pre><code>&lt;PIL.PngImagePlugin.PngImageFile image mode=RGBA size=1280x960 at 0x2928F17C0&gt;</code></pre>
 </div>
 </div>
 <p>For those conformers, we can now retrieve the positions and energies and save them in a pandas dataframe.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make column names</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coordinate_names <span class="op">=</span> <span class="bu">sum</span>([[<span class="ss">f'x_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>,<span class="ss">f'y_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'z_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>] <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(mol.GetNumAtoms())], []) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a dataframe</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> conformer_id <span class="kw">in</span> conformer_ids:</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    energy <span class="op">=</span> calc_energy(mol, conformer_id)[<span class="st">'energy_abs'</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    positions <span class="op">=</span> mol.GetConformer(conformer_id).GetPositions().flatten()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    position_dict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(coordinate_names, positions))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    position_dict[<span class="st">'energy'</span>] <span class="op">=</span> energy</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    data.append(position_dict)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data).sample(<span class="bu">len</span>(data))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make column names</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>coordinate_names <span class="op">=</span> <span class="bu">sum</span>([[<span class="ss">f'x_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>,<span class="ss">f'y_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>, <span class="ss">f'z_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>] <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(mol.GetNumAtoms())], []) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a dataframe</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> conformer_id <span class="kw">in</span> conformer_ids:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    energy <span class="op">=</span> calc_energy(mol, conformer_id)[<span class="st">'energy_abs'</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    positions <span class="op">=</span> mol.GetConformer(conformer_id).GetPositions().flatten()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    position_dict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(coordinate_names, positions))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    position_dict[<span class="st">'energy'</span>] <span class="op">=</span> energy</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    data.append(position_dict)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data).sample(<span class="bu">len</span>(data))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 
 <div>
@@ -400,124 +403,124 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   </thead>
   <tbody>
     <tr>
-      <th>1738</th>
-      <td>2.388283</td>
-      <td>-0.470720</td>
-      <td>0.572592</td>
-      <td>1.407760</td>
-      <td>-0.332135</td>
-      <td>-0.562658</td>
-      <td>0.950988</td>
-      <td>1.020875</td>
-      <td>-0.903642</td>
-      <td>2.013973</td>
+      <th>1128</th>
+      <td>1.614758</td>
+      <td>-2.145691</td>
+      <td>-0.332897</td>
+      <td>1.470980</td>
+      <td>-0.631146</td>
+      <td>-0.093141</td>
+      <td>2.401792</td>
+      <td>0.124734</td>
+      <td>-0.960657</td>
+      <td>3.858107</td>
       <td>...</td>
-      <td>-1.764676</td>
-      <td>2.310200</td>
-      <td>-0.034485</td>
-      <td>-1.917551</td>
-      <td>1.915825</td>
-      <td>1.710479</td>
-      <td>0.587658</td>
-      <td>-3.069471</td>
-      <td>1.645590</td>
-      <td>59.952256</td>
+      <td>-5.357799</td>
+      <td>-0.095869</td>
+      <td>0.039770</td>
+      <td>-5.177507</td>
+      <td>-1.867563</td>
+      <td>-0.124389</td>
+      <td>0.062472</td>
+      <td>2.808832</td>
+      <td>-0.796795</td>
+      <td>59.319624</td>
     </tr>
     <tr>
-      <th>1395</th>
-      <td>-2.045896</td>
-      <td>0.770659</td>
-      <td>-2.576043</td>
-      <td>-1.667974</td>
-      <td>-0.189546</td>
-      <td>-1.350601</td>
-      <td>-2.894011</td>
-      <td>-0.073778</td>
-      <td>-0.530900</td>
-      <td>-3.044742</td>
+      <th>1526</th>
+      <td>2.171869</td>
+      <td>-0.324054</td>
+      <td>2.198592</td>
+      <td>2.108237</td>
+      <td>-0.106821</td>
+      <td>0.724570</td>
+      <td>3.157243</td>
+      <td>-1.028825</td>
+      <td>0.080908</td>
+      <td>3.195285</td>
       <td>...</td>
-      <td>5.655835</td>
-      <td>1.308177</td>
-      <td>0.002114</td>
-      <td>5.182314</td>
-      <td>-0.408322</td>
-      <td>-0.039797</td>
-      <td>0.032898</td>
-      <td>-0.715743</td>
-      <td>2.061657</td>
-      <td>80.305408</td>
+      <td>-5.931718</td>
+      <td>-0.190819</td>
+      <td>-1.442167</td>
+      <td>-5.212344</td>
+      <td>1.512442</td>
+      <td>-1.476964</td>
+      <td>-0.588551</td>
+      <td>2.268530</td>
+      <td>0.907568</td>
+      <td>50.444942</td>
     </tr>
     <tr>
-      <th>2584</th>
-      <td>-2.513797</td>
-      <td>-1.535001</td>
-      <td>0.774877</td>
-      <td>-1.503357</td>
-      <td>-0.959924</td>
-      <td>-0.256163</td>
-      <td>-1.486898</td>
-      <td>0.508050</td>
-      <td>0.068895</td>
-      <td>-2.897360</td>
+      <th>2364</th>
+      <td>1.580773</td>
+      <td>2.459587</td>
+      <td>0.404543</td>
+      <td>1.429436</td>
+      <td>0.995440</td>
+      <td>0.934891</td>
+      <td>2.707925</td>
+      <td>0.297131</td>
+      <td>0.839932</td>
+      <td>3.431893</td>
       <td>...</td>
-      <td>1.199048</td>
-      <td>2.082057</td>
-      <td>0.923233</td>
-      <td>2.484915</td>
-      <td>2.634034</td>
-      <td>-0.214052</td>
-      <td>1.348940</td>
-      <td>-3.302948</td>
-      <td>-0.779246</td>
-      <td>54.289540</td>
+      <td>-4.270973</td>
+      <td>1.933391</td>
+      <td>-1.379088</td>
+      <td>-4.817641</td>
+      <td>0.476318</td>
+      <td>-0.438635</td>
+      <td>0.490014</td>
+      <td>-2.688434</td>
+      <td>0.541877</td>
+      <td>70.170732</td>
     </tr>
     <tr>
-      <th>1256</th>
-      <td>2.419946</td>
-      <td>-1.717934</td>
-      <td>0.173388</td>
-      <td>1.944532</td>
-      <td>-0.516719</td>
-      <td>-0.581075</td>
-      <td>3.061093</td>
-      <td>0.434827</td>
-      <td>-0.898904</td>
-      <td>3.809405</td>
+      <th>272</th>
+      <td>-2.869065</td>
+      <td>-1.256485</td>
+      <td>-1.278807</td>
+      <td>-1.759990</td>
+      <td>-0.601686</td>
+      <td>-0.442582</td>
+      <td>-2.118835</td>
+      <td>-0.801263</td>
+      <td>0.987044</td>
+      <td>-3.478392</td>
       <td>...</td>
-      <td>-3.596859</td>
-      <td>2.479264</td>
-      <td>-0.206982</td>
-      <td>-3.896576</td>
-      <td>1.365255</td>
-      <td>-1.565317</td>
-      <td>-1.236945</td>
-      <td>-1.901277</td>
-      <td>-1.619281</td>
-      <td>52.700522</td>
+      <td>4.116818</td>
+      <td>2.830534</td>
+      <td>0.850448</td>
+      <td>4.416546</td>
+      <td>1.459989</td>
+      <td>1.978969</td>
+      <td>0.488050</td>
+      <td>-1.832975</td>
+      <td>1.462971</td>
+      <td>61.101378</td>
     </tr>
     <tr>
-      <th>1523</th>
-      <td>-2.054783</td>
-      <td>0.112262</td>
-      <td>-1.481909</td>
-      <td>-1.836891</td>
-      <td>-0.264922</td>
-      <td>-0.045045</td>
-      <td>-2.904254</td>
-      <td>-1.212108</td>
-      <td>0.469788</td>
-      <td>-4.288094</td>
+      <th>2438</th>
+      <td>1.988778</td>
+      <td>-0.760160</td>
+      <td>-1.855213</td>
+      <td>1.739635</td>
+      <td>-0.933528</td>
+      <td>-0.385937</td>
+      <td>2.926685</td>
+      <td>-0.725957</td>
+      <td>0.475303</td>
+      <td>3.606313</td>
       <td>...</td>
-      <td>5.720717</td>
-      <td>-0.037843</td>
-      <td>0.370927</td>
-      <td>5.273663</td>
-      <td>1.323319</td>
-      <td>-0.802285</td>
-      <td>1.004710</td>
-      <td>0.976600</td>
-      <td>-1.735010</td>
-      <td>56.276669</td>
+      <td>-4.517239</td>
+      <td>1.639748</td>
+      <td>2.168082</td>
+      <td>-3.776758</td>
+      <td>0.032069</td>
+      <td>1.882474</td>
+      <td>-1.459595</td>
+      <td>-0.678787</td>
+      <td>-2.501622</td>
+      <td>55.556584</td>
     </tr>
     <tr>
       <th>...</th>
@@ -544,157 +547,157 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
       <td>...</td>
     </tr>
     <tr>
-      <th>1057</th>
-      <td>-2.263552</td>
-      <td>-0.271653</td>
-      <td>-1.347915</td>
-      <td>-1.947234</td>
-      <td>0.736553</td>
-      <td>-0.307832</td>
-      <td>-3.087790</td>
-      <td>1.084914</td>
-      <td>0.569604</td>
-      <td>-3.707229</td>
+      <th>102</th>
+      <td>2.895159</td>
+      <td>-1.777194</td>
+      <td>-0.139814</td>
+      <td>1.517410</td>
+      <td>-1.049563</td>
+      <td>-0.374571</td>
+      <td>1.852321</td>
+      <td>0.384600</td>
+      <td>-0.023864</td>
+      <td>2.962331</td>
       <td>...</td>
-      <td>6.009466</td>
-      <td>0.321972</td>
-      <td>-0.194102</td>
-      <td>5.073496</td>
-      <td>-0.804766</td>
-      <td>-1.296338</td>
-      <td>0.655414</td>
-      <td>-1.617600</td>
-      <td>-0.716385</td>
-      <td>54.464585</td>
+      <td>-2.378747</td>
+      <td>3.271140</td>
+      <td>-0.373844</td>
+      <td>-3.867094</td>
+      <td>2.777901</td>
+      <td>-1.203069</td>
+      <td>-0.865886</td>
+      <td>-2.509155</td>
+      <td>-1.067665</td>
+      <td>65.207522</td>
     </tr>
     <tr>
-      <th>1765</th>
-      <td>-1.529750</td>
-      <td>-1.213100</td>
-      <td>1.296487</td>
-      <td>-1.170517</td>
-      <td>0.010579</td>
-      <td>0.511012</td>
-      <td>-2.409296</td>
-      <td>0.840026</td>
-      <td>0.294559</td>
-      <td>-3.482221</td>
+      <th>335</th>
+      <td>-1.814110</td>
+      <td>-1.633531</td>
+      <td>0.674801</td>
+      <td>-1.774726</td>
+      <td>-0.835241</td>
+      <td>-0.568707</td>
+      <td>-3.088051</td>
+      <td>-0.282075</td>
+      <td>-0.965874</td>
+      <td>-3.763645</td>
       <td>...</td>
-      <td>5.326187</td>
-      <td>1.435722</td>
-      <td>0.361691</td>
-      <td>4.551661</td>
-      <td>0.575257</td>
-      <td>1.710491</td>
-      <td>1.322867</td>
-      <td>-2.809897</td>
-      <td>0.001232</td>
-      <td>45.396951</td>
+      <td>5.474872</td>
+      <td>-0.047166</td>
+      <td>1.838523</td>
+      <td>5.267192</td>
+      <td>-1.131136</td>
+      <td>0.442739</td>
+      <td>0.819090</td>
+      <td>-0.135795</td>
+      <td>1.524271</td>
+      <td>53.915980</td>
     </tr>
     <tr>
-      <th>1259</th>
-      <td>-1.575491</td>
-      <td>-0.564488</td>
-      <td>-1.575673</td>
-      <td>-1.465791</td>
-      <td>-0.596860</td>
-      <td>-0.089595</td>
-      <td>-2.846266</td>
-      <td>-0.743982</td>
-      <td>0.543988</td>
-      <td>-3.747159</td>
+      <th>2903</th>
+      <td>2.746936</td>
+      <td>1.793932</td>
+      <td>-0.656561</td>
+      <td>1.588380</td>
+      <td>0.780749</td>
+      <td>-0.596045</td>
+      <td>2.114660</td>
+      <td>-0.568554</td>
+      <td>-0.752599</td>
+      <td>3.077989</td>
       <td>...</td>
-      <td>5.509215</td>
-      <td>0.242898</td>
-      <td>0.361029</td>
-      <td>5.704146</td>
-      <td>-0.034304</td>
-      <td>-1.387655</td>
-      <td>1.098980</td>
-      <td>1.468864</td>
-      <td>2.074626</td>
-      <td>56.364486</td>
+      <td>-5.413615</td>
+      <td>-0.569346</td>
+      <td>0.508373</td>
+      <td>-5.899783</td>
+      <td>-0.972845</td>
+      <td>-1.162404</td>
+      <td>-1.496243</td>
+      <td>1.836266</td>
+      <td>1.660587</td>
+      <td>59.915945</td>
     </tr>
     <tr>
-      <th>2161</th>
-      <td>2.110043</td>
-      <td>1.005141</td>
-      <td>0.577786</td>
-      <td>1.628424</td>
-      <td>-0.159453</td>
-      <td>-0.190530</td>
-      <td>2.639673</td>
-      <td>-1.011536</td>
-      <td>-0.890889</td>
-      <td>3.666466</td>
+      <th>1932</th>
+      <td>-1.529885</td>
+      <td>2.636245</td>
+      <td>-1.488843</td>
+      <td>-1.518783</td>
+      <td>1.118800</td>
+      <td>-0.925124</td>
+      <td>-1.677553</td>
+      <td>1.406110</td>
+      <td>0.510646</td>
+      <td>-1.754893</td>
       <td>...</td>
-      <td>-4.940955</td>
-      <td>0.731630</td>
-      <td>1.822120</td>
-      <td>-5.731477</td>
-      <td>-0.345457</td>
-      <td>0.579708</td>
-      <td>-2.150822</td>
-      <td>1.631184</td>
-      <td>-1.849711</td>
-      <td>59.003706</td>
+      <td>4.594337</td>
+      <td>-0.390690</td>
+      <td>1.487754</td>
+      <td>3.492649</td>
+      <td>0.977157</td>
+      <td>1.748762</td>
+      <td>1.947122</td>
+      <td>-1.491536</td>
+      <td>-2.115987</td>
+      <td>76.234621</td>
     </tr>
     <tr>
-      <th>441</th>
-      <td>-1.780713</td>
-      <td>0.669026</td>
-      <td>-1.208973</td>
-      <td>-1.716489</td>
-      <td>-0.627039</td>
-      <td>-0.493250</td>
-      <td>-3.060545</td>
-      <td>-1.078752</td>
-      <td>-0.024412</td>
-      <td>-3.791507</td>
+      <th>2617</th>
+      <td>-2.081924</td>
+      <td>-1.649998</td>
+      <td>0.132544</td>
+      <td>-1.436678</td>
+      <td>-0.409107</td>
+      <td>0.609174</td>
+      <td>-2.506232</td>
+      <td>0.669307</td>
+      <td>0.709145</td>
+      <td>-3.159332</td>
       <td>...</td>
-      <td>5.487982</td>
-      <td>0.968015</td>
-      <td>0.255042</td>
-      <td>4.920894</td>
-      <td>0.229397</td>
-      <td>-1.335651</td>
-      <td>0.752739</td>
-      <td>1.457542</td>
-      <td>0.276706</td>
-      <td>63.506934</td>
+      <td>4.670785</td>
+      <td>-0.185134</td>
+      <td>-0.067503</td>
+      <td>5.139530</td>
+      <td>0.661739</td>
+      <td>1.451919</td>
+      <td>0.835285</td>
+      <td>-1.667174</td>
+      <td>1.589556</td>
+      <td>53.092911</td>
     </tr>
   </tbody>
 </table>
-<p>3212 rows × 118 columns</p>
+<p>3154 rows × 118 columns</p>
 </div>
 </div>
 </div>
 <p>Given this data, we can build a model. We will use a gradient boosting regressor from scikit-learn. We will also split the data into a training and a test set. In later sections, we will see why this is important. But for now, let us us just appreciate that a test set—conformers we did not train on—will give us a measure of how well our model will perform on new, unseen, conformers.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> data[coordinate_names] <span class="co"># X</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>energies <span class="op">=</span> data[<span class="st">'energy'</span>] <span class="co"># y</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split into training and test set</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>train_points <span class="op">=</span> <span class="dv">3000</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>train_positions <span class="op">=</span> positions[:train_points]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>test_positions <span class="op">=</span> positions[train_points:]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>train_energies <span class="op">=</span> energies[:train_points]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>test_energies <span class="op">=</span> energies[train_points:]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># train a model</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> HistGradientBoostingRegressor</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> HistGradientBoostingRegressor()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>model.fit(train_positions, train_energies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>positions <span class="op">=</span> data[coordinate_names] <span class="co"># X</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>energies <span class="op">=</span> data[<span class="st">'energy'</span>] <span class="co"># y</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># split into training and test set</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>train_points <span class="op">=</span> <span class="dv">3000</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>train_positions <span class="op">=</span> positions[:train_points]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>test_positions <span class="op">=</span> positions[train_points:]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>train_energies <span class="op">=</span> energies[:train_points]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>test_energies <span class="op">=</span> energies[train_points:]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># train a model</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> HistGradientBoostingRegressor</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> HistGradientBoostingRegressor()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>model.fit(train_positions, train_energies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>HistGradientBoostingRegressor()</code></pre>
 </div>
 </div>
 <p>Once we have trained a model, we can use it to predict the energies of new conformers. Let’s first see how well it does on the data it was trained on.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(train_positions)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, train_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train_predictions <span class="op">=</span> model.predict(train_positions)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, train_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>&lt;AxesSubplot:xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
@@ -704,9 +707,9 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </div>
 <p>This looks pretty good. But how well does it do on new conformers? Let’s see.</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(test_positions)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(test_energies.values, test_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> model.predict(test_positions)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(test_energies.values, test_predictions, xlabel<span class="op">=</span><span class="st">'True energy'</span>, ylabel<span class="op">=</span><span class="st">'Predicted energy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;AxesSubplot:xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
@@ -716,10 +719,10 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </div>
 <p>From physics we know that (without external field) the energy of a molecule does not depend on where in space it is. That is, if we translate a molecule along <span class="math inline">\([1, 1, 1]\)</span>, the energy should not change.</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># translate the molecule along [1, 1, 1]</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>translated_positions <span class="op">=</span> train_positions <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>translated_predictions <span class="op">=</span> model.predict(translated_positions)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, translated_predictions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># translate the molecule along [1, 1, 1]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>translated_positions <span class="op">=</span> train_positions <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>translated_predictions <span class="op">=</span> model.predict(translated_positions)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>density_scatter_with_hist(train_energies.values, translated_predictions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>&lt;AxesSubplot:xlabel='Actual', ylabel='Predicted'&gt;</code></pre>
 </div>
@@ -795,18 +798,18 @@ R(h)={\mathbf  {E}}[L(f(x),y)]=\int L(f(x),y)\,dP(x,y).
 </section>
 <section id="linear-regression" class="level3">
 <h3 class="anchored" data-anchor-id="linear-regression">Linear regression</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_regression(x, w, b):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.dot(x, w) <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(w, b):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> linear_regression(x, w, b)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.mean((prediction <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_params(num_feat):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(size<span class="op">=</span>(num_feat,)), <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>loss_grad <span class="op">=</span> jax.grad(loss, argnums<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">1e-6</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_regression(x, w, b):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.dot(x, w) <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(w, b):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    prediction <span class="op">=</span> linear_regression(x, w, b)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jnp.mean((prediction <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_params(num_feat):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(size<span class="op">=</span>(num_feat,)), <span class="fl">0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>loss_grad <span class="op">=</span> jax.grad(loss, argnums<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="bias-variance-trade-off" class="level2">
@@ -845,17 +848,17 @@ l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d}
 \]</span></p>
 <p>If we plot this for different values of <span class="math inline">\(d\)</span> we get the following plot:</p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> length(d, k<span class="op">=</span><span class="dv">5</span>, n<span class="op">=</span><span class="dv">10_000</span>):</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (k<span class="op">/</span>n)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>d)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1000</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.plot(d, length(d))</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'numbr of dimensions'</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'length of hypercube that contains k neighbors'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> length(d, k<span class="op">=</span><span class="dv">5</span>, n<span class="op">=</span><span class="dv">10_000</span>):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (k<span class="op">/</span>n)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span>d)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1000</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.plot(d, length(d))</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'numbr of dimensions'</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'length of hypercube that contains k neighbors'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Text(0, 0.5, 'length of hypercube that contains k neighbors')</code></pre>
 </div>
@@ -866,21 +869,21 @@ l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d}
 <p>Clearly, for large <span class="math inline">\(d\)</span> the length approaches 1—which means that all points are now almost equally far apart and comparing distances no longer makes much sense.</p>
 <p>We can also check this by performing a simulation: Generating random <span class="math inline">\(d\)</span> dimensional points and computing the distance between them. We can then plot the distribution of distances.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance_matrix</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dimensions <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">10_000</span>]</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(dimensions), sharey<span class="op">=</span><span class="st">'all'</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_distances(d, num_points):</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> np.random.uniform(size<span class="op">=</span>(num_points, d))</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> distance_matrix(points, points)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(distances).flatten()</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d, ax <span class="kw">in</span> <span class="bu">zip</span>(dimensions, axes):</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> get_distances(d, num_points)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    ax.hist(distances, bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'd=</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> cv=</span><span class="sc">{</span>distances<span class="sc">.</span>std()<span class="op">/</span>distances<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance_matrix</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dimensions <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">10_000</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="bu">len</span>(dimensions), sharey<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_distances(d, num_points):</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> np.random.uniform(size<span class="op">=</span>(num_points, d))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> distance_matrix(points, points)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(distances).flatten()</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d, ax <span class="kw">in</span> <span class="bu">zip</span>(dimensions, axes):</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    distances <span class="op">=</span> get_distances(d, num_points)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    ax.hist(distances, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'd=</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> cv=</span><span class="sc">{</span>distances<span class="sc">.</span>std()<span class="op">/</span>distances<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="ml_notes_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>

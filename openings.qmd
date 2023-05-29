@@ -1,0 +1,103 @@
+---
+cap-location: margin
+---
+#  Multiple PhD and PostDoc Positions
+
+[If you want to do a master thesis, internship or simply connect, please reach out, too.]{.aside}
+
+See also the [PDF version of this announcement](./job-opening.pdf).
+
+::: {.callout-note icon=false}
+
+## At a newly founded research group at the University of Jena (Germany), led by Kevin Maik Jablonka.
+
+We are looking for highly motivated Ph.D. students and postdocs for projects at the intersection of machine learning and chemistry and material science (digital chemistry), with a focus on data-driven design of polymer materials for energy applications. We will have multiple fully funded positions starting in summer/fall 2023.
+
+Together, we will create impactful methods for accelerated material discovery across scales—ultimately helping us identify materials that work in the real world while also increasing understanding of why those materials work. 
+:::
+
+![We will build digital assistants for chemists.](./img/ai4chem.png)
+
+## Background
+
+The design and discovery of new molecules and materials is slow. A major reason for that is that our research approach often relies on trial-and-error and is bottlenecked by information transfer: We would greatly benefit from having all information as well as intuition of all chemists at our fingertips. Machine learning can help us democratize access to this expert knowledge and help us navigate high-dimensional design spaces.
+In our lab will develop data-driven strategies for designing materials that work in the real world around three main research pillars: 1) Novel inductive biases (including “soft” inductive biases via LLMs), 2) Human-in-the-loop active learning, and 3) Novel learning paradigms. We will develop robust open-source software and also contribute to international research data initiatives. The PostDoc position will have a focus on this research data management aspect and the use of novel tools (such as LLMs) in this context.
+
+![We will design digital tools for designing polymers.](./img/polymer_design.png)
+
+Due to their unique tunability (and the correspondingly large design space) and functionality, we will focus on polymers, where we will closely collaborate with world-leading experimental partners to validate our predictions and build novel modeling and data frameworks.
+
+For more background on Kevin’s thinking see [his website](https://kjablonka.com/) and [publications](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en), you can contact him via [email](https://mailhide.io/e/o4LeOUlq) or [Twitter](https://twitter.com/kmjablonka).
+
+## Your profile 
+
+- Motivation for working on challenging projects, passion for scientific research, and thrive for excellence.
+- Strong teamwork and communication skills.
+- Growth mindset and inclusive team culture.
+- Excellent written and oral communication skills in English.
+- Ideally, programming and machine learning experience (e.g., in Python, Julia).
+
+For the Ph.D. positions a Master's degree or a four- or five-year Bachelor's degree in Chemistry, Chemical Engineering, Computer Science, Mathematics, Physics, or related fields. [Without Master's degree we will need to ask for an exception that is typically granted.]{.aside} 
+
+For the PostDoc positions a Ph.D. is required for employment.
+
+## We offer
+
+- Be part of the story from the beginning when we start up an ambitious research program on digitizing chemistry and materials science.
+- Become part of an international and interdisciplinary research group within a scientific network that offers research and infrastructure at the highest level. 
+- We collaborate with world-leading experimental groups in Jena as well as the Helmholtz Center in Berlin that have access to unique high-throughput experimentation as well as characterization setups.
+- Participate in international and national conferences, summer schools, and workshops (we have allocated a significant amount of resources for travel).
+- Besides excellent in-house computational infrastructure (you will have multiple A100 cards waiting for you), Kevin is co-leading the [ChemNLP project](https://github.com/OpenBioML/chemnlp), for which we have access to resources from Stability.ai
+- Become part of a research group that cares about your personal development: We will create tailored personal development plans, that we review every year. 
+- A family-friendly working environment with a variety of offers for families: University Family Office (JUniFamilie) and flexible childcare (JUniKinder).
+University health promotion and a wide range of university sports activities.
+- Attractive fringe benefits, e.g., capital formation benefits (VL), Job Ticket (benefits for public transport), and an occupational pension (VBL)
+- 30 days of recreational leave in the calendar year plus one day off for Dec. 24 and Dec. 31 that should be taken without any guilt.
+
+
+## Application process
+
+1. Send a CV and a summary (max. 1 page) of your research interest (and past research) [via email](https://mailhide.io/e/32oy6NK5) with the subject "PhD in Digital Chemistry” or “Postdoc in Digital Chemistry”. Please highlight why you would like to join our group. If you would first like to learn more, reach out to Kevin.
+
+2. Selected candidates will be invited first to a non-technical discussion and then in a second round of a technical interview (including a ~25 minutes presentation).
+ 
+Candidates with disabilities will be given preference in the case of equal qualifications and suitability.
+
+We will provide support for visa applications and any other potential relocation issues.
+We will also support fellowship applications if you would prefer joining the lab on your own funding. Contact Kevin for more details on suitable fellowships.
+
+
+## Diversity and equity
+
+
+![We will be a group in which we all work and grow together - including our digital agents.](./img/human_machine.png)
+
+At the Friedrich Schiller University (FSU) people from a wide range of (cultural and academic) backgrounds study and work together. At FSU, and in particular in our group, we see diversity as a strength and key for our success. We rely on different ways of thinking to create the most impactful research.  Our group will be a place in which everyone--irrespective of the background feels save and will be successful.
+
+
+
+
+
+## Doing a Ph.D at the Friedrich Schiller Univeristy 
+
+![](https://www.thueringer-staedte.de/fileadmin/_processed_/7/a/csm_panorama_skyline_saalestrand_dfad3a4107.jpg)
+
+The Friedrich Schiller University is a traditional university with a strong research profile rooted in Jena, at the heart of Germany. 
+Since its foundation, it has been one of Germany's most famous places to study, where outstanding academics like [Goethe](https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe) and [Schiller](https://en.wikipedia.org/wiki/Friedrich_Schiller) left their marks. As a university covering all disciplines, it offers a wide range of subjects. Its research is focused on the areas Light—Life—Liberty. It is closely networked with non-research institutions, research companies (links going back to [Carl Zeiss](https://en.wikipedia.org/wiki/Carl_Zeiss), [Otto Schott](https://en.wikipedia.org/wiki/Otto_Schott), and [Ernst Abbe](https://en.wikipedia.org/wiki/Ernst_Abbe)) and renowned cultural institutions. With around 18,000 students and more than 8,600 employees, the university plays a major role in shaping Jena’s character as a cosmopolitan and future-oriented city (of around ~100 000 inhabitants).
+
+Overall, Germany is a beautiful and safe country with great work-life balance and life satisfaction. 
+
+You will receive a very competitive salary with which you will live comfortably and save money for leisure activities.
+[Students need approximately 700 EUR monthly for rent, food, health insurance, books, and personal items.](https://www.uni-jena.de/en/funding)
+
+
+## Your workspace
+
+![Renderings of the new building our lab will be located in (opening fall 2023)](./img/ceecii.png)
+
+Our lab (CZS Research group "Polymers for energy applications”) will be located in the newly constructed Center of Energy and Environmental Chemistry Jena II at the Landgrafencampus (close to one of the best viewpoints of the city), where four new buildings with ca. 7500 m² lab space have been built over the last 10 years.  
+Frequently, start-companies involving Ph.D. students and Postdocs are created, and a new incubator for chemistry related start-ups is currently built next to the campus.
+
+
+## Funding 
+Our group is supported by the [Carl-Zeiss Stiftung](https://www.carl-zeiss-stiftung.de/), the [Helmholtz-Center Berlin](https://www.helmholtz-berlin.de/) and integrated in multiple collaborative research centers.

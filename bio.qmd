@@ -6,7 +6,9 @@ sidebar: false
 ---
 
 Kevin Jablonka obtained his bachelor’s degree in chemistry at TU Munich. He joined EPFL for his master’s studies (and an extended study degree in applied machine learning), after which he joined Berend Smit’s group for a Ph.D.
-Kevin’s research interests are in the digitization of chemistry. For this, he got involved in the cheminfo ELN ecosystem. He also developed a toolbox for digital reticular chemistry. Using tools from this toolbox, he addressed questions from the atom up to the pilot-plant scale. 
+He is now leading a research group at the Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center Berlin.
+Kevin’s research interests are in the digitization of chemistry. For this, he has been contributing to the cheminfo ELN ecosystem. He also developed a toolbox for digital reticular chemistry. Using tools from this toolbox, he addressed questions from the atom up to the pilot-plant scale. 
+Kevin is also an expert in the use of large language models in chemistry and co-leads the ChemNLP project (with support from OpenBioML.org and Stability.AI).
 
 ### More 
 If you need more info, see my [CV](cv.qmd).

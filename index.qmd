@@ -24,7 +24,9 @@ toc: true
 
 ![](avartar.JPG){.profile-pic}
 
-I just defended my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry: I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
+
+I recently defended my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry and now lead a resarch group (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin. 
+I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
 I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem](http://cheminfo.github.io) and other open-source projects (see [my GitHub](https://github.com/kjappelbaum)).
 
 :::

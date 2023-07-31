@@ -31,6 +31,14 @@ I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem]
 
 :::
 
+
+::: {.callout-note icon=false title="Find out more on the lab website"}
+# Find out more on the lab website
+
+Check out the [website of our lab](https://jablonkagroup.uni-jena.de/). We are still hiring! You can find more details [here](openings.qmd).
+:::
+
+
 ## 💼 Get in Touch
 
 [Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-twitter.png){width="3%"}](https://twitter.com/kmjablonka) if you'd like to chat!

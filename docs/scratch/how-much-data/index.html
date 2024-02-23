@@ -8,9 +8,9 @@
 
 <meta name="author" content="Kevin Jablonka">
 <meta name="dcterms.date" content="2023-01-16">
-<meta name="description" content="Visualizing data is a central task of a scientist. Here, I share my workflow.">
+<meta name="description" content="The most common question I get asked about machine learning is “how much data do I need?” In this post, I am trying to approach this question from different perspectives.">
 
-<title>Kevin’s Homepage - Publication-ready plots with Python</title>
+<title>Kevin’s Homepage - How much data do I need?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../favicon.ico" rel="icon">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,13 +73,13 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Kevin’s Homepage - Publication-ready plots with Python">
-<meta property="og:description" content="Visualizing data is a central task of a scientist. Here, I share my workflow.">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Kevin’s Homepage - How much data do I need?">
+<meta property="og:description" content="The most common question I get asked about machine learning is &quot;how much data do I need?&quot; In this post, I am trying to approach this question from different perspectives.">
 <meta property="og:image" content="">
 <meta property="og:site-name" content="Kevin's Homepage">
-<meta name="twitter:title" content="Kevin’s Homepage - Publication-ready plots with Python">
-<meta name="twitter:description" content="Visualizing data is a central task of a scientist. Here, I share my workflow.">
+<meta name="twitter:title" content="Kevin’s Homepage - How much data do I need?">
+<meta name="twitter:description" content="The most common question I get asked about machine learning is &quot;how much data do I need?&quot; In this post, I am trying to approach this question from different perspectives.">
 <meta name="twitter:image" content="">
 <meta name="twitter:creator" content="@kmjablonka">
 <meta name="twitter:card" content="summary">
@@ -93,28 +93,28 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"><i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../index.html"><i class="bi bi-home" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html">
+    <a class="nav-link" href="../../publications.html">
  <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../cv.html">
+    <a class="nav-link" href="../../cv.html">
  <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../research.html">
+    <a class="nav-link" href="../../research.html">
  <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html">
+    <a class="nav-link" href="../../opensource/opensource.html">
  <span class="menu-text">Open Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html">
+    <a class="nav-link" href="../../teaching.html">
  <span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
@@ -127,25 +127,31 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#curse-of-dimensionality" id="toc-curse-of-dimensionality" class="nav-link active" data-scroll-target="#curse-of-dimensionality">Curse of dimensionality</a></li>
+  <li><a href="#inductive-biases" id="toc-inductive-biases" class="nav-link" data-scroll-target="#inductive-biases">Inductive biases</a></li>
+  <li><a href="#learning-curves" id="toc-learning-curves" class="nav-link" data-scroll-target="#learning-curves">Learning curves</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/scratch/how-much-data/index.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Publication-ready plots with Python</h1>
+<h1 class="title">How much data do I need?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">science</div>
-    <div class="quarto-category">publication</div>
-    <div class="quarto-category">plotting</div>
-    <div class="quarto-category">dataviz</div>
+    <div class="quarto-category">ml</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Visualizing data is a central task of a scientist. Here, I share my workflow.
+    The most common question I get asked about machine learning is “how much data do I need?” In this post, I am trying to approach this question from different perspectives.
   </div>
 </div>
 
@@ -172,11 +178,17 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 </header>
 
-<p>Over the last decade I’ve spent a lot of time plotting data. I’ve tried many different tools and workflows, and I’ve learned a lot.</p>
-<p>I started with <a href="http://www.gnuplot.info/">gnuplot</a>, explored <a href="https://ctan.org/pkg/pgfplots?lang=en">pgfplots</a> and large parts of the Python plotting ecosystem.</p>
-<p>My current setup went back to basics and uses <a href="https://matplotlib.org">matplotlib</a> and is heavily inspired by the work of <a href="https://www.edwardtufte.com/tufte/">Tufte</a> and <a href="https://www.principiae.be/">Jean-Luc Doumont</a> as well as journal requirements.</p>
+<section id="curse-of-dimensionality" class="level2">
+<h2 class="anchored" data-anchor-id="curse-of-dimensionality">Curse of dimensionality</h2>
+</section>
+<section id="inductive-biases" class="level2">
+<h2 class="anchored" data-anchor-id="inductive-biases">Inductive biases</h2>
+</section>
+<section id="learning-curves" class="level2">
+<h2 class="anchored" data-anchor-id="learning-curves">Learning curves</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

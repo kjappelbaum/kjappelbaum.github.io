@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Kevin&#39;s Homepage</title>
+<link>https://kjablonka.com/index.html</link>
+<atom:link href="https://kjablonka.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>Kevin Maik Jablonka&#39;s personal homepage</description>
+<image>
+<url>https://kjablonka.com/quarto.png</url>
+<title>Kevin&#39;s Homepage</title>
+<link>https://kjablonka.com/index.html</link>
+</image>
+<generator>quarto-1.2.313</generator>
+<lastBuildDate>Thu, 22 Feb 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Developing an intuition for backpropagation</title>
+  <link>https://kjablonka.com/blog/posts/backprop/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="setting-weights-in-neural-networks" class="level2">
+<h2 class="anchored" data-anchor-id="setting-weights-in-neural-networks">Setting weights in neural networks</h2>
+<p>When we build neural networks, we tune weights to ensure that the outputs are close to what we want them to be.</p>
+<p>The power of deep learning is that having many layers of weights allows us to learn very complex functions (i.e.&nbsp;mappings from input to output).</p>
+<p>Here, we want to understand how to systematically tune the weights to achieve this.</p>
+ <style>
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: start; /* Adjust this as needed */
+        }
+        .slider-container {
+            flex: 2;
+            padding: 1px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .visualization-container {
+            flex: 2; /* Gives the visualization more room */
+            padding: 1px;
+        }
+        .slider-label {
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
+  
+    <meta charset="UTF-8">
+    <title>Neural Network Visualization</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+      .slider-label {
+        display: block;
+        margin-top: 10px;
+      }
+      #outputLabel {
+        margin-top: 10px;
+      }
+
+    </style>
+  
+  
+    
+    <div class="flex-container">
+        <div class="slider-container">
+    <div class="slider-label">
+      Input:
+      <input type="range" min="0" max="1" step="0.01" value="0.5" id="inputSlider">
+    </div>
+    <div class="slider-label">
+      Weight 1-1:
+      <input type="range" min="-1" max="1" step="0.01" value="0.5" id="weight1_1Slider">
+    </div>
+    <div class="slider-label">
+      Weight 1-2:
+      <input type="range" min="-1" max="1" step="0.01" value="0.5" id="weight1_2Slider">
+    </div>
+    <div class="slider-label">
+      Weight 2-1:
+      <input type="range" min="-1" max="1" step="0.01" value="0.5" id="weight2_1Slider">
+    </div>
+    <div class="slider-label">
+      Weight 2-2:
+      <input type="range" min="-1" max="1" step="0.01" value="0.5" id="weight2_2Slider">
+    </div>
+    <div class="slider-label">
+      Target Output:
+      <input type="range" min="0" max="1" step="0.01" value="0.5" id="targetOutputSlider">
+    </div>
+    <bf><div id="outputLabel">Loss: 0.0000</div></bf>
+    </div>
+    <div class="visualization-container"></div>
+    <svg id="networkVisualization" width="600" height="400"></svg>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function relu(x) {
+          return Math.max(0, x);
+        }
+
+        function forwardPass(inputs, weights1, weights2) {
+          let hiddenLayerInput = [inputs * weights1[0], inputs * weights1[1]];
+          let hiddenLayerOutput = hiddenLayerInput.map(relu);
+          let outputLayerInput =
+            hiddenLayerOutput[0] * weights2[0] +
+            hiddenLayerOutput[1] * weights2[1];
+          return outputLayerInput;
+        }
+
+        function computeMSELoss(predicted, target) {
+          return Math.pow(predicted - target, 2);
+        }
+        const colorScale = d3.scaleLinear()
+            .domain([-1, 0, 1])
+            .range(["blue","red"]);
+
+
+         function drawNetwork(selector, weights1, weights2, inputs, hiddenActivations, outputActivation) {
+        const svg = d3.select(selector);
+        svg.selectAll("*").remove(); // Clear previous drawing
+
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
+
+        // Define neuron positions
+        const positions = {
+            input: [{x: width * 0.2, y: height / 2, value: inputs}],
+            hidden: [
+                {x: width * 0.5, y: height * 0.3, value: hiddenActivations[0]},
+                {x: width * 0.5, y: height * 0.7, value: hiddenActivations[1]}
+            ],
+            output: [{x: width * 0.8, y: height / 2, value: outputActivation[0]}]
+        };
+
+        // Draw connections and labels for weights
+        positions.input.forEach((inputPos, i) => {
+            positions.hidden.forEach((hiddenPos, j) => {
+                svg.append("line")
+                    .attr("x1", inputPos.x)
+                    .attr("y1", inputPos.y)
+                    .attr("x2", hiddenPos.x)
+                    .attr("y2", hiddenPos.y)
+                    .attr("stroke", colorScale(weights1[j]))
+                    .attr("stroke-width", Math.abs(weights1[j]) * 2 + 1);
+
+                // Label for weight
+                svg.append("text")
+                    .attr("x", (inputPos.x + hiddenPos.x) / 2 -10)
+                    .attr("y", (inputPos.y + hiddenPos.y) / 2 - (j === 0 ? 20 : -40))
+                    .attr("dy", "-5")
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "white") 
+                    .text(`weight 1-${j+1}: ${weights1[j].toFixed(2)}`);
+            });
+        });
+
+        positions.hidden.forEach((hiddenPos, i) => {
+            svg.append("line")
+                .attr("x1", hiddenPos.x)
+                .attr("y1", hiddenPos.y)
+                .attr("x2", positions.output[0].x)
+                .attr("y2", positions.output[0].y)
+                .attr("stroke", colorScale(weights2[i]))
+                .attr("stroke-width", Math.abs(weights2[i]) * 2 + 1);
+
+            // Label for weight
+            svg.append("text")
+                .attr("x", (hiddenPos.x + positions.output[0].x) / 2 + 10)
+                .attr("y", (hiddenPos.y + positions.output[0].y) / 2 - (i === 0 ? 20 : -40))
+                .attr("dy", "-5")
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .text(`weight 2-${i+1}: ${weights2[i].toFixed(2)}`);
+        });
+
+        // Draw neurons and labels for activations
+        [...positions.input, ...positions.hidden, ...positions.output].forEach(pos => {
+            svg.append("circle")
+                .attr("cx", pos.x)
+                .attr("cy", pos.y)
+                .attr("r", 20)
+                .attr("fill", colorScale(pos.value))
+                .attr("stroke", "black");
+
+            // Label for neuron value
+            svg.append("text")
+                .attr("x", pos.x)
+                .attr("y", pos.y)
+                .attr("dy", "5")
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .text(pos.value.toFixed(2));
+        });
+    }
+
+        function updateVisualization() {
+          let inputs = parseFloat(document.getElementById("inputSlider").value);
+          let weights1 = [
+            parseFloat(document.getElementById("weight1_1Slider").value),
+            parseFloat(document.getElementById("weight1_2Slider").value),
+          ];
+          let weights2 = [
+            parseFloat(document.getElementById("weight2_1Slider").value),
+            parseFloat(document.getElementById("weight2_2Slider").value),
+          ];
+          let targetOutput = parseFloat(
+            document.getElementById("targetOutputSlider").value
+          );
+
+          let output = forwardPass(inputs, weights1, weights2);
+          let loss = computeMSELoss(output, targetOutput);
+
+          document.getElementById(
+            "outputLabel"
+          ).innerText = `Loss: ${loss.toFixed(
+            4
+          )}`;
+
+          drawNetwork(
+            "#networkVisualization",
+            weights1,
+            weights2,
+            inputs,
+            weights1.map(relu),
+            [output]
+          );
+        }
+
+        document.querySelectorAll("input[type=range]").forEach((slider) => {
+          slider.addEventListener("input", updateVisualization);
+        });
+
+        updateVisualization(); // Initial visualization
+      });
+    </script>
+  
+<p>When we think of the tiny neural network in the widget above one might think of many different ways for optimizing the weights (line strenghts) of this model.</p>
+<section id="option-1-randomly-choose-weights" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-randomly-choose-weights">Option 1: Randomly choose weights</h3>
+<p>One option you might try is to randomly try different weight values to then find one that minimizes the difference between ground truth and prediction (i.e., minimizes the loss). While we might be lucky for this toy example, we can imagine that it might take a long time until we guessed all the weights in a billion-parameter model (e.g.&nbsp;GPT-3) correctly.</p>
+<p>Using a strategy like a grid search (in which you loop over a range of possible weight values for all weights) will also only work for small models (think of the <img src="https://latex.codecogs.com/png.latex?100%5E4"> combinations you would have to just try of 100 trial values for 4 weights).</p>
+</section>
+<section id="option-2-using-numerical-gradients" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
+<p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="kw" style="color: #003B4F;">def</span> relu(x):</span>
+<span id="cb1-5">    <span class="cf" style="color: #003B4F;">return</span> np.maximum(<span class="dv" style="color: #AD0000;">0</span>, x)</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="kw" style="color: #003B4F;">def</span> linear(x):</span>
+<span id="cb1-8">    <span class="cf" style="color: #003B4F;">return</span> x</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="kw" style="color: #003B4F;">def</span> forward_pass(inputs, weights1, weights2, record_activation<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">False</span>):</span>
+<span id="cb1-12">    hidden_layer_input <span class="op" style="color: #5E5E5E;">=</span> np.dot(inputs, weights1)</span>
+<span id="cb1-13">    hidden_layer_output <span class="op" style="color: #5E5E5E;">=</span> relu(hidden_layer_input)</span>
+<span id="cb1-14">    output_layer_input <span class="op" style="color: #5E5E5E;">=</span> np.dot(hidden_layer_output, weights2)</span>
+<span id="cb1-15">    output <span class="op" style="color: #5E5E5E;">=</span> linear(output_layer_input)</span>
+<span id="cb1-16">    <span class="cf" style="color: #003B4F;">if</span> record_activation:</span>
+<span id="cb1-17">        <span class="cf" style="color: #003B4F;">return</span> output, hidden_layer_output</span>
+<span id="cb1-18">    <span class="cf" style="color: #003B4F;">return</span> output</span>
+<span id="cb1-19"></span>
+<span id="cb1-20"><span class="kw" style="color: #003B4F;">def</span> compute_mse_loss(predicted, target):</span>
+<span id="cb1-21">    loss <span class="op" style="color: #5E5E5E;">=</span>  np.mean(np.square(predicted <span class="op" style="color: #5E5E5E;">-</span> target))</span>
+<span id="cb1-22">    <span class="cf" style="color: #003B4F;">return</span> loss</span>
+<span id="cb1-23"></span>
+<span id="cb1-24"><span class="co" style="color: #5E5E5E;"># Simplify the scenario for clear visualization</span></span>
+<span id="cb1-25"><span class="co" style="color: #5E5E5E;"># Set the target output and input</span></span>
+<span id="cb1-26">target <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.9</span></span>
+<span id="cb1-27">input_val <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">0.8</span>  <span class="co" style="color: #5E5E5E;"># A simple input value to keep the forward pass straightforward</span></span>
+<span id="cb1-28"></span>
+<span id="cb1-29"><span class="co" style="color: #5E5E5E;"># Define a range for weight updates that centers around an expected minimum</span></span>
+<span id="cb1-30">weight_range <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">3.5</span>  <span class="co" style="color: #5E5E5E;"># Explore weights within [-2, 2] for both weights</span></span>
+<span id="cb1-31">num_steps <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">100</span>  <span class="co" style="color: #5E5E5E;"># Increase the number of steps for finer resolution</span></span>
+<span id="cb1-32">step_size <span class="op" style="color: #5E5E5E;">=</span> weight_range <span class="op" style="color: #5E5E5E;">/</span> num_steps</span>
+<span id="cb1-33"></span>
+<span id="cb1-34">weight1_1_range <span class="op" style="color: #5E5E5E;">=</span> np.linspace(<span class="dv" style="color: #AD0000;">0</span>, weight_range, <span class="dv" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">*</span> num_steps <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span>)  <span class="co" style="color: #5E5E5E;"># Start from 0 to weight_range</span></span>
+<span id="cb1-35">weight2_1_range <span class="op" style="color: #5E5E5E;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;">-</span>weight_range, weight_range, <span class="dv" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">*</span> num_steps <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span>)  <span class="co" style="color: #5E5E5E;"># Keep full range for weight2_1</span></span>
+<span id="cb1-36">weight1_1_vals, weight2_1_vals <span class="op" style="color: #5E5E5E;">=</span> np.meshgrid(weight1_1_range, weight2_1_range)</span>
+<span id="cb1-37"></span>
+<span id="cb1-38">fixed_weight1_2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.2</span></span>
+<span id="cb1-39">fixed_weight2_2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">0.8</span></span>
+<span id="cb1-40">losses <span class="op" style="color: #5E5E5E;">=</span> np.zeros((<span class="bu" style="color: null;">len</span>(weight1_1_range), <span class="bu" style="color: null;">len</span>(weight2_1_range)))</span>
+<span id="cb1-41"><span class="co" style="color: #5E5E5E;"># Recalculate the losses with the updated range</span></span>
+<span id="cb1-42"><span class="cf" style="color: #003B4F;">for</span> i <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(<span class="bu" style="color: null;">len</span>(weight1_1_range)):</span>
+<span id="cb1-43">    <span class="cf" style="color: #003B4F;">for</span> j <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(<span class="bu" style="color: null;">len</span>(weight2_1_range)):</span>
+<span id="cb1-44">        current_weights1 <span class="op" style="color: #5E5E5E;">=</span> np.array([weight1_1_vals[i, j], fixed_weight1_2])</span>
+<span id="cb1-45">        current_weights2 <span class="op" style="color: #5E5E5E;">=</span> np.array([weight2_1_vals[i, j], fixed_weight2_2])</span>
+<span id="cb1-46">        output <span class="op" style="color: #5E5E5E;">=</span> forward_pass(np.array([[input_val]]), current_weights1.reshape(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">2</span>), current_weights2.reshape(<span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">1</span>))</span>
+<span id="cb1-47">        losses[i, j] <span class="op" style="color: #5E5E5E;">=</span> compute_mse_loss(output, np.array([[target]]))</span>
+<span id="cb1-48"></span>
+<span id="cb1-49"><span class="co" style="color: #5E5E5E;"># Create a 2D contour plot to visualize the loss landscape</span></span>
+<span id="cb1-50">plt.figure()</span>
+<span id="cb1-51">heatmap <span class="op" style="color: #5E5E5E;">=</span> plt.contourf(weight1_1_vals, weight2_1_vals, losses, levels<span class="op" style="color: #5E5E5E;">=</span>np.linspace(losses.<span class="bu" style="color: null;">min</span>(), losses.<span class="bu" style="color: null;">max</span>(), <span class="dv" style="color: #AD0000;">50</span>), cmap<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'viridis'</span>)</span>
+<span id="cb1-52">plt.colorbar()</span>
+<span id="cb1-53">plt.title(<span class="st" style="color: #20794D;">'Loss Landscape'</span>)</span>
+<span id="cb1-54">plt.xlabel(<span class="st" style="color: #20794D;">'$w_1^1$ values'</span>)</span>
+<span id="cb1-55">plt.ylabel(<span class="st" style="color: #20794D;">'$w_2^1$ values'</span>)</span>
+<span id="cb1-56">plt.show()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="https://kjablonka.com/blog/posts/backprop/index_files/figure-html/cell-2-output-1.png" width="580" height="454"></p>
+</div>
+</div>
+<p>To create this plot, we keep two weights fixed, vary two others and then analyze how the loss looks like. We see that there is a clear structure that might remind us of a hilly landscape.</p>
+<p>With the random search we have been randomly jumping around on this landscape. But seeing this image, we might also decide that we want to follow the path downhill; ultimately, our goal is to find the valley (the lowest loss). That is, the best value to try next should not be a random one but one downhill from where we are now.</p>
+<p>This direction (“downhill”) is the slope of our hilly landscape, i.e.&nbsp;the gradient.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7Df(x)%7D%7B%5Cmathrm%7Bd%7Dx%7D%20=%20%5Clim_%7Bh%5Cto0%7D%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D%0A"></p>
+<p>Based on the formula above, we might decide to compute a gradient numerically using <a href="https://en.wikipedia.org/wiki/Finite_difference">finite differences</a>.</p>
+<p>The problem is that we need to perform <em>many evaluations</em> of the loss to make it work (one per weight, which can be a lot for current frontier models). In addition, we add up errors because <img src="https://latex.codecogs.com/png.latex?h"> will be different from <img src="https://latex.codecogs.com/png.latex?0"> (truncation error) and because be have to work with machine precision and hence add rounding errors.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
+<span id="cb2-2"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="co" style="color: #5E5E5E;"># Define the function and its exact derivative</span></span>
+<span id="cb2-5"><span class="kw" style="color: #003B4F;">def</span> f(x):</span>
+<span id="cb2-6">    <span class="cf" style="color: #003B4F;">return</span> x<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">3</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="kw" style="color: #003B4F;">def</span> df_exact(x):</span>
+<span id="cb2-9">    <span class="cf" style="color: #003B4F;">return</span> <span class="dv" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">*</span>x<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb2-10"></span>
+<span id="cb2-11"><span class="co" style="color: #5E5E5E;"># Point at which to evaluate the derivative</span></span>
+<span id="cb2-12">x <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb2-13"></span>
+<span id="cb2-14"><span class="co" style="color: #5E5E5E;"># Generate a range of h values (logarithmically spaced to cover small to larger values)</span></span>
+<span id="cb2-15">h_values <span class="op" style="color: #5E5E5E;">=</span> np.logspace(<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">16</span>, <span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">400</span>)</span>
+<span id="cb2-16">numerical_derivatives <span class="op" style="color: #5E5E5E;">=</span> []</span>
+<span id="cb2-17"></span>
+<span id="cb2-18"><span class="co" style="color: #5E5E5E;"># Calculate numerical derivative using forward difference for each h</span></span>
+<span id="cb2-19"><span class="cf" style="color: #003B4F;">for</span> h <span class="kw" style="color: #003B4F;">in</span> h_values:</span>
+<span id="cb2-20">    numerical_derivative <span class="op" style="color: #5E5E5E;">=</span> (f(x<span class="op" style="color: #5E5E5E;">+</span>h) <span class="op" style="color: #5E5E5E;">-</span> f(x)) <span class="op" style="color: #5E5E5E;">/</span> h</span>
+<span id="cb2-21">    numerical_derivatives.append(numerical_derivative)</span>
+<span id="cb2-22"></span>
+<span id="cb2-23"><span class="co" style="color: #5E5E5E;"># Calculate exact derivative</span></span>
+<span id="cb2-24">exact_derivative <span class="op" style="color: #5E5E5E;">=</span> df_exact(x)</span>
+<span id="cb2-25"></span>
+<span id="cb2-26"><span class="co" style="color: #5E5E5E;"># Calculate errors</span></span>
+<span id="cb2-27">errors <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">abs</span>(exact_derivative <span class="op" style="color: #5E5E5E;">-</span> np.array(numerical_derivatives))</span>
+<span id="cb2-28"></span>
+<span id="cb2-29"><span class="co" style="color: #5E5E5E;"># Plotting</span></span>
+<span id="cb2-30">plt.figure()</span>
+<span id="cb2-31">plt.loglog(h_values, errors, label<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'Absolute Error'</span>, marker<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'o'</span>, linestyle<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'-'</span>, markersize<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, markevery<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>)</span>
+<span id="cb2-32">plt.xlabel(<span class="st" style="color: #20794D;">'Step size $h$'</span>)</span>
+<span id="cb2-33">plt.ylabel(<span class="st" style="color: #20794D;">'Absolute Error'</span>)</span>
+<span id="cb2-34">plt.title(<span class="st" style="color: #20794D;">'Error in Numerical Derivative of $x^3$'</span>)</span>
+<span id="cb2-35">plt.legend()</span>
+<span id="cb2-36">plt.grid(<span class="va" style="color: #111111;">True</span>, which<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"both"</span>, linestyle<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'--'</span>)</span>
+<span id="cb2-37">plt.show()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="https://kjablonka.com/blog/posts/backprop/index_files/figure-html/cell-3-output-1.png" width="599" height="454"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="option-3-analytical-gradients" class="level3">
+<h3 class="anchored" data-anchor-id="option-3-analytical-gradients">Option 3: Analytical gradients</h3>
+<p>Obviously, we could save many evaluations when we could write down the derviates for a given functions. However, for our neural networks we cannot do this by hand.</p>
+<p>The question is thus how we <em>efficiently</em> compute the gradient of function such as a neural network.</p>
+</section>
+</section>
+<section id="evaluating-analytical-gradients-for-any-function-backpropagation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-analytical-gradients-for-any-function-backpropagation">Evaluating analytical gradients for any function: Backpropagation</h2>
+<section id="calculus-101-rules-for-computing-derivatives" class="level3">
+<h3 class="anchored" data-anchor-id="calculus-101-rules-for-computing-derivatives">Calculus 101: Rules for computing derivatives</h3>
+<p>Let’s assume</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(x,y)%20=%20xy%0A"></p>
+<p>then the <em>partial derivates</em> are</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%20=%20y%20%5Cquad%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20y%7D%20=%20x%0A"></p>
+<p>An important rule for differentiation we will need to apply frequently, as it focusses on function composition, is the chain rule</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A(g(f(x)))%5E%7B%5Cprime%7D=(g%20%5Ccirc%20f)%5E%7B%5Cprime%7D(x)=g%5E%7B%5Cprime%7D(f(x))%20f%5E%7B%5Cprime%7D(x)%0A"></p>
+<p>with <img src="https://latex.codecogs.com/png.latex?g%20%5Ccirc%20f"> being function composition <img src="https://latex.codecogs.com/png.latex?x%20%5Cto%20f(x)%20%5Cto%20g(f(x))">.</p>
+<p>In the multivariate case, we would write</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7D%7D%7B%5Cmathrm%7Bd%7D%20t%7D%20f(x(t),%20y(t))=%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20x%7D%7B%5Cmathrm%7B~d%7D%20t%7D+%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20y%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20y%7D%7B%5Cmathrm%7B~d%7D%20t%7D.%0A"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Intuitive understanding of chain rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How do you intuitively understand that? Let’s borrow from <a href="https://ia802808.us.archive.org/7/items/GeorgeSimmonsCalculusWithAnalyticGeometry1996McGrawHillScienceEngineeringMath/George%20Simmons%20-%20Calculus%20With%20Analytic%20Geometry%20%281996%2C%20McGraw-Hill%20Science_Engineering_Math%29.pdf">George F. Simmons</a>:</p>
+<blockquote class="blockquote">
+<p>If a car travels twice as fast as a bicycle and the bicycle is four times as fast as a walking man, then the car travels 2 × 4 = 8 times as fast as the man.</p>
+</blockquote>
+<p>With</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?x"> the position of the car</li>
+<li><img src="https://latex.codecogs.com/png.latex?y"> the position of the bicycle</li>
+<li><img src="https://latex.codecogs.com/png.latex?z"> the position of the walking man</li>
+</ul>
+<p>The rate of change in relative positions is given by terms like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cmathrm%7Bd%7Dx%7D%7B%5Cmathrm%7Bd%7Dy%7D">, which gives us the change in relative position of bicycle and car. It we now aim to compute the rate of change of relative position of car to the walking man, <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cmathrm%7Bd%7Dx%7D%7B%5Cmathrm%7Bd%7Dz%7D">, we find</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7Dx%7D%7B%5Cmathrm%7Bd%7Dx%7D%20=%20%5Cfrac%7B%5Cmathrm%7Bd%7Dx%7D%7B%5Cmathrm%7Bd%7Dy%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Dz%7D%20=%20%5Cunderbrace%7B2%7D_%7B%5Ctext%7Bcar%20twice%20as%20fast%20as%20bicycle%7D%7D%20%5Ccdot%20%5Cunderbrace%7B4%7D_%7B%5Ctext%7Bbicycle%20is%20four%20times%20as%20fast%20as%20walking%20man%7D%7D%20=%208%0A"></p>
+</div>
+</div>
+</section>
+<section id="computing-derivatives-as-in-calculus-101" class="level3">
+<h3 class="anchored" data-anchor-id="computing-derivatives-as-in-calculus-101">Computing derivatives as in calculus 101</h3>
+<p>In neural networks, we nest functions. That is, will end up differentiating compound expression of the form</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%7B%5Cdisplaystyle%20h(x)=f(g(x))%7D%0A"></p>
+<p>For instance, you might look at a simple regularized logistic regression:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AL%20=%20%5Cfrac%7B1%7D%7B2%7D%5Cleft(%5Csigma(wx%20+b)%20-t%20%5Cright)%5E2%20+%20%5Cfrac%7B%5Clambda%7D%7B2%7D%20w%5E2,%0A"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Csigma"> is some activation function (e.g.&nbsp;the sigmoid).</p>
+<p>If we now want to know what the influence of the weight <img src="https://latex.codecogs.com/png.latex?w"> is, we can differentiate the loss with respect to <img src="https://latex.codecogs.com/png.latex?w">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w%7D%20%5Cleft%5B%5Cfrac%7B1%7D%7B2%7D%5Cleft(%5Csigma(wx%20+b)%20-t%20%5Cright)%5E2%20+%20%5Cfrac%7B%5Clambda%7D%7B2%7D%20w%5E2%20%5Cright%5D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7B2%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w%7D%20%5Cleft(%5Csigma(wx%20+b)%20-t%20%5Cright)%5E2%20+%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w%7D%20w%5E2%20%5C%5C%0A&amp;=%20%5Cleft(%5Csigma(wx+b)%20-%20t%5Cright)%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w%7D%5Cleft(%5Csigma(wx+b)-t%5Cright)%20+%20%5Clambda%20w%20%5C%5C%0A&amp;=%20%5Cleft(%5Csigma(wx+b)%20-%20t%5Cright)%5Csigma'(wx%20+b)%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w%7D(wx+b)%20+%20%5Clambda%20w%20%5C%5C%0A&amp;=%20%5Cleft(%5Csigma(wx+b)%20-%20t%5Cright)%5Csigma'(wx%20+b)x%20+%20%5Clambda%20w%0A%5Cend%7Balign%7D%0A"></p>
+<p>Puh! That was a lot of copying and pasting and quite error prone. And it might be quite costly to just directly evaluate such an expression (we might end up with an exponentially large expression, “expression swell”).</p>
+<p>There must be a better way.</p>
+</section>
+<section id="making-it-efficient-with-caching" class="level3">
+<h3 class="anchored" data-anchor-id="making-it-efficient-with-caching">Making it efficient with caching</h3>
+<p>One thing that we can observe is that we need to do the same computation several times. For instance, <img src="https://latex.codecogs.com/png.latex?wx%20+b"> is evaluated two times. We code trade off space and time complexity by caching this using an intermediate variable.</p>
+<p>If we do this systematically, we can very efficiently compute gradients – in a form that is symmetric to the computation of the function itself (and those with basically the same cost).</p>
+<section id="general-computation-with-intermediate-values" class="level4">
+<h4 class="anchored" data-anchor-id="general-computation-with-intermediate-values">General computation with intermediate values</h4>
+<p>As a simple example, let’s start with</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(x,y,z)%20=%20(x+y)z%0A"></p>
+<p>It can be convienient to introduce the following intermediate variable</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ap%20=%20(x%20+%20y)%0A"></p>
+<p>We can then write</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af%20=%20pz%0A"></p>
+<p>and also compute some partial derivatives</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20q%7D%20=%20z%20%5Cquad%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20z%7D%20=%20q%0A"></p>
+<p>and we also know how to differentiate <img src="https://latex.codecogs.com/png.latex?p"> for <img src="https://latex.codecogs.com/png.latex?x"> and <img src="https://latex.codecogs.com/png.latex?y">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20p%7D%7B%5Cpartial%20x%7D%20=%201%20%5Cquad%20%5Cfrac%7B%5Cpartial%20p%7D%7B%5Cpartial%20y%7D%20=1.%0A"></p>
+<p>Using the <em>chain rule</em> we can combine those findings, as the chain rule states that we need to multiply the gradients to chain them:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
+<p>This typically means that two numbers are multiplied.</p>
+<p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;"># the inputs we will use </span></span>
+<span id="cb3-2">x <span class="op" style="color: #5E5E5E;">=</span> <span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb3-3">y <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">5</span></span>
+<span id="cb3-4">z <span class="op" style="color: #5E5E5E;">=</span> <span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">4</span></span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;"># let's compute our intermediate terms</span></span>
+<span id="cb3-7">t1 <span class="op" style="color: #5E5E5E;">=</span> x <span class="op" style="color: #5E5E5E;">+</span> y </span>
+<span id="cb3-8">f <span class="op" style="color: #5E5E5E;">=</span> t1 <span class="op" style="color: #5E5E5E;">*</span> z</span></code></pre></div>
+</div>
+<p>Now, we can look at the derivatives we got above</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.</span></span>
+<span id="cb4-2">dt1dy <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.</span></span>
+<span id="cb4-3"></span>
+<span id="cb4-4">dfdt1 <span class="op" style="color: #5E5E5E;">=</span> z</span>
+<span id="cb4-5">dfdz <span class="op" style="color: #5E5E5E;">=</span> t1</span></code></pre></div>
+</div>
+<p>Now, we can use the chain rule to combine them</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;">*</span> dt1dx</span>
+<span id="cb5-2">dfdy <span class="op" style="color: #5E5E5E;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;">*</span> dt1dy</span></code></pre></div>
+</div>
+<p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3 -4.0 3</code></pre>
+</div>
+</div>
+<p>Before we move ahead, realize what we did:</p>
+<p>We computed gradients by recursively applying the chain rule, starting at the end:</p>
+<ul>
+<li>our computation graph is x -&gt; p -&gt; f</li>
+<li>we first compute df/dp, then dp/dx. Chaining them gives us df/dx = df/dp dp/dx</li>
+</ul>
+<p>We can write this in a more general form as follows.</p>
+<p>If we assume we have <img src="https://latex.codecogs.com/png.latex?N"> intermediate variables <img src="https://latex.codecogs.com/png.latex?t_N">, with <img src="https://latex.codecogs.com/png.latex?t_N"> being our output <img src="https://latex.codecogs.com/png.latex?f">, by definition we have</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7D%7Bf%7D%7D%7B%5Cmathrm%7Bd%7Dt_N%7D%20=%201%0A"></p>
+<p>For the other intermediate variables we have:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7D%20t_%7Bn-1%7D%7D%20&amp;=%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-1%7D%7D%20%5C%5C%0A%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7D%20t_%7Bn-2%7D%7D%20&amp;=%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-1%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn-1%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-2%7D%7D%20%5C%5C%0A%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7D%20t_%7Bn-3%7D%7D%20&amp;=%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-1%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn-1%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-2%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn-2%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-3%7D%7D%20%5C%5C%0A%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7D%20t_i%7D%20&amp;=%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-1%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bn-1%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bn-2%7D%7D%20%5Cldots%20%5Cfrac%7B%5Cmathrm%7Bd%7Df_%7Bi+1%7D%7D%7B%5Cmathrm%7Bd%7Dt_%7Bi%7D%7D%0A%5Cend%7Balign%7D%0A"></p>
+<p>Note that many of the terms we computed can be reused.</p>
+</section>
+</section>
+<section id="application-to-neural-networks" class="level3">
+<h3 class="anchored" data-anchor-id="application-to-neural-networks">Application to neural networks</h3>
+<p>Neural networks are more complicated circuits – nested functions.</p>
+<p>Let’s assume a very simply case</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ay=%5Cfrac%7B1%7D%7B1+%5Cexp%20(-(wx+b))%7D.%0A"></p>
+<p>We can write it using the chaining of the following primitive operations (forming our computation graph).</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_1%20=%20wx%0A"> <img src="https://latex.codecogs.com/png.latex?%0At_2%20=%20t_1%20+%20b%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_3%20=%20%E2%88%92t_2%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_4%20=%20%5Cexp(t_3)%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_5%20=%201%20+%20t_4%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_6%20=%201/t_5%0A"></p>
+<p>(this list of evaluations is sometimes called evaluation trace or Wengert list).</p>
+<p>As we would like again get the derivative w.r.t to the output like the loss</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AL%20=%20(t_6-y)%5E2,%0A"></p>
+<p>which we can write down with some more evaluations</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_7%20=%20t_6-t%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0At_8%20=%20t_7%5E2.%0A"></p>
+<p>We call this evaluation the <em>forward pass</em>.</p>
+<p>The beauty of backprop is that the computation for the derivative follows the same structure as the computation of the function itself (and, for example, is not drastically more complex as one might expect). To see this, we can try out:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_8%7D%20&amp;=%201%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20&amp;=%202%20t_7%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20&amp;%20=%201%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%20-1/t_5%5E2%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20&amp;=%201%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20-%201%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20&amp;=%201%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20&amp;=%20x%0A%5Cend%7Balign%7D%0A"></p>
+<p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
+<p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;"># code taken from https://github.com/karpathy/micrograd/blob/master/trace_graph.ipynb</span></span>
+<span id="cb8-2"><span class="im" style="color: #00769E;">from</span> graphviz <span class="im" style="color: #00769E;">import</span> Digraph</span>
+<span id="cb8-3"></span>
+<span id="cb8-4"><span class="kw" style="color: #003B4F;">def</span> trace(root):</span>
+<span id="cb8-5">    nodes, edges <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">set</span>(), <span class="bu" style="color: null;">set</span>()</span>
+<span id="cb8-6">    <span class="kw" style="color: #003B4F;">def</span> build(v):</span>
+<span id="cb8-7">        <span class="cf" style="color: #003B4F;">if</span> v <span class="kw" style="color: #003B4F;">not</span> <span class="kw" style="color: #003B4F;">in</span> nodes:</span>
+<span id="cb8-8">            nodes.add(v)</span>
+<span id="cb8-9">            <span class="cf" style="color: #003B4F;">for</span> child <span class="kw" style="color: #003B4F;">in</span> v._prev:</span>
+<span id="cb8-10">                edges.add((child, v))</span>
+<span id="cb8-11">                build(child)</span>
+<span id="cb8-12">    build(root)</span>
+<span id="cb8-13">    <span class="cf" style="color: #003B4F;">return</span> nodes, edges</span>
+<span id="cb8-14"></span>
+<span id="cb8-15"><span class="kw" style="color: #003B4F;">def</span> draw_dot(root, <span class="bu" style="color: null;">format</span><span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'svg'</span>, rankdir<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'LR'</span>):</span>
+<span id="cb8-16">    <span class="co" style="color: #5E5E5E;">"""</span></span>
+<span id="cb8-17"><span class="co" style="color: #5E5E5E;">    format: png | svg | ...</span></span>
+<span id="cb8-18"><span class="co" style="color: #5E5E5E;">    rankdir: TB (top to bottom graph) | LR (left to right)</span></span>
+<span id="cb8-19"><span class="co" style="color: #5E5E5E;">    """</span></span>
+<span id="cb8-20">    <span class="cf" style="color: #003B4F;">assert</span> rankdir <span class="kw" style="color: #003B4F;">in</span> [<span class="st" style="color: #20794D;">'LR'</span>, <span class="st" style="color: #20794D;">'TB'</span>]</span>
+<span id="cb8-21">    nodes, edges <span class="op" style="color: #5E5E5E;">=</span> trace(root)</span>
+<span id="cb8-22">    dot <span class="op" style="color: #5E5E5E;">=</span> Digraph(<span class="bu" style="color: null;">format</span><span class="op" style="color: #5E5E5E;">=</span><span class="bu" style="color: null;">format</span>, graph_attr<span class="op" style="color: #5E5E5E;">=</span>{<span class="st" style="color: #20794D;">'rankdir'</span>: rankdir}) <span class="co" style="color: #5E5E5E;">#, node_attr={'rankdir': 'TB'})</span></span>
+<span id="cb8-23">    </span>
+<span id="cb8-24">    <span class="cf" style="color: #003B4F;">for</span> n <span class="kw" style="color: #003B4F;">in</span> nodes:</span>
+<span id="cb8-25">        dot.node(name<span class="op" style="color: #5E5E5E;">=</span><span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n)), label <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"{ data </span><span class="sc" style="color: #5E5E5E;">%.4f</span><span class="st" style="color: #20794D;"> | grad </span><span class="sc" style="color: #5E5E5E;">%.4f</span><span class="st" style="color: #20794D;"> }"</span> <span class="op" style="color: #5E5E5E;">%</span> (n.data, n.grad), shape<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'record'</span>)</span>
+<span id="cb8-26">        <span class="cf" style="color: #003B4F;">if</span> n._op:</span>
+<span id="cb8-27">            dot.node(name<span class="op" style="color: #5E5E5E;">=</span><span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n)) <span class="op" style="color: #5E5E5E;">+</span> n._op, label<span class="op" style="color: #5E5E5E;">=</span>n._op)</span>
+<span id="cb8-28">            dot.edge(<span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n)) <span class="op" style="color: #5E5E5E;">+</span> n._op, <span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n)))</span>
+<span id="cb8-29">    </span>
+<span id="cb8-30">    <span class="cf" style="color: #003B4F;">for</span> n1, n2 <span class="kw" style="color: #003B4F;">in</span> edges:</span>
+<span id="cb8-31">        dot.edge(<span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n1)), <span class="bu" style="color: null;">str</span>(<span class="bu" style="color: null;">id</span>(n2)) <span class="op" style="color: #5E5E5E;">+</span> n2._op)</span>
+<span id="cb8-32">    </span>
+<span id="cb8-33">    <span class="cf" style="color: #003B4F;">return</span> dot</span></code></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;"># taken from micrograd</span></span>
+<span id="cb9-2"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
+<span id="cb9-3"><span class="kw" style="color: #003B4F;">class</span> Value:</span>
+<span id="cb9-4">    <span class="co" style="color: #5E5E5E;">""" stores a single scalar value and its gradient """</span></span>
+<span id="cb9-5"></span>
+<span id="cb9-6">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>, data, _children<span class="op" style="color: #5E5E5E;">=</span>(), _op<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">''</span>):</span>
+<span id="cb9-7">        <span class="va" style="color: #111111;">self</span>.data <span class="op" style="color: #5E5E5E;">=</span> data</span>
+<span id="cb9-8">        <span class="va" style="color: #111111;">self</span>.grad <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span></span>
+<span id="cb9-9">        <span class="co" style="color: #5E5E5E;"># internal variables used for autograd graph construction</span></span>
+<span id="cb9-10">        <span class="va" style="color: #111111;">self</span>._backward <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">lambda</span>: <span class="va" style="color: #111111;">None</span></span>
+<span id="cb9-11">        <span class="va" style="color: #111111;">self</span>._prev <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">set</span>(_children)</span>
+<span id="cb9-12">        <span class="va" style="color: #111111;">self</span>._op <span class="op" style="color: #5E5E5E;">=</span> _op <span class="co" style="color: #5E5E5E;"># the op that produced this node, for graphviz / debugging / etc</span></span>
+<span id="cb9-13"></span>
+<span id="cb9-14">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__add__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb9-15">        other <span class="op" style="color: #5E5E5E;">=</span> other <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">isinstance</span>(other, Value) <span class="cf" style="color: #003B4F;">else</span> Value(other)</span>
+<span id="cb9-16">        out <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="va" style="color: #111111;">self</span>.data <span class="op" style="color: #5E5E5E;">+</span> other.data, (<span class="va" style="color: #111111;">self</span>, other), <span class="st" style="color: #20794D;">'+'</span>)</span>
+<span id="cb9-17"></span>
+<span id="cb9-18">        <span class="co" style="color: #5E5E5E;"># propagate the gradient on out to parents</span></span>
+<span id="cb9-19">        <span class="co" style="color: #5E5E5E;"># i.e. self and other </span></span>
+<span id="cb9-20">        <span class="co" style="color: #5E5E5E;"># since out = self + other, then d(out)/dself = 1 and d(out)/dother = 1</span></span>
+<span id="cb9-21">        <span class="co" style="color: #5E5E5E;"># so we can just add the gradient to both parents</span></span>
+<span id="cb9-22">        <span class="kw" style="color: #003B4F;">def</span> _backward():</span>
+<span id="cb9-23">            <span class="va" style="color: #111111;">self</span>.grad <span class="op" style="color: #5E5E5E;">=</span> out.grad</span>
+<span id="cb9-24">            other.grad <span class="op" style="color: #5E5E5E;">=</span> out.grad</span>
+<span id="cb9-25">        out._backward <span class="op" style="color: #5E5E5E;">=</span> _backward</span>
+<span id="cb9-26"></span>
+<span id="cb9-27">        <span class="cf" style="color: #003B4F;">return</span> out</span>
+<span id="cb9-28"></span>
+<span id="cb9-29">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__mul__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb9-30">        other <span class="op" style="color: #5E5E5E;">=</span> other <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">isinstance</span>(other, Value) <span class="cf" style="color: #003B4F;">else</span> Value(other)</span>
+<span id="cb9-31">        out <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="va" style="color: #111111;">self</span>.data <span class="op" style="color: #5E5E5E;">*</span> other.data, (<span class="va" style="color: #111111;">self</span>, other), <span class="st" style="color: #20794D;">'*'</span>)</span>
+<span id="cb9-32"></span>
+<span id="cb9-33">        <span class="kw" style="color: #003B4F;">def</span> _backward():</span>
+<span id="cb9-34">            <span class="va" style="color: #111111;">self</span>.grad <span class="op" style="color: #5E5E5E;">=</span> other.data <span class="op" style="color: #5E5E5E;">*</span> out.grad</span>
+<span id="cb9-35">            other.grad <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">self</span>.data <span class="op" style="color: #5E5E5E;">*</span> out.grad</span>
+<span id="cb9-36">        out._backward <span class="op" style="color: #5E5E5E;">=</span> _backward</span>
+<span id="cb9-37"></span>
+<span id="cb9-38">        <span class="cf" style="color: #003B4F;">return</span> out</span>
+<span id="cb9-39"></span>
+<span id="cb9-40">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__pow__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb9-41">        <span class="cf" style="color: #003B4F;">assert</span> <span class="bu" style="color: null;">isinstance</span>(other, (<span class="bu" style="color: null;">int</span>, <span class="bu" style="color: null;">float</span>)), <span class="st" style="color: #20794D;">"only supporting int/float powers for now"</span></span>
+<span id="cb9-42">        out <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="va" style="color: #111111;">self</span>.data<span class="op" style="color: #5E5E5E;">**</span>other, (<span class="va" style="color: #111111;">self</span>,), <span class="ss" style="color: #20794D;">f'**</span><span class="sc" style="color: #5E5E5E;">{</span>other<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>)</span>
+<span id="cb9-43"></span>
+<span id="cb9-44">        <span class="kw" style="color: #003B4F;">def</span> _backward():</span>
+<span id="cb9-45">            <span class="va" style="color: #111111;">self</span>.grad <span class="op" style="color: #5E5E5E;">=</span> (other <span class="op" style="color: #5E5E5E;">*</span> <span class="va" style="color: #111111;">self</span>.data<span class="op" style="color: #5E5E5E;">**</span>(other<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>)) <span class="op" style="color: #5E5E5E;">*</span> out.grad</span>
+<span id="cb9-46">        out._backward <span class="op" style="color: #5E5E5E;">=</span> _backward</span>
+<span id="cb9-47"></span>
+<span id="cb9-48">        <span class="cf" style="color: #003B4F;">return</span> out</span>
+<span id="cb9-49"></span>
+<span id="cb9-50">    <span class="kw" style="color: #003B4F;">def</span> exp(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb9-51">        out <span class="op" style="color: #5E5E5E;">=</span> Value(np.exp(<span class="va" style="color: #111111;">self</span>.data), (<span class="va" style="color: #111111;">self</span>,), <span class="st" style="color: #20794D;">'exp'</span>)</span>
+<span id="cb9-52"></span>
+<span id="cb9-53">        <span class="kw" style="color: #003B4F;">def</span> _backward():</span>
+<span id="cb9-54">            <span class="va" style="color: #111111;">self</span>.grad <span class="op" style="color: #5E5E5E;">=</span> np.exp(<span class="va" style="color: #111111;">self</span>.data) <span class="op" style="color: #5E5E5E;">*</span> out.grad</span>
+<span id="cb9-55">        out._backward <span class="op" style="color: #5E5E5E;">=</span> _backward</span>
+<span id="cb9-56"></span>
+<span id="cb9-57">        <span class="cf" style="color: #003B4F;">return</span> out</span>
+<span id="cb9-58"></span>
+<span id="cb9-59">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__neg__</span>(<span class="va" style="color: #111111;">self</span>): <span class="co" style="color: #5E5E5E;"># -self</span></span>
+<span id="cb9-60">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span> <span class="op" style="color: #5E5E5E;">*</span> <span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb9-61"></span>
+<span id="cb9-62">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__radd__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># other + self</span></span>
+<span id="cb9-63">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span> <span class="op" style="color: #5E5E5E;">+</span> other</span>
+<span id="cb9-64"></span>
+<span id="cb9-65">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__sub__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># self - other</span></span>
+<span id="cb9-66">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span> <span class="op" style="color: #5E5E5E;">+</span> (<span class="op" style="color: #5E5E5E;">-</span>other)</span>
+<span id="cb9-67"></span>
+<span id="cb9-68">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__rsub__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># other - self</span></span>
+<span id="cb9-69">        <span class="cf" style="color: #003B4F;">return</span> other <span class="op" style="color: #5E5E5E;">+</span> (<span class="op" style="color: #5E5E5E;">-</span><span class="va" style="color: #111111;">self</span>)</span>
+<span id="cb9-70"></span>
+<span id="cb9-71">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__rmul__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># other * self</span></span>
+<span id="cb9-72">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span> <span class="op" style="color: #5E5E5E;">*</span> other</span>
+<span id="cb9-73"></span>
+<span id="cb9-74">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__truediv__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># self / other</span></span>
+<span id="cb9-75">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span> <span class="op" style="color: #5E5E5E;">*</span> other<span class="op" style="color: #5E5E5E;">**-</span><span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb9-76"></span>
+<span id="cb9-77">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__rtruediv__</span>(<span class="va" style="color: #111111;">self</span>, other): <span class="co" style="color: #5E5E5E;"># other / self</span></span>
+<span id="cb9-78">        <span class="cf" style="color: #003B4F;">return</span> other <span class="op" style="color: #5E5E5E;">*</span> <span class="va" style="color: #111111;">self</span><span class="op" style="color: #5E5E5E;">**-</span><span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb9-79"></span>
+<span id="cb9-80">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__repr__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb9-81">        <span class="cf" style="color: #003B4F;">return</span> <span class="ss" style="color: #20794D;">f"Value(data=</span><span class="sc" style="color: #5E5E5E;">{</span><span class="va" style="color: #111111;">self</span><span class="sc" style="color: #5E5E5E;">.</span>data<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">, grad=</span><span class="sc" style="color: #5E5E5E;">{</span><span class="va" style="color: #111111;">self</span><span class="sc" style="color: #5E5E5E;">.</span>grad<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">)"</span></span></code></pre></div>
+</div>
+<p>We can now write down our expression from before using the <code>Value</code> class</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;"># initialize some values</span></span>
+<span id="cb10-2">w <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">2.0</span>)</span>
+<span id="cb10-3">b <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">0.0</span>)</span>
+<span id="cb10-4"></span>
+<span id="cb10-5"><span class="co" style="color: #5E5E5E;"># define the input</span></span>
+<span id="cb10-6">x <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">1.0</span>)</span>
+<span id="cb10-7">target <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">10.0</span>)</span>
+<span id="cb10-8"></span>
+<span id="cb10-9"><span class="co" style="color: #5E5E5E;"># define the computation</span></span>
+<span id="cb10-10">t1 <span class="op" style="color: #5E5E5E;">=</span> w <span class="op" style="color: #5E5E5E;">*</span> x</span>
+<span id="cb10-11">t2 <span class="op" style="color: #5E5E5E;">=</span> t1 <span class="op" style="color: #5E5E5E;">+</span> b</span>
+<span id="cb10-12">t3 <span class="op" style="color: #5E5E5E;">=</span> <span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span> <span class="op" style="color: #5E5E5E;">*</span> t2</span>
+<span id="cb10-13">t4 <span class="op" style="color: #5E5E5E;">=</span> t3.exp()</span>
+<span id="cb10-14">t5 <span class="op" style="color: #5E5E5E;">=</span> t4 <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb10-15">t6 <span class="op" style="color: #5E5E5E;">=</span> t5<span class="op" style="color: #5E5E5E;">**</span>(<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb10-16"></span>
+<span id="cb10-17">t7 <span class="op" style="color: #5E5E5E;">=</span> t6 <span class="op" style="color: #5E5E5E;">-</span> target</span>
+<span id="cb10-18">t8 <span class="op" style="color: #5E5E5E;">=</span> t7<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb10-19"></span>
+<span id="cb10-20">draw_dot(t8)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><img src="https://kjablonka.com/blog/posts/backprop/index_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>We need to seed the gradient of the loss</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.0</span></span></code></pre></div>
+</div>
+<p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb12-2">t8._backward()</span>
+<span id="cb12-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb14-2">t7._backward()</span>
+<span id="cb14-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb16-2">t6._backward()</span>
+<span id="cb16-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb18-2">t5._backward()  </span>
+<span id="cb18-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb20-2">t4._backward()</span>
+<span id="cb20-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb22-2">t3._backward()</span>
+<span id="cb22-3"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb24-2">t2._backward()</span>
+<span id="cb24-3">w._backward()</span>
+<span id="cb24-4"><span class="bu" style="color: null;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 -1.9149156216104704 0</code></pre>
+</div>
+</div>
+<p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
+<p>Topological sorting can be implemented using the following code</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;">=</span> []</span>
+<span id="cb26-2">visited <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">set</span>()</span>
+<span id="cb26-3"><span class="kw" style="color: #003B4F;">def</span> build_topo(v):</span>
+<span id="cb26-4">    <span class="cf" style="color: #003B4F;">if</span> v <span class="kw" style="color: #003B4F;">not</span> <span class="kw" style="color: #003B4F;">in</span> visited:</span>
+<span id="cb26-5">        visited.add(v)</span>
+<span id="cb26-6">        <span class="cf" style="color: #003B4F;">for</span> child <span class="kw" style="color: #003B4F;">in</span> v._prev:</span>
+<span id="cb26-7">            build_topo(child)</span>
+<span id="cb26-8">        topo.append(v)</span></code></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Why does this sorting algorithm work?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The algorithm is a depth-first search (DFS)</li>
+<li>The deepest nodes are added to the <code>topo</code> list first</li>
+<li>Recursiveness ensures that nodes another node depends on are added first (<code>topo.append</code> only happens after the recursive call)</li>
+</ul>
+<p>Note that this algorithm does not work for cyclic graphs.</p>
+</div>
+</div>
+<p>Now, we can simply write</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;"># #| </span></span>
+<span id="cb27-2"><span class="co" style="color: #5E5E5E;"># initialize some values</span></span>
+<span id="cb27-3">w <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">2.0</span>)</span>
+<span id="cb27-4">b <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">0.0</span>)</span>
+<span id="cb27-5"></span>
+<span id="cb27-6"><span class="co" style="color: #5E5E5E;"># define the input</span></span>
+<span id="cb27-7">x <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">1.0</span>)</span>
+<span id="cb27-8">target <span class="op" style="color: #5E5E5E;">=</span> Value(<span class="fl" style="color: #AD0000;">10.0</span>)</span>
+<span id="cb27-9"></span>
+<span id="cb27-10"><span class="co" style="color: #5E5E5E;"># define the computation</span></span>
+<span id="cb27-11">t1 <span class="op" style="color: #5E5E5E;">=</span> w <span class="op" style="color: #5E5E5E;">*</span> x</span>
+<span id="cb27-12">t2 <span class="op" style="color: #5E5E5E;">=</span> t1 <span class="op" style="color: #5E5E5E;">+</span> b</span>
+<span id="cb27-13">t3 <span class="op" style="color: #5E5E5E;">=</span> <span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span> <span class="op" style="color: #5E5E5E;">*</span> t2</span>
+<span id="cb27-14">t4 <span class="op" style="color: #5E5E5E;">=</span> t3.exp()</span>
+<span id="cb27-15">t5 <span class="op" style="color: #5E5E5E;">=</span> t4 <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb27-16">t6 <span class="op" style="color: #5E5E5E;">=</span> t5<span class="op" style="color: #5E5E5E;">**</span>(<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb27-17"></span>
+<span id="cb27-18">t7 <span class="op" style="color: #5E5E5E;">=</span> t6 <span class="op" style="color: #5E5E5E;">-</span> target</span>
+<span id="cb27-19">t8 <span class="op" style="color: #5E5E5E;">=</span> t7<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">2</span></span></code></pre></div>
+</div>
+<p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.0</span></span>
+<span id="cb28-2"></span>
+<span id="cb28-3">build_topo(t8)</span>
+<span id="cb28-4"></span>
+<span id="cb28-5"><span class="cf" style="color: #003B4F;">for</span> v <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">reversed</span>(topo):</span>
+<span id="cb28-6">    v._backward()</span>
+<span id="cb28-7"></span>
+<span id="cb28-8">w.grad</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>-1.9149156216104704</code></pre>
+</div>
+</div>
+<p>Note that we had to reverse the topological ordering because the deepest dependent of <code>t8</code> was first and we need to work backwards.</p>
+</section>
+</section>
+<section id="lecture" class="level2">
+<h2 class="anchored" data-anchor-id="lecture">Lecture</h2>
+<p>If you prefer watching a short video over reading you can see me go through the gist of backprop in the following video.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+<iframe src="https://www.loom.com/embed/579ab50060044464832777e6650180f3?sid=0412526a-5a1e-4e24-ab37-691214804dc5" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+</iframe>
+</div>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ol type="1">
+<li><p><a href="https://karpathy.github.io/neuralnets/">Andrej Karpathy “Hacker’s guide to Neural Networks”</a> inspired the comparison between random search and gradient descent. The same ideas are used in the <a href="https://cs231n.github.io/optimization-1/">cs231n lecture notes</a> since he taught this class. The chain rule example is taken from the <a href="https://cs231n.github.io/optimization-2/">c231n lecture notes</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=PaCmpygFfXo">Andrej Karparthy recorded a lecture in which he builds an autodiff system from scratch</a> and it inspired many parts of the notebooks, some parts (the <code>Value</code> class) are taken from his lecture.</p></li>
+<li><p><a href="https://mml-book.github.io/">Deisenroth et al.&nbsp;“Mathematics of Machine Learning”</a> has a beautiful chapter about backprop and autodiff.</p></li>
+<li><p><a href="https://marksaroufim.medium.com/automatic-differentiation-step-by-step-24240f97a6e6">Mark Saroufim “Automatic Differentiation Step by Step”</a> has an intuitive explaination of dual numbers and has a good resource section, including <a href="https://www.youtube.com/watch?v=Rs0uRQJdIcg&amp;list=WL&amp;index=8&amp;t=149s"></a></p></li>
+<li><p><a href="http://arxiv.org/abs/1502.05767">Automatic Differentiation in Machine Learning: a Survey</a> is a great survey that clarifies many terms.</p></li>
+<li><p><a href="http://neuralnetworksanddeeplearning.com/chap2.html">Michael Nielsen’s book</a> highlights some of the “hidden” assumptions.</p></li>
+<li><p><a href="https://e2eml.school/how_backpropagation_works">Brandon Rohrer</a> has a very intuitive of the chain rule in terms of the shower rate (similar to the bicycle/car/man example above).</p></li>
+<li><p><a href="https://dlsyscourse.org/lectures/">Deep Learning Systems Lecture at CMU</a> has a detailed slides on the algorithmic details behind autodiff.</p></li>
+<li><p><a href="https://github.com/MikeInnes/diff-zoo/tree/master/src">Differentiation for Hackers</a> has nice Julia code that showcases what makes autodiff special (and different from symbolic and numeric differentiation).</p></li>
+<li><p><a href="https://theoryandpractice.org/stats-ds-book/autodiff-tutorial.html">Kyle Cranmer</a> has a useful intro to autodiff. I took the <code>sympy</code> example from there.</p></li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<section id="who-invented-backpropagation" class="level3">
+<h3 class="anchored" data-anchor-id="who-invented-backpropagation">Who “invented” backpropagation</h3>
+<p>As with many popular things, there is some debate on “who was first”. You can find some discussion on this <a href="https://people.idsia.ch/~juergen/who-invented-backpropagation.html#BP1">here</a>.</p>
+<section id="original-backprop-paper" class="level4">
+<h4 class="anchored" data-anchor-id="original-backprop-paper">“Original” Backprop Paper</h4>
+<p>In the context of training neural networks, backpropagation was popularized in a beatiful paper by <a href="https://www.nature.com/articles/323533a0">David E. Rumelhart et al.</a> It is beautiful and you should read it.</p>
+</section>
+</section>
+<section id="backpropagation-and-lagrangian" class="level3">
+<h3 class="anchored" data-anchor-id="backpropagation-and-lagrangian">Backpropagation and Lagrangian</h3>
+<p>As <a href="https://timvieira.github.io/blog/post/2017/08/18/backprop-is-not-just-the-chain-rule/">this blog post by Tim Viera</a> and <a href="https://arc.net/l/quote/mjznlhvx">this paper by Yann LeCun</a> show, the intermediate variables can be recovered by rephrasing the optimization as a constrained optimization using the Lagrangian framework.</p>
+</section>
+<section id="forward-vs.-reverse-mode-autodiff" class="level3">
+<h3 class="anchored" data-anchor-id="forward-vs.-reverse-mode-autodiff">Forward vs.&nbsp;reverse mode autodiff</h3>
+<p>If we have a computation graph as follows</p>
+<p><code>x -&gt; a -&gt; b -&gt; y</code></p>
+<p>we can compute the derivative of the output with respect to the input as</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Dx%7D%20=%20%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Db%7D%5Cfrac%7B%5Cmathrm%7Bd%7Db%7D%7B%5Cmathrm%7Bd%7Da%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7Da%7D%7B%5Cmathrm%7Bd%7Dx%7D%0A"></p>
+<p>since multiplication is associative, we can choose between computing</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Dx%7D%20=%20%5Cleft(%20%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Db%7D%5Cfrac%7B%5Cmathrm%7Bd%7Db%7D%7B%5Cmathrm%7Bd%7Da%7D%20%5Cright)%20%5Cfrac%7B%5Cmathrm%7Bd%7Da%7D%7B%5Cmathrm%7Bd%7Dx%7D%0A"></p>
+<p>and <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Dx%7D%20=%20%20%5Cfrac%7B%5Cmathrm%7Bd%7Dy%7D%7B%5Cmathrm%7Bd%7Db%7D%5Cleft(%5Cfrac%7B%5Cmathrm%7Bd%7Db%7D%7B%5Cmathrm%7Bd%7Da%7D%20%20%5Cfrac%7B%5Cmathrm%7Bd%7Da%7D%7B%5Cmathrm%7Bd%7Dx%7D%20%5Cright)%0A"></p>
+<p>The first mode is called “reverse mode” autodiff as the gradient flow is opposite to the data flow. The second mode is called “forward mode” autodiff as the order of computation is the same for the gradient computation as for the computation of the function itself.</p>
+<p>Backpropagation is a special case of reverse mode autodiff.</p>
+<p>Which mode is more efficient depends on whether the input dimension is smaller than the output dimension. If the output dimension is smaller than the input dimension (which is the case for training neural networks) the reverse mode is more efficient as only one application of the reverse mode is needed to compute the gradients.</p>
+<p>The forward mode, however is of <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D">, where <img src="https://latex.codecogs.com/png.latex?n"> is the number of inputs. If the number of inputs is small (or even just one) and the number of outputs is large, e.g.&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BR%7D%20%5Cto%20%5Cmathbb%7BR%5Em%7D">, then the forward mode will be more efficient.</p>
+</section>
+<section id="symbolic-differentiation-vs.-numerical-differentiation-vs.-autodiff" class="level3">
+<h3 class="anchored" data-anchor-id="symbolic-differentiation-vs.-numerical-differentiation-vs.-autodiff">Symbolic differentiation vs.&nbsp;numerical differentiation vs.&nbsp;autodiff</h3>
+<ul>
+<li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
+<li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
+</ul>
+<div class="cell" data-execution_count="21">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;">import</span> sympy </span>
+<span id="cb30-2">x <span class="op" style="color: #5E5E5E;">=</span> sympy.symbols(<span class="st" style="color: #20794D;">'x'</span>)</span>
+<span id="cb30-3"></span>
+<span id="cb30-4"><span class="kw" style="color: #003B4F;">def</span> base_function(x): </span>
+<span id="cb30-5">    <span class="cf" style="color: #003B4F;">return</span> x<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">+</span><span class="dv" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">*</span>x <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">4</span></span></code></pre></div>
+</details>
+</div>
+<ul>
+<li>Autodiff can easily deal with control flows</li>
+</ul>
+</section>
+<section id="dual-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="dual-numbers">Dual numbers</h3>
+<p>Dual numbers are numbers of the form <img src="https://latex.codecogs.com/png.latex?v+%5Cdot%7Bv%7D%5Cepsilon">, where <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> has the special property that it is non-zero and <img src="https://latex.codecogs.com/png.latex?%5Cepsilon%5E2%20=%200">.</p>
+<p>They behave as one might expect:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A(v+%5Cdot%7Bv%7D%5Cepsilon)%20+%20(u%20+%20%5Cdot%7Bu%7D%5Cepsilon)%20=%20(v%20+%20u)%20+%20(%5Cdot%7Bv%7D%20+%20%5Cdot%7Bu%7D)%5Cepsilon%0A"></p>
+<p>and</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A(v+%5Cdot%7Bv%7D%5Cepsilon)(u+%5Cdot%7Bu%7D%5Cepsilon)%20=%20(vu)%20+%20(v%5Cdot%7Bu%7D%20+%20%5Cdot%7Bu%7Dv)%5Cepsilon%0A"></p>
+<p>Now, keep in mind that the Tyalor series of a function $f(x)</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(x)%20=%20f(a)%20+%20f'(a)(x-a)%20+%20%5Cfrac%7Bf''(a)%7D%7B2!%7D%20(x-a)%5E2%20+%20%5Cfrac%7Bf'''(a)%7D%7B3!%7D%20(x-a)%5E3%0A"></p>
+<p>Now, if <img src="https://latex.codecogs.com/png.latex?x%20=%20a+%5Cdot%7Bv%7D%5Cepsilon"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(a%20+%20%5Cdot%7Bv%7D%5Cepsilon)%20=%20f(a)%20+%20f'(a)(a%20+%20%5Cdot%7Bv%7D%5Cepsilon%20-a)%20+%20%20%5Cfrac%7Bf''(a)%7D%7B2!%7D%20(a%20+%20%5Cdot%7Bv%7D%5Cepsilon%20-a)%5E2%20+%20%5Cfrac%7Bf'''(a)%7D%7B3!%7D%20(a%20+%20%5Cdot%7Bv%7D%5Cepsilon%20-a)%5E3%0A"></p>
+<p>not that, per definition, all terms with <img src="https://latex.codecogs.com/png.latex?%5Cepsilon%5E2"> or higher powers will vanish. Therefore, we will be left with</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(a%20+%20%5Cdot%7Bv%7D%5Cepsilon)%20=%20f(a)%20+%20f'(a)%5Cdot%7Bv%7D%5Cepsilon%0A"></p>
+<p>That is, we can do something like</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
+<p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;">import</span> math </span>
+<span id="cb31-2"><span class="kw" style="color: #003B4F;">class</span> DualNumber:</span>
+<span id="cb31-3">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>, real, dual):</span>
+<span id="cb31-4">        <span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">=</span> real  <span class="co" style="color: #5E5E5E;"># Real part</span></span>
+<span id="cb31-5">        <span class="va" style="color: #111111;">self</span>.dual <span class="op" style="color: #5E5E5E;">=</span> dual  <span class="co" style="color: #5E5E5E;"># Dual part (coefficient of epsilon)</span></span>
+<span id="cb31-6"></span>
+<span id="cb31-7">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__repr__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb31-8">        <span class="cf" style="color: #003B4F;">return</span> <span class="ss" style="color: #20794D;">f"</span><span class="sc" style="color: #5E5E5E;">{</span><span class="va" style="color: #111111;">self</span><span class="sc" style="color: #5E5E5E;">.</span>real<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> + </span><span class="sc" style="color: #5E5E5E;">{</span><span class="va" style="color: #111111;">self</span><span class="sc" style="color: #5E5E5E;">.</span>dual<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">ε"</span></span>
+<span id="cb31-9">    </span>
+<span id="cb31-10">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__add__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb31-11">        <span class="co" style="color: #5E5E5E;"># Addition with another DualNumber or scalar</span></span>
+<span id="cb31-12">        <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">isinstance</span>(other, DualNumber):</span>
+<span id="cb31-13">            <span class="cf" style="color: #003B4F;">return</span> DualNumber(<span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">+</span> other.real, <span class="va" style="color: #111111;">self</span>.dual <span class="op" style="color: #5E5E5E;">+</span> other.dual)</span>
+<span id="cb31-14">        <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb31-15">            <span class="cf" style="color: #003B4F;">return</span> DualNumber(<span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">+</span> other, <span class="va" style="color: #111111;">self</span>.dual)</span>
+<span id="cb31-16"></span>
+<span id="cb31-17">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__mul__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb31-18">        <span class="co" style="color: #5E5E5E;"># Multiplication with another DualNumber or scalar</span></span>
+<span id="cb31-19">        <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">isinstance</span>(other, DualNumber):</span>
+<span id="cb31-20">            <span class="cf" style="color: #003B4F;">return</span> DualNumber(<span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">*</span> other.real, <span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">*</span> other.dual <span class="op" style="color: #5E5E5E;">+</span> <span class="va" style="color: #111111;">self</span>.dual <span class="op" style="color: #5E5E5E;">*</span> other.real)</span>
+<span id="cb31-21">        <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb31-22">            <span class="cf" style="color: #003B4F;">return</span> DualNumber(<span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">*</span> other, <span class="va" style="color: #111111;">self</span>.dual <span class="op" style="color: #5E5E5E;">*</span> other)</span>
+<span id="cb31-23">    </span>
+<span id="cb31-24">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__radd__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb31-25">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.<span class="fu" style="color: #4758AB;">__add__</span>(other)</span>
+<span id="cb31-26">    </span>
+<span id="cb31-27">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__rmul__</span>(<span class="va" style="color: #111111;">self</span>, other):</span>
+<span id="cb31-28">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.<span class="fu" style="color: #4758AB;">__mul__</span>(other)</span>
+<span id="cb31-29">        </span>
+<span id="cb31-30">    <span class="kw" style="color: #003B4F;">def</span> exp(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb31-31">        <span class="co" style="color: #5E5E5E;"># Exponential function</span></span>
+<span id="cb31-32">        exp_real <span class="op" style="color: #5E5E5E;">=</span> math.exp(<span class="va" style="color: #111111;">self</span>.real)</span>
+<span id="cb31-33">        <span class="cf" style="color: #003B4F;">return</span> DualNumber(exp_real, exp_real <span class="op" style="color: #5E5E5E;">*</span> <span class="va" style="color: #111111;">self</span>.dual)</span>
+<span id="cb31-34">    </span>
+<span id="cb31-35">    <span class="kw" style="color: #003B4F;">def</span> square(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb31-36">        <span class="co" style="color: #5E5E5E;"># Squaring the dual number</span></span>
+<span id="cb31-37">        <span class="cf" style="color: #003B4F;">return</span> DualNumber(<span class="va" style="color: #111111;">self</span>.real<span class="op" style="color: #5E5E5E;">**</span><span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">*</span> <span class="va" style="color: #111111;">self</span>.real <span class="op" style="color: #5E5E5E;">*</span> <span class="va" style="color: #111111;">self</span>.dual)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;">def</span> complex_function(x):</span>
+<span id="cb32-2">    <span class="cf" style="color: #003B4F;">return</span> x.square() <span class="op" style="color: #5E5E5E;">*</span> x.exp() <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">*</span>x</span>
+<span id="cb32-3"></span>
+<span id="cb32-4"><span class="co" style="color: #5E5E5E;"># Correcting the differentiation at x = 1</span></span>
+<span id="cb32-5">x <span class="op" style="color: #5E5E5E;">=</span> DualNumber(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb32-6">result <span class="op" style="color: #5E5E5E;">=</span> complex_function(x)</span>
+<span id="cb32-7"></span>
+<span id="cb32-8">result.real, result.dual</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>(5.718281828459045, 11.154845485377136)</code></pre>
+</div>
+</div>
+<p>Which is correct if we check using <a href="https://www.wolframalpha.com/input?i=what+is+the+derivative+of+x%5E2+*+exp(x)+++3x+at+x%3D1">WolframAlpha</a>.</p>
+</section>
+<section id="differentiating-complex-programs" class="level3">
+<h3 class="anchored" data-anchor-id="differentiating-complex-programs">Differentiating complex programs</h3>
+<p>Autodiff, and thus differentiable programs, are now becoming a first-class citizen in programming languages—see, for example, the <a href="https://github.com/apple/swift/blob/main/docs/DifferentiableProgramming.md">differentiable programming manifesto</a>.</p>
+<p>In the field of computational materials science a few nice examples include</p>
+<ul>
+<li><a href="https://github.com/jax-md/jax-md">jax-md</a>: Which allows one to differentia through full MD simulations, to do things like <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2024083118">the design of kinetic pathways</a></li>
+<li><a href="https://doi.org/10.1063/5.0137103">optimization of a Hückel model implemented in jax</a></li>
+<li><a href="https://www.nature.com/articles/s41524-023-01080-x">inverse design of pores</a></li>
+</ul>
+
+
+<!-- -->
+
+</section>
+</section>
+
+ ]]></description>
+  <category>machine-learning</category>
+  <guid>https://kjablonka.com/blog/posts/backprop/index.html</guid>
+  <pubDate>Thu, 22 Feb 2024 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

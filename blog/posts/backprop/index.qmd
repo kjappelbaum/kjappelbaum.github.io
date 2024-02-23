@@ -3,6 +3,9 @@ title: 'Developing an intuition for backpropagation'
 description: <i>Efficient long-distant errorpropagation</i>
 image: ""
 sidebar: false
+categories:
+  - machine-learning
+date: "2/23/2024"
 format:
   html:
     code-fold: true
@@ -37,6 +40,7 @@ Here, we want to understand how to systematically tune the weights to achieve th
         }
         .slider-label {
             margin-bottom: 10px;
+            color: white;
         }
     </style>
   <head>
@@ -186,6 +190,7 @@ Here, we want to understand how to systematically tune the weights to achieve th
                     .attr("y", (inputPos.y + hiddenPos.y) / 2 - (j === 0 ? 20 : -40))
                     .attr("dy", "-5")
                     .attr("text-anchor", "middle")
+                    .attr("fill", "white") 
                     .text(`weight 1-${j+1}: ${weights1[j].toFixed(2)}`);
             });
         });
@@ -205,6 +210,7 @@ Here, we want to understand how to systematically tune the weights to achieve th
                 .attr("y", (hiddenPos.y + positions.output[0].y) / 2 - (i === 0 ? 20 : -40))
                 .attr("dy", "-5")
                 .attr("text-anchor", "middle")
+                .attr("fill", "white")
                 .text(`weight 2-${i+1}: ${weights2[i].toFixed(2)}`);
         });
 
@@ -272,7 +278,7 @@ Here, we want to understand how to systematically tune the weights to achieve th
 ```
 
 
-When we think of the tiny neural network in the widget below one might think of many different ways for optimizing the weights (line strenghts) of this model.
+When we think of the tiny neural network in the widget above one might think of many different ways for optimizing the weights (line strenghts) of this model.
 
 
 ### Option 1: Randomly choose weights 
@@ -287,7 +293,7 @@ When we think of our neural network, the loss forms a landscape, that can be ver
 
 ```{python}
 import numpy as np
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
 def relu(x):
     return np.maximum(0, x)
@@ -309,14 +315,13 @@ def compute_mse_loss(predicted, target):
     loss =  np.mean(np.square(predicted - target))
     return loss
 
-
 # Simplify the scenario for clear visualization
 # Set the target output and input
 target = 1.9
 input_val = 0.8  # A simple input value to keep the forward pass straightforward
 
 # Define a range for weight updates that centers around an expected minimum
-weight_range = 3.0  # Explore weights within [-2, 2] for both weights
+weight_range = 3.5  # Explore weights within [-2, 2] for both weights
 num_steps = 100  # Increase the number of steps for finer resolution
 step_size = weight_range / num_steps
 
@@ -335,24 +340,14 @@ for i in range(len(weight1_1_range)):
         output = forward_pass(np.array([[input_val]]), current_weights1.reshape(1, 2), current_weights2.reshape(2, 1))
         losses[i, j] = compute_mse_loss(output, np.array([[target]]))
 
-# Create a 3D surface plot to visualize the loss landscape
-fig = go.Figure(data=[go.Surface(z=losses, x=weight1_1_range, y=weight2_1_range, colorscale='RdBu_r')])
-
-fig.update_layout(title='Loss Landscape', autosize=False,
-                  width=800, height=600,
-                  margin=dict(l=65, r=50, b=65, t=90),
-                  scene=dict(
-                      xaxis_title='Weight 1-1',
-                      yaxis_title='Weight 2-1',
-                      zaxis_title='Loss'))
-
-# Plotting the contour as a 2D projection
-fig.add_trace(go.Contour(z=losses, x=weight1_1_range, y=weight2_1_range,
-                         contours_coloring='lines', line_width=2, colorscale='RdBu_r',
-                         contours=dict(start=0.001, end=losses.max(), size=20),
-                         colorbar=dict(title='Loss')))
-
-fig.show()
+# Create a 2D contour plot to visualize the loss landscape
+plt.figure()
+heatmap = plt.contourf(weight1_1_vals, weight2_1_vals, losses, levels=np.linspace(losses.min(), losses.max(), 50), cmap='viridis')
+plt.colorbar()
+plt.title('Loss Landscape')
+plt.xlabel('$w_1^1$ values')
+plt.ylabel('$w_2^1$ values')
+plt.show()
 ```
 
 To create this plot, we keep two weights fixed, vary two others and then analyze how the loss looks like.
@@ -371,8 +366,51 @@ Based on the formula above, we might decide to compute a gradient numerically us
 
 The problem is that we need to perform _many evaluations_ of the loss to make it work (one per weight, which can be a lot for current frontier models). In addition, we add up errors because $h$ will be different from $0$ (truncation error) and because be have to work with machine precision and hence add rounding errors.
 
+::: {.callout-note}
 
-![If we compute numerical gradients, we have two main sources of error. One stems from the fact that $h$ in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number. Figure taken from [Baydin et al.](http://arxiv.org/abs/1502.05767)](errors.png)
+If we compute numerical gradients, we have two main sources of error. One stems from the fact that $h$ in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number. 
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the function and its exact derivative
+def f(x):
+    return x**3
+
+def df_exact(x):
+    return 3*x**2
+
+# Point at which to evaluate the derivative
+x = 1
+
+# Generate a range of h values (logarithmically spaced to cover small to larger values)
+h_values = np.logspace(-16, 0, 400)
+numerical_derivatives = []
+
+# Calculate numerical derivative using forward difference for each h
+for h in h_values:
+    numerical_derivative = (f(x+h) - f(x)) / h
+    numerical_derivatives.append(numerical_derivative)
+
+# Calculate exact derivative
+exact_derivative = df_exact(x)
+
+# Calculate errors
+errors = np.abs(exact_derivative - np.array(numerical_derivatives))
+
+# Plotting
+plt.figure()
+plt.loglog(h_values, errors, label='Absolute Error', marker='o', linestyle='-', markersize=4, markevery=10)
+plt.xlabel('Step size $h$')
+plt.ylabel('Absolute Error')
+plt.title('Error in Numerical Derivative of $x^3$')
+plt.legend()
+plt.grid(True, which="both", linestyle='--')
+plt.show()
+```
+:::
+
 
 
 ### Option 3: Analytical gradients
@@ -397,22 +435,6 @@ then the _partial derivates_ are
 $$
 \frac{\partial f}{\partial x} = y \quad \frac{\partial f}{\partial y} = x
 $$
-
-The derivative on one variable tells us how sensitive the expression is on its value. To interactively explore this, you can use the widget below. 
-
-TODO
-
-You can enter different functions and then try different points and see what a change in $x$ and $y$ would have as effect on the values and how this is reflected in the partial derivatives.
-
-
-We can also use the animation to explore a few examples for differentiation such as 
-
-$$
-f(x) = x^2 + y^2 \quad \rightarrow \quad \frac{\partial f}{\partial x} = 2x \quad \frac{\partial f}{\partial y} = 2y
-$$
-
-You would see, for $x=y=0$, for instance that the derivatives are zero (because you have a minimum). You also see that the influence of $x$ and $y$ is symmetric and independent from each other.
-
 
 An important rule for differentiation we will need to apply frequently, as it focusses on function composition, is the chain rule 
 
@@ -570,15 +592,6 @@ The sensitivity to $x$, $y$, and $z$ is hence
 #| code-fold: false
 print(dfdz, dfdy, dfdz)
 ```
-
-
-We can also interactively look at this in a circuit diagram 
-TODO
-
-
-How do we gain understanding from this widget?
-
-If we assume the setting from above ($x =-2, y =5, z=-4$), then the local gradient for $z$ is 3. Meaning that to increase the output of this circuit, we should increase the value of $z$. 
 
 Before we move ahead, realize what we did: 
     
@@ -935,7 +948,7 @@ def build_topo(v):
 - The deepest nodes are added to the `topo` list first
 - Recursiveness ensures that nodes another node depends on are added first (`topo.append` only happens after the recursive call)
 
-Not that this algorithm does not work for cyclic graphs.
+Note that this algorithm does not work for cyclic graphs.
 :::
 
 
@@ -982,6 +995,13 @@ w.grad
 Note that we had to reverse the topological ordering because the deepest dependent of `t8` was first and we need to work backwards.
 
 
+## Lecture 
+
+If you prefer watching a short video over reading you can see me go through the gist of backprop in the following video.
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/579ab50060044464832777e6650180f3?sid=0412526a-5a1e-4e24-ab37-691214804dc5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Resources 
 
 1. [Andrej Karpathy "Hacker's guide to Neural Networks"](https://karpathy.github.io/neuralnets/) inspired the comparison between random search and gradient descent. The same ideas are used in the [cs231n lecture notes](https://cs231n.github.io/optimization-1/) since he taught this class. The chain rule example is taken from the [c231n lecture notes](https://cs231n.github.io/optimization-2/)
@@ -997,6 +1017,12 @@ Note that we had to reverse the topological ordering because the deepest depende
 6. [Michael Nielsen's book](http://neuralnetworksanddeeplearning.com/chap2.html) highlights some of the "hidden" assumptions. 
 
 7. [Brandon Rohrer](https://e2eml.school/how_backpropagation_works) has a very intuitive of the chain rule in terms of the shower rate (similar to the bicycle/car/man example above).
+
+8. [Deep Learning Systems Lecture at CMU](https://dlsyscourse.org/lectures/) has a detailed slides on the algorithmic details behind autodiff.
+
+9. [Differentiation for Hackers](https://github.com/MikeInnes/diff-zoo/tree/master/src) has nice Julia code that showcases what makes autodiff special (and different from symbolic and numeric differentiation).
+
+10. [Kyle Cranmer](https://theoryandpractice.org/stats-ds-book/autodiff-tutorial.html) has a useful intro to autodiff. I took the `sympy` example from there.
 
 ## Further reading
 
@@ -1053,8 +1079,19 @@ The forward mode, however is of $\mathcal{O(n)}$, where $n$ is the number of inp
 ### Symbolic differentiation vs. numerical differentiation vs. autodiff
 
 - Numerical differentiation involves computing a term like $\frac{\partial f}{\partial x_i} \approx \frac{f(x+h) - f(x)}{h}$ for a small $h$. While this is might be relatively easy to implement, but requires $\mathcal{O(n)}$ evaluations for $n$ gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).
-- Symbolic differentation can be performed with systems like Maple or Mathematica. This gives us _expressions_ for the derivatives, which might grow exponentially large.
-- Automatic differentation gives as _values_ for derivatives (not expressions) in a computational complexity comparable to the forward pass. 
+- Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us _expressions_ for the derivatives, which might grow exponentially large (in blind application).
+
+```{python}
+import sympy 
+x = sympy.symbols('x')
+
+def base_function(x): 
+    return x**2 +3*x + 4
+
+
+```
+
+- Autodiff can easily deal with control flows
 
 
 ### Dual numbers 

@@ -3,18 +3,18 @@ sidebar: false
 description: "Kevin Maik Jablonka's personal homepage"
 image: quarto.png
 toc: true
-# listing:
-#   date-format: short
-#   feed: true
-#   filter-ui: false
-#   type: table
-#   sort-ui: false
-#   sort: "date desc"
-#   categories: false
-#   fields: [date, title]
-#   id: blog-listings
-#   contents: [blog_data/blogs.yml, blog/posts]
-# aliases: ["blog/"]
+listing:
+  date-format: short
+  feed: true
+  filter-ui: false
+  type: table
+  sort-ui: false
+  sort: "date desc"
+  categories: false
+  fields: [date, title]
+  id: blog-listings
+  contents: [blog_data/blogs.yml, blog/posts]
+aliases: ["blog/"]
 # format:
 #   html:
 #     anchor-sections: true
@@ -25,7 +25,7 @@ toc: true
 ![](avartar.JPG){.profile-pic}
 
 
-I recently defended my Ph.D. in the [group of Berend Smit at EPFL](https://www.epfl.ch/labs/lsmo/) focused on the digitization of chemistry and now lead a resarch group (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin. 
+I lead a [resarch group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin.
 I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
 I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem](http://cheminfo.github.io) and other open-source projects (see [my GitHub](https://github.com/kjappelbaum)).
 
@@ -47,6 +47,11 @@ I appreciate any kind of feedback. If you want to leave some, you can do so anon
 
 If you are looking for a short bio or a headshot, you can find them [here](bio.qmd).
 
- <!-- If you want, you can also book a slot in my [calendar](https://calendly.com/kjappelbaum) to chat. -->
----
 
+
+## 📮 Feed
+
+Below you can find some of my notes.
+
+::: {#blog-listings}
+:::

@@ -1,0 +1,21 @@
+---
+title: 'When optimism hurts'
+description: <i>Data leakage in machine learning</i>
+image: ""
+sidebar: false
+categories:
+  - machine-learning
+date: "2/26/2024"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+A question very close to my heart is whether all the "test scores" we report in our machine learning studies actually mean anything.
+
+While there are a lot of choices and potential problems just in the fact of deciding to perform a quantiative analysis [see [the hierachy of limitations of machine learning from Momin M. Malik on this](https://arxiv.org/abs/2002.05193)]{.aside} and the metrics we choose [see [machine learning that matters from Kiri Wagstaff](https://arxiv.org/abs/1206.4656v1) as well as Goodhart's law and the shortcut rule] a very common pitfall is that we do not have independent test data.
+
+In the statistical learning community, this has been known as _optimism_ and is conventionally used to show how the training error is not a good estimate of generalization performance. 
+
+-> we can derive optimism and then think of the test dataset as a mix of 100% train, 0% train, or a mix 

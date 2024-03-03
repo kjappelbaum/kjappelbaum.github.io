@@ -15,7 +15,121 @@
 <link>https://kjablonka.com/index.html</link>
 </image>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Thu, 22 Feb 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 01 Mar 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Multiple instances learning</title>
+  <link>https://kjablonka.com/blog/posts/mil/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Molecules or materials are dynamic. At realistic temperatures, there will always be an ensemble of different conformers. In addition, we typically do not deal with pure materials but more commonly with blends for which the exact structure is not known.</p>
+<p>Multiple instances learning (MIL) is a framework that allows us to make predictions for such systems. For example, by thinking of molecules as <em>bags</em> of conformers or materials as <em>bags</em> of components of a blend.</p>
+<p>Often, practioners already use without explicitly naming it. An overview over applications in chemistry can be found in <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/wcms.1698">Zankov et al.</a></p>
+<section id="the-idea-behind-multiple-instances-learning" class="level2">
+<h2 class="anchored" data-anchor-id="the-idea-behind-multiple-instances-learning">The idea behind multiple instances learning</h2>
+<p>At its core, MIL is a variant of supervised learning that handles data grouped into bags, each containing multiple instances. In the context of chemical prediction, a “bag” might represent a single chemical compound, and the “instances” within could be different conformations, representations, or features of that compound. The distinctive aspect of MIL is that it assigns labels to bags, not to the individual instances they contain, making it particularly suited to scenarios where precise instance-level labels are hard to obtain or define.</p>
+<p>It was formalized 1997 by a team around <a href="https://scholar.google.com/citations?hl=en&amp;user=09kJn28AAAAJ">Thomas G. Dietterich</a> <a href="https://www.sciencedirect.com/science/article/pii/S0004370296000343">with the goal of better drug-activity predictions</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/mil_overview.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Overview of multiple instances learning. A bag (e.g.&nbsp;molecule) consists of multiple instances (e.g.&nbsp;conformers or tautomers). The goal is to make predictions for each bag.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="approaches-to-mil" class="level2">
+<h2 class="anchored" data-anchor-id="approaches-to-mil">Approaches to MIL</h2>
+<p>There are different ways to perform MIL: At the instance-level or the bag-level</p>
+<section id="instance-level-mil" class="level3">
+<h3 class="anchored" data-anchor-id="instance-level-mil">Instance-level MIL</h3>
+<p>The perhaps conceptually simplest way to perform MIL is to make a prediction for each instance and then aggregate the predictions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/mil_instance.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">One approach to MIL is to make a prediction for each instance and to then aggregate those predictions.</figcaption><p></p>
+</figure>
+</div>
+<p>Conceptually, this is quite similar to Behler-Parinello Neural Networks. Here, we decompose a target, such as the energy, into atomic contributions and then make predictions for atomic energies and then add those up.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/behler_parinello.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Behler-Parinello style models can be thought of instance-level MIL. We predict energies for each atom (instance) and then sum them up (aggregation) to obtain energies for the entire molecule (bag).</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="bag-level-mil" class="level3">
+<h3 class="anchored" data-anchor-id="bag-level-mil">Bag-level MIL</h3>
+<p>Alternatively, one might obtain a representation for each instance and then make predictions based on aggregated representations. Note that this is not different from what we typically do in a graph-neural network: We obtain a representation for each atom using, for example, graph convolutions, then aggregate those (e.g.&nbsp;by taking the mean) abnd then perform the prediction over the full molecule (the bag). Also the fingerprint averaging methods for copolymers or polymer blends proposed by <a href="https://arxiv.org/pdf/2303.12938.pdf">Shukla et al.</a> can be seen as special case of MIL.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/mil_bag.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">One can perform MIL by using representations for each instance in a learning algorithm. The simplest approach might be to average representations and to then feed them into a feedforward neural network.</figcaption><p></p>
+</figure>
+</div>
+<p>If we use a more learnable pooling mechanism (e.g.&nbsp;attention-based), we can also attempt to find out what the most important instances are. This is known as key-instance detection.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/attention_weighted.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Attention weighted aggregation might be used to identify key instances by identifying the largest attention weights</figcaption><p></p>
+</figure>
+</div>
+<section id="specialized-algorithms" class="level4">
+<h4 class="anchored" data-anchor-id="specialized-algorithms">Specialized algorithms</h4>
+<section id="set-comparisons-based" class="level5">
+<h5 class="anchored" data-anchor-id="set-comparisons-based">Set comparisons based</h5>
+<p>Solving the MIL problem boils down to comparing sets. And there are various similarity measures for comparing set, which can then be implemented in distance-based algorithms such as SVM or kNN.</p>
+<p>A common metric is the Haussdorff distance. In this metric</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ad_%7B%5Ctext%20%7BHausdorff%20%7D%7D%5Cleft(B_1,%20B_2%5Cright)=%5Cmax%20%5Cleft(%5Coperatorname%20%7Bmax%20%7D%20_%20%7B%20b%20_%20%7B%20i%20%7D%20%5Cin%20B%20_%20%7B%201%20%7D%20%7D%20%5Cleft(%5Cmin%20_%7Bb_j%20%5Cin%20B_2%7D%5Cleft(d%5Cleft(b_i,%20b_j%5Cright)%5Cright),%20%5Cmax%20_%7Bb_i%20%5Cin%20B_2%7D%5Cleft(%5Cmin%20_%7Bb_j%20%5Cin%20B_1%7D%5Cleft(d%5Cleft(b_i,%20b_j%5Cright)%5Cright)%5Cright)%5Cright.%5Cright.%0A"> where <img src="https://latex.codecogs.com/png.latex?d"> is a distancve over the feature space of an instance <img src="https://latex.codecogs.com/png.latex?b"> in a bag <img src="https://latex.codecogs.com/png.latex?B">. Essentially, the Haussdorff distance is the distance of the point from one set that is furthest away from any point in the other set, considering both directions. This ensures that the Hausdorff Distance captures the worst-case scenario — the greatest of all the distances from a point in one set to the closest point in the other set.</p>
+</section>
+</section>
+<section id="diettrichs-original-algorithm-axis-parallel-rectangles-aprs" class="level4">
+<h4 class="anchored" data-anchor-id="diettrichs-original-algorithm-axis-parallel-rectangles-aprs">Diettrich’s original algorithm: Axis Parallel Rectangles (APRS)</h4>
+<p>The idea is to learn a “concept” in feature space as axis-parallel rectangle $$$ in which there is - at least one instance from each positive example - exclude all instances from negative examples</p>
+<p>the prediction is then positive if a new <img src="https://latex.codecogs.com/png.latex?x"> is in the rectangle</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Af(x,%20R)%20=%20%5Cbegin%7Bcases%7D%0A1%20&amp;%20x%20%5Cin%20R%20%5C%5C%0A0%20&amp;%20%5Ctext%7Belse%7D%0A%5Cend%7Bcases%7D%0A"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/mil/APR.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Illustration of the axis-parallel rectangle approach. The filled shapes represent instances, the grey ellipses bags. The organe rectangle is the APR. Blue indicates negative instances, red ones postive ones. Each bag with at least one positive instance is labled as positive.</figcaption><p></p>
+</figure>
+</div>
+<p>In the original article there are different algorithms for growing those rectangles. One rough implementation might look as follows:</p>
+<ol type="1">
+<li><em>Initialization</em>: Choose a seed positive instance to start constructing the APR.</li>
+<li><em>Grow APR</em>: find the smallest APR that covers at least one instance of every positive molecule (i.e.&nbsp;bag). One can implement it greedly to add until there is at least one instance from every positive molecule. For addition, we choose the molecule that would lead to the smallest growth of the APR. This is run over a set of possible features.</li>
+<li><em>Select Discriminating Features</em>
+<ul>
+<li>Evaluate each feature for its ability to exclude negative instances while including positive ones.</li>
+<li>Select features that provide the best discrimination between positive and negative instances.</li>
+</ul></li>
+<li><em>Expand APR</em>: The APR with the steps above is often too tight: “It is typically so tight that it excludes most positive instances in the test set”. Those, one can
+<ul>
+<li>Apply kernel density estimation on each selected feature to determine the optimal expansion of the APR bounds.</li>
+<li>Adjust bounds to ensure a high probability of covering new positive instances and excluding negatives.</li>
+</ul></li>
+<li><em>Iterate</em>: Alternate between selecting discriminating features and expanding the APR until the process converges on a stable set of features and APR bounds.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="Ihttps://www.uco.es/users/sventura/talk/slides/2015-multiple-instance-learning.pdf">Lecture notes on MIL by Sebastián Ventura</a></li>
+<li><a href="https://www.dbs.ifi.lmu.de/Lehre/KDD_II/WS1415/skript/KDD2-4-VarietyData2.pdf">Lecture notes by the Database Systems Group at LMU</a></li>
+</ol>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>machine-learning</category>
+  <guid>https://kjablonka.com/blog/posts/mil/index.html</guid>
+  <pubDate>Fri, 01 Mar 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/mil/mil_overview.png" medium="image" type="image/png" height="120" width="144"/>
+</item>
 <item>
   <title>Developing an intuition for backpropagation</title>
   <link>https://kjablonka.com/blog/posts/backprop/index.html</link>

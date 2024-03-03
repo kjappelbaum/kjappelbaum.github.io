@@ -7,3 +7,19 @@ date: 2023-01-16
 image: ""
 order: 0
 ---
+
+- pre-commit 
+- ruff 
+- blac$$k
+
+- typing 
+- mkdocs
+
+
+- pdm? 
+
+- changelog https://pypi.org/project/git-changelog/ 
+
+- makefile 
+
+https://pawamoy.github.io/copier-pdm/

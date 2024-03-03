@@ -1,0 +1,103 @@
+---
+title: 'Multiple instances learning'
+description: <i>Making predictions for bags of instances</i>
+image: ""
+sidebar: false
+categories:
+  - machine-learning
+date: "3/2/2024"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+Molecules or materials are dynamic. At realistic temperatures, there will always be an ensemble of different conformers. 
+In addition, we typically do not deal with pure materials but more commonly with blends for which the exact structure is not known. 
+
+Multiple instances learning (MIL) is a framework that allows us to make predictions for such systems. For example, by thinking of molecules as _bags_ of conformers or materials as _bags_ of components of a blend.
+
+Often, practioners already use without explicitly naming it. An overview over applications in chemistry can be found in [Zankov et al.](https://onlinelibrary.wiley.com/doi/abs/10.1002/wcms.1698)
+
+## The idea behind multiple instances learning
+
+At its core, MIL is a variant of supervised learning that handles data grouped into bags, each containing multiple instances. 
+In the context of chemical prediction, a "bag" might represent a single chemical compound, and the "instances" within could be different conformations, representations, or features of that compound. The distinctive aspect of MIL is that it assigns labels to bags, not to the individual instances they contain, making it particularly suited to scenarios where precise instance-level labels are hard to obtain or define.
+
+It was formalized 1997 by a team around [Thomas G. Dietterich](https://scholar.google.com/citations?hl=en&user=09kJn28AAAAJ) [with the goal of better drug-activity predictions](https://www.sciencedirect.com/science/article/pii/S0004370296000343). 
+
+![Overview of multiple instances learning. A bag (e.g. molecule) consists of multiple instances (e.g. conformers or tautomers). The goal is to make predictions for each bag.](mil_overview.png)
+
+## Approaches to MIL 
+
+There are different ways to perform MIL: At the instance-level or the bag-level 
+
+### Instance-level MIL 
+
+The perhaps conceptually simplest way to perform MIL is to make a prediction for each instance and then aggregate the predictions. 
+
+![One approach to MIL is to make a prediction for each instance and to then aggregate those predictions.](mil_instance.png)
+
+Conceptually, this is quite similar to Behler-Parinello Neural Networks. Here, we decompose a target, such as the energy, into atomic contributions and then make predictions for atomic energies and then add those up. 
+
+![Behler-Parinello style models can be thought of instance-level MIL. We predict energies for each atom (instance) and then sum them up (aggregation) to obtain energies for the entire molecule (bag).](behler_parinello.png)
+
+### Bag-level MIL
+Alternatively, one might obtain a representation for each instance and then make predictions based on aggregated representations.
+Note that this is not different from what we typically do in a graph-neural network: We obtain a representation for each atom using, for example, graph convolutions, then aggregate those (e.g. by taking the mean) abnd then perform the prediction over the full molecule (the bag).  Also the fingerprint averaging methods for copolymers or polymer blends proposed by [Shukla et al.](https://arxiv.org/pdf/2303.12938.pdf) can be seen as special case of MIL. 
+
+![One can perform MIL by using representations for each instance in a learning algorithm. The simplest approach might be to average representations and to then feed them into a feedforward neural network.](mil_bag.png)
+
+If we use a more learnable pooling mechanism (e.g. attention-based), we can also attempt to find out what the most important instances are. This is known as key-instance detection. 
+
+![Attention weighted aggregation might be used to identify key instances by identifying the largest attention weights](attention_weighted.png)
+
+
+#### Specialized algorithms 
+
+##### Set comparisons based
+
+Solving the MIL problem boils down to comparing sets. And there are various similarity measures for comparing set, which can then be implemented in distance-based algorithms such as SVM or kNN. 
+
+A common metric is the Haussdorff distance. In this metric 
+
+$$
+d_{\text {Hausdorff }}\left(B_1, B_2\right)=\max \left(\operatorname {max } _ { b _ { i } \in B _ { 1 } } \left(\min _{b_j \in B_2}\left(d\left(b_i, b_j\right)\right), \max _{b_i \in B_2}\left(\min _{b_j \in B_1}\left(d\left(b_i, b_j\right)\right)\right)\right.\right.
+$$
+where $d$ is a distancve over the feature space of an instance $b$ in a bag $B$. 
+Essentially,  the Haussdorff distance is the distance of the point from one set that is furthest away from any point in the other set, considering both directions. This ensures that the Hausdorff Distance captures the worst-case scenario — the greatest of all the distances from a point in one set to the closest point in the other set.
+
+
+#### Diettrich's original algorithm: Axis Parallel Rectangles (APRS)
+
+The idea is to learn a "concept" in feature space as axis-parallel rectangle $$$ in which there is 
+- at least one instance from each positive example 
+- exclude all instances from negative examples 
+
+the prediction is then positive if a new $x$ is in the rectangle
+
+$$
+f(x, R) = \begin{cases}
+1 & x \in R \\
+0 & \text{else}
+\end{cases}
+$$
+
+![Illustration of the axis-parallel rectangle approach. The filled shapes represent instances, the grey ellipses bags. The organe rectangle is the APR. Blue indicates negative instances, red ones postive ones. Each bag with at least one positive instance is labled as positive.](APR.png)
+
+In the original article there are different algorithms for growing those rectangles. One rough implementation might look as follows: 
+
+1. _Initialization_: Choose a seed positive instance to start constructing the APR.
+2. _Grow APR_: find the smallest APR that covers at least one instance of every positive molecule (i.e. bag). One can implement it greedly to add until there is at least one instance from every positive molecule. For addition, we choose the molecule that would lead to the smallest growth of the APR. This is run over a set of possible features. 
+3. _Select Discriminating Features_
+   - Evaluate each feature for its ability to exclude negative instances while including positive ones.
+   - Select features that provide the best discrimination between positive and negative instances.
+4. _Expand APR_: The APR with the steps above is often too tight: "It is typically so tight that it excludes most positive instances in the test set". Those, one can
+   - Apply kernel density estimation on each selected feature to determine the optimal expansion of the APR bounds.
+   - Adjust bounds to ensure a high probability of covering new positive instances and excluding negatives.
+5. _Iterate_: Alternate between selecting discriminating features and expanding the APR until the process converges on a stable set of features and APR bounds.
+
+## References 
+
+1. [Lecture notes on MIL by Sebastián Ventura](Ihttps://www.uco.es/users/sventura/talk/slides/2015-multiple-instance-learning.pdf)
+2. [Lecture notes by the Database Systems Group at LMU](https://www.dbs.ifi.lmu.de/Lehre/KDD_II/WS1415/skript/KDD2-4-VarietyData2.pdf)

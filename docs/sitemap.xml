@@ -2,54 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kjablonka.com/teaching.html</loc>
-    <lastmod>2024-02-23T22:41:40.024Z</lastmod>
+    <lastmod>2024-03-03T16:56:14.898Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/research.html</loc>
-    <lastmod>2024-02-23T22:41:40.518Z</lastmod>
+    <lastmod>2024-03-03T16:56:15.314Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/index.html</loc>
-    <lastmod>2024-02-23T22:41:41.544Z</lastmod>
+    <lastmod>2024-03-03T16:56:16.204Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/openings.html</loc>
-    <lastmod>2024-02-23T22:41:43.608Z</lastmod>
+    <lastmod>2024-03-03T16:56:18.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/mil/index.html</loc>
+    <lastmod>2024-03-03T16:56:20.593Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/blog/posts/backprop/index.html</loc>
-    <lastmod>2024-02-23T22:41:52.614Z</lastmod>
+    <lastmod>2024-03-03T16:56:30.249Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/publications.html</loc>
-    <lastmod>2024-02-23T22:41:53.004Z</lastmod>
+    <lastmod>2024-03-03T16:56:30.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/scratch/optimism/index.html</loc>
+    <lastmod>2024-03-03T16:56:30.979Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/scratch/coding-with-me/index.html</loc>
-    <lastmod>2024-02-23T22:41:53.400Z</lastmod>
+    <lastmod>2024-03-03T16:56:31.339Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/scratch/plotting/index.html</loc>
-    <lastmod>2024-02-23T22:41:53.790Z</lastmod>
+    <lastmod>2024-03-03T16:56:31.682Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/scratch/how-much-data/index.html</loc>
-    <lastmod>2024-02-23T22:41:54.183Z</lastmod>
+    <lastmod>2024-03-03T16:56:32.016Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/opensource/opensource.html</loc>
-    <lastmod>2024-02-23T22:41:54.712Z</lastmod>
+    <lastmod>2024-03-03T16:56:32.448Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
-    <lastmod>2024-02-23T22:43:24.723Z</lastmod>
+    <lastmod>2024-03-03T16:57:55.642Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/cv.html</loc>
-    <lastmod>2024-02-23T22:43:25.099Z</lastmod>
+    <lastmod>2024-03-03T16:57:55.960Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/bio.html</loc>
-    <lastmod>2024-02-23T22:43:25.491Z</lastmod>
+    <lastmod>2024-03-03T16:57:56.284Z</lastmod>
   </url>
 </urlset>

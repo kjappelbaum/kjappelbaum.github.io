@@ -17,6 +17,59 @@
 <generator>quarto-1.2.313</generator>
 <lastBuildDate>Fri, 01 Mar 2024 23:00:00 GMT</lastBuildDate>
 <item>
+  <title>Language I want to be more mindful of</title>
+  <link>https://kjablonka.com/blog/posts/bad_language/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="page-columns page-full"><p>While an <a href="https://www.bridgewater.com/culture/bridgewaters-idea-meritocracy">idea meritocracy</a> might be an ideal way to run science. <a href="https://www.washingtonpost.com/news/monkey-cage/wp/2015/02/12/academia-is-not-a-meritocracy/">Academia</a> <a href="https://www.nature.com/articles/s41562-019-0735-y">is</a> <a href="https://www.pnas.org/doi/10.1073/pnas.1211286109">not</a> <a href="https://www.science.org/doi/full/10.1126/science.1196783">a</a> <a href="https://www.aaup.org/article/why-graduate-students-reject-fast-track">meritocracy</a><a href="https://www.nature.com/articles/s41550-017-0141">.</a>  Even worse, some of the language we (including myself) use might make some with great ideas feel unsafe and not welcome.</p><div class="no-row-height column-margin column-container"><span class="">Some of the metascience works of <a href="https://aaronclauset.github.io/">Aaron Clauset</a> give great evidence for that. For example, <a href="https://www.youtube.com/watch?v=gyhZ645Vh14">this talk</a>.</span></div></div>
+<section id="junior-group-leader" class="level2">
+<h2 class="anchored" data-anchor-id="junior-group-leader">Junior group leader</h2>
+<p>In some communities, the term “junior group leader” is quite common. Why is this suboptimal? The term “junior” might suggest to some colleagues or students that the group leader has significantly less expertise or authority compared to “senior” colleagues and reinforces hierarchical structures within academia.</p>
+<p>A simple title such as “Research Group Leader” without the “junior” prefix can emphasize the role rather than the perceived hierarchy or experience level.</p>
+<p><em>Before:</em> “We need a junior group leader to handle the initial phase.”</p>
+<p><em>After:</em> “We’re looking for an independent research leader to spearhead the initial phase.”</p>
+<p>This is a special case of seniority and age being more important in some societies than skill and accomplishment.</p>
+</section>
+<section id="gender" class="level2">
+<h2 class="anchored" data-anchor-id="gender">Gender</h2>
+<p>Gender is diverse and nothing we can assume based on names, roles, or societal expectations. If we can be more proactive in communicating in a way that makes people more respected, we can do so.</p>
+<p><em>Before:</em> “Each student must submit his or her proposal by next week.”</p>
+<p><em>After:</em> “All students must submit their proposals by next week.”</p>
+<p>In academia we can also be more inclusive by being mindful of how we address people. Instead of using Mr or Ms we can simply address them using gender-neutral <em>earned</em> titles.</p>
+<p><em>Before:</em> “Dear Ms.&nbsp;Curie”</p>
+<p><em>After:</em> “Dear Dr.&nbsp;Curie”</p>
+</section>
+<section id="speaking-of-students-as-commodities" class="level2">
+<h2 class="anchored" data-anchor-id="speaking-of-students-as-commodities">Speaking of students as commodities</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/bad_language/http:/www.phdcomics.com/comics/archive/phd012609s.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cartoon illustrating the commoditization of students.</figcaption><p></p>
+</figure>
+</div>
+<p>As team leader, one easily slips into language that strips students of their human nature and makes them seem like a commodity for the production of papers. However, it is important to realize that we all have been a <a href="https://www.lesswrong.com/posts/wd7qxFBF2swRscBiS/academia-as-company-hierarchy">“productive student”</a> (or a less productive one) at points of our career.</p>
+<p><em>Before:</em> “We need to put more students on this to increase our output.”</p>
+<p><em>After:</em> “Let’s involve more team members to bring diverse perspectives and enrich our project.”</p>
+</section>
+<section id="authorship-lists" class="level2">
+<h2 class="anchored" data-anchor-id="authorship-lists">Authorship lists</h2>
+<p>Authorship is still the currency of academia. We currently indicate the “relevance” of each other by their position on the list of others on a paper. However, contributions are very diverse and cannot be easily rank-ordered (there are many dimensions and introducing a <a href="https://mathworld.wolfram.com/TotallyOrderedSet.html">total order</a> would require us to introduce some weighting of the different dimensions).</p>
+<p><em>Before:</em> Listing authors strictly by seniority, regardless of contributions.</p>
+<p><em>After:</em> Using contributorship statements that detail each author’s role, such as “A.B. designed the study and wrote the manuscript. C.D. conducted the experiments and analyzed the data.”</p>
+
+
+</section>
+
+ ]]></description>
+  <category>academia</category>
+  <category>communication</category>
+  <guid>https://kjablonka.com/blog/posts/bad_language/index.html</guid>
+  <pubDate>Fri, 01 Mar 2024 23:00:00 GMT</pubDate>
+  <media:content url="http://www.phdcomics.com/comics/archive/phd012609s.gif" medium="image" type="image/gif"/>
+</item>
+<item>
   <title>Multiple instances learning</title>
   <link>https://kjablonka.com/blog/posts/mil/index.html</link>
   <description><![CDATA[ 

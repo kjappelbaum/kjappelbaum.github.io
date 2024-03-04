@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/bad_language/index.html",
       "/blog/posts/mil/index.html",
       "/blog/posts/backprop/index.html"
     ]

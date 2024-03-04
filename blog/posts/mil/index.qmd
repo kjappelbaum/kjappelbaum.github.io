@@ -12,6 +12,7 @@ format:
     code-tools: true
 ---
 
+
 Molecules or materials are dynamic. At realistic temperatures, there will always be an ensemble of different conformers. 
 In addition, we typically do not deal with pure materials but more commonly with blends for which the exact structure is not known. 
 

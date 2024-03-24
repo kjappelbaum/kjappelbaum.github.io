@@ -15,7 +15,68 @@
 <link>https://kjablonka.com/index.html</link>
 </image>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Fri, 01 Mar 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 23 Mar 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>The ‘researcher’s stuff’</title>
+  <link>https://kjablonka.com/blog/posts/researchers_stuff/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>In the hope of trying to better understand the thing I pretend to do for a living, I have been reading <a href="https://en.wikipedia.org/wiki/Isabelle_Stengers">Isabelle Stenger</a>’s <a href="https://www.wiley.com/en-gb/Another+Science+is+Possible:+A+Manifesto+for+Slow+Science+-p-9781509521814">“Another Science is Possible: A Manifesto for Slow Science”</a>. My goal is to better understand why I feel that <a href="https://www.theatlantic.com/science/archive/2018/11/diminishing-returns-science/575665/">science is seemingly less efficient</a> and why academia is a, perhaps, an increasingly “special” place to work in.</p>
+<p>Early in the book, she compares the “right stuff” NASA test pilots needed to have with what she calls the “researcher’s stuff”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/researchers_stuff/dalle_right_stuff.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DALL E’s illustration of the “right stuff” and “researcher’s stuff”</figcaption><p></p>
+</figure>
+</div>
+<p><a href="https://en.wikipedia.org/wiki/The_Right_Stuff_(book)">In Tom Wolfe’s book the “right stuff”</a> was the “stuff” the NASA pilots who survived had — and those who died didn’t have</p>
+<blockquote class="blockquote">
+<p>In this fraternity, even though it was military, men were not rated by their outward rank as ensigns, lieutenants, commanders, or whatever. No, herein the world was divided into those who had it and those who did not. This quality, this it, was never named, however, nor was it talked about in any way.</p>
+</blockquote>
+<p>Stenger’s rephrases this as</p>
+<blockquote class="blockquote">
+<p>It is precisely this unacceptable degree of dependency that the expression hides: whatever flying coffin they were given to test, those who were killed didn’t have the right stuff.</p>
+</blockquote>
+<p>and links this to working conditions in academia</p>
+<blockquote class="blockquote">
+<p>Far from being treated as a primary resource that is now under threat, young researchers of either gender, doctoral students or postdocs, have to accept the realities of onerous working conditions and fierce competition. They are supposed to grin and bear it: the great adventure of human curiosity presented to them as children is replaced by the theme of a vocation that demands body-and-soul commitment. And this is what we accuse today’s young people of no longer accepting: compliance with the sacrifices that service to science demands.</p>
+</blockquote>
+<p>While there is <a href="https://x.com/ashleyruba_phd/status/1720105966165762269?s=20">a</a> <a href="https://rowanzellers.com/blog/rowan-job-search2/">lot</a> <a href="https://forbetterscience.com/2020/09/06/new-jacs-eic-erick-carreira-correct-your-work-ethic-immediately/">to</a> <a href="https://www.republik.ch/2021/04/15/eidgenoessische-toxische-hochschule">say</a> <a href="https://www.nature.com/articles/s41562-021-01178-6">about</a> (<a href="https://www.nature.com/articles/d41586-021-03567-3">working</a>) <a href="https://www.theatlantic.com/business/archive/2010/05/why-does-academia-treat-its-workforce-so-badly/56829/">conditions</a> <a href="https://www.theatlantic.com/science/archive/2016/11/why-would-a-poor-kid-want-to-work-in-academia/622698/">in</a> <a href="https://www.theatlantic.com/education/archive/2019/04/adjunct-professors-higher-education-thea-hunter/586168/">academia</a> and how the system in many parts failed to evolve, the link to “over objectivization”, which is perhaps very natural to many scientists, was more interesting to me. In an attempt to increase transparency and objectivity, “objective metrics” are being used to quantify how much “researcher stuff” a researcher has. However, those metrics do, of course, not work for every type of science (Stenger’s attempts to show that they stem from what she calls “fast sciences”). More importantly, however, we know from works such as the one from <a href="https://link.springer.com/book/10.1007/978-3-319-15524-1">Kenneth Stanley and Joel Lehman that “greatness cannot be planned”</a> as paths to great discoveries ofteen go via “stepping stones” we cannot anticipate and which optimization of “naiive” metrics would us not lead to.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/researchers_stuff/https:/pbs.twimg.com/media/FW3pxEkaMAAb5K4?format=jpg&amp;name=large.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">There is <a href="https://wiki.santafe.edu/images/3/34/Stanley_innovation_workshop14.pdf">empirical research that some things can be found more easily when not looking for it</a>. This could, for example, be seen in the PicBreeder experiment where participants were asked to “breed” images.</figcaption><p></p>
+</figure>
+</div>
+<p><a href="https://www.lesswrong.com/posts/wd7qxFBF2swRscBiS/academia-as-company-hierarchy">From this point of view, viewing academia via the lense of the comic Company Hierarchy by Hugh MacLeod makes some sense.</a> In many layers of academia we have the tendency to optimize for metrics (h index, citations, …) which is in this perspective the definition of the “clueless”. [Stenger also has an interesting tangent how this might be tight to current science education. In a Kuhnian perspective of paradigms, we are not really taught to question different ways of thinking, but rather focus in methodological details. Questioning different schools of thinking is perhaps more natural to the social sciences.]{:.aside}</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/researchers_stuff/https:/39669.cdn.cke-cs.com/rQvD3VnunXZu34m86e5f/images/18d38a134d5c8109364d169f34a464d4d8b7ca91aaf600de.jpg/w_400.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Hugh MacLeod’s Company Hierarchy.</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>The Clueless cannot process anything that is not finite, countable and external. They can only process the legible.” Certainly this describes the behavior of faculty, literally counting lines on their CV, grubbing for citations, breathlessly calculating their h-index.</p>
+</blockquote>
+<p>To help science, Stenger argues that scientists should start caring more about the broader relevance of their work and not forget, what relevance means in the end: Not bibliometric metrics but rather evaluation by the community</p>
+<blockquote class="blockquote">
+<p>“if a scientific claim can be trusted as reliable, it is not because scientists are objective, but because the claim has been exposed to the demanding objections of competent colleagues concerned about its reliability”</p>
+</blockquote>
+<p>Latter might sometimes correlate with bibliometric metrics but will not always do so. Simply because we rely on many different things (software, databases, …) that are created on <a href="https://www.nature.com/articles/495300a">very different timescales</a>.</p>
+<p>To me, Stenger really urges us to step out of the “ivory tower” and “appreciate the originality or the relevance of an idea but also pay attention to questions or possibilities that were not taken into account in its production, but that might become important in other circumstances”. This is also very important when we think about all the ways technologies can be misused. Stepping out of the ivory tower and taking society serious, however, probably also has to prompt us to rethink working conditions in academia.</p>
+<p>In any case, I am very happy to see that <a href="https://www.convergentresearch.org/">new forms of doing science</a> <a href="https://arcinstitute.org/">are</a> <a href="https://arenabio.works/">being</a> explored, <a href="https://www.sam-rodriques.com/blog">because academia certainly is not the only and best way to do science</a>.</p>
+
+
+
+ ]]></description>
+  <category>academia</category>
+  <category>metascience</category>
+  <guid>https://kjablonka.com/blog/posts/researchers_stuff/index.html</guid>
+  <pubDate>Sat, 23 Mar 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/researchers_stuff/dalle_right_stuff.png" medium="image" type="image/png" height="82" width="144"/>
+</item>
 <item>
   <title>Language I want to be more mindful of</title>
   <link>https://kjablonka.com/blog/posts/bad_language/index.html</link>

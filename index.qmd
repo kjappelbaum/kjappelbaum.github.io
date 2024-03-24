@@ -25,7 +25,7 @@ aliases: ["blog/"]
 ![](avartar.JPG){.profile-pic}
 
 
-I lead a [resarch group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin.
+I lead a [research group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin.
 I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
 I'm also a contributor to the [cheminfo electronic lab notebook (ELN) ecosystem](http://cheminfo.github.io) and other open-source projects (see [my GitHub](https://github.com/kjappelbaum)).
 

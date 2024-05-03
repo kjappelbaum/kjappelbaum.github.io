@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/blog/posts/building_an_llm/index.html",
+      "/blog/posts/researchers_stuff/index.html",
+      "/blog/posts/bad_language/index.html",
+      "/blog/posts/mil/index.html",
+      "/blog/posts/backprop/index.html"
+    ]
+  },
+  {
+    "listing": "/opensource/opensource.html",
+    "items": []
+  }
+]

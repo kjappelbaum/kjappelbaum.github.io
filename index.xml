@@ -1880,7 +1880,7 @@ I fixed the Transformer diagram :D <a href="https://t.co/qWnOUjZKut">pic.twitter
 <pre><code>191360</code></pre>
 </div>
 </div>
-<p>That is not nothing and certainly not something I can run on my MacBook while still doing other things. When I run the training code below on a GPU (Colab is good enough), I get a validation perplexity of XX and generate SMILES like XY.</p>
+<p>That is not nothing (but still a very small model by today’s standards). To increase performance, we can use a larger model, more data, and more training time. For this, we need to use a GPU.</p>
 <div class="cell" data-execution_count="414">
 <div class="sourceCode cell-code" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1">train_model(gpt, train_loader, valid_loader, epochs<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>, lr<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">1e-3</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1893,7 +1893,182 @@ Epoch 0, iter 500, train loss 0.931, val perplexity 2.55779
 Epoch 0, iter 600, train loss 0.935, val perplexity 2.51345
 Epoch 0, iter 700, train loss 0.852, val perplexity 2.44716
 Epoch 0, iter 800, train loss 0.879, val perplexity 2.39918
-Epoch 0, iter 900, train loss 0.904, val perplexity 2.37360</code></pre>
+Epoch 0, iter 900, train loss 0.904, val perplexity 2.37360
+Epoch 0, iter 1000, train loss 0.878, val perplexity 2.34873
+Epoch 0, iter 1100, train loss 0.828, val perplexity 2.32402
+Epoch 0, iter 1200, train loss 0.835, val perplexity 2.31761
+Epoch 0, iter 1300, train loss 0.817, val perplexity 2.29036
+Epoch 0, iter 1400, train loss 0.808, val perplexity 2.27935
+Epoch 0, iter 1500, train loss 0.795, val perplexity 2.26669
+Epoch 0, iter 1600, train loss 0.776, val perplexity 2.24548
+Epoch 0, iter 1700, train loss 0.785, val perplexity 2.23922
+Epoch 0, iter 1800, train loss 0.814, val perplexity 2.22313
+Epoch 0, iter 1900, train loss 0.773, val perplexity 2.22298
+Epoch 0, iter 2000, train loss 0.780, val perplexity 2.20131
+Epoch 0, iter 2100, train loss 0.810, val perplexity 2.19425
+Epoch 0, iter 2200, train loss 0.804, val perplexity 2.18350
+Epoch 0, iter 2300, train loss 0.745, val perplexity 2.17148
+Epoch 0, iter 2400, train loss 0.745, val perplexity 2.16271
+Epoch 0, iter 2500, train loss 0.769, val perplexity 2.17975
+Epoch 0, iter 2600, train loss 0.789, val perplexity 2.15805
+Epoch 0, iter 2700, train loss 0.726, val perplexity 2.15641
+Epoch 0, iter 2800, train loss 0.755, val perplexity 2.14469
+Epoch 0, iter 2900, train loss 0.738, val perplexity 2.14893
+Epoch 0, iter 3000, train loss 0.742, val perplexity 2.14645
+Epoch 1, iter 0, train loss 0.732, val perplexity 2.15031
+Epoch 1, iter 100, train loss 0.765, val perplexity 2.13708
+Epoch 1, iter 200, train loss 0.788, val perplexity 2.13605
+Epoch 1, iter 300, train loss 0.717, val perplexity 2.12883
+Epoch 1, iter 400, train loss 0.737, val perplexity 2.12692
+Epoch 1, iter 500, train loss 0.722, val perplexity 2.11019
+Epoch 1, iter 600, train loss 0.748, val perplexity 2.11692
+Epoch 1, iter 700, train loss 0.759, val perplexity 2.14582
+Epoch 1, iter 800, train loss 0.759, val perplexity 2.11219
+Epoch 1, iter 900, train loss 0.755, val perplexity 2.10373
+Epoch 1, iter 1000, train loss 0.776, val perplexity 2.09729
+Epoch 1, iter 1100, train loss 0.765, val perplexity 2.09119
+Epoch 1, iter 1200, train loss 0.734, val perplexity 2.09802
+Epoch 1, iter 1300, train loss 0.753, val perplexity 2.08814
+Epoch 1, iter 1400, train loss 0.754, val perplexity 2.09319
+Epoch 1, iter 1500, train loss 0.737, val perplexity 2.07947
+Epoch 1, iter 1600, train loss 0.738, val perplexity 2.08260
+Epoch 1, iter 1700, train loss 0.755, val perplexity 2.07799
+Epoch 1, iter 1800, train loss 0.744, val perplexity 2.08093
+Epoch 1, iter 1900, train loss 0.747, val perplexity 2.07000
+Epoch 1, iter 2000, train loss 0.687, val perplexity 2.07157
+Epoch 1, iter 2100, train loss 0.707, val perplexity 2.07065
+Epoch 1, iter 2200, train loss 0.717, val perplexity 2.05910
+Epoch 1, iter 2300, train loss 0.738, val perplexity 2.05107
+Epoch 1, iter 2400, train loss 0.711, val perplexity 2.05451
+Epoch 1, iter 2500, train loss 0.675, val perplexity 2.04613
+Epoch 1, iter 2600, train loss 0.734, val perplexity 2.05447
+Epoch 1, iter 2700, train loss 0.734, val perplexity 2.05046
+Epoch 1, iter 2800, train loss 0.730, val perplexity 2.04766
+Epoch 1, iter 2900, train loss 0.742, val perplexity 2.04536
+Epoch 1, iter 3000, train loss 0.701, val perplexity 2.03406
+Epoch 2, iter 0, train loss 0.732, val perplexity 2.03579
+Epoch 2, iter 100, train loss 0.695, val perplexity 2.03675
+Epoch 2, iter 200, train loss 0.707, val perplexity 2.03463
+Epoch 2, iter 300, train loss 0.709, val perplexity 2.03361
+Epoch 2, iter 400, train loss 0.733, val perplexity 2.03377
+Epoch 2, iter 500, train loss 0.704, val perplexity 2.02371
+Epoch 2, iter 600, train loss 0.722, val perplexity 2.02579
+Epoch 2, iter 700, train loss 0.715, val perplexity 2.02425
+Epoch 2, iter 800, train loss 0.657, val perplexity 2.02351
+Epoch 2, iter 900, train loss 0.713, val perplexity 2.02179
+Epoch 2, iter 1000, train loss 0.672, val perplexity 2.02233
+Epoch 2, iter 1100, train loss 0.687, val perplexity 2.01882
+Epoch 2, iter 1200, train loss 0.687, val perplexity 2.02302
+Epoch 2, iter 1300, train loss 0.714, val perplexity 2.02380
+Epoch 2, iter 1400, train loss 0.694, val perplexity 2.01386
+Epoch 2, iter 1500, train loss 0.665, val perplexity 2.02308
+Epoch 2, iter 1600, train loss 0.674, val perplexity 2.01054
+Epoch 2, iter 1700, train loss 0.678, val perplexity 2.01637
+Epoch 2, iter 1800, train loss 0.681, val perplexity 2.00936
+Epoch 2, iter 1900, train loss 0.695, val perplexity 2.01404
+Epoch 2, iter 2000, train loss 0.717, val perplexity 2.00616
+Epoch 2, iter 2100, train loss 0.706, val perplexity 2.00699
+Epoch 2, iter 2200, train loss 0.731, val perplexity 2.00446
+Epoch 2, iter 2300, train loss 0.700, val perplexity 1.99986
+Epoch 2, iter 2400, train loss 0.723, val perplexity 2.00541
+Epoch 2, iter 2500, train loss 0.702, val perplexity 2.00087
+Epoch 2, iter 2600, train loss 0.688, val perplexity 1.99137
+Epoch 2, iter 2700, train loss 0.702, val perplexity 1.99125
+Epoch 2, iter 2800, train loss 0.672, val perplexity 2.00703
+Epoch 2, iter 2900, train loss 0.720, val perplexity 1.99457
+Epoch 2, iter 3000, train loss 0.649, val perplexity 1.99512
+Epoch 3, iter 0, train loss 0.669, val perplexity 2.00459
+Epoch 3, iter 100, train loss 0.691, val perplexity 1.98455
+Epoch 3, iter 200, train loss 0.655, val perplexity 1.98914
+Epoch 3, iter 300, train loss 0.680, val perplexity 1.98433
+Epoch 3, iter 400, train loss 0.678, val perplexity 1.98273
+Epoch 3, iter 500, train loss 0.716, val perplexity 1.98985
+Epoch 3, iter 600, train loss 0.701, val perplexity 1.99006
+Epoch 3, iter 700, train loss 0.679, val perplexity 1.98366
+Epoch 3, iter 800, train loss 0.692, val perplexity 1.98338
+Epoch 3, iter 900, train loss 0.693, val perplexity 1.98175
+Epoch 3, iter 1000, train loss 0.675, val perplexity 1.97931
+Epoch 3, iter 1100, train loss 0.704, val perplexity 1.98130
+Epoch 3, iter 1200, train loss 0.668, val perplexity 1.97833
+Epoch 3, iter 1300, train loss 0.667, val perplexity 1.97971
+Epoch 3, iter 1400, train loss 0.651, val perplexity 1.97418
+Epoch 3, iter 1500, train loss 0.720, val perplexity 1.97505
+Epoch 3, iter 1600, train loss 0.719, val perplexity 1.97627
+Epoch 3, iter 1700, train loss 0.660, val perplexity 1.97169
+Epoch 3, iter 1800, train loss 0.699, val perplexity 1.96890
+Epoch 3, iter 1900, train loss 0.668, val perplexity 1.96781
+Epoch 3, iter 2000, train loss 0.644, val perplexity 1.96777
+Epoch 3, iter 2100, train loss 0.717, val perplexity 1.97202
+Epoch 3, iter 2200, train loss 0.715, val perplexity 1.96867
+Epoch 3, iter 2300, train loss 0.692, val perplexity 1.96386
+Epoch 3, iter 2400, train loss 0.680, val perplexity 1.96536
+Epoch 3, iter 2500, train loss 0.674, val perplexity 1.96576
+Epoch 3, iter 2600, train loss 0.682, val perplexity 1.97131
+Epoch 3, iter 2700, train loss 0.674, val perplexity 1.96801
+Epoch 3, iter 2800, train loss 0.654, val perplexity 1.96514
+Epoch 3, iter 2900, train loss 0.670, val perplexity 1.95693
+Epoch 3, iter 3000, train loss 0.684, val perplexity 1.95757
+Epoch 4, iter 0, train loss 0.680, val perplexity 1.96651
+Epoch 4, iter 100, train loss 0.639, val perplexity 1.96087
+Epoch 4, iter 200, train loss 0.670, val perplexity 1.95494
+Epoch 4, iter 300, train loss 0.691, val perplexity 1.96136
+Epoch 4, iter 400, train loss 0.647, val perplexity 1.95324
+Epoch 4, iter 500, train loss 0.680, val perplexity 1.95518
+Epoch 4, iter 600, train loss 0.680, val perplexity 1.95562
+Epoch 4, iter 700, train loss 0.636, val perplexity 1.95423
+Epoch 4, iter 800, train loss 0.641, val perplexity 1.95569
+Epoch 4, iter 900, train loss 0.611, val perplexity 1.95869
+Epoch 4, iter 1000, train loss 0.680, val perplexity 1.94975
+Epoch 4, iter 1100, train loss 0.646, val perplexity 1.95034
+Epoch 4, iter 1200, train loss 0.651, val perplexity 1.94704
+Epoch 4, iter 1300, train loss 0.650, val perplexity 1.95232
+Epoch 4, iter 1400, train loss 0.636, val perplexity 1.95301
+Epoch 4, iter 1500, train loss 0.661, val perplexity 1.95471
+Epoch 4, iter 1600, train loss 0.657, val perplexity 1.95031
+Epoch 4, iter 1700, train loss 0.660, val perplexity 1.94747
+Epoch 4, iter 1800, train loss 0.659, val perplexity 1.95406
+Epoch 4, iter 1900, train loss 0.654, val perplexity 1.94890
+Epoch 4, iter 2000, train loss 0.684, val perplexity 1.95166
+Epoch 4, iter 2100, train loss 0.630, val perplexity 1.94946
+Epoch 4, iter 2200, train loss 0.675, val perplexity 1.95190
+Epoch 4, iter 2300, train loss 0.673, val perplexity 1.94920
+Epoch 4, iter 2400, train loss 0.653, val perplexity 1.94797
+Epoch 4, iter 2500, train loss 0.636, val perplexity 1.94594
+Epoch 4, iter 2600, train loss 0.674, val perplexity 1.94101
+Epoch 4, iter 2700, train loss 0.666, val perplexity 1.95357
+Epoch 4, iter 2800, train loss 0.688, val perplexity 1.94628
+Epoch 4, iter 2900, train loss 0.670, val perplexity 1.94341
+Epoch 4, iter 3000, train loss 0.672, val perplexity 1.94509
+Epoch 5, iter 0, train loss 0.645, val perplexity 1.94178
+Epoch 5, iter 100, train loss 0.621, val perplexity 1.93829
+Epoch 5, iter 200, train loss 0.667, val perplexity 1.94284
+Epoch 5, iter 300, train loss 0.642, val perplexity 1.94148
+Epoch 5, iter 400, train loss 0.633, val perplexity 1.94527
+Epoch 5, iter 500, train loss 0.651, val perplexity 1.94243
+Epoch 5, iter 600, train loss 0.715, val perplexity 1.93943
+Epoch 5, iter 700, train loss 0.632, val perplexity 1.93961
+Epoch 5, iter 800, train loss 0.673, val perplexity 1.93994
+Epoch 5, iter 900, train loss 0.677, val perplexity 1.93811
+Epoch 5, iter 1000, train loss 0.655, val perplexity 1.94041
+Epoch 5, iter 1100, train loss 0.673, val perplexity 1.93601
+Epoch 5, iter 1200, train loss 0.631, val perplexity 1.93800
+Epoch 5, iter 1300, train loss 0.662, val perplexity 1.93886
+Epoch 5, iter 1400, train loss 0.647, val perplexity 1.93711
+Epoch 5, iter 1500, train loss 0.678, val perplexity 1.94009
+Epoch 5, iter 1600, train loss 0.643, val perplexity 1.93476
+Epoch 5, iter 1700, train loss 0.622, val perplexity 1.94068
+Epoch 5, iter 1800, train loss 0.670, val perplexity 1.93373
+Epoch 5, iter 1900, train loss 0.695, val perplexity 1.93784
+Epoch 5, iter 2000, train loss 0.641, val perplexity 1.93494
+Epoch 5, iter 2100, train loss 0.633, val perplexity 1.93339
+Epoch 5, iter 2200, train loss 0.680, val perplexity 1.92561
+Epoch 5, iter 2300, train loss 0.680, val perplexity 1.93195
+Epoch 5, iter 2400, train loss 0.643, val perplexity 1.93222
+Epoch 5, iter 2500, train loss 0.652, val perplexity 1.92935
+Epoch 5, iter 2600, train loss 0.705, val perplexity 1.93156
+Epoch 5, iter 2700, train loss 0.635, val perplexity 1.92765
+Epoch 5, iter 2800, train loss 0.708, val perplexity 1.93618
+Epoch 5, iter 2900, train loss 0.671, val perplexity 1.92979</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="238">
@@ -1956,7 +2131,7 @@ Epoch 0, iter 900, train loss 0.904, val perplexity 2.37360</code></pre>
 
 
 
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> litellm</span>
 <span id="cb1-2"><span class="im" style="color: #00769E;">from</span> litellm <span class="im" style="color: #00769E;">import</span> completion</span>
 <span id="cb1-3"><span class="im" style="color: #00769E;">from</span> litellm.caching <span class="im" style="color: #00769E;">import</span> Cache</span>
@@ -1965,46 +2140,43 @@ Epoch 0, iter 900, train loss 0.904, val perplexity 2.37360</code></pre>
 <span id="cb1-6"><span class="im" style="color: #00769E;">from</span> rdkit.Chem <span class="im" style="color: #00769E;">import</span> rdMolDescriptors</span>
 <span id="cb1-7">litellm.cache <span class="op" style="color: #5E5E5E;">=</span> Cache()</span>
 <span id="cb1-8"><span class="im" style="color: #00769E;">from</span> dotenv <span class="im" style="color: #00769E;">import</span> load_dotenv</span>
-<span id="cb1-9">load_dotenv()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>True</code></pre>
-</div>
+<span id="cb1-9">_ <span class="op" style="color: #5E5E5E;">=</span> load_dotenv()</span></code></pre></div>
 </div>
 <p>LLM-powered agents have caught a lot of an attention. They are interesting, because they allow us to couple the flexibility of LLMs with the power of robust tools or knowledge bases.</p>
 <p>In the chemical sciences, this approach has been popularized by <a href="https://arxiv.org/abs/2304.05376">ChemCrow</a> and <a href="https://www.nature.com/articles/s41586-023-06792-0">Coscientist</a>. In those systems, the LLMs had access to tools such as reaction planner and a cloud laboratory and, in this way, could plan and perform experiments autonomously.</p>
-<p>While it might seem that these systems are very complex, they are are surprisingly simple. Unfortunately, this simplicity is sometimes hidden below layers of abstractions in libraries and frameworks.</p>
+<p>While it might seem that these systems are very complex, they are are surprisingly simple. Unfortunately, this simplicity is sometimes <a href="https://hamel.dev/blog/posts/prompt/">hidden below layers of abstractions in libraries and frameworks</a>.</p>
 <p>In this post, we will implement a simple agent from scratch.</p>
 <p>Our goal is to answer simple questions about molecules (such as the number of hydrogen bond donors) reliably.</p>
 <p>If we simply prompt an LLM to answer the question about hydrogen bond donors, it might give us something like the completion shown below.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">molecule  <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"[C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)"</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">molecule  <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"[C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)"</span></span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
-<span id="cb4-2">    model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>, </span>
-<span id="cb4-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
-<span id="cb4-4">        {</span>
-<span id="cb4-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
-<span id="cb4-6">            <span class="st" style="color: #20794D;">'content'</span>: <span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span></span>
-<span id="cb4-7">        }</span>
-<span id="cb4-8">    ]</span>
-<span id="cb4-9">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
-<span id="cb4-10"></span>
-<span id="cb4-11"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
+<span id="cb3-2">    model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>, </span>
+<span id="cb3-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
+<span id="cb3-4">        {</span>
+<span id="cb3-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
+<span id="cb3-6">            <span class="st" style="color: #20794D;">'content'</span>: <span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span></span>
+<span id="cb3-7">        }</span>
+<span id="cb3-8">    ]</span>
+<span id="cb3-9">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
+<span id="cb3-10"></span>
+<span id="cb3-11"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>In the given molecule, there are three hydrogen bond donors. The three hydrogen atoms attached to the hydroxyl groups (-OH) are the hydrogen bond donors.</code></pre>
 </div>
 </div>
 <p>If we look at the molecule …</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Chem.MolFromSmiles(molecule)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Chem.MolFromSmiles(molecule)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <p><img src="https://kjablonka.com/blog/posts/building_an_llm_agent/index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>… or compute the number of hydrogen bond donors in the molecule using RDKit …</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">rdMolDescriptors.CalcNumHBD(Chem.MolFromSmiles(molecule))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">rdMolDescriptors.CalcNumHBD(Chem.MolFromSmiles(molecule))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>2</code></pre>
 </div>
@@ -2033,80 +2205,80 @@ Epoch 0, iter 900, train loss 0.904, val perplexity 2.37360</code></pre>
 <h2 class="anchored" data-anchor-id="using-the-react-prompt">Using the ReAct prompt</h2>
 <p>By reading the ReAct paper (or digging <a href="https://smith.langchain.com/hub/hwchase17/react">very deep into Langchain’s codebase</a>), we find that the following text is at the heart of the ReAct framework.</p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">REACT_PROMPT<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"""Answer the following questions as best you can. You have access to the following tools:</span></span>
-<span id="cb9-2"></span>
-<span id="cb9-3"><span class="sc" style="color: #5E5E5E;">{tools}</span></span>
-<span id="cb9-4"></span>
-<span id="cb9-5"><span class="st" style="color: #20794D;">Use the following format:</span></span>
-<span id="cb9-6"></span>
-<span id="cb9-7"><span class="st" style="color: #20794D;">Question: the input question you must answer</span></span>
-<span id="cb9-8"></span>
-<span id="cb9-9"><span class="st" style="color: #20794D;">Thought: you should always think about what to do</span></span>
-<span id="cb9-10"></span>
-<span id="cb9-11"><span class="st" style="color: #20794D;">Action: the action to take, should be one of [</span><span class="sc" style="color: #5E5E5E;">{tool_names}</span><span class="st" style="color: #20794D;">]</span></span>
-<span id="cb9-12"></span>
-<span id="cb9-13"><span class="st" style="color: #20794D;">Action Input: the input to the action</span></span>
-<span id="cb9-14"></span>
-<span id="cb9-15"><span class="st" style="color: #20794D;">Observation: the result of the action</span></span>
-<span id="cb9-16"></span>
-<span id="cb9-17"><span class="st" style="color: #20794D;">... (this Thought/Action/Action Input/Observation can repeat N times)</span></span>
-<span id="cb9-18"></span>
-<span id="cb9-19"><span class="st" style="color: #20794D;">Thought: I now know the final answer</span></span>
-<span id="cb9-20"></span>
-<span id="cb9-21"><span class="st" style="color: #20794D;">Final Answer: the final answer to the original input question</span></span>
-<span id="cb9-22"></span>
-<span id="cb9-23"><span class="st" style="color: #20794D;">Begin!</span></span>
-<span id="cb9-24"></span>
-<span id="cb9-25"><span class="st" style="color: #20794D;">Question: </span><span class="sc" style="color: #5E5E5E;">{input}</span></span>
-<span id="cb9-26"></span>
-<span id="cb9-27"><span class="st" style="color: #20794D;">Thought:</span><span class="sc" style="color: #5E5E5E;">{agent_scratchpad}</span><span class="st" style="color: #20794D;">"""</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">REACT_PROMPT<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"""Answer the following questions as best you can. You have access to the following tools:</span></span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="sc" style="color: #5E5E5E;">{tools}</span></span>
+<span id="cb8-4"></span>
+<span id="cb8-5"><span class="st" style="color: #20794D;">Use the following format:</span></span>
+<span id="cb8-6"></span>
+<span id="cb8-7"><span class="st" style="color: #20794D;">Question: the input question you must answer</span></span>
+<span id="cb8-8"></span>
+<span id="cb8-9"><span class="st" style="color: #20794D;">Thought: you should always think about what to do</span></span>
+<span id="cb8-10"></span>
+<span id="cb8-11"><span class="st" style="color: #20794D;">Action: the action to take, should be one of [</span><span class="sc" style="color: #5E5E5E;">{tool_names}</span><span class="st" style="color: #20794D;">]</span></span>
+<span id="cb8-12"></span>
+<span id="cb8-13"><span class="st" style="color: #20794D;">Action Input: the input to the action</span></span>
+<span id="cb8-14"></span>
+<span id="cb8-15"><span class="st" style="color: #20794D;">Observation: the result of the action</span></span>
+<span id="cb8-16"></span>
+<span id="cb8-17"><span class="st" style="color: #20794D;">... (this Thought/Action/Action Input/Observation can repeat N times)</span></span>
+<span id="cb8-18"></span>
+<span id="cb8-19"><span class="st" style="color: #20794D;">Thought: I now know the final answer</span></span>
+<span id="cb8-20"></span>
+<span id="cb8-21"><span class="st" style="color: #20794D;">Final Answer: the final answer to the original input question</span></span>
+<span id="cb8-22"></span>
+<span id="cb8-23"><span class="st" style="color: #20794D;">Begin!</span></span>
+<span id="cb8-24"></span>
+<span id="cb8-25"><span class="st" style="color: #20794D;">Question: </span><span class="sc" style="color: #5E5E5E;">{input}</span></span>
+<span id="cb8-26"></span>
+<span id="cb8-27"><span class="st" style="color: #20794D;">Thought:</span><span class="sc" style="color: #5E5E5E;">{agent_scratchpad}</span><span class="st" style="color: #20794D;">"""</span></span></code></pre></div>
 </div>
 <p>The <code>tools</code> field will contain descriptions of the tools the agent has access to. The <code>tool_names</code> field will contain the names of the tools the agent has access to. The <code>input</code> field will contain the input question. The <code>agent_scratchpad</code> field will contain the scratchpad of the agent.</p>
 <p>What we might now be tempted to do is to just send this prompt with a question to OpenAI…</p>
 <p>For this, we, of course, will first need to define the tools we will give the model access to. To facilitate this, we will define a tool as a Python object that knows something about how the tool should be called and described</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;">class</span> Tool:</span>
-<span id="cb10-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>, name, description, method):</span>
-<span id="cb10-3">        <span class="va" style="color: #111111;">self</span>.name <span class="op" style="color: #5E5E5E;">=</span> name</span>
-<span id="cb10-4">        <span class="va" style="color: #111111;">self</span>.description <span class="op" style="color: #5E5E5E;">=</span> description</span>
-<span id="cb10-5">        <span class="va" style="color: #111111;">self</span>.method <span class="op" style="color: #5E5E5E;">=</span> method</span>
-<span id="cb10-6">    </span>
-<span id="cb10-7">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__str__</span>(<span class="va" style="color: #111111;">self</span>):</span>
-<span id="cb10-8">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.name</span>
-<span id="cb10-9">    </span>
-<span id="cb10-10">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
-<span id="cb10-11">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(<span class="bu" style="color: null;">input</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;">class</span> Tool:</span>
+<span id="cb9-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>, name, description, method):</span>
+<span id="cb9-3">        <span class="va" style="color: #111111;">self</span>.name <span class="op" style="color: #5E5E5E;">=</span> name</span>
+<span id="cb9-4">        <span class="va" style="color: #111111;">self</span>.description <span class="op" style="color: #5E5E5E;">=</span> description</span>
+<span id="cb9-5">        <span class="va" style="color: #111111;">self</span>.method <span class="op" style="color: #5E5E5E;">=</span> method</span>
+<span id="cb9-6">    </span>
+<span id="cb9-7">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__str__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb9-8">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.name</span>
+<span id="cb9-9">    </span>
+<span id="cb9-10">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
+<span id="cb9-11">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(<span class="bu" style="color: null;">input</span>)</span></code></pre></div>
 </div>
 <p>For example, the following code defines a tool that can calculate the number of hydrogen bond donors in a molecule:</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;">class</span> HydrogenBondDonorTool(Tool):</span>
-<span id="cb11-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
-<span id="cb11-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>(<span class="st" style="color: #20794D;">'num_hydrogenbond_donors'</span>, <span class="st" style="color: #20794D;">'Calculates the number of hydrogen bond donors in a molecule based on a SMILES'</span>, rdMolDescriptors.CalcNumHBD)</span>
-<span id="cb11-4">    </span>
-<span id="cb11-5">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
-<span id="cb11-6">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(Chem.MolFromSmiles(<span class="bu" style="color: null;">input</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;">class</span> HydrogenBondDonorTool(Tool):</span>
+<span id="cb10-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb10-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>(<span class="st" style="color: #20794D;">'num_hydrogenbond_donors'</span>, <span class="st" style="color: #20794D;">'Calculates the number of hydrogen bond donors in a molecule based on a SMILES'</span>, rdMolDescriptors.CalcNumHBD)</span>
+<span id="cb10-4">    </span>
+<span id="cb10-5">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
+<span id="cb10-6">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(Chem.MolFromSmiles(<span class="bu" style="color: null;">input</span>))</span></code></pre></div>
 </div>
 <p>If we instantiate the tool and run it, we get the number of hydrogen bond donors in the molecule.</p>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">hydrogenbonddonor_tool <span class="op" style="color: #5E5E5E;">=</span> HydrogenBondDonorTool()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">hydrogenbonddonor_tool <span class="op" style="color: #5E5E5E;">=</span> HydrogenBondDonorTool()</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">hydrogenbonddonor_tool.run(molecule)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">hydrogenbonddonor_tool.run(molecule)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>2</code></pre>
 </div>
 </div>
 <p>With the tool in hand, we can now generate the ReAct prompt:</p>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
-<span id="cb15-2">    tools <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span>,</span>
-<span id="cb15-3">    tool_names <span class="op" style="color: #5E5E5E;">=</span> hydrogenbonddonor_tool.name,</span>
-<span id="cb15-4">    <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span>,</span>
-<span id="cb15-5">    agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
-<span id="cb15-6">)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
+<span id="cb14-2">    tools <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span>,</span>
+<span id="cb14-3">    tool_names <span class="op" style="color: #5E5E5E;">=</span> hydrogenbonddonor_tool.name,</span>
+<span id="cb14-4">    <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span>,</span>
+<span id="cb14-5">    agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
+<span id="cb14-6">)</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="bu" style="color: null;">print</span>(prompt)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="bu" style="color: null;">print</span>(prompt)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Answer the following questions as best you can. You have access to the following tools:
 
@@ -2139,18 +2311,18 @@ Thought:</code></pre>
 </div>
 <p>Let’s see what happens when we put this prompt into the model.</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
-<span id="cb18-2">    model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>, </span>
-<span id="cb18-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
-<span id="cb18-4">        {</span>
-<span id="cb18-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
-<span id="cb18-6">            <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
-<span id="cb18-7">        }</span>
-<span id="cb18-8">    ]</span>
-<span id="cb18-9">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
+<span id="cb17-2">    model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>, </span>
+<span id="cb17-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
+<span id="cb17-4">        {</span>
+<span id="cb17-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
+<span id="cb17-6">            <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
+<span id="cb17-7">        }</span>
+<span id="cb17-8">    ]</span>
+<span id="cb17-9">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>I need to use the num_hydrogenbond_donors tool to calculate the number of hydrogen bond donors in the given molecule.
 
@@ -2164,18 +2336,18 @@ Final Answer: The number of hydrogen bond donors in the molecule [C@H]([C@@H]([C
 <p>The model hallucinated! It gave us everything, including the final answer. This is not what we wanted. We wanted to only have the model select the tool, generate the input and then observe the output.</p>
 <p>It seems that we need to stop it from jumping ahead to quickly. Luckily, we can do this quite easily by stopping the generation at the word “Observation”.</p>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
-<span id="cb21-2">    model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
-<span id="cb21-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
-<span id="cb21-4">        {</span>
-<span id="cb21-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
-<span id="cb21-6">            <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
-<span id="cb21-7">        }</span>
-<span id="cb21-8">    ],</span>
-<span id="cb21-9">    stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span></span>
-<span id="cb21-10">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
-<span id="cb21-11"></span>
-<span id="cb21-12"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
+<span id="cb20-2">    model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb20-3">    messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
+<span id="cb20-4">        {</span>
+<span id="cb20-5">            <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
+<span id="cb20-6">            <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
+<span id="cb20-7">        }</span>
+<span id="cb20-8">    ],</span>
+<span id="cb20-9">    stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span></span>
+<span id="cb20-10">).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
+<span id="cb20-11"></span>
+<span id="cb20-12"><span class="bu" style="color: null;">print</span>(message)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>I need to determine the number of hydrogen bond donors in the given molecule.
 
@@ -2187,56 +2359,56 @@ Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
 <p>That already looks way better! We now need to only extract the <code>Action Input</code> and pass it to our tool. Let’s do that next.</p>
 <p>For that we will all thought/observation cycle continue until we have a final answer. We can do this with a <code>while</code> loop that we will run until we have a final answer.</p>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="kw" style="color: #003B4F;">def</span> answer_question(prompt, tools):</span>
-<span id="cb23-2">    scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
-<span id="cb23-3">    <span class="cf" style="color: #003B4F;">while</span> <span class="va" style="color: #111111;">True</span>: </span>
-<span id="cb23-4">        <span class="co" style="color: #5E5E5E;"># as before, we start by filling the prompt</span></span>
-<span id="cb23-5">        prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
-<span id="cb23-6">            tools <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join([<span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span> <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
-<span id="cb23-7">            tool_names <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">", "</span>.join([<span class="bu" style="color: null;">str</span>(tool) <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
-<span id="cb23-8">            <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> prompt,</span>
-<span id="cb23-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> scratchpad</span>
-<span id="cb23-10">        )</span>
-<span id="cb23-11"></span>
-<span id="cb23-12">        <span class="co" style="color: #5E5E5E;"># we then send the prompt to the model</span></span>
-<span id="cb23-13">        message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
-<span id="cb23-14">            model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
-<span id="cb23-15">            messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
-<span id="cb23-16">                {</span>
-<span id="cb23-17">                    <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
-<span id="cb23-18">                    <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
-<span id="cb23-19">                }</span>
-<span id="cb23-20">            ],</span>
-<span id="cb23-21">            stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span>, </span>
-<span id="cb23-22">            temperature<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span></span>
-<span id="cb23-23">        ).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
-<span id="cb23-24"></span>
-<span id="cb23-25">        <span class="co" style="color: #5E5E5E;"># we update the scratchpad with the message</span></span>
-<span id="cb23-26">        <span class="co" style="color: #5E5E5E;"># the scratchpad will be used to keep track of the state of the agent</span></span>
-<span id="cb23-27">        <span class="co" style="color: #5E5E5E;"># it will contain all the messages received so far</span></span>
-<span id="cb23-28">        <span class="co" style="color: #5E5E5E;"># and also all the observations made by the tools</span></span>
-<span id="cb23-29">        scratchpad <span class="op" style="color: #5E5E5E;">+=</span> message</span>
-<span id="cb23-30"></span>
-<span id="cb23-31">        <span class="co" style="color: #5E5E5E;"># to keep track, we can print the message</span></span>
-<span id="cb23-32">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Message: "</span>, message)</span>
-<span id="cb23-33">        </span>
-<span id="cb23-34">        <span class="co" style="color: #5E5E5E;"># if the message contains "Final Answer", we return it</span></span>
-<span id="cb23-35">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">"Final Answer"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
-<span id="cb23-36">            <span class="cf" style="color: #003B4F;">return</span> message</span>
-<span id="cb23-37">    </span>
-<span id="cb23-38">        <span class="co" style="color: #5E5E5E;"># if the message contains "Action", we extract the action and the action input</span></span>
-<span id="cb23-39">        <span class="co" style="color: #5E5E5E;"># and we run the action with the input</span></span>
-<span id="cb23-40">        <span class="cf" style="color: #003B4F;">elif</span> <span class="st" style="color: #20794D;">"Action"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
-<span id="cb23-41">            action <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>)</span>
-<span id="cb23-42">            action_input <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action Input: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>).strip()</span>
-<span id="cb23-43">            <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools:</span>
-<span id="cb23-44">                <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">str</span>(tool) <span class="op" style="color: #5E5E5E;">==</span> action:</span>
-<span id="cb23-45">                    observation <span class="op" style="color: #5E5E5E;">=</span> tool.run(action_input)</span>
-<span id="cb23-46">                    scratchpad <span class="op" style="color: #5E5E5E;">+=</span> <span class="ss" style="color: #20794D;">f"</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span></span>
-<span id="cb23-47">                    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span>)    </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="kw" style="color: #003B4F;">def</span> answer_question(prompt, tools):</span>
+<span id="cb22-2">    scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
+<span id="cb22-3">    <span class="cf" style="color: #003B4F;">while</span> <span class="va" style="color: #111111;">True</span>: </span>
+<span id="cb22-4">        <span class="co" style="color: #5E5E5E;"># as before, we start by filling the prompt</span></span>
+<span id="cb22-5">        prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
+<span id="cb22-6">            tools <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join([<span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span> <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
+<span id="cb22-7">            tool_names <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">", "</span>.join([<span class="bu" style="color: null;">str</span>(tool) <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
+<span id="cb22-8">            <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> prompt,</span>
+<span id="cb22-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> scratchpad</span>
+<span id="cb22-10">        )</span>
+<span id="cb22-11"></span>
+<span id="cb22-12">        <span class="co" style="color: #5E5E5E;"># we then send the prompt to the model</span></span>
+<span id="cb22-13">        message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
+<span id="cb22-14">            model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb22-15">            messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
+<span id="cb22-16">                {</span>
+<span id="cb22-17">                    <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
+<span id="cb22-18">                    <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
+<span id="cb22-19">                }</span>
+<span id="cb22-20">            ],</span>
+<span id="cb22-21">            stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span>, </span>
+<span id="cb22-22">            temperature<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span></span>
+<span id="cb22-23">        ).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
+<span id="cb22-24"></span>
+<span id="cb22-25">        <span class="co" style="color: #5E5E5E;"># we update the scratchpad with the message</span></span>
+<span id="cb22-26">        <span class="co" style="color: #5E5E5E;"># the scratchpad will be used to keep track of the state of the agent</span></span>
+<span id="cb22-27">        <span class="co" style="color: #5E5E5E;"># it will contain all the messages received so far</span></span>
+<span id="cb22-28">        <span class="co" style="color: #5E5E5E;"># and also all the observations made by the tools</span></span>
+<span id="cb22-29">        scratchpad <span class="op" style="color: #5E5E5E;">+=</span> message</span>
+<span id="cb22-30"></span>
+<span id="cb22-31">        <span class="co" style="color: #5E5E5E;"># to keep track, we can print the message</span></span>
+<span id="cb22-32">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Message: "</span>, message)</span>
+<span id="cb22-33">        </span>
+<span id="cb22-34">        <span class="co" style="color: #5E5E5E;"># if the message contains "Final Answer", we return it</span></span>
+<span id="cb22-35">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">"Final Answer"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
+<span id="cb22-36">            <span class="cf" style="color: #003B4F;">return</span> message</span>
+<span id="cb22-37">    </span>
+<span id="cb22-38">        <span class="co" style="color: #5E5E5E;"># if the message contains "Action", we extract the action and the action input</span></span>
+<span id="cb22-39">        <span class="co" style="color: #5E5E5E;"># and we run the action with the input</span></span>
+<span id="cb22-40">        <span class="cf" style="color: #003B4F;">elif</span> <span class="st" style="color: #20794D;">"Action"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
+<span id="cb22-41">            action <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb22-42">            action_input <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action Input: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>).strip()</span>
+<span id="cb22-43">            <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools:</span>
+<span id="cb22-44">                <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">str</span>(tool) <span class="op" style="color: #5E5E5E;">==</span> action:</span>
+<span id="cb22-45">                    observation <span class="op" style="color: #5E5E5E;">=</span> tool.run(action_input)</span>
+<span id="cb22-46">                    scratchpad <span class="op" style="color: #5E5E5E;">+=</span> <span class="ss" style="color: #20794D;">f"</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span></span>
+<span id="cb22-47">                    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span>)    </span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">answer_question(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span>, [hydrogenbonddonor_tool])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">answer_question(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;">{</span>molecule<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">?"</span>, [hydrogenbonddonor_tool])</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  This is a SMILES representation of a molecule, so I should use the tool num_hydrogenbond_donors to calculate the number of hydrogen bond donors.
 
@@ -2258,15 +2430,15 @@ Final Answer: The number of hydrogen bond donors in the molecule is 2.</code></p
 <p>However, the usefulness of our agent is still limited as it only has one tool. Let’s add another tool to make the system more powerful.</p>
 <p>One very convenient functionality would be to robustly deal with various forms of molecular representations. For this we can use the chemical name resolver.</p>
 <div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="kw" style="color: #003B4F;">def</span> resolve_identifier(identifier, representation):</span>
-<span id="cb27-2">    <span class="co" style="color: #5E5E5E;"># http:///chemical/structure/"structure identifier"/"representation"</span></span>
-<span id="cb27-3">    <span class="im" style="color: #00769E;">import</span> requests</span>
-<span id="cb27-4">    response <span class="op" style="color: #5E5E5E;">=</span> requests.get(<span class="ss" style="color: #20794D;">f"https://cactus.nci.nih.gov/chemical/structure/</span><span class="sc" style="color: #5E5E5E;">{</span>identifier<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">/</span><span class="sc" style="color: #5E5E5E;">{</span>representation<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span>)</span>
-<span id="cb27-5">    <span class="cf" style="color: #003B4F;">return</span> response.text</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="kw" style="color: #003B4F;">def</span> resolve_identifier(identifier, representation):</span>
+<span id="cb26-2">    <span class="co" style="color: #5E5E5E;"># http:///chemical/structure/"structure identifier"/"representation"</span></span>
+<span id="cb26-3">    <span class="im" style="color: #00769E;">import</span> requests</span>
+<span id="cb26-4">    response <span class="op" style="color: #5E5E5E;">=</span> requests.get(<span class="ss" style="color: #20794D;">f"https://cactus.nci.nih.gov/chemical/structure/</span><span class="sc" style="color: #5E5E5E;">{</span>identifier<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">/</span><span class="sc" style="color: #5E5E5E;">{</span>representation<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span>)</span>
+<span id="cb26-5">    <span class="cf" style="color: #003B4F;">return</span> response.text</span></code></pre></div>
 </div>
 <p>Let’s test this function</p>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">resolve_identifier(molecule, <span class="st" style="color: #20794D;">"inchi"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1">resolve_identifier(molecule, <span class="st" style="color: #20794D;">"inchi"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>'InChI=1/C6H8O5/c7-3-1-2-4(8)5(9)6(10)11/h1-5,8-9H,(H,10,11)/p-1/t4-,5-/m0/s1/fC6H7O5/q-1'</code></pre>
 </div>
@@ -2287,29 +2459,29 @@ Note
 </div>
 </div>
 <div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="kw" style="color: #003B4F;">class</span> NameResolverTool(Tool):</span>
-<span id="cb30-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
-<span id="cb30-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>(<span class="st" style="color: #20794D;">'name_resolver'</span>, <span class="st" style="color: #20794D;">'Converts chemical identifiers (e.g. common names and SMILES). The input is pair of two strings `identifier, representation`, for example, `CCCC, inchi` or `benzene, smiles`'</span>, resolve_identifier)</span>
-<span id="cb30-4">    </span>
-<span id="cb30-5">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
-<span id="cb30-6">        identifier, representation <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">input</span>.split(<span class="st" style="color: #20794D;">", "</span>)</span>
-<span id="cb30-7">        identifier <span class="op" style="color: #5E5E5E;">=</span> identifier.strip()</span>
-<span id="cb30-8">        representation <span class="op" style="color: #5E5E5E;">=</span> representation.strip()</span>
-<span id="cb30-9">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(identifier, representation)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="kw" style="color: #003B4F;">class</span> NameResolverTool(Tool):</span>
+<span id="cb29-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb29-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>(<span class="st" style="color: #20794D;">'name_resolver'</span>, <span class="st" style="color: #20794D;">'Converts chemical identifiers (e.g. common names and SMILES). The input is pair of two strings `identifier, representation`, for example, `CCCC, inchi` or `benzene, smiles`'</span>, resolve_identifier)</span>
+<span id="cb29-4">    </span>
+<span id="cb29-5">    <span class="kw" style="color: #003B4F;">def</span> run(<span class="va" style="color: #111111;">self</span>, <span class="bu" style="color: null;">input</span>):</span>
+<span id="cb29-6">        identifier, representation <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">input</span>.split(<span class="st" style="color: #20794D;">", "</span>)</span>
+<span id="cb29-7">        identifier <span class="op" style="color: #5E5E5E;">=</span> identifier.strip()</span>
+<span id="cb29-8">        representation <span class="op" style="color: #5E5E5E;">=</span> representation.strip()</span>
+<span id="cb29-9">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.method(identifier, representation)</span></code></pre></div>
 </div>
 <p>Let’s try this tool</p>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1">nameresolver_tool <span class="op" style="color: #5E5E5E;">=</span> NameResolverTool()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">nameresolver_tool <span class="op" style="color: #5E5E5E;">=</span> NameResolverTool()</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">nameresolver_tool.run(<span class="st" style="color: #20794D;">"CCCC, inchi"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1">nameresolver_tool.run(<span class="st" style="color: #20794D;">"CCCC, inchi"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>'InChI=1/C4H10/c1-3-4-2/h3-4H2,1-2H3'</code></pre>
 </div>
 </div>
 <p>Now, let’s add the <code>NameResolverTool</code> to the list of tools and run the <code>answer_question</code> function with the new list of tools.</p>
 <div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">answer_question(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">answer_question(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
 
@@ -2330,64 +2502,64 @@ did not match C++ signature:
 </div>
 <p>That doesn’t look good! But we can let the model fix it by giving it access to the error message. To do so, we will catch exceptions and feed them into the LLM as observations.</p>
 <div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><span class="kw" style="color: #003B4F;">def</span> answer_question_with_self_healing(prompt, tools):</span>
-<span id="cb38-2">    scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
-<span id="cb38-3">    <span class="cf" style="color: #003B4F;">while</span> <span class="va" style="color: #111111;">True</span>: </span>
-<span id="cb38-4">        <span class="co" style="color: #5E5E5E;"># as before, we start by filling the prompt</span></span>
-<span id="cb38-5">        prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
-<span id="cb38-6">            tools <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join([<span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span> <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
-<span id="cb38-7">            tool_names <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">", "</span>.join([<span class="bu" style="color: null;">str</span>(tool) <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
-<span id="cb38-8">            <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> prompt,</span>
-<span id="cb38-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> scratchpad</span>
-<span id="cb38-10">        )</span>
-<span id="cb38-11"></span>
-<span id="cb38-12">        <span class="co" style="color: #5E5E5E;"># we then send the prompt to the model</span></span>
-<span id="cb38-13">        message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
-<span id="cb38-14">            model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
-<span id="cb38-15">            messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
-<span id="cb38-16">                {</span>
-<span id="cb38-17">                    <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
-<span id="cb38-18">                    <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
-<span id="cb38-19">                }</span>
-<span id="cb38-20">            ],</span>
-<span id="cb38-21">            stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span>,</span>
-<span id="cb38-22">            temperature<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span></span>
-<span id="cb38-23">        ).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
-<span id="cb38-24"></span>
-<span id="cb38-25">        <span class="co" style="color: #5E5E5E;"># we update the scratchpad with the message</span></span>
-<span id="cb38-26">        <span class="co" style="color: #5E5E5E;"># the scratchpad will be used to keep track of the state of the agent</span></span>
-<span id="cb38-27">        <span class="co" style="color: #5E5E5E;"># it will contain all the messages received so far</span></span>
-<span id="cb38-28">        <span class="co" style="color: #5E5E5E;"># and also all the observations made by the tools</span></span>
-<span id="cb38-29">        scratchpad <span class="op" style="color: #5E5E5E;">+=</span> message</span>
-<span id="cb38-30"></span>
-<span id="cb38-31">        <span class="co" style="color: #5E5E5E;"># to keep track, we can print the message</span></span>
-<span id="cb38-32">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Message: "</span>, message)</span>
-<span id="cb38-33">        </span>
-<span id="cb38-34">        <span class="co" style="color: #5E5E5E;"># if the message contains "Final Answer", we return it</span></span>
-<span id="cb38-35">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">"Final Answer"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
-<span id="cb38-36">            <span class="cf" style="color: #003B4F;">return</span> message</span>
-<span id="cb38-37">    </span>
-<span id="cb38-38">        <span class="co" style="color: #5E5E5E;"># if the message contains "Action", we extract the action and the action input</span></span>
-<span id="cb38-39">        <span class="co" style="color: #5E5E5E;"># and we run the action with the input</span></span>
-<span id="cb38-40">        <span class="cf" style="color: #003B4F;">elif</span> <span class="st" style="color: #20794D;">"Action"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
-<span id="cb38-41">            action <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>)</span>
-<span id="cb38-42">            action_input <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action Input: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>).strip()</span>
-<span id="cb38-43">            <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools:</span>
-<span id="cb38-44">                <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">str</span>(tool) <span class="op" style="color: #5E5E5E;">==</span> action:</span>
-<span id="cb38-45">                    <span class="co" style="color: #5E5E5E;"># we wrap the tool execution in a try/except block</span></span>
-<span id="cb38-46">                    <span class="co" style="color: #5E5E5E;"># to catch any exception that might occur</span></span>
-<span id="cb38-47">                    <span class="co" style="color: #5E5E5E;"># if an exception occurs, we update the scratchpad with the error message</span></span>
-<span id="cb38-48">                    <span class="co" style="color: #5E5E5E;"># this will allow the agent to self-heal</span></span>
-<span id="cb38-49">                    <span class="cf" style="color: #003B4F;">try</span>: </span>
-<span id="cb38-50">                        observation <span class="op" style="color: #5E5E5E;">=</span> tool.run(action_input)</span>
-<span id="cb38-51">                    <span class="cf" style="color: #003B4F;">except</span> <span class="pp" style="color: #AD0000;">Exception</span> <span class="im" style="color: #00769E;">as</span> e:</span>
-<span id="cb38-52">                        observation <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"Observation: An error occurred, try to fix it: </span><span class="sc" style="color: #5E5E5E;">{</span>e<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span></span>
-<span id="cb38-53">                    scratchpad <span class="op" style="color: #5E5E5E;">+=</span> <span class="ss" style="color: #20794D;">f"</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span></span>
-<span id="cb38-54">                    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span>)    </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="kw" style="color: #003B4F;">def</span> answer_question_with_self_healing(prompt, tools):</span>
+<span id="cb37-2">    scratchpad <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">""</span></span>
+<span id="cb37-3">    <span class="cf" style="color: #003B4F;">while</span> <span class="va" style="color: #111111;">True</span>: </span>
+<span id="cb37-4">        <span class="co" style="color: #5E5E5E;"># as before, we start by filling the prompt</span></span>
+<span id="cb37-5">        prompt <span class="op" style="color: #5E5E5E;">=</span> REACT_PROMPT.<span class="bu" style="color: null;">format</span>(</span>
+<span id="cb37-6">            tools <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join([<span class="ss" style="color: #20794D;">f"- </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>name<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">: </span><span class="sc" style="color: #5E5E5E;">{</span>tool<span class="sc" style="color: #5E5E5E;">.</span>description<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span> <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
+<span id="cb37-7">            tool_names <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">", "</span>.join([<span class="bu" style="color: null;">str</span>(tool) <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools]),</span>
+<span id="cb37-8">            <span class="bu" style="color: null;">input</span> <span class="op" style="color: #5E5E5E;">=</span> prompt,</span>
+<span id="cb37-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;">=</span> scratchpad</span>
+<span id="cb37-10">        )</span>
+<span id="cb37-11"></span>
+<span id="cb37-12">        <span class="co" style="color: #5E5E5E;"># we then send the prompt to the model</span></span>
+<span id="cb37-13">        message <span class="op" style="color: #5E5E5E;">=</span> completion(</span>
+<span id="cb37-14">            model <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb37-15">            messages <span class="op" style="color: #5E5E5E;">=</span> [</span>
+<span id="cb37-16">                {</span>
+<span id="cb37-17">                    <span class="st" style="color: #20794D;">'role'</span>: <span class="st" style="color: #20794D;">'user'</span>,</span>
+<span id="cb37-18">                    <span class="st" style="color: #20794D;">'content'</span>: prompt</span>
+<span id="cb37-19">                }</span>
+<span id="cb37-20">            ],</span>
+<span id="cb37-21">            stop <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Observation:"</span>,</span>
+<span id="cb37-22">            temperature<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span></span>
+<span id="cb37-23">        ).choices[<span class="dv" style="color: #AD0000;">0</span>].message.content</span>
+<span id="cb37-24"></span>
+<span id="cb37-25">        <span class="co" style="color: #5E5E5E;"># we update the scratchpad with the message</span></span>
+<span id="cb37-26">        <span class="co" style="color: #5E5E5E;"># the scratchpad will be used to keep track of the state of the agent</span></span>
+<span id="cb37-27">        <span class="co" style="color: #5E5E5E;"># it will contain all the messages received so far</span></span>
+<span id="cb37-28">        <span class="co" style="color: #5E5E5E;"># and also all the observations made by the tools</span></span>
+<span id="cb37-29">        scratchpad <span class="op" style="color: #5E5E5E;">+=</span> message</span>
+<span id="cb37-30"></span>
+<span id="cb37-31">        <span class="co" style="color: #5E5E5E;"># to keep track, we can print the message</span></span>
+<span id="cb37-32">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Message: "</span>, message)</span>
+<span id="cb37-33">        </span>
+<span id="cb37-34">        <span class="co" style="color: #5E5E5E;"># if the message contains "Final Answer", we return it</span></span>
+<span id="cb37-35">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">"Final Answer"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
+<span id="cb37-36">            <span class="cf" style="color: #003B4F;">return</span> message</span>
+<span id="cb37-37">    </span>
+<span id="cb37-38">        <span class="co" style="color: #5E5E5E;"># if the message contains "Action", we extract the action and the action input</span></span>
+<span id="cb37-39">        <span class="co" style="color: #5E5E5E;"># and we run the action with the input</span></span>
+<span id="cb37-40">        <span class="cf" style="color: #003B4F;">elif</span> <span class="st" style="color: #20794D;">"Action"</span> <span class="kw" style="color: #003B4F;">in</span> message:</span>
+<span id="cb37-41">            action <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb37-42">            action_input <span class="op" style="color: #5E5E5E;">=</span> re.search(<span class="vs" style="color: #20794D;">r"Action Input: (.*)"</span>, message).group(<span class="dv" style="color: #AD0000;">1</span>).strip()</span>
+<span id="cb37-43">            <span class="cf" style="color: #003B4F;">for</span> tool <span class="kw" style="color: #003B4F;">in</span> tools:</span>
+<span id="cb37-44">                <span class="cf" style="color: #003B4F;">if</span> <span class="bu" style="color: null;">str</span>(tool) <span class="op" style="color: #5E5E5E;">==</span> action:</span>
+<span id="cb37-45">                    <span class="co" style="color: #5E5E5E;"># we wrap the tool execution in a try/except block</span></span>
+<span id="cb37-46">                    <span class="co" style="color: #5E5E5E;"># to catch any exception that might occur</span></span>
+<span id="cb37-47">                    <span class="co" style="color: #5E5E5E;"># if an exception occurs, we update the scratchpad with the error message</span></span>
+<span id="cb37-48">                    <span class="co" style="color: #5E5E5E;"># this will allow the agent to self-heal</span></span>
+<span id="cb37-49">                    <span class="cf" style="color: #003B4F;">try</span>: </span>
+<span id="cb37-50">                        observation <span class="op" style="color: #5E5E5E;">=</span> tool.run(action_input)</span>
+<span id="cb37-51">                    <span class="cf" style="color: #003B4F;">except</span> <span class="pp" style="color: #AD0000;">Exception</span> <span class="im" style="color: #00769E;">as</span> e:</span>
+<span id="cb37-52">                        observation <span class="op" style="color: #5E5E5E;">=</span> <span class="ss" style="color: #20794D;">f"Observation: An error occurred, try to fix it: </span><span class="sc" style="color: #5E5E5E;">{</span>e<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">"</span></span>
+<span id="cb37-53">                    scratchpad <span class="op" style="color: #5E5E5E;">+=</span> <span class="ss" style="color: #20794D;">f"</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span></span>
+<span id="cb37-54">                    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Observation: </span><span class="sc" style="color: #5E5E5E;">{</span>observation<span class="sc" style="color: #5E5E5E;">}</span><span class="ch" style="color: #20794D;">\n</span><span class="ss" style="color: #20794D;">"</span>)    </span></code></pre></div>
 </div>
 <p>Now, let’s try again!</p>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1">answer_question_with_self_healing(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">answer_question_with_self_healing(<span class="ss" style="color: #20794D;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
 
@@ -2442,16 +2614,16 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 <p>To overcome this, tools such as <a href="https://github.com/stanfordnlp/dspy">DSPy</a> have been developed. Those frameworks see prompts as parameters that can be automatically optimized (based on training data or automatically generated examples).</p>
 <p>If we follow the basic <a href="https://dspy-docs.vercel.app/docs/quick-start/minimal-example">DSPy tutorial</a> we get an idea of how this works.</p>
 <div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><span class="im" style="color: #00769E;">import</span> dspy</span>
-<span id="cb44-2"><span class="im" style="color: #00769E;">from</span> dspy.datasets.gsm8k <span class="im" style="color: #00769E;">import</span> GSM8K, gsm8k_metric</span>
-<span id="cb44-3"><span class="im" style="color: #00769E;">from</span> dspy.evaluate <span class="im" style="color: #00769E;">import</span> Evaluate</span>
-<span id="cb44-4"><span class="co" style="color: #5E5E5E;"># Set up the LM</span></span>
-<span id="cb44-5">turbo <span class="op" style="color: #5E5E5E;">=</span> dspy.OpenAI(model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo-instruct'</span>, max_tokens<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">250</span>)</span>
-<span id="cb44-6">dspy.settings.configure(lm<span class="op" style="color: #5E5E5E;">=</span>turbo)</span>
-<span id="cb44-7"></span>
-<span id="cb44-8"><span class="co" style="color: #5E5E5E;"># Load math questions from the GSM8K dataset</span></span>
-<span id="cb44-9">gsm8k <span class="op" style="color: #5E5E5E;">=</span> GSM8K()</span>
-<span id="cb44-10">gsm8k_trainset, gsm8k_devset <span class="op" style="color: #5E5E5E;">=</span> gsm8k.train[:<span class="dv" style="color: #AD0000;">10</span>], gsm8k.dev[:<span class="dv" style="color: #AD0000;">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><span class="im" style="color: #00769E;">import</span> dspy</span>
+<span id="cb43-2"><span class="im" style="color: #00769E;">from</span> dspy.datasets.gsm8k <span class="im" style="color: #00769E;">import</span> GSM8K, gsm8k_metric</span>
+<span id="cb43-3"><span class="im" style="color: #00769E;">from</span> dspy.evaluate <span class="im" style="color: #00769E;">import</span> Evaluate</span>
+<span id="cb43-4"><span class="co" style="color: #5E5E5E;"># Set up the LM</span></span>
+<span id="cb43-5">turbo <span class="op" style="color: #5E5E5E;">=</span> dspy.OpenAI(model<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'gpt-3.5-turbo-instruct'</span>, max_tokens<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">250</span>)</span>
+<span id="cb43-6">dspy.settings.configure(lm<span class="op" style="color: #5E5E5E;">=</span>turbo)</span>
+<span id="cb43-7"></span>
+<span id="cb43-8"><span class="co" style="color: #5E5E5E;"># Load math questions from the GSM8K dataset</span></span>
+<span id="cb43-9">gsm8k <span class="op" style="color: #5E5E5E;">=</span> GSM8K()</span>
+<span id="cb43-10">gsm8k_trainset, gsm8k_devset <span class="op" style="color: #5E5E5E;">=</span> gsm8k.train[:<span class="dv" style="color: #AD0000;">10</span>], gsm8k.dev[:<span class="dv" style="color: #AD0000;">10</span>]</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>100%|██████████| 7473/7473 [00:00&lt;00:00, 30592.35it/s]
 100%|██████████| 1319/1319 [00:00&lt;00:00, 36387.29it/s]</code></pre>
@@ -2459,7 +2631,7 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 </div>
 <p>The datasets contain question/answer pairs</p>
 <div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1">gsm8k_trainset</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1">gsm8k_trainset</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>[Example({'question': "The result from the 40-item Statistics exam Marion and Ella took already came out. Ella got 4 incorrect answers while Marion got 6 more than half the score of Ella. What is Marion's score?", 'gold_reasoning': "Ella's score is 40 items - 4 items = &lt;&lt;40-4=36&gt;&gt;36 items. Half of Ella's score is 36 items / 2 = &lt;&lt;36/2=18&gt;&gt;18 items. So, Marion's score is 18 items + 6 items = &lt;&lt;18+6=24&gt;&gt;24 items.", 'answer': '24'}) (input_keys={'question'}),
  Example({'question': "Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.", 'gold_reasoning': 'Up a mountain, Stephen covered 3/4*40000 = &lt;&lt;3/4*40000=30000&gt;&gt;30000 feet. Coming down, Stephen covered another 30000 feet, making the total distance covered in one round to be 30000+30000 = &lt;&lt;30000+30000=60000&gt;&gt;60000. Since Stephen made 10 round trips up and down the mountain, he covered 10*60000 = &lt;&lt;10*60000=600000&gt;&gt;600000', 'answer': '600000'}) (input_keys={'question'}),
@@ -2475,24 +2647,24 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 </div>
 <p>We will also set up some tooling for evaluating the model’s performance on the GSM8K dataset.</p>
 <div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1">evaluate <span class="op" style="color: #5E5E5E;">=</span> Evaluate(devset<span class="op" style="color: #5E5E5E;">=</span>gsm8k_devset, metric<span class="op" style="color: #5E5E5E;">=</span>gsm8k_metric, num_threads<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, display_progress<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>, display_table<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1">evaluate <span class="op" style="color: #5E5E5E;">=</span> Evaluate(devset<span class="op" style="color: #5E5E5E;">=</span>gsm8k_devset, metric<span class="op" style="color: #5E5E5E;">=</span>gsm8k_metric, num_threads<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, display_progress<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>, display_table<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
 </div>
 <p>We can then define our module. The key in DSPy is the “signature” mapping, for example, inputs to outputs – in natural language. In this case, the signature is <code>question -&gt; answer</code>.</p>
 <div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><span class="kw" style="color: #003B4F;">class</span> CoT(dspy.Module):</span>
-<span id="cb49-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
-<span id="cb49-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>()</span>
-<span id="cb49-4">        <span class="va" style="color: #111111;">self</span>.prog <span class="op" style="color: #5E5E5E;">=</span> dspy.ChainOfThought(<span class="st" style="color: #20794D;">"question -&gt; answer"</span>)</span>
-<span id="cb49-5">    </span>
-<span id="cb49-6">    <span class="kw" style="color: #003B4F;">def</span> forward(<span class="va" style="color: #111111;">self</span>, question):</span>
-<span id="cb49-7">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.prog(question<span class="op" style="color: #5E5E5E;">=</span>question)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><span class="kw" style="color: #003B4F;">class</span> CoT(dspy.Module):</span>
+<span id="cb48-2">    <span class="kw" style="color: #003B4F;">def</span> <span class="fu" style="color: #4758AB;">__init__</span>(<span class="va" style="color: #111111;">self</span>):</span>
+<span id="cb48-3">        <span class="bu" style="color: null;">super</span>().<span class="fu" style="color: #4758AB;">__init__</span>()</span>
+<span id="cb48-4">        <span class="va" style="color: #111111;">self</span>.prog <span class="op" style="color: #5E5E5E;">=</span> dspy.ChainOfThought(<span class="st" style="color: #20794D;">"question -&gt; answer"</span>)</span>
+<span id="cb48-5">    </span>
+<span id="cb48-6">    <span class="kw" style="color: #003B4F;">def</span> forward(<span class="va" style="color: #111111;">self</span>, question):</span>
+<span id="cb48-7">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">self</span>.prog(question<span class="op" style="color: #5E5E5E;">=</span>question)</span></code></pre></div>
 </div>
 <p>Let’s evaluate the model on the GSM8K dataset</p>
 <div class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1">cot <span class="op" style="color: #5E5E5E;">=</span> CoT()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1">cot <span class="op" style="color: #5E5E5E;">=</span> CoT()</span></code></pre></div>
 </div>
 <div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1">evaluate(cot)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1">evaluate(cot)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Average Metric: 6 / 10  (60.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.04it/s]</code></pre>
 </div>
@@ -2507,409 +2679,20 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 </div>
 </div>
 <p>DSPy provides <code>Teleprompters</code> that can be used to optimize pipelines. This optimization is called with the <code>compile</code> method.</p>
-<div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><span class="im" style="color: #00769E;">from</span> dspy.teleprompt <span class="im" style="color: #00769E;">import</span> BootstrapFewShotWithRandomSearch</span>
-<span id="cb56-2"></span>
-<span id="cb56-3"><span class="co" style="color: #5E5E5E;"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
-<span id="cb56-4">config <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">dict</span>(max_bootstrapped_demos<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, max_labeled_demos<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb56-5"></span>
-<span id="cb56-6"><span class="co" style="color: #5E5E5E;"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
-<span id="cb56-7">teleprompter <span class="op" style="color: #5E5E5E;">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op" style="color: #5E5E5E;">=</span>gsm8k_metric, <span class="op" style="color: #5E5E5E;">**</span>config)</span>
-<span id="cb56-8">optimized_cot <span class="op" style="color: #5E5E5E;">=</span> teleprompter.<span class="bu" style="color: null;">compile</span>(CoT(), trainset<span class="op" style="color: #5E5E5E;">=</span>gsm8k_trainset)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Going to sample between 1 and 4 traces per predictor.
-Will attempt to train 16 candidate sets.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 5 / 10  (50.0): 100%|██████████| 10/10 [00:05&lt;00:00,  1.89it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 5 / 10  (50.0%)
-Score: 50.0 for set: [0]
-New best score: 50.0 for seed -3
-Scores so far: [50.0]
-Best score: 50.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.12it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-New best score: 90.0 for seed -2
-Scores so far: [50.0, 90.0]
-Best score: 90.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 5/10 [00:00&lt;00:00, 5393.91it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 4 full traces after 6 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.76it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0]
-Best score: 90.0
-Average of max per entry across top 1 scores: 0.9
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 5/10 [00:06&lt;00:06,  1.29s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 4 full traces after 6 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.56it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0]
-Best score: 90.0
-Average of max per entry across top 1 scores: 0.9
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 2/10 [00:01&lt;00:07,  1.02it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 2 full traces after 3 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 10 / 10  (100.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.64it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 10 / 10  (100.0%)
-Score: 100.0 for set: [4]
-New best score: 100.0 for seed 1
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 1/10 [00:01&lt;00:11,  1.24s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 1 full traces after 2 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 10 / 10  (100.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.08it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 10 / 10  (100.0%)
-Score: 100.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 30%|███       | 3/10 [00:03&lt;00:08,  1.23s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 2 full traces after 4 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 7 / 10  (70.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.93it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 7 / 10  (70.0%)
-Score: 70.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 2/10 [00:02&lt;00:10,  1.35s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 2 full traces after 3 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.95it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 50%|█████     | 5/10 [00:06&lt;00:06,  1.33s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 3 full traces after 6 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.88it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 1/10 [00:00&lt;00:08,  1.01it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 1 full traces after 2 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 7 / 10  (70.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.26it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 7 / 10  (70.0%)
-Score: 70.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 60%|██████    | 6/10 [00:08&lt;00:05,  1.35s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 3 full traces after 7 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.00it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 20%|██        | 2/10 [00:03&lt;00:12,  1.60s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 2 full traces after 3 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 10 / 10  (100.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.61it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 10 / 10  (100.0%)
-Score: 100.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 4/10 [00:05&lt;00:08,  1.46s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 4 full traces after 5 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.77it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 1/10 [00:01&lt;00:11,  1.23s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 1 full traces after 2 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.95it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 60%|██████    | 6/10 [00:07&lt;00:04,  1.23s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 4 full traces after 7 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.04it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0, 90.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 4/10 [00:05&lt;00:08,  1.40s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 4 full traces after 5 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.11it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0, 90.0, 80.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 40%|████      | 4/10 [00:04&lt;00:07,  1.22s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 3 full traces after 5 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.45it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0, 90.0, 80.0, 80.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 10%|█         | 1/10 [00:02&lt;00:21,  2.38s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 1 full traces after 2 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:03&lt;00:00,  2.53it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 8 / 10  (80.0%)
-Score: 80.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0, 90.0, 80.0, 80.0, 80.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 30%|███       | 3/10 [00:05&lt;00:12,  1.74s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrapped 2 full traces after 4 examples in round 0.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 9 / 10  (90.0): 100%|██████████| 10/10 [00:03&lt;00:00,  3.20it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Average Metric: 9 / 10  (90.0%)
-Score: 90.0 for set: [4]
-Scores so far: [50.0, 90.0, 80.0, 80.0, 100.0, 100.0, 70.0, 90.0, 80.0, 70.0, 90.0, 100.0, 80.0, 90.0, 90.0, 80.0, 80.0, 80.0, 90.0]
-Best score: 100.0
-Average of max per entry across top 1 scores: 1.0
-Average of max per entry across top 2 scores: 1.0
-Average of max per entry across top 3 scores: 1.0
-Average of max per entry across top 5 scores: 1.0
-Average of max per entry across top 8 scores: 1.0
-Average of max per entry across top 9999 scores: 1.0
-19 candidate programs found.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><span class="im" style="color: #00769E;">from</span> dspy.teleprompt <span class="im" style="color: #00769E;">import</span> BootstrapFewShotWithRandomSearch</span>
+<span id="cb55-2"></span>
+<span id="cb55-3"><span class="co" style="color: #5E5E5E;"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
+<span id="cb55-4">config <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">dict</span>(max_bootstrapped_demos<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, max_labeled_demos<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>)</span>
+<span id="cb55-5"></span>
+<span id="cb55-6"><span class="co" style="color: #5E5E5E;"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
+<span id="cb55-7">teleprompter <span class="op" style="color: #5E5E5E;">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op" style="color: #5E5E5E;">=</span>gsm8k_metric, <span class="op" style="color: #5E5E5E;">**</span>config)</span>
+<span id="cb55-8">optimized_cot <span class="op" style="color: #5E5E5E;">=</span> teleprompter.<span class="bu" style="color: null;">compile</span>(CoT(), trainset<span class="op" style="color: #5E5E5E;">=</span>gsm8k_trainset)</span></code></pre></div>
 </div>
 <p>We can now test it</p>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb132" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><span class="co" style="color: #5E5E5E;"># Evaluate our `optimized_cot` program.</span></span>
-<span id="cb132-2">evaluate(optimized_cot)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><span class="co" style="color: #5E5E5E;"># Evaluate our `optimized_cot` program.</span></span>
+<span id="cb56-2">evaluate(optimized_cot)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]</code></pre>
 </div>
@@ -2928,7 +2711,7 @@ Average of max per entry across top 9999 scores: 1.0
 </div>
 <p>It seems that things improved. How did they improve? What did the optimizer do? We can see that by looking into the optimization history.</p>
 <div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb138" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><span class="bu" style="color: null;">print</span>(turbo.inspect_history(n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">5</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><span class="bu" style="color: null;">print</span>(turbo.inspect_history(n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">5</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 

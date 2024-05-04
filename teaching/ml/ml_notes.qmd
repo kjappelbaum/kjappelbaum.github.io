@@ -3,6 +3,8 @@ title: 'Workshop on ML for materials science'
 description: <i>Some notes to accompany the ML workshop.</i>
 image: ""
 sidebar: false
+execute:
+  freeze: true
 ---
 
 ## Motivation 

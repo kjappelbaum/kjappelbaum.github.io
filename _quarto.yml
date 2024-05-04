@@ -56,3 +56,6 @@ format:
     css:
       - styles.css
     toc: true
+    comments:
+      utterances:
+        repo: kjappelbaum/kjappelbaum.github.io

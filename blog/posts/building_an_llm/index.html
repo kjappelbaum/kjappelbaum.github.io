@@ -2320,20 +2320,23 @@ Epoch 9, iter 3000, train loss 0.628, val perplexity 1.89323</code></pre>
 <span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>    generation <span class="op">=</span> gpt.generate(a, max_new_tokens<span class="op">=</span><span class="dv">30</span>).cpu().numpy()</span>
 <span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>    generations.append(tokenizer.decode(generation[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="418">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>generations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="418">
-<pre><code>['C1(=CCO1=CC1C1=CO1',
- 'C1COC',
- 'C1(N=CCCC1=CCCO2)CC1C1C1',
- 'C1CC1',
- 'C1',
- 'C1',
- 'C1',
- 'C1',
- 'C1',
- 'C1[Si](CNC2C2)']</code></pre>
+<div class="cell" data-execution_count="423">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>np.random.choice(generations, <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="423">
+<pre><code>array(['C1', 'C1', 'C1=C[C@H]1C', 'C1(Cn1', 'C1(COC#N2C[C@@H]2)CC', 'C1(',
+       'C1', 'C1', 'C1[Si]Oc2CC', 'C1', 'C1C', 'C1', 'C1C1',
+       'C1(/C2[C@H]2[C@@H]1C[C@@H]1[C@@H]1O2C[C@H]1', 'C1', 'C1CC1',
+       'C1C', 'C1', 'C1', 'CC2C[C@@H]1C[C@H]2CC[C@H]', 'C1CC1', 'C1',
+       'C1(COc[nH]c2', 'CC', 'C1CC1', 'C1C=COC', 'CC',
+       'C1[Si]CCC1CN1c2[nH]2CC', 'C1', 'C2)c1C1', 'C1=', 'CCC1', 'CC',
+       'C1(/CCO1C1=CCO2)NC[C@@H]c1C', 'CC[C@H](CCO', 'CCC', 'C1CC1',
+       'CC2)n1C1', 'CCC1', 'C1(=C2N'], dtype='&lt;U45')</code></pre>
 </div>
+</div>
+<div class="cell" data-execution_count="424">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'generations.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> handle:</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> generation <span class="kw">in</span> generations:</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        handle.write(generation <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Those seem the best we have seen so far!</p>
 </section>

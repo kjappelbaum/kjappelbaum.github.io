@@ -45,56 +45,80 @@ Note
 <p>In the case of conditional generation, we also would need to evaluate how well the model is able to generate molecules with the desired properties. We will not cover this in this post, but it is an important topic to consider when evaluating generative models.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">from</span> typing <span class="im" style="color: #00769E;">import</span> List, Tuple</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="cf" style="color: #003B4F;">with</span> <span class="bu" style="color: null;">open</span>(<span class="st" style="color: #20794D;">'../building_an_llm/generations.txt'</span>, <span class="st" style="color: #20794D;">'r'</span>) <span class="im" style="color: #00769E;">as</span> handle: </span>
+<span id="cb2-2">    generated <span class="op" style="color: #5E5E5E;">=</span> handle.readlines()</span></code></pre></div>
 </div>
 <section id="validity" class="level2">
 <h2 class="anchored" data-anchor-id="validity">Validity</h2>
 <p>The simplest check of the generated SMILES is for syntactic correctness. This is done by using the RDKit to parse the SMILES and check for errors. If the SMILES is syntactically correct, the RDKit will return a molecule object. If the SMILES is not syntactically correct, the RDKit will return None.</p>
 <p>Note that if we were to use a representation such as <a href="https://www.sciencedirect.com/science/article/pii/S2666389922002069">SELFIES, any sequence of SELFIES characters is syntactically correct</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;">def</span> is_valid_smiles(string: <span class="bu" style="color: null;">str</span>) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">bool</span>:</span>
-<span id="cb2-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;">    Check if a string is a valid SMILES string.</span></span>
-<span id="cb2-4"><span class="co" style="color: #5E5E5E;">    </span></span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
-<span id="cb2-6"><span class="co" style="color: #5E5E5E;">        string: A string to be checked.</span></span>
-<span id="cb2-7"><span class="co" style="color: #5E5E5E;">    </span></span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
-<span id="cb2-9"><span class="co" style="color: #5E5E5E;">        A boolean value indicating whether the string is a valid SMILES string.</span></span>
-<span id="cb2-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
-<span id="cb2-11">    <span class="cf" style="color: #003B4F;">try</span>:</span>
-<span id="cb2-12">        <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> Chem</span>
-<span id="cb2-13">        mol <span class="op" style="color: #5E5E5E;">=</span> Chem.MolFromSmiles(string)</span>
-<span id="cb2-14">        <span class="cf" style="color: #003B4F;">if</span> mol <span class="kw" style="color: #003B4F;">is</span> <span class="va" style="color: #111111;">None</span>:</span>
-<span id="cb2-15">            <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">False</span></span>
-<span id="cb2-16">        <span class="cf" style="color: #003B4F;">else</span>:</span>
-<span id="cb2-17">            <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">True</span></span>
-<span id="cb2-18">    <span class="cf" style="color: #003B4F;">except</span>:</span>
-<span id="cb2-19">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">False</span></span></code></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;">def</span> is_valid_smiles(string: <span class="bu" style="color: null;">str</span>) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">bool</span>:</span>
+<span id="cb3-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;">    Check if a string is a valid SMILES string.</span></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;">    </span></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;">        string: A string to be checked.</span></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;">    </span></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;">        A boolean value indicating whether the string is a valid SMILES string.</span></span>
+<span id="cb3-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
+<span id="cb3-11">    <span class="cf" style="color: #003B4F;">try</span>:</span>
+<span id="cb3-12">        <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> Chem</span>
+<span id="cb3-13">        mol <span class="op" style="color: #5E5E5E;">=</span> Chem.MolFromSmiles(string)</span>
+<span id="cb3-14">        <span class="cf" style="color: #003B4F;">if</span> mol <span class="kw" style="color: #003B4F;">is</span> <span class="va" style="color: #111111;">None</span>:</span>
+<span id="cb3-15">            <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">False</span></span>
+<span id="cb3-16">        <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb3-17">            <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">True</span></span>
+<span id="cb3-18">    <span class="cf" style="color: #003B4F;">except</span>:</span>
+<span id="cb3-19">        <span class="cf" style="color: #003B4F;">return</span> <span class="va" style="color: #111111;">False</span></span></code></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">is_valid_generated <span class="op" style="color: #5E5E5E;">=</span> [is_valid_smiles(smiles) <span class="cf" style="color: #003B4F;">for</span> smiles <span class="kw" style="color: #003B4F;">in</span> generated]</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="bu" style="color: null;">sum</span>(is_valid_generated) <span class="op" style="color: #5E5E5E;">/</span> <span class="bu" style="color: null;">len</span>(is_valid_generated)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.204</code></pre>
+</div>
+</div>
+<p>The validity we achieved is not impressive, but it at least is something we can now optimize.</p>
 </section>
 <section id="uniqueness-of-smiles" class="level2">
 <h2 class="anchored" data-anchor-id="uniqueness-of-smiles">Uniqueness of SMILES</h2>
 <p>If we sampled a bunch of strings, we would not be happy if all SMILES are the same.</p>
 <p>A metric that captures this is the fraction of unique SMILES in all generated SMILES. Of course, it makes little sense to include invalid SMILES in this calculation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;">def</span> uniqueness(smiles: List[<span class="bu" style="color: null;">str</span>]) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">float</span>:</span>
-<span id="cb3-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">    Calculate the uniqueness of a list of SMILES strings.</span></span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
-<span id="cb3-6"><span class="co" style="color: #5E5E5E;">        smiles: A list of SMILES strings.</span></span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
-<span id="cb3-9"><span class="co" style="color: #5E5E5E;">        A float value indicating the uniqueness of the SMILES strings.</span></span>
-<span id="cb3-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
-<span id="cb3-11">    valid <span class="op" style="color: #5E5E5E;">=</span> [s <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> smiles <span class="cf" style="color: #003B4F;">if</span> is_valid_smiles(s)]</span>
-<span id="cb3-12"></span>
-<span id="cb3-13">    num_unique <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">len</span>(<span class="bu" style="color: null;">set</span>(valid))</span>
-<span id="cb3-14"></span>
-<span id="cb3-15">    <span class="cf" style="color: #003B4F;">return</span> num_unique <span class="op" style="color: #5E5E5E;">/</span> <span class="bu" style="color: null;">len</span>(valid)</span></code></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;">def</span> uniqueness(smiles: List[<span class="bu" style="color: null;">str</span>]) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">float</span>:</span>
+<span id="cb7-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;">    Calculate the uniqueness of a list of SMILES strings.</span></span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;">        smiles: A list of SMILES strings.</span></span>
+<span id="cb7-7"></span>
+<span id="cb7-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
+<span id="cb7-9"><span class="co" style="color: #5E5E5E;">        A float value indicating the uniqueness of the SMILES strings.</span></span>
+<span id="cb7-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
+<span id="cb7-11">    valid <span class="op" style="color: #5E5E5E;">=</span> [s <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> smiles <span class="cf" style="color: #003B4F;">if</span> is_valid_smiles(s)]</span>
+<span id="cb7-12"></span>
+<span id="cb7-13">    num_unique <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">len</span>(<span class="bu" style="color: null;">set</span>(valid))</span>
+<span id="cb7-14"></span>
+<span id="cb7-15">    <span class="cf" style="color: #003B4F;">return</span> num_unique <span class="op" style="color: #5E5E5E;">/</span> <span class="bu" style="color: null;">len</span>(valid)</span></code></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">unique <span class="op" style="color: #5E5E5E;">=</span> uniqueness(generated)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">unique</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0.24509803921568626</code></pre>
+</div>
+</div>
+<p>And in our generation, the redudancy is quite high. However, we also only started sampling from carbon all the time.</p>
 </section>
 <section id="diversity" class="level2">
 <h2 class="anchored" data-anchor-id="diversity">Diversity</h2>
@@ -111,33 +135,43 @@ Note
 <li>The Tanimoto similarity is not necessarily a good measure of chemical similarity.</li>
 </ul>
 <p>You can find some more discussion in <a href="https://arxiv.org/pdf/2112.12542">this paper by Xie and colleagues</a>.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;">def</span> internal_diversity(smiles: List[<span class="bu" style="color: null;">str</span>]) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">float</span>:</span>
-<span id="cb4-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;">    Calculate the internal diversity of a list of SMILES strings.</span></span>
-<span id="cb4-4"></span>
-<span id="cb4-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
-<span id="cb4-6"><span class="co" style="color: #5E5E5E;">        smiles: A list of SMILES strings.</span></span>
-<span id="cb4-7"><span class="co" style="color: #5E5E5E;">    </span></span>
-<span id="cb4-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
-<span id="cb4-9"><span class="co" style="color: #5E5E5E;">        A float value indicating the internal diversity of the SMILES strings.</span></span>
-<span id="cb4-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
-<span id="cb4-11"></span>
-<span id="cb4-12">    valid <span class="op" style="color: #5E5E5E;">=</span> [s <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> smiles <span class="cf" style="color: #003B4F;">if</span> is_valid_smiles(s)]</span>
-<span id="cb4-13"></span>
-<span id="cb4-14">    <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> Chem</span>
-<span id="cb4-15">    <span class="im" style="color: #00769E;">from</span> rdkit.Chem <span class="im" style="color: #00769E;">import</span> AllChem</span>
-<span id="cb4-16">    <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> DataStructs</span>
-<span id="cb4-17"></span>
-<span id="cb4-18">    fps <span class="op" style="color: #5E5E5E;">=</span> [AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(s), <span class="dv" style="color: #AD0000;">2</span>, nBits<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2048</span>) <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> valid]</span>
-<span id="cb4-19"></span>
-<span id="cb4-20">    similarities <span class="op" style="color: #5E5E5E;">=</span> []</span>
-<span id="cb4-21">    <span class="cf" style="color: #003B4F;">for</span> i <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(<span class="bu" style="color: null;">len</span>(fps)):</span>
-<span id="cb4-22">        <span class="cf" style="color: #003B4F;">for</span> j <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(i<span class="op" style="color: #5E5E5E;">+</span><span class="dv" style="color: #AD0000;">1</span>, <span class="bu" style="color: null;">len</span>(fps)):</span>
-<span id="cb4-23">            similarities.append(DataStructs.TanimotoSimilarity(fps[i], fps[j]))</span>
-<span id="cb4-24"></span>
-<span id="cb4-25">    <span class="cf" style="color: #003B4F;">return</span> <span class="bu" style="color: null;">sum</span>(similarities) <span class="op" style="color: #5E5E5E;">/</span> <span class="bu" style="color: null;">len</span>(similarities)</span></code></pre></div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;">def</span> internal_diversity(smiles: List[<span class="bu" style="color: null;">str</span>]) <span class="op" style="color: #5E5E5E;">-&gt;</span> <span class="bu" style="color: null;">float</span>:</span>
+<span id="cb11-2">    <span class="co" style="color: #5E5E5E;">"""</span></span>
+<span id="cb11-3"><span class="co" style="color: #5E5E5E;">    Calculate the internal diversity of a list of SMILES strings.</span></span>
+<span id="cb11-4"></span>
+<span id="cb11-5"><span class="co" style="color: #5E5E5E;">    Args:</span></span>
+<span id="cb11-6"><span class="co" style="color: #5E5E5E;">        smiles: A list of SMILES strings.</span></span>
+<span id="cb11-7"><span class="co" style="color: #5E5E5E;">    </span></span>
+<span id="cb11-8"><span class="co" style="color: #5E5E5E;">    Returns:</span></span>
+<span id="cb11-9"><span class="co" style="color: #5E5E5E;">        A float value indicating the internal diversity of the SMILES strings.</span></span>
+<span id="cb11-10"><span class="co" style="color: #5E5E5E;">    """</span></span>
+<span id="cb11-11"></span>
+<span id="cb11-12">    valid <span class="op" style="color: #5E5E5E;">=</span> [s <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> smiles <span class="cf" style="color: #003B4F;">if</span> is_valid_smiles(s)]</span>
+<span id="cb11-13"></span>
+<span id="cb11-14">    <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> Chem</span>
+<span id="cb11-15">    <span class="im" style="color: #00769E;">from</span> rdkit.Chem <span class="im" style="color: #00769E;">import</span> AllChem</span>
+<span id="cb11-16">    <span class="im" style="color: #00769E;">from</span> rdkit <span class="im" style="color: #00769E;">import</span> DataStructs</span>
+<span id="cb11-17"></span>
+<span id="cb11-18">    fps <span class="op" style="color: #5E5E5E;">=</span> [AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(s), <span class="dv" style="color: #AD0000;">2</span>, nBits<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2048</span>) <span class="cf" style="color: #003B4F;">for</span> s <span class="kw" style="color: #003B4F;">in</span> valid]</span>
+<span id="cb11-19"></span>
+<span id="cb11-20">    similarities <span class="op" style="color: #5E5E5E;">=</span> []</span>
+<span id="cb11-21">    <span class="cf" style="color: #003B4F;">for</span> i <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(<span class="bu" style="color: null;">len</span>(fps)):</span>
+<span id="cb11-22">        <span class="cf" style="color: #003B4F;">for</span> j <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(i<span class="op" style="color: #5E5E5E;">+</span><span class="dv" style="color: #AD0000;">1</span>, <span class="bu" style="color: null;">len</span>(fps)):</span>
+<span id="cb11-23">            similarities.append(DataStructs.TanimotoSimilarity(fps[i], fps[j]))</span>
+<span id="cb11-24"></span>
+<span id="cb11-25">    <span class="cf" style="color: #003B4F;">return</span> <span class="bu" style="color: null;">sum</span>(similarities) <span class="op" style="color: #5E5E5E;">/</span> <span class="bu" style="color: null;">len</span>(similarities)</span></code></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">generated_diversity <span class="op" style="color: #5E5E5E;">=</span> internal_diversity(generated)   </span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">generated_diversity</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>0.28055909630441767</code></pre>
+</div>
+</div>
+<p>This number is perhaps not so easy to interpret. However, we can compare to other techniques. For instance <a href="https://arxiv.org/pdf/2002.02948">Maragakis et al.</a> performed some basic analysis of different generative models and they found average pairwise Tanimoto similarities in the range of 0.216 to 0.477 (the values are not directly comparable as they depend on the task and the way molecules have been sampled, but it at least gives us a ballbark).</p>
 </section>
 <section id="other-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="other-metrics">Other metrics</h2>
@@ -2205,20 +2239,23 @@ Epoch 9, iter 3000, train loss 0.628, val perplexity 1.89323</code></pre>
 <span id="cb75-6">    generation <span class="op" style="color: #5E5E5E;">=</span> gpt.generate(a, max_new_tokens<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">30</span>).cpu().numpy()</span>
 <span id="cb75-7">    generations.append(tokenizer.decode(generation[<span class="dv" style="color: #AD0000;">0</span>]))</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="418">
-<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1">generations</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="418">
-<pre><code>['C1(=CCO1=CC1C1=CO1',
- 'C1COC',
- 'C1(N=CCCC1=CCCO2)CC1C1C1',
- 'C1CC1',
- 'C1',
- 'C1',
- 'C1',
- 'C1',
- 'C1',
- 'C1[Si](CNC2C2)']</code></pre>
+<div class="cell" data-execution_count="423">
+<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1">np.random.choice(generations, <span class="dv" style="color: #AD0000;">40</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="423">
+<pre><code>array(['C1', 'C1', 'C1=C[C@H]1C', 'C1(Cn1', 'C1(COC#N2C[C@@H]2)CC', 'C1(',
+       'C1', 'C1', 'C1[Si]Oc2CC', 'C1', 'C1C', 'C1', 'C1C1',
+       'C1(/C2[C@H]2[C@@H]1C[C@@H]1[C@@H]1O2C[C@H]1', 'C1', 'C1CC1',
+       'C1C', 'C1', 'C1', 'CC2C[C@@H]1C[C@H]2CC[C@H]', 'C1CC1', 'C1',
+       'C1(COc[nH]c2', 'CC', 'C1CC1', 'C1C=COC', 'CC',
+       'C1[Si]CCC1CN1c2[nH]2CC', 'C1', 'C2)c1C1', 'C1=', 'CCC1', 'CC',
+       'C1(/CCO1C1=CCO2)NC[C@@H]c1C', 'CC[C@H](CCO', 'CCC', 'C1CC1',
+       'CC2)n1C1', 'CCC1', 'C1(=C2N'], dtype='&lt;U45')</code></pre>
 </div>
+</div>
+<div class="cell" data-execution_count="424">
+<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><span class="cf" style="color: #003B4F;">with</span> <span class="bu" style="color: null;">open</span>(<span class="st" style="color: #20794D;">'generations.txt'</span>, <span class="st" style="color: #20794D;">'w'</span>) <span class="im" style="color: #00769E;">as</span> handle:</span>
+<span id="cb78-2">    <span class="cf" style="color: #003B4F;">for</span> generation <span class="kw" style="color: #003B4F;">in</span> generations:</span>
+<span id="cb78-3">        handle.write(generation <span class="op" style="color: #5E5E5E;">+</span> <span class="st" style="color: #20794D;">'</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">'</span>)</span></code></pre></div>
 </div>
 <p>Those seem the best we have seen so far!</p>
 </section>

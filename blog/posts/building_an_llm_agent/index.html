@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,7 +82,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,8 +97,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S9W9LVHXJK"></script>
@@ -143,49 +122,51 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Kevin’s Homepage - Building an LLM agent from scratch">
-<meta property="og:description" content="<i>Developing an understanding for how LLM-based agents work.</i>">
-<meta property="og:image" content="">
-<meta property="og:site-name" content="Kevin's Homepage">
+<meta property="og:description" content="Developing an understanding for how LLM-based agents work.">
+<meta property="og:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/quarto.png">
+<meta property="og:site_name" content="Kevin's Homepage">
 <meta name="twitter:title" content="Kevin’s Homepage - Building an LLM agent from scratch">
-<meta name="twitter:description" content="<i>Developing an understanding for how LLM-based agents work.</i>">
-<meta name="twitter:image" content="">
+<meta name="twitter:description" content="Developing an understanding for how LLM-based agents work.">
+<meta name="twitter:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand navbar-dark ">
+    <nav class="navbar navbar-expand " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"><i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="../../../publications.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../research.html">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html">
- <span class="menu-text">Open Source</span></a>
+    <a class="nav-link" href="../../../opensource/opensource.html"> 
+<span class="menu-text">Open Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="../../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
+          <div class="quarto-navbar-tools">
+</div>
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -204,7 +185,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   <li><a href="#outlook-beyond-hard-coding-prompts" id="toc-outlook-beyond-hard-coding-prompts" class="nav-link" data-scroll-target="#outlook-beyond-hard-coding-prompts">Outlook: Beyond hard-coding prompts</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -240,9 +221,11 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
+
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> litellm</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> litellm <span class="im">import</span> completion</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> litellm.caching <span class="im">import</span> Cache</span>
@@ -259,10 +242,10 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <p>In this post, we will implement a simple agent from scratch.</p>
 <p>Our goal is to answer simple questions about molecules (such as the number of hydrogen bond donors) reliably.</p>
 <p>If we simply prompt an LLM to answer the question about hydrogen bond donors, it might give us something like the completion shown below.</p>
-<div class="cell" data-execution_count="3">
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>molecule  <span class="op">=</span> <span class="st">"[C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="cell-8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> completion(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gpt-3.5-turbo'</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
@@ -279,14 +262,18 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </div>
 </div>
 <p>If we look at the molecule …</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-10" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Chem.MolFromSmiles(molecule)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>… or compute the number of hydrogen bond donors in the molecule using RDKit …</p>
-<div class="cell" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rdMolDescriptors.CalcNumHBD(Chem.MolFromSmiles(molecule))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>2</code></pre>
@@ -307,7 +294,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://haystack.deepset.ai/blog/introducing-haystack-agents/agents.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure taken from HayStack (by deepset) illustrating the ReaAct loop.</figcaption><p></p>
+<figcaption>Figure taken from HayStack (by deepset) illustrating the ReaAct loop.</figcaption>
 </figure>
 </div>
 <p>This is inspired by chain-of-thought prompting, which has been shown to be effective in improving the performance of LLMs on a variety of tasks.</p>
@@ -315,7 +302,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <section id="using-the-react-prompt" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-react-prompt">Using the ReAct prompt</h2>
 <p>By reading the ReAct paper (or digging <a href="https://smith.langchain.com/hub/hwchase17/react">very deep into Langchain’s codebase</a>), we find that the following text is at the heart of the ReAct framework.</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-19" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>REACT_PROMPT<span class="op">=</span><span class="st">"""Answer the following questions as best you can. You have access to the following tools:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="sc">{tools}</span></span>
@@ -347,7 +334,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <p>The <code>tools</code> field will contain descriptions of the tools the agent has access to. The <code>tool_names</code> field will contain the names of the tools the agent has access to. The <code>input</code> field will contain the input question. The <code>agent_scratchpad</code> field will contain the scratchpad of the agent.</p>
 <p>What we might now be tempted to do is to just send this prompt with a question to OpenAI…</p>
 <p>For this, we, of course, will first need to define the tools we will give the model access to. To facilitate this, we will define a tool as a Python object that knows something about how the tool should be called and described</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-23" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tool:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, description, method):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
@@ -361,7 +348,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.method(<span class="bu">input</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For example, the following code defines a tool that can calculate the number of hydrogen bond donors in a molecule:</p>
-<div class="cell" data-execution_count="9">
+<div id="cell-25" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HydrogenBondDonorTool(Tool):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'num_hydrogenbond_donors'</span>, <span class="st">'Calculates the number of hydrogen bond donors in a molecule based on a SMILES'</span>, rdMolDescriptors.CalcNumHBD)</span>
@@ -370,17 +357,17 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.method(Chem.MolFromSmiles(<span class="bu">input</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we instantiate the tool and run it, we get the number of hydrogen bond donors in the molecule.</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-27" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hydrogenbonddonor_tool <span class="op">=</span> HydrogenBondDonorTool()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="cell-28" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>hydrogenbonddonor_tool.run(molecule)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>2</code></pre>
 </div>
 </div>
 <p>With the tool in hand, we can now generate the ReAct prompt:</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-30" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> REACT_PROMPT.<span class="bu">format</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    tools <span class="op">=</span> <span class="ss">f"- </span><span class="sc">{</span>hydrogenbonddonor_tool<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>hydrogenbonddonor_tool<span class="sc">.</span>description<span class="sc">}</span><span class="ss">"</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    tool_names <span class="op">=</span> hydrogenbonddonor_tool.name,</span>
@@ -388,7 +375,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    agent_scratchpad <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-31" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prompt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Answer the following questions as best you can. You have access to the following tools:
@@ -421,7 +408,7 @@ Thought:</code></pre>
 </div>
 </div>
 <p>Let’s see what happens when we put this prompt into the model.</p>
-<div class="cell" data-execution_count="14">
+<div id="cell-33" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> completion(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">'gpt-3.5-turbo'</span>, </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
@@ -432,7 +419,7 @@ Thought:</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>).choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="cell-34" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>I need to use the num_hydrogenbond_donors tool to calculate the number of hydrogen bond donors in the given molecule.
@@ -446,7 +433,7 @@ Final Answer: The number of hydrogen bond donors in the molecule [C@H]([C@@H]([C
 </div>
 <p>The model hallucinated! It gave us everything, including the final answer. This is not what we wanted. We wanted to only have the model select the tool, generate the input and then observe the output.</p>
 <p>It seems that we need to stop it from jumping ahead to quickly. Luckily, we can do this quite easily by stopping the generation at the word “Observation”.</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-36" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> completion(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> <span class="st">'gpt-3.5-turbo'</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
@@ -469,7 +456,7 @@ Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
 </div>
 <p>That already looks way better! We now need to only extract the <code>Action Input</code> and pass it to our tool. Let’s do that next.</p>
 <p>For that we will all thought/observation cycle continue until we have a final answer. We can do this with a <code>while</code> loop that we will run until we have a final answer.</p>
-<div class="cell" data-execution_count="36">
+<div id="cell-38" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_question(prompt, tools):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    scratchpad <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>: </span>
@@ -518,7 +505,7 @@ Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
 <span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>                    scratchpad <span class="op">+=</span> <span class="ss">f"</span><span class="ch">\n</span><span class="ss">Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
 <span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-39" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>answer_question(<span class="ss">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc">{</span>molecule<span class="sc">}</span><span class="ss">?"</span>, [hydrogenbonddonor_tool])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  This is a SMILES representation of a molecule, so I should use the tool num_hydrogenbond_donors to calculate the number of hydrogen bond donors.
@@ -540,7 +527,7 @@ Final Answer: The number of hydrogen bond donors in the molecule is 2.</code></p
 <p>That looks good! The function used the LLM to decide what tool to use, what input to give to the tool, and then performed an observation by calling the tool.</p>
 <p>However, the usefulness of our agent is still limited as it only has one tool. Let’s add another tool to make the system more powerful.</p>
 <p>One very convenient functionality would be to robustly deal with various forms of molecular representations. For this we can use the chemical name resolver.</p>
-<div class="cell" data-execution_count="38">
+<div id="cell-42" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> resolve_identifier(identifier, representation):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># http:///chemical/structure/"structure identifier"/"representation"</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> requests</span>
@@ -548,28 +535,28 @@ Final Answer: The number of hydrogen bond donors in the molecule is 2.</code></p
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s test this function</p>
-<div class="cell" data-execution_count="39">
+<div id="cell-44" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>resolve_identifier(molecule, <span class="st">"inchi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>'InChI=1/C6H8O5/c7-3-1-2-4(8)5(9)6(10)11/h1-5,8-9H,(H,10,11)/p-1/t4-,5-/m0/s1/fC6H7O5/q-1'</code></pre>
 </div>
 </div>
 <p>We can now put this into a tool. We must, however, be careful since the LLM can only produce text. Our function, however, wants two specific strings. Thus, we will need to parse the output of the LLM to make it work.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled" title="Constrained generation">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
+<div class="callout-title-container flex-fill">
+Constrained generation
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Constrained generation">
+<div class="callout-body-container callout-body">
 <p>We can make the system much more robust by constraining the generation of the LLM. For instance, we could constrain it to only return a special kind of JSON.</p>
 <p>This works, because we can make the LLM sample only a subset of tokens from the vocabulary. Many LLM providers give access to such functionality via what is called <a href="https://platform.openai.com/docs/guides/text-generation/json-mode">JSON mode</a> or <a href="https://platform.openai.com/docs/guides/function-calling">function calling</a>. Some packages such as <a href="https://jxnl.github.io/instructor/why/">instructor</a> specialize on this functionality.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="cell-46" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NameResolverTool(Tool):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'name_resolver'</span>, <span class="st">'Converts chemical identifiers (e.g. common names and SMILES). The input is pair of two strings `identifier, representation`, for example, `CCCC, inchi` or `benzene, smiles`'</span>, resolve_identifier)</span>
@@ -581,17 +568,17 @@ Note
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.method(identifier, representation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s try this tool</p>
-<div class="cell" data-execution_count="47">
+<div id="cell-48" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>nameresolver_tool <span class="op">=</span> NameResolverTool()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="48">
+<div id="cell-49" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>nameresolver_tool.run(<span class="st">"CCCC, inchi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>'InChI=1/C4H10/c1-3-4-2/h3-4H2,1-2H3'</code></pre>
 </div>
 </div>
 <p>Now, let’s add the <code>NameResolverTool</code> to the list of tools and run the <code>answer_question</code> function with the new list of tools.</p>
-<div class="cell" data-execution_count="49">
+<div id="cell-51" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>answer_question(<span class="ss">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
@@ -612,7 +599,7 @@ did not match C++ signature:
 </div>
 </div>
 <p>That doesn’t look good! But we can let the model fix it by giving it access to the error message. To do so, we will catch exceptions and feed them into the LLM as observations.</p>
-<div class="cell" data-execution_count="52">
+<div id="cell-53" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_question_with_self_healing(prompt, tools):</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    scratchpad <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>: </span>
@@ -669,7 +656,7 @@ did not match C++ signature:
 <span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s try again!</p>
-<div class="cell" data-execution_count="53">
+<div id="cell-55" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>answer_question_with_self_healing(<span class="ss">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
@@ -681,14 +668,8 @@ Observation: Observation: An error occurred, try to fix it: Python argument type
     rdkit.Chem.rdMolDescriptors.CalcNumHBD(NoneType)
 did not match C++ signature:
     CalcNumHBD(RDKit::ROMol mol)
-</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[14:31:11] SMILES Parse Error: syntax error while parsing: aspirin
-[14:31:11] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Message:  Thought: It seems like there was an issue with the input for the num_hydrogenbond_donors tool. I should use the name_resolver tool to convert "aspirin" to SMILES representation first.
+
+Message:  Thought: It seems like there was an issue with the input for the num_hydrogenbond_donors tool. I should use the name_resolver tool to convert "aspirin" to SMILES representation first.
 
 Action: name_resolver
 Action Input: aspirin, smiles
@@ -705,6 +686,10 @@ Action Input: CC(=O)Oc1ccccc1C(O)=O
 Observation: 1
 
 Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[14:31:11] SMILES Parse Error: syntax error while parsing: aspirin
+[14:31:11] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>'Final Answer: The number of hydrogen bond donors in aspirin is 1.'</code></pre>
@@ -724,25 +709,25 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 <p>This, however, feels like manually optimizing the weights of a neural network.</p>
 <p>To overcome this, tools such as <a href="https://github.com/stanfordnlp/dspy">DSPy</a> have been developed. Those frameworks see prompts as parameters that can be automatically optimized (based on training data or automatically generated examples).</p>
 <p>If we follow the basic <a href="https://dspy-docs.vercel.app/docs/quick-start/minimal-example">DSPy tutorial</a> we get an idea of how this works.</p>
-<div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dspy</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.datasets.gsm8k <span class="im">import</span> GSM8K, gsm8k_metric</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.evaluate <span class="im">import</span> Evaluate</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the LM</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>turbo <span class="op">=</span> dspy.OpenAI(model<span class="op">=</span><span class="st">'gpt-3.5-turbo-instruct'</span>, max_tokens<span class="op">=</span><span class="dv">250</span>)</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>dspy.settings.configure(lm<span class="op">=</span>turbo)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load math questions from the GSM8K dataset</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>gsm8k <span class="op">=</span> GSM8K()</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>gsm8k_trainset, gsm8k_devset <span class="op">=</span> gsm8k.train[:<span class="dv">10</span>], gsm8k.dev[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-61" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dspy</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.datasets.gsm8k <span class="im">import</span> GSM8K, gsm8k_metric</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.evaluate <span class="im">import</span> Evaluate</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the LM</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>turbo <span class="op">=</span> dspy.OpenAI(model<span class="op">=</span><span class="st">'gpt-3.5-turbo-instruct'</span>, max_tokens<span class="op">=</span><span class="dv">250</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>dspy.settings.configure(lm<span class="op">=</span>turbo)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load math questions from the GSM8K dataset</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>gsm8k <span class="op">=</span> GSM8K()</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>gsm8k_trainset, gsm8k_devset <span class="op">=</span> gsm8k.train[:<span class="dv">10</span>], gsm8k.dev[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>100%|██████████| 7473/7473 [00:00&lt;00:00, 30592.35it/s]
 100%|██████████| 1319/1319 [00:00&lt;00:00, 36387.29it/s]</code></pre>
 </div>
 </div>
 <p>The datasets contain question/answer pairs</p>
-<div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>gsm8k_trainset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-63" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>gsm8k_trainset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>[Example({'question': "The result from the 40-item Statistics exam Marion and Ella took already came out. Ella got 4 incorrect answers while Marion got 6 more than half the score of Ella. What is Marion's score?", 'gold_reasoning': "Ella's score is 40 items - 4 items = &lt;&lt;40-4=36&gt;&gt;36 items. Half of Ella's score is 36 items / 2 = &lt;&lt;36/2=18&gt;&gt;18 items. So, Marion's score is 18 items + 6 items = &lt;&lt;18+6=24&gt;&gt;24 items.", 'answer': '24'}) (input_keys={'question'}),
  Example({'question': "Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.", 'gold_reasoning': 'Up a mountain, Stephen covered 3/4*40000 = &lt;&lt;3/4*40000=30000&gt;&gt;30000 feet. Coming down, Stephen covered another 30000 feet, making the total distance covered in one round to be 30000+30000 = &lt;&lt;30000+30000=60000&gt;&gt;60000. Since Stephen made 10 round trips up and down the mountain, he covered 10*60000 = &lt;&lt;10*60000=600000&gt;&gt;600000', 'answer': '600000'}) (input_keys={'question'}),
@@ -757,85 +742,76 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 </div>
 </div>
 <p>We will also set up some tooling for evaluating the model’s performance on the GSM8K dataset.</p>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>evaluate <span class="op">=</span> Evaluate(devset<span class="op">=</span>gsm8k_devset, metric<span class="op">=</span>gsm8k_metric, num_threads<span class="op">=</span><span class="dv">4</span>, display_progress<span class="op">=</span><span class="va">True</span>, display_table<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-65" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>evaluate <span class="op">=</span> Evaluate(devset<span class="op">=</span>gsm8k_devset, metric<span class="op">=</span>gsm8k_metric, num_threads<span class="op">=</span><span class="dv">4</span>, display_progress<span class="op">=</span><span class="va">True</span>, display_table<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can then define our module. The key in DSPy is the “signature” mapping, for example, inputs to outputs – in natural language. In this case, the signature is <code>question -&gt; answer</code>.</p>
-<div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CoT(dspy.Module):</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prog <span class="op">=</span> dspy.ChainOfThought(<span class="st">"question -&gt; answer"</span>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, question):</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.prog(question<span class="op">=</span>question)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-67" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CoT(dspy.Module):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prog <span class="op">=</span> dspy.ChainOfThought(<span class="st">"question -&gt; answer"</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, question):</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.prog(question<span class="op">=</span>question)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s evaluate the model on the GSM8K dataset</p>
-<div class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>cot <span class="op">=</span> CoT()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-69" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cot <span class="op">=</span> CoT()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>evaluate(cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>evaluate(cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Average Metric: 6 / 10  (60.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.04it/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Average Metric: 6 / 10  (60.0%)</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>60.0</code></pre>
 </div>
 </div>
 <p>DSPy provides <code>Teleprompters</code> that can be used to optimize pipelines. This optimization is called with the <code>compile</code> method.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled" title="The code below is expensive">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Warning
+<div class="callout-title-container flex-fill">
+The code below is expensive
 </div>
 </div>
-<div class="callout-body-container callout-body" title="The code below is expensive">
+<div class="callout-body-container callout-body">
 <p>The code below makes a large number of API calls to OpenAI’s API. This can be expensive.</p>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.teleprompt <span class="im">import</span> BootstrapFewShotWithRandomSearch</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(max_bootstrapped_demos<span class="op">=</span><span class="dv">4</span>, max_labeled_demos<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>teleprompter <span class="op">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op">=</span>gsm8k_metric, <span class="op">**</span>config)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>optimized_cot <span class="op">=</span> teleprompter.<span class="bu">compile</span>(CoT(), trainset<span class="op">=</span>gsm8k_trainset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-73" class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.teleprompt <span class="im">import</span> BootstrapFewShotWithRandomSearch</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(max_bootstrapped_demos<span class="op">=</span><span class="dv">4</span>, max_labeled_demos<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>teleprompter <span class="op">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op">=</span>gsm8k_metric, <span class="op">**</span>config)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>optimized_cot <span class="op">=</span> teleprompter.<span class="bu">compile</span>(CoT(), trainset<span class="op">=</span>gsm8k_trainset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now test it</p>
-<div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate our `optimized_cot` program.</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>evaluate(optimized_cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-75" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate our `optimized_cot` program.</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>evaluate(optimized_cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.05it/s]</code></pre>
+<pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.05it/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Average Metric: 8 / 10  (80.0%)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>80.0</code></pre>
 </div>
 </div>
 <p>It seems that things improved. How did they improve? What did the optimizer do? We can see that by looking into the optimization history.</p>
-<div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(turbo.inspect_history(n<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-77" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(turbo.inspect_history(n<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -1100,9 +1076,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1189,10 +1179,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kjablonka\.com\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1202,8 +1209,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1215,9 +1231,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1262,8 +1514,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">
-        <ul class="footer-items list-unstyled">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
@@ -1295,9 +1550,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-      </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,8 +63,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -73,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-image","listing-path","listing-other","listing-description"],
+      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -101,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-image","listing-path","listing-other","listing-description"],
+      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -129,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-image","listing-path","listing-other","listing-description"],
+      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -156,15 +164,43 @@ gtag('js', new Date());
 gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Kevin’s Homepage -  Open Source">
-<meta property="og:description" content="I believe that computational science relies on open code on data and subscribe to the Manifesto put out by Jonathan B. Buckheit and David L. Donoho:">
+<meta property="og:description" content="Kevin Maik Jablonka’s homepage.">
 <meta property="og:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
-<meta property="og:site-name" content="Kevin's Homepage">
+<meta property="og:site_name" content="Kevin's Homepage">
 <meta name="twitter:title" content="Kevin’s Homepage -  Open Source">
-<meta name="twitter:description" content="I believe that computational science relies on open code on data and subscribe to the Manifesto put out by Jonathan B. Buckheit and David L. Donoho:">
+<meta name="twitter:description" content="Kevin Maik Jablonka’s homepage.">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
 <meta name="twitter:creator" content="@kmjablonka">
 <meta name="twitter:card" content="summary_large_image">
@@ -174,35 +210,37 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand navbar-dark ">
+    <nav class="navbar navbar-expand " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"><i class="bi bi-home" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications.html">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="../publications.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../opensource/opensource.html" aria-current="page">
- <span class="menu-text">Open Source</span></a>
+    <a class="nav-link active" href="../opensource/opensource.html" aria-current="page"> 
+<span class="menu-text">Open Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
+          <div class="quarto-navbar-tools">
+</div>
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -220,7 +258,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   <li><a href="#active-learning" id="toc-active-learning" class="nav-link" data-scroll-target="#active-learning"><img src="img/natcomm.png" class="img-fluid" style="width:10.0%"> Active learning</a></li>
   <li><a href="#chemical-data-management" id="toc-chemical-data-management" class="nav-link" data-scroll-target="#chemical-data-management"><img src="img/cheminfo_logo.svg" class="img-fluid" style="width:10.0%"> Chemical Data management</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/opensource/opensource.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/opensource/opensource.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -240,7 +278,9 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <p>I believe that computational science relies on open code on data and subscribe to the <a href="https://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf">Manifesto put out by Jonathan B. Buckheit and David L. Donoho</a>:</p>
 <blockquote class="blockquote">
@@ -251,7 +291,6 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="digital-reticular-chemistry-mofworld"><img src="img/mofworld.png" class="img-fluid" style="width:10.0%"> Digital reticular chemistry – <a href="mof.world">“MOFworld”</a></h2>
 <p>I have been very active in developing tools for “digital reticular chemistry” (see also <a href="https://www.cell.com/chem/fulltext/S2451-9294(20)30418-6">this article by Yaghi and collaborators</a>), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).</p>
 <div id="listing-mofworld-listings" class="quarto-listing quarto-listing-container-table">
-
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -270,61 +309,62 @@ Other References
 </thead>
 <tbody class="list">
 <tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>mofdscribe</span>">
-<td class="listing-image">
-<img src="img/mofdscribe.png" style="height: 100px;">
+<td>
+<span class="listing-image"><img src="img/mofdscribe.png" style="height: 100px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/kjappelbaum/mofdscribe" class="title"><span class="text-nowrap">mofdscribe</span></a>
+<td>
+<a href="https://github.com/kjappelbaum/mofdscribe" class="title listing-title"><span class="text-nowrap">mofdscribe</span></a>
 </td>
-<td class="listing-description">
-An easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard.
+<td>
+<span class="listing-description">An easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard. </span>
 </td>
-<td class="listing-other">
-<a href="https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2">Paper</a>
+<td>
+<span class="listing-other"><a href="https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2">Paper</a></span>
 </td>
 </tr>
 <tr data-index="1" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>mofchecker</span>">
-<td class="listing-image">
-<img src="img/mofchecker.png" style="height: 100px;">
+<td>
+<span class="listing-image"><img src="img/mofchecker.png" style="height: 100px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/kjappelbaum/mofchecker" class="title"><span class="text-nowrap">mofchecker</span></a>
+<td>
+<a href="https://github.com/kjappelbaum/mofchecker" class="title listing-title"><span class="text-nowrap">mofchecker</span></a>
 </td>
-<td class="listing-description">
-The mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an <a href="https://aiidalab.materialscloud.org/">AiiDAlab app</a>.
+<td>
+<span class="listing-description">The mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an <a href="https://aiidalab.materialscloud.org/">AiiDAlab app</a>. </span>
 </td>
-<td class="listing-other">
-<a href="">Web deployment of an earlier version</a>
+<td>
+<span class="listing-other"><a href="">Web deployment of an earlier version</a></span>
 </td>
 </tr>
 <tr data-index="2" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>moffragmentor</span>">
-<td class="listing-image">
-<img src="img/moffragmentor.png" style="height: 100px;">
+<td>
+<span class="listing-image"><img src="img/moffragmentor.png" style="height: 100px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/kjappelbaum/moffragmentor" class="title"><span class="text-nowrap">moffragmentor</span></a>
+<td>
+<a href="https://github.com/kjappelbaum/moffragmentor" class="title listing-title"><span class="text-nowrap">moffragmentor</span></a>
 </td>
-<td class="listing-description">
-The moffragmentor is a tool that allows to fragment MOF structures into building blocks.
+<td>
+<span class="listing-description">The moffragmentor is a tool that allows to fragment MOF structures into building blocks. </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 <tr data-index="3" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>element-coder</span>">
-<td class="listing-image">
-<img src="img/elementcoder.png" style="height: 100px;">
+<td>
+<span class="listing-image"><img src="img/elementcoder.png" style="height: 100px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/kjappelbaum/element_coder" class="title"><span class="text-nowrap">element-coder</span></a>
+<td>
+<a href="https://github.com/kjappelbaum/element_coder" class="title listing-title"><span class="text-nowrap">element-coder</span></a>
 </td>
-<td class="listing-description">
-Element coder is a tool that allows to encode elements into a vector space—but to also decode them back into the original element. This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design).
+<td>
+<span class="listing-description">Element coder is a tool that allows to encode elements into a vector space—but to also decode them back into the original element. This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design). </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 </tbody>
-
 </table>
 <div class="listing-no-matching d-none">
 No matching items
@@ -334,7 +374,6 @@ No matching items
 <section id="active-learning" class="level2">
 <h2 class="anchored" data-anchor-id="active-learning"><img src="img/natcomm.png" class="img-fluid" style="width:10.0%"> Active learning</h2>
 <div id="listing-al-listings" class="quarto-listing quarto-listing-container-table">
-
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -353,21 +392,20 @@ Other References
 </thead>
 <tbody class="list">
 <tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>PyePAL</span>">
-<td class="listing-image">
-<img src="img/pyepal_logo.png" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/pyepal_logo.png" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/kjappelbaum/pyepal" class="title"><span class="text-nowrap">PyePAL</span></a>
+<td>
+<a href="https://github.com/kjappelbaum/pyepal" class="title listing-title"><span class="text-nowrap">PyePAL</span></a>
 </td>
-<td class="listing-description">
-PyePAL implements the e-PAL algorithm for Pareto active learning. It comes with interfaces for a range of machine learning models, including scikit-learn, GPy, and jax. It generalizes to any number of objectives and also supports batches sampling as well as various schedulers for (re)-training the model.
+<td>
+<span class="listing-description">PyePAL implements the e-PAL algorithm for Pareto active learning. It comes with interfaces for a range of machine learning models, including scikit-learn, GPy, and jax. It generalizes to any number of objectives and also supports batches sampling as well as various schedulers for (re)-training the model. </span>
 </td>
-<td class="listing-other">
-<a href="https://www.nature.com/articles/s41467-021-22437-0">Paper</a>
+<td>
+<span class="listing-other"><a href="https://www.nature.com/articles/s41467-021-22437-0">Paper</a></span>
 </td>
 </tr>
 </tbody>
-
 </table>
 <div class="listing-no-matching d-none">
 No matching items
@@ -379,7 +417,6 @@ No matching items
 <p>I have been an active contributor to the <a href="cheminfo.github.io">cheminfo</a> ecosystem. For more details about it, you can give our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective article</a> a look.</p>
 <p>Some of my contributions are listed below:</p>
 <div id="listing-cheminfo-listings" class="quarto-listing quarto-listing-container-table">
-
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -398,87 +435,90 @@ Other References
 </thead>
 <tbody class="list">
 <tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>isotherm-analysis</span>">
-<td class="listing-image">
-<img src="img/isotherm.svg" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/isotherm.svg" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/cheminfo/isotherm-analysis" class="title"><span class="text-nowrap">isotherm-analysis</span></a>
+<td>
+<a href="https://github.com/cheminfo/isotherm-analysis" class="title listing-title"><span class="text-nowrap">isotherm-analysis</span></a>
 </td>
-<td class="listing-description">
-<code>isotherm-analysis</code> allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis.
+<td>
+<span class="listing-description"><code>isotherm-analysis</code> allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis. </span>
 </td>
-<td class="listing-other">
-Used in our <a href="">preprint</a>
+<td>
+<span class="listing-other">Used in our <a href="">preprint</a></span>
 </td>
 </tr>
 <tr data-index="1" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>pubchem</span>">
-<td class="listing-image">
-<img src="img/pubchem.svg" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/pubchem.svg" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/cheminfo/pubchem" class="title"><span class="text-nowrap">pubchem</span></a>
+<td>
+<a href="https://github.com/cheminfo/pubchem" class="title listing-title"><span class="text-nowrap">pubchem</span></a>
 </td>
-<td class="listing-description">
-JavaScript interface to the PubChem API. In the cheminfo ELN, we use this to display safety information.
+<td>
+<span class="listing-description">JavaScript interface to the PubChem API. In the cheminfo ELN, we use this to display safety information. </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 <tr data-index="2" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>xrd-analysis</span>">
-<td class="listing-image">
-<img src="img/xrd.svg" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/xrd.svg" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/cheminfo/xrd-analysis" class="title"><span class="text-nowrap">xrd-analysis</span></a>
+<td>
+<a href="https://github.com/cheminfo/xrd-analysis" class="title listing-title"><span class="text-nowrap">xrd-analysis</span></a>
 </td>
-<td class="listing-description">
-<code>xrd-analysis</code> can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms.
+<td>
+<span class="listing-description"><code>xrd-analysis</code> can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms. </span>
 </td>
-<td class="listing-other">
-Discussed in our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective</a>
+<td>
+<span class="listing-other">Discussed in our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective</a></span>
 </td>
 </tr>
 <tr data-index="3" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>tga-analysis</span>">
-<td class="listing-image">
-<img src="img/tga.svg" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/tga.svg" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/cheminfo/tga-spectrum" class="title"><span class="text-nowrap">tga-analysis</span></a>
+<td>
+<a href="https://github.com/cheminfo/tga-spectrum" class="title listing-title"><span class="text-nowrap">tga-analysis</span></a>
 </td>
-<td class="listing-description">
-<code>tga-analysis</code> provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis).
+<td>
+<span class="listing-description"><code>tga-analysis</code> provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis). </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 <tr data-index="4" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>baselines</span>">
-<td class="listing-image">
-<img src="img/baselines.svg" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/baselines.svg" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://github.com/cheminfo/baselines" class="title"><span class="text-nowrap">baselines</span></a>
+<td>
+<a href="https://github.com/cheminfo/baselines" class="title listing-title"><span class="text-nowrap">baselines</span></a>
 </td>
-<td class="listing-description">
-Baselines provides a collection of baseline correction methods.
+<td>
+<span class="listing-description">Baselines provides a collection of baseline correction methods. </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 <tr data-index="5" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>cheminfo.github.io</span>">
-<td class="listing-image">
-<img src="img/cheminfo.png" style="height: 50px;">
+<td>
+<span class="listing-image"><img src="img/cheminfo.png" style="height: 50px;"></span>
 </td>
-<td class="listing-title">
-<a href="https://cheminfo.github.io" class="title"><span class="text-nowrap">cheminfo.github.io</span></a>
+<td>
+<a href="https://cheminfo.github.io" class="title listing-title"><span class="text-nowrap">cheminfo.github.io</span></a>
 </td>
-<td class="listing-description">
-I created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond.
+<td>
+<span class="listing-description">I created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond. </span>
 </td>
-<td class="listing-other">
+<td>
+<span class="listing-other">&nbsp;</span>
 </td>
 </tr>
 </tbody>
-
 </table>
 <div class="listing-no-matching d-none">
 No matching items
@@ -518,9 +558,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -556,10 +610,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kjablonka\.com\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -569,8 +640,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -582,9 +662,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -629,8 +945,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">
-        <ul class="footer-items list-unstyled">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
@@ -662,9 +981,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-      </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/opensource/opensource.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
+
 
 
 

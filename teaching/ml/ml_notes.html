@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,11 +18,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,7 +81,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,8 +96,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S9W9LVHXJK"></script>
@@ -136,53 +115,83 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Kevin’s Homepage - Workshop on ML for materials science">
-<meta property="og:description" content="<i>Some notes to accompany the ML workshop.</i>">
-<meta property="og:image" content="">
-<meta property="og:site-name" content="Kevin's Homepage">
+<meta property="og:description" content="Some notes to accompany the ML workshop.">
+<meta property="og:image" content="https://kjablonka.com/teaching/ml/quarto.png">
+<meta property="og:site_name" content="Kevin's Homepage">
 <meta name="twitter:title" content="Kevin’s Homepage - Workshop on ML for materials science">
-<meta name="twitter:description" content="<i>Some notes to accompany the ML workshop.</i>">
-<meta name="twitter:image" content="">
+<meta name="twitter:description" content="Some notes to accompany the ML workshop.">
+<meta name="twitter:image" content="https://kjablonka.com/teaching/ml/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand navbar-dark ">
+    <nav class="navbar navbar-expand " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"><i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-home" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications.html">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../opensource/opensource.html">
- <span class="menu-text">Open Source</span></a>
+    <a class="nav-link" href="../../opensource/opensource.html"> 
+<span class="menu-text">Open Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
+          <div class="quarto-navbar-tools">
+</div>
             <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -229,7 +238,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#feature-learning" id="toc-feature-learning" class="nav-link" data-scroll-target="#feature-learning">Feature learning</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching/ml/ml_notes.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching/ml/ml_notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -254,7 +263,9 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <section id="motivation" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
@@ -263,16 +274,16 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <li>Perform an experiment to measure them</li>
 <li>Perform a simulation to “measure” them in silico</li>
 </ol>
-<div class="page-columns page-full"><p>In many cases, performing an experiment is time-consuming and, hence, expensive. Also high-fidelity simulations can be very costly. </p><div class="no-row-height column-margin column-container"><span class="">Fidelity expresses the exactness with which a surrogate represents the truth. In the context of ML you might also see the term multi-fidelity, which means that the approach uses multiple approximations with different levels of fidelity, e.g.&nbsp;density-functional theory and coupled cluster theory</span></div></div>
+<div class="page-columns page-full"><p>In many cases, performing an experiment is time-consuming and, hence, expensive. Also high-fidelity simulations can be very costly. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Fidelity expresses the exactness with which a surrogate represents the truth. In the context of ML you might also see the term multi-fidelity, which means that the approach uses multiple approximations with different levels of fidelity, e.g.&nbsp;density-functional theory and coupled cluster theory</span></div></div>
 <p>Therefore, there is a need for methods that can help us to predict the properties of materials with high fidelity and low cost. In this lecture, we will see that <em>supervised machine learning</em> (ML) is a powerful tool to achieve this goal.</p>
 <p>Interestingly, this tool can be used in many different ways.</p>
 <section id="where-does-ml-fit-in-the-design-process" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="where-does-ml-fit-in-the-design-process">Where does ML fit in the design process?</h3>
-<div class="page-columns page-full"><p>Machine learning can be used in multiple ways to make high-fidelity predictions of materials less expensive. </p><div class="no-row-height column-margin column-container"><span class="">Note that reducing the cost has been a challenge for chemists and material scientists for a long time. Dirac famously said “The fundamental laws necessary for the mathematical treatment of a large part of physics and the whole of chemistry are thus completely known, and the difficulty lies only in the fact that application of these laws leads to equations that are too complex to be solved. […] approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation”</span></div></div>
+<div class="page-columns page-full"><p>Machine learning can be used in multiple ways to make high-fidelity predictions of materials less expensive. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Note that reducing the cost has been a challenge for chemists and material scientists for a long time. Dirac famously said “The fundamental laws necessary for the mathematical treatment of a large part of physics and the whole of chemistry are thus completely known, and the difficulty lies only in the fact that application of these laws leads to equations that are too complex to be solved. […] approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation”</span></div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/ml_design_process.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Machine learning (green boxes) can be used at multiple places in the material design process.</figcaption><p></p>
+<figcaption>Machine learning (green boxes) can be used at multiple places in the material design process.</figcaption>
 </figure>
 </div>
 <ol type="1">
@@ -290,7 +301,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/ml_workflow.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">The supervised ML workflow.</figcaption><p></p>
+<figcaption>The supervised ML workflow.</figcaption>
 </figure>
 </div>
 <p>For the main part of this lecture, we will assume that we use models that consume so-called tabular data, i.e.&nbsp;data that is stored in a table (feature matrix <span class="math inline">\(\mathbf{X}\)</span> and target/label vector/matrix <span class="math inline">\(\mathbf{Y}\)</span>), where each row corresponds to a material and each of the <span class="math inline">\(p\)</span> columns corresponds to a so-called feature. We wil later see that this is not the only way to use ML for materials science, but it is the most common one. We will also explore in more detail how we obtain the features.</p>
@@ -349,7 +360,11 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>v.server.do(<span class="st">'ray'</span>)</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>v.GetPNG()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<p><img src="ml_notes_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>For those conformers, we can now retrieve the positions and energies and save them in a pandas dataframe.</p>
@@ -368,304 +383,307 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data).sample(<span class="bu">len</span>(data))</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-
+<div>
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>x_0</th>
-      <th>y_0</th>
-      <th>z_0</th>
-      <th>x_1</th>
-      <th>y_1</th>
-      <th>z_1</th>
-      <th>x_2</th>
-      <th>y_2</th>
-      <th>z_2</th>
-      <th>x_3</th>
-      <th>...</th>
-      <th>x_36</th>
-      <th>y_36</th>
-      <th>z_36</th>
-      <th>x_37</th>
-      <th>y_37</th>
-      <th>z_37</th>
-      <th>x_38</th>
-      <th>y_38</th>
-      <th>z_38</th>
-      <th>energy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2350</th>
-      <td>2.082377</td>
-      <td>-2.384621</td>
-      <td>-0.886825</td>
-      <td>1.878611</td>
-      <td>-1.063902</td>
-      <td>-0.149281</td>
-      <td>3.062111</td>
-      <td>-0.226795</td>
-      <td>-0.498702</td>
-      <td>3.164710</td>
-      <td>...</td>
-      <td>-4.783486</td>
-      <td>2.805272</td>
-      <td>0.453616</td>
-      <td>-3.121490</td>
-      <td>3.344990</td>
-      <td>0.081068</td>
-      <td>-1.268761</td>
-      <td>-3.134410</td>
-      <td>-0.056116</td>
-      <td>50.527359</td>
-    </tr>
-    <tr>
-      <th>1031</th>
-      <td>2.077103</td>
-      <td>-1.521307</td>
-      <td>-1.978108</td>
-      <td>1.380593</td>
-      <td>-0.800183</td>
-      <td>-0.726914</td>
-      <td>2.472656</td>
-      <td>-0.385603</td>
-      <td>0.144759</td>
-      <td>2.231073</td>
-      <td>...</td>
-      <td>-4.911553</td>
-      <td>-0.809955</td>
-      <td>1.899992</td>
-      <td>-3.547584</td>
-      <td>0.108867</td>
-      <td>2.562697</td>
-      <td>0.556878</td>
-      <td>2.723737</td>
-      <td>-0.847688</td>
-      <td>61.708833</td>
-    </tr>
-    <tr>
-      <th>2043</th>
-      <td>-1.562612</td>
-      <td>-2.510985</td>
-      <td>-1.091513</td>
-      <td>-1.538347</td>
-      <td>-1.446391</td>
-      <td>0.001791</td>
-      <td>-2.874616</td>
-      <td>-0.790099</td>
-      <td>-0.074631</td>
-      <td>-3.214859</td>
-      <td>...</td>
-      <td>3.185514</td>
-      <td>2.119784</td>
-      <td>-2.037756</td>
-      <td>3.116718</td>
-      <td>3.713313</td>
-      <td>-1.258657</td>
-      <td>1.010212</td>
-      <td>-1.434941</td>
-      <td>-2.027757</td>
-      <td>54.934918</td>
-    </tr>
-    <tr>
-      <th>488</th>
-      <td>-2.622666</td>
-      <td>-0.984364</td>
-      <td>-1.736397</td>
-      <td>-1.552771</td>
-      <td>-0.325951</td>
-      <td>-0.876648</td>
-      <td>-2.211194</td>
-      <td>0.177802</td>
-      <td>0.351123</td>
-      <td>-3.280326</td>
-      <td>...</td>
-      <td>4.928752</td>
-      <td>1.771672</td>
-      <td>-1.560194</td>
-      <td>3.312213</td>
-      <td>1.208019</td>
-      <td>-2.103907</td>
-      <td>0.947618</td>
-      <td>-1.027059</td>
-      <td>2.062733</td>
-      <td>46.566148</td>
-    </tr>
-    <tr>
-      <th>3182</th>
-      <td>-2.622062</td>
-      <td>-1.702202</td>
-      <td>-0.649370</td>
-      <td>-1.699629</td>
-      <td>-0.442711</td>
-      <td>-0.448595</td>
-      <td>-2.041035</td>
-      <td>0.022269</td>
-      <td>0.917023</td>
-      <td>-3.557981</td>
-      <td>...</td>
-      <td>4.663731</td>
-      <td>-0.690552</td>
-      <td>1.900821</td>
-      <td>5.054191</td>
-      <td>-1.298227</td>
-      <td>0.261869</td>
-      <td>1.695958</td>
-      <td>-1.012533</td>
-      <td>-2.171839</td>
-      <td>58.263424</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1695</th>
-      <td>1.545078</td>
-      <td>-1.676186</td>
-      <td>-0.579824</td>
-      <td>1.733232</td>
-      <td>-0.758289</td>
-      <td>0.569323</td>
-      <td>2.313415</td>
-      <td>0.545339</td>
-      <td>0.010601</td>
-      <td>3.660710</td>
-      <td>...</td>
-      <td>-4.968294</td>
-      <td>-0.564927</td>
-      <td>-1.690845</td>
-      <td>-5.102694</td>
-      <td>1.251015</td>
-      <td>-1.373149</td>
-      <td>-1.049935</td>
-      <td>0.839526</td>
-      <td>2.870953</td>
-      <td>65.543487</td>
-    </tr>
-    <tr>
-      <th>895</th>
-      <td>-2.078717</td>
-      <td>2.181547</td>
-      <td>1.377408</td>
-      <td>-1.922400</td>
-      <td>0.699183</td>
-      <td>1.110325</td>
-      <td>-2.860042</td>
-      <td>0.256573</td>
-      <td>0.041219</td>
-      <td>-2.749035</td>
-      <td>...</td>
-      <td>3.568744</td>
-      <td>-2.309582</td>
-      <td>0.450033</td>
-      <td>3.535776</td>
-      <td>-1.985371</td>
-      <td>-1.363970</td>
-      <td>1.251191</td>
-      <td>2.215607</td>
-      <td>1.256163</td>
-      <td>53.297442</td>
-    </tr>
-    <tr>
-      <th>433</th>
-      <td>2.872947</td>
-      <td>-1.275055</td>
-      <td>1.324504</td>
-      <td>1.803448</td>
-      <td>-1.107335</td>
-      <td>0.204128</td>
-      <td>2.282703</td>
-      <td>0.009835</td>
-      <td>-0.633029</td>
-      <td>2.427814</td>
-      <td>...</td>
-      <td>-4.479378</td>
-      <td>0.508470</td>
-      <td>1.416176</td>
-      <td>-4.317413</td>
-      <td>2.044153</td>
-      <td>0.469898</td>
-      <td>-1.669397</td>
-      <td>-2.149311</td>
-      <td>1.292007</td>
-      <td>54.034508</td>
-    </tr>
-    <tr>
-      <th>1870</th>
-      <td>2.664259</td>
-      <td>2.034236</td>
-      <td>0.575131</td>
-      <td>1.761238</td>
-      <td>0.833087</td>
-      <td>0.858491</td>
-      <td>2.505428</td>
-      <td>-0.422292</td>
-      <td>0.967442</td>
-      <td>3.344749</td>
-      <td>...</td>
-      <td>-5.091052</td>
-      <td>-1.406824</td>
-      <td>0.155182</td>
-      <td>-6.283711</td>
-      <td>-0.587390</td>
-      <td>-0.984725</td>
-      <td>-1.040008</td>
-      <td>0.992988</td>
-      <td>1.719511</td>
-      <td>66.927399</td>
-    </tr>
-    <tr>
-      <th>1366</th>
-      <td>-2.664309</td>
-      <td>-0.816584</td>
-      <td>-1.457318</td>
-      <td>-1.533768</td>
-      <td>-0.292689</td>
-      <td>-0.538467</td>
-      <td>-2.304004</td>
-      <td>0.230210</td>
-      <td>0.679246</td>
-      <td>-3.268371</td>
-      <td>...</td>
-      <td>3.204639</td>
-      <td>2.086104</td>
-      <td>-1.194536</td>
-      <td>2.268599</td>
-      <td>2.114207</td>
-      <td>0.313189</td>
-      <td>0.522256</td>
-      <td>0.077753</td>
-      <td>2.072437</td>
-      <td>56.919313</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x_0</th>
+<th data-quarto-table-cell-role="th">y_0</th>
+<th data-quarto-table-cell-role="th">z_0</th>
+<th data-quarto-table-cell-role="th">x_1</th>
+<th data-quarto-table-cell-role="th">y_1</th>
+<th data-quarto-table-cell-role="th">z_1</th>
+<th data-quarto-table-cell-role="th">x_2</th>
+<th data-quarto-table-cell-role="th">y_2</th>
+<th data-quarto-table-cell-role="th">z_2</th>
+<th data-quarto-table-cell-role="th">x_3</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">x_36</th>
+<th data-quarto-table-cell-role="th">y_36</th>
+<th data-quarto-table-cell-role="th">z_36</th>
+<th data-quarto-table-cell-role="th">x_37</th>
+<th data-quarto-table-cell-role="th">y_37</th>
+<th data-quarto-table-cell-role="th">z_37</th>
+<th data-quarto-table-cell-role="th">x_38</th>
+<th data-quarto-table-cell-role="th">y_38</th>
+<th data-quarto-table-cell-role="th">z_38</th>
+<th data-quarto-table-cell-role="th">energy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2350</td>
+<td>2.082377</td>
+<td>-2.384621</td>
+<td>-0.886825</td>
+<td>1.878611</td>
+<td>-1.063902</td>
+<td>-0.149281</td>
+<td>3.062111</td>
+<td>-0.226795</td>
+<td>-0.498702</td>
+<td>3.164710</td>
+<td>...</td>
+<td>-4.783486</td>
+<td>2.805272</td>
+<td>0.453616</td>
+<td>-3.121490</td>
+<td>3.344990</td>
+<td>0.081068</td>
+<td>-1.268761</td>
+<td>-3.134410</td>
+<td>-0.056116</td>
+<td>50.527359</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1031</td>
+<td>2.077103</td>
+<td>-1.521307</td>
+<td>-1.978108</td>
+<td>1.380593</td>
+<td>-0.800183</td>
+<td>-0.726914</td>
+<td>2.472656</td>
+<td>-0.385603</td>
+<td>0.144759</td>
+<td>2.231073</td>
+<td>...</td>
+<td>-4.911553</td>
+<td>-0.809955</td>
+<td>1.899992</td>
+<td>-3.547584</td>
+<td>0.108867</td>
+<td>2.562697</td>
+<td>0.556878</td>
+<td>2.723737</td>
+<td>-0.847688</td>
+<td>61.708833</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2043</td>
+<td>-1.562612</td>
+<td>-2.510985</td>
+<td>-1.091513</td>
+<td>-1.538347</td>
+<td>-1.446391</td>
+<td>0.001791</td>
+<td>-2.874616</td>
+<td>-0.790099</td>
+<td>-0.074631</td>
+<td>-3.214859</td>
+<td>...</td>
+<td>3.185514</td>
+<td>2.119784</td>
+<td>-2.037756</td>
+<td>3.116718</td>
+<td>3.713313</td>
+<td>-1.258657</td>
+<td>1.010212</td>
+<td>-1.434941</td>
+<td>-2.027757</td>
+<td>54.934918</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">488</td>
+<td>-2.622666</td>
+<td>-0.984364</td>
+<td>-1.736397</td>
+<td>-1.552771</td>
+<td>-0.325951</td>
+<td>-0.876648</td>
+<td>-2.211194</td>
+<td>0.177802</td>
+<td>0.351123</td>
+<td>-3.280326</td>
+<td>...</td>
+<td>4.928752</td>
+<td>1.771672</td>
+<td>-1.560194</td>
+<td>3.312213</td>
+<td>1.208019</td>
+<td>-2.103907</td>
+<td>0.947618</td>
+<td>-1.027059</td>
+<td>2.062733</td>
+<td>46.566148</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3182</td>
+<td>-2.622062</td>
+<td>-1.702202</td>
+<td>-0.649370</td>
+<td>-1.699629</td>
+<td>-0.442711</td>
+<td>-0.448595</td>
+<td>-2.041035</td>
+<td>0.022269</td>
+<td>0.917023</td>
+<td>-3.557981</td>
+<td>...</td>
+<td>4.663731</td>
+<td>-0.690552</td>
+<td>1.900821</td>
+<td>5.054191</td>
+<td>-1.298227</td>
+<td>0.261869</td>
+<td>1.695958</td>
+<td>-1.012533</td>
+<td>-2.171839</td>
+<td>58.263424</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1695</td>
+<td>1.545078</td>
+<td>-1.676186</td>
+<td>-0.579824</td>
+<td>1.733232</td>
+<td>-0.758289</td>
+<td>0.569323</td>
+<td>2.313415</td>
+<td>0.545339</td>
+<td>0.010601</td>
+<td>3.660710</td>
+<td>...</td>
+<td>-4.968294</td>
+<td>-0.564927</td>
+<td>-1.690845</td>
+<td>-5.102694</td>
+<td>1.251015</td>
+<td>-1.373149</td>
+<td>-1.049935</td>
+<td>0.839526</td>
+<td>2.870953</td>
+<td>65.543487</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">895</td>
+<td>-2.078717</td>
+<td>2.181547</td>
+<td>1.377408</td>
+<td>-1.922400</td>
+<td>0.699183</td>
+<td>1.110325</td>
+<td>-2.860042</td>
+<td>0.256573</td>
+<td>0.041219</td>
+<td>-2.749035</td>
+<td>...</td>
+<td>3.568744</td>
+<td>-2.309582</td>
+<td>0.450033</td>
+<td>3.535776</td>
+<td>-1.985371</td>
+<td>-1.363970</td>
+<td>1.251191</td>
+<td>2.215607</td>
+<td>1.256163</td>
+<td>53.297442</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">433</td>
+<td>2.872947</td>
+<td>-1.275055</td>
+<td>1.324504</td>
+<td>1.803448</td>
+<td>-1.107335</td>
+<td>0.204128</td>
+<td>2.282703</td>
+<td>0.009835</td>
+<td>-0.633029</td>
+<td>2.427814</td>
+<td>...</td>
+<td>-4.479378</td>
+<td>0.508470</td>
+<td>1.416176</td>
+<td>-4.317413</td>
+<td>2.044153</td>
+<td>0.469898</td>
+<td>-1.669397</td>
+<td>-2.149311</td>
+<td>1.292007</td>
+<td>54.034508</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1870</td>
+<td>2.664259</td>
+<td>2.034236</td>
+<td>0.575131</td>
+<td>1.761238</td>
+<td>0.833087</td>
+<td>0.858491</td>
+<td>2.505428</td>
+<td>-0.422292</td>
+<td>0.967442</td>
+<td>3.344749</td>
+<td>...</td>
+<td>-5.091052</td>
+<td>-1.406824</td>
+<td>0.155182</td>
+<td>-6.283711</td>
+<td>-0.587390</td>
+<td>-0.984725</td>
+<td>-1.040008</td>
+<td>0.992988</td>
+<td>1.719511</td>
+<td>66.927399</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1366</td>
+<td>-2.664309</td>
+<td>-0.816584</td>
+<td>-1.457318</td>
+<td>-1.533768</td>
+<td>-0.292689</td>
+<td>-0.538467</td>
+<td>-2.304004</td>
+<td>0.230210</td>
+<td>0.679246</td>
+<td>-3.268371</td>
+<td>...</td>
+<td>3.204639</td>
+<td>2.086104</td>
+<td>-1.194536</td>
+<td>2.268599</td>
+<td>2.114207</td>
+<td>0.313189</td>
+<td>0.522256</td>
+<td>0.077753</td>
+<td>2.072437</td>
+<td>56.919313</td>
+</tr>
+</tbody>
 </table>
+
 <p>3214 rows × 118 columns</p>
+</div>
 </div>
 </div>
 </div>
@@ -1103,7 +1121,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>&lt;Axes: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This looks pretty good. But how well does it do on new conformers? Let’s see.</p>
@@ -1115,7 +1137,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>&lt;Axes: xlabel='True energy', ylabel='Predicted energy'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>From physics we know that (without external field) the energy of a molecule does not depend on where in space it is. That is, if we translate a molecule along <span class="math inline">\([1, 1, 1]\)</span>, the energy should not change.</p>
@@ -1128,7 +1154,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>&lt;Axes: xlabel='Actual', ylabel='Predicted'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is not what we expect. Our model shows completly unphysical behavior and predicts a different energy for the same conformers in different positions in space.</p>
@@ -1137,7 +1167,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </section>
 <section id="mmaking-predictions-invariantequivariant-to-transformations" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="mmaking-predictions-invariantequivariant-to-transformations">Mmaking predictions invariant/equivariant to transformations</h4>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Invariance and equivariance are terms that have become very relevant in ML. It is always important to mention with respect to what operation something is invariant and equivariant; if people don’t mention this they often refer to the symmetry operations of the Euclidean group which comprises all translations, rotations, and reflection. Invariant means that the property of interest does not change under those operations. Equivariant means that it changes in the same way. The energy, for example, is invariant and the forces are equivariant.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Invariance and equivariance are terms that have become very relevant in ML. It is always important to mention with respect to what operation something is invariant and equivariant; if people don’t mention this they often refer to the symmetry operations of the Euclidean group which comprises all translations, rotations, and reflection. Invariant means that the property of interest does not change under those operations. Equivariant means that it changes in the same way. The energy, for example, is invariant and the forces are equivariant.</span></div></div>
 <section id="what-are-symmetries-we-would-like-to-respect" class="level5">
 <h5 class="anchored" data-anchor-id="what-are-symmetries-we-would-like-to-respect">What are symmetries we would like to respect?</h5>
 <p>Before we can talk about how to build a model that respects symmetries, we need to know what symmetries we would like to respect.</p>
@@ -1224,7 +1254,7 @@ R(h)={\mathbf  {E}}[L(f(x),y)]=\int L(f(x),y)\,dP(x,y).
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/kt_visual.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Kernel-based machine learning can be thought of expressing the property of interest via an expansion in a basis spanned by the structures in the training set. Figure taken from M. A. Caro,&nbsp;<em>Arkhimedes</em>&nbsp;<em>2018</em>,&nbsp;3,&nbsp;21.</figcaption><p></p>
+<figcaption>Kernel-based machine learning can be thought of expressing the property of interest via an expansion in a basis spanned by the structures in the training set. Figure taken from M. A. Caro,&nbsp;<em>Arkhimedes</em>&nbsp;<em>2018</em>,&nbsp;3,&nbsp;21.</figcaption>
 </figure>
 </div>
 </section>
@@ -1264,7 +1294,11 @@ l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d}
 <pre><code>Text(0, 0.5, 'length of hypercube that contains k neighbors')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Clearly, for large <span class="math inline">\(d\)</span> the length approaches 1—which means that all points are now almost equally far apart and comparing distances no longer makes much sense.</p>
@@ -1286,7 +1320,11 @@ l^d = \frac{k}{n} \quad \Rightarrow \quad l = \left(\frac{k}{n}\right)^{1/d}
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    ax.hist(distances, bins<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'd=</span><span class="sc">{</span>d<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> cv=</span><span class="sc">{</span>distances<span class="sc">.</span>std()<span class="op">/</span>distances<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="ml_notes_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="ml_notes_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Clearly, for large <span class="math inline">\(d\)</span> the distances are almost the same (the histograms are much more peaked). We can also see this in terms of the coefficient of variation (cv), which is the standard deviation divided by the mean. For large <span class="math inline">\(d\)</span> the cv is very small, which means that the distances are very similar.</p>
@@ -1338,9 +1376,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1376,10 +1428,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kjablonka\.com\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1389,8 +1458,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1402,9 +1480,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1449,8 +1763,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">
-        <ul class="footer-items list-unstyled">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
@@ -1482,9 +1799,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-      </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching/ml/ml_notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
+
 
 
 

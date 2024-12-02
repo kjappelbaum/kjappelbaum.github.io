@@ -15,7 +15,75 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Fri, 20 Sep 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 01 Dec 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Take it easy my friend</title>
+  <link>https://kjablonka.com/blog/posts/take_it_easy/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>It’s easy to feel caught up in the (perceived) pressure to produce results quickly. Academia seems to prioritize speed and quantity over depth and quality, which can be overwhelming. But is this really true? If it is something you must rush to publish, is there any real value in it? Is it really of value if you need to “compete”? <span class="citation" data-cites="thiel2014competition">(Thiel 2014)</span> Is the project you are rushing to publish really the question that you are best positioned to answer and that you deeply care about? Isn’t rushing things another form of cargo cult science?</p>
+<p>What if, instead of frantically racing to publish, you took the time to slow down, breathe, and really dig into your research, the research you really care about and take pleasure in craftsmanship? We must admit that we are not immune to the allure of “fast science.” There’s something undeniably exciting about chasing quick breakthroughs and racking up publications. Yet, this isn’t the path to meaningful, impactful, sustainable research and happiness.</p>
+<p>Great outcomes take time and persistence. Take the story of Rosalind Franklin, whose research laid the groundwork for understanding the structure of DNA. Or consider the godfathers of deep learning, who persisted through the AI winter. Galileo took 18 years to finish and write up his pendulum experiments and Newton took four years for his initial writings about gravity. <span class="citation" data-cites="newport2024slow">(Newport 2024)</span></p>
+<p>These scientists didn’t rush their work or cut it into “salami papers.” Instead, they took their time, and their persistence paid off.</p>
+<p>Great outcomes can also not be easily optimized for. And this is, as Peter Drucker already realized, <span class="citation" data-cites="drucker1999knowledge">(Drucker 1999)</span> especially difficult for knowledge work. It is a fact that metrics are deceiving and that stepping stones that lead to discoveries cannot be anticipated. <span class="citation" data-cites="stanley2015why">(Stanley and Lehman 2015)</span> Thus, as a field, we are bound to be less successful in the long run if we only optimize for bibliometrics. Trust yourself that your unique point of view will lead to something exciting. Looking less at oneself, comparing Google Scholar profiles, and instead being in awe of the exciting times we are in will also lead to more happiness. <span class="citation" data-cites="brooks2022dont shiota2007nature dambrun2017self">(Brooks 2022; Shiota, Keltner, and Mossman 2007; Dambrun 2017)</span></p>
+<p>Great outcomes are also very diverse and happen on very different timescales. Even though some of our communications suggest otherwise (“Samantha is a great student because she published in Nature”), <span class="citation" data-cites="lawrence2003politics">(Lawrence 2003)</span> we do not only do well if we publish in Cell, Nature, or Science or other “vanity outlets.” We also do well if we build software that is used and that powers a full line of other research (think of the impact Python, Numpy, RDKit, Pymatgen, and similar tools had on our work). We also do well if we curate datasets that enable new discoveries. <span class="citation" data-cites="abbott2020mind">(Abbott et al. 2020)</span> Ultimately, AlphaFold would not have been possible without the Protein Data Bank. While the systems with which we evaluate scientists only slowly evolve to reflect this reality, <span class="citation" data-cites="hicks2015bibliometrics">(Hicks et al. 2015)</span> it is important to remember that great work will ultimately pay off and lead to much more satisfaction. Ultimately, those who decide on funding and career moves benefit from hindsight that editors do not have. <span class="citation" data-cites="lawrence2003politics">(Lawrence 2003)</span></p>
+<p>In a world filled with one-hit wonders and short-lived trends, it’s more important than ever to focus on creating meaningful, lasting contributions to your field. You want to be known for something great, not just a fleeting moment of recognition. Moreover, slowing down to a sustainable pace can help you avoid the pitfalls of academic burnout. It’s not about the number of publications or the speed at which you produce them; it’s about the quality of your work, the depth of your understanding, and the passion you bring to your research. To our knowledge, being stressed didn’t help anyone to think clearly. <span class="citation" data-cites="mcewen2007physiology">(McEwen 2007)</span></p>
+<p>So, if you are feeling the pressure to constantly and rapidly produce, remember that taking it slow can lead to great things. Embrace the process, pursue your ideas with curiosity and dedication, and, most importantly, take the time to enjoy the journey. This journey isn’t a sprint — it’s a marathon. It will be more rewarding if you allow yourself the freedom to explore at your own pace. So, take a deep breath, and relax. In the end, you’ll be known not for a fleeting moment of recognition but for a lasting contribution to your field—a testament to your dedication, perseverance, and passion for your work.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/take_it_easy/cover.png" class="img-fluid figure-img"></p>
+<figcaption>DALL-E generated image for slow science</figcaption>
+</figure>
+</div>
+
+
+<!-- -->
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-abbott2020mind" class="csl-entry">
+Abbott, L. F., D. D. Bock, E. M. Callaway, et al. 2020. <span>“The Mind of a Mouse.”</span> <em>Cell</em> 182 (6): 1372–76. <a href="https://doi.org/10.1016/j.cell.2020.08.010">https://doi.org/10.1016/j.cell.2020.08.010</a>.
+</div>
+<div id="ref-brooks2022dont" class="csl-entry">
+Brooks, Arthur C. 2022. <span>“Don’t Objectify Yourself.”</span> <em>The Atlantic</em>. <a href="https://www.theatlantic.com/family/archive/2022/09/how-be-less-self-centered/671499/">https://www.theatlantic.com/family/archive/2022/09/how-be-less-self-centered/671499/</a>.
+</div>
+<div id="ref-dambrun2017self" class="csl-entry">
+Dambrun, Michael. 2017. <span>“Self-Centeredness and Selflessness: Happiness Correlates and Mediating Psychological Processes.”</span> <em>PeerJ</em> 5: e3306. <a href="https://doi.org/10.7717/peerj.3306">https://doi.org/10.7717/peerj.3306</a>.
+</div>
+<div id="ref-drucker1999knowledge" class="csl-entry">
+Drucker, Peter F. 1999. <span>“Knowledge-Worker Productivity: The Biggest Challenge.”</span> <em>California Management Review</em> 41 (2): 79–94. <a href="https://doi.org/10.2307/41165987">https://doi.org/10.2307/41165987</a>.
+</div>
+<div id="ref-hicks2015bibliometrics" class="csl-entry">
+Hicks, Diana, Paul Wouters, Ludo Waltman, Sarah de Rijcke, and Ismael Rafols. 2015. <span>“Bibliometrics: The Leiden Manifesto for Research Metrics.”</span> <em>Nature</em> 520 (7548): 429–31. <a href="https://doi.org/10.1038/520429a">https://doi.org/10.1038/520429a</a>.
+</div>
+<div id="ref-lawrence2003politics" class="csl-entry">
+Lawrence, Peter A. 2003. <span>“The Politics of Publication.”</span> <em>Nature</em> 422 (6929): 259–61. <a href="https://doi.org/10.1038/422259a">https://doi.org/10.1038/422259a</a>.
+</div>
+<div id="ref-mcewen2007physiology" class="csl-entry">
+McEwen, Bruce S. 2007. <span>“Physiology and Neurobiology of Stress and Adaptation: Central Role of the Brain.”</span> <em>Physiological Reviews</em> 87 (3): 873–904. <a href="https://doi.org/10.1152/physrev.00041.2006">https://doi.org/10.1152/physrev.00041.2006</a>.
+</div>
+<div id="ref-newport2024slow" class="csl-entry">
+Newport, Cal. 2024. <em>Slow Productivity: The Lost Art of Accomplishment Without Burnout</em>. Penguin Books Limited.
+</div>
+<div id="ref-shiota2007nature" class="csl-entry">
+Shiota, Michelle N., Dacher Keltner, and Amanda Mossman. 2007. <span>“The Nature of Awe: Elicitors, Appraisals, and Effects on Self-Concept.”</span> <em>Cognition and Emotion</em> 21 (5): 944–63. <a href="https://doi.org/10.1080/02699930600923668">https://doi.org/10.1080/02699930600923668</a>.
+</div>
+<div id="ref-stanley2015why" class="csl-entry">
+Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned: The Myth of the Objective</em>. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-15524-1">https://doi.org/10.1007/978-3-319-15524-1</a>.
+</div>
+<div id="ref-thiel2014competition" class="csl-entry">
+Thiel, Peter. 2014. <span>“Competition Is for Losers.”</span> <em>Wall Street Journal</em>. <a href="http://online.wsj.com/articles/peter-thiel-competition-is-for-losers-1410535536">http://online.wsj.com/articles/peter-thiel-competition-is-for-losers-1410535536</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>life</category>
+  <category>academia</category>
+  <guid>https://kjablonka.com/blog/posts/take_it_easy/</guid>
+  <pubDate>Sun, 01 Dec 2024 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>The Tail End</title>
   <link>https://kjablonka.com/blog/posts/visualizing_the_tail_end/</link>
@@ -7006,7 +7074,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="ae7a56d8" class="cell" data-execution_count="1">
+<div id="192cb5cf" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -7269,7 +7337,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="37259573" class="cell" data-execution_count="2">
+<div id="c78819b4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -7511,7 +7579,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="271d70c3" class="cell" data-execution_count="3">
+<div id="9379fcf3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -7550,7 +7618,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="e8f4880c" class="cell" data-execution_count="4">
+<div id="713a1ae9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -7570,7 +7638,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="cdd3733b" class="cell" data-execution_count="5">
+<div id="49a55593" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -7583,7 +7651,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="49e6269f" class="cell" data-execution_count="6">
+<div id="9e1b9d6a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -7628,7 +7696,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="16088b8b" class="cell" data-execution_count="7">
+<div id="eaa2718d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -7804,7 +7872,7 @@ background-color: null;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="f14e836d" class="cell" data-execution_count="8">
+<div id="0c9dc102" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -8252,7 +8320,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="7a4695a4" class="cell" data-execution_count="9">
+<div id="dd87a9c4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -8346,7 +8414,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="bd80ad1b" class="cell" data-execution_count="10">
+<div id="08b43d93" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8354,7 +8422,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="edf464a3" class="cell" data-execution_count="11">
+<div id="e34e0f93" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8366,7 +8434,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="2c01f28c" class="cell" data-execution_count="12">
+<div id="a97db1a7" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8378,7 +8446,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="e355d1da" class="cell" data-execution_count="13">
+<div id="f5f27459" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8390,7 +8458,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="2c74e46e" class="cell" data-execution_count="14">
+<div id="b716d562" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8402,7 +8470,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="115e69e8" class="cell" data-execution_count="15">
+<div id="bfc5ee62" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8414,7 +8482,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="fcea1c09" class="cell" data-execution_count="16">
+<div id="3457f8b4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8426,7 +8494,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="a8293574" class="cell" data-execution_count="17">
+<div id="cdc1eb24" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8441,7 +8509,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="b10d92ef" class="cell" data-execution_count="18">
+<div id="802c3a34" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -8488,7 +8556,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="a2a8f846" class="cell" data-execution_count="19">
+<div id="e6d0364c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8576,7 +8644,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="8a9f7614" class="cell" data-execution_count="20">
+<div id="47bb3e1a" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8659,7 +8727,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="b4ef5a04" class="cell" data-execution_count="21">
+<div id="d12932e8" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -8713,7 +8781,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="d1562cd7" class="cell" data-execution_count="22">
+<div id="c263f793" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -8940,7 +9008,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="9598a4cd" class="cell" data-execution_count="23">
+<div id="cc4ec84c" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> complex_function(x):</span>

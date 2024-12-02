@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/take_it_easy/index.html",
       "/blog/posts/visualizing_the_tail_end/index.html",
       "/blog/posts/evaluation_performance_generative_molecular_models/index.html",
       "/blog/posts/building_an_llm/index.html",

@@ -1,0 +1,120 @@
+---
+title: 'The Tail End'
+description: <i>Interactive visualization of an aspect of life</i>
+image: ""
+sidebar: false
+categories:
+  - life
+date: "9/21/2024"
+format:
+  html:
+    code-tools: true
+include-in-header:
+  text: |
+    <style>
+    .cell-output-stdout {
+      overflow-y: scroll;
+      max-height: 400px;
+    }
+    </style>
+---
+
+
+[The Tail End by Tim Urban](https://waitbutwhy.com/2015/12/the-tail-end.html) is a blog post everyone should read. 
+
+I've been thinking about it a lot lately, and made a small interactive visualization of one aspect of it. How most of us, including myself, are already in the tails of some aspects of our lives.
+(Luckily, we are in the opposite tails for some other aspects.)
+
+
+If we think, for example, about the times we will still see our parents, we are certainly already in our tails. 
+Most of our interactions with them already happened and there is only a small fraction of them ahead of us.
+
+
+```{=html}
+<div>
+  <input type="range" id="ageInput" min="0" max="90" value="34" step="1" style="width: 300px;">
+  <span id="ageDisplay">Current Age: 34</span>
+</div>
+<div id="plotDiv" style="width:600px;height:600px;"></div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script>
+// Parameters for life expectancy and stages
+const life_expectancy = 90;
+const childhood_years = 18;
+const childhood_interactions_per_year = 365 * 0.9;
+const adult_visits_per_year = 10;
+const total_dots = 400;
+const parent_start_age = 25;
+const parent_life_expectancy = 80;
+
+function updatePlot(age) {
+    // Calculate parent's current age
+    const parent_age = parent_start_age + age;
+    
+    // Calculate filled interactions
+    let filled_interactions;
+    if (age <= childhood_years) {
+        filled_interactions = age * childhood_interactions_per_year;
+    } else {
+        filled_interactions = childhood_years * childhood_interactions_per_year;
+        const adult_years = Math.min(age - childhood_years, parent_life_expectancy - parent_start_age - childhood_years);
+        filled_interactions += adult_years * adult_visits_per_year;
+    }
+    
+    // Cap filled interactions
+    const max_adult_years = parent_life_expectancy - parent_start_age - childhood_years;
+    const max_interactions = (childhood_years * childhood_interactions_per_year) + max_adult_years * adult_visits_per_year;
+    let filled_dots;
+    if (parent_age >= parent_life_expectancy) {
+        filled_dots = total_dots;
+    } else {
+        filled_dots = Math.min(Math.floor((filled_interactions / max_interactions) * total_dots), total_dots);
+    }
+
+    // Create the grid of dots
+    const x = [];
+    const y = [];
+    const colors = [];
+    for (let i = 0; i < total_dots; i++) {
+        x.push(i % 20);
+        y.push(Math.floor(i / 20));
+        colors.push(i < filled_dots ? 'blue' : 'lightgray');
+    }
+
+    const data = [{
+        x: x,
+        y: y,
+        mode: 'markers',
+        marker: {
+            size: 10,
+            color: colors
+        },
+        type: 'scatter'
+    }];
+
+    const layout = {
+        title: `Remaining Parent Time at Age ${age} (Parent's Age: ${parent_start_age + age})`,
+        xaxis: {showgrid: false, zeroline: false, visible: false},
+        yaxis: {showgrid: false, zeroline: false, visible: false},
+        width: 600,
+        height: 600,
+        hovermode: false
+    };
+
+    Plotly.newPlot('plotDiv', data, layout);
+}
+
+const ageInput = document.getElementById('ageInput');
+const ageDisplay = document.getElementById('ageDisplay');
+
+ageInput.addEventListener('input', function() {
+    const age = parseInt(this.value);
+    ageDisplay.textContent = `Current Age: ${age}`;
+    updatePlot(age);
+});
+
+// Initial plot
+updatePlot(34);
+</script>

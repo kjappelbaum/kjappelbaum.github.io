@@ -1,0 +1,42 @@
+---
+title: 'Take it easy my friend'
+description: <i>A letter to my younger self</i>
+
+sidebar: false
+categories:
+  - life
+  - academia
+date: "12/2/2024"
+bibliography: references.bib
+format:
+  html:
+    code-tools: true
+include-in-header:
+  text: |
+    <style>
+    .cell-output-stdout {
+      overflow-y: scroll;
+      max-height: 400px;
+    }
+    </style>
+---
+
+It's easy to feel caught up in the (perceived) pressure to produce results quickly. Academia seems to prioritize speed and quantity over depth and quality, which can be overwhelming. But is this really true? If it is something you must rush to publish, is there any real value in it? Is it really of value if you need to "compete"? [@thiel2014competition] Is the project you are rushing to publish really the question that you are best positioned to answer and that you deeply care about? Isn't rushing things another form of cargo cult science? 
+
+What if, instead of frantically racing to publish, you took the time to slow down, breathe, and really dig into your research, the research you really care about and take pleasure in craftsmanship? 
+We must admit that we are not immune to the allure of "fast science." There's something undeniably exciting about chasing quick breakthroughs and racking up publications. Yet, this isn't the path to meaningful, impactful, sustainable research and happiness.
+
+Great outcomes take time and persistence. Take the story of Rosalind Franklin, whose research laid the groundwork for understanding the structure of DNA. Or consider the godfathers of deep learning, who persisted through the AI winter. Galileo took 18 years to finish and write up his pendulum experiments and Newton took four years for his initial writings about gravity. [@newport2024slow]
+
+These scientists didn't rush their work or cut it into "salami papers." Instead, they took their time, and their persistence paid off. 
+
+Great outcomes can also not be easily optimized for. And this is, as Peter Drucker already realized, [@drucker1999knowledge] especially difficult for knowledge work. It is a fact that metrics are deceiving and that stepping stones that lead to discoveries cannot be anticipated. [@stanley2015why] Thus, as a field, we are bound to be less successful in the long run if we only optimize for bibliometrics. Trust yourself that your unique point of view will lead to something exciting. Looking less at oneself, comparing Google Scholar profiles, and instead being in awe of the exciting times we are in will also lead to more happiness. [@brooks2022dont; @shiota2007nature; @dambrun2017self]
+
+Great outcomes are also very diverse and happen on very different timescales. Even though some of our communications suggest otherwise ("Samantha is a great student because she published in Nature"), [@lawrence2003politics] we do not only do well if we publish in Cell, Nature, or Science or other "vanity outlets." We also do well if we build software that is used and that powers a full line of other research (think of the impact Python, Numpy, RDKit, Pymatgen, and similar tools had on our work). We also do well if we curate datasets that enable new discoveries. [@abbott2020mind] Ultimately, AlphaFold would not have been possible without the Protein Data Bank. While the systems with which we evaluate scientists only slowly evolve to reflect this reality, [@hicks2015bibliometrics] it is important to remember that great work will ultimately pay off and lead to much more satisfaction. Ultimately, those who decide on funding and career moves benefit from hindsight that editors do not have. [@lawrence2003politics]
+
+In a world filled with one-hit wonders and short-lived trends, it's more important than ever to focus on creating meaningful, lasting contributions to your field. You want to be known for something great, not just a fleeting moment of recognition. Moreover, slowing down to a sustainable pace can help you avoid the pitfalls of academic burnout. It's not about the number of publications or the speed at which you produce them; it's about the quality of your work, the depth of your understanding, and the passion you bring to your research. To our knowledge, being stressed didn't help anyone to think clearly. [@mcewen2007physiology]
+
+So, if you are feeling the pressure to constantly and rapidly produce, remember that taking it slow can lead to great things. Embrace the process, pursue your ideas with curiosity and dedication, and, most importantly, take the time to enjoy the journey. This journey isn't a sprint — it's a marathon. It will be more rewarding if you allow yourself the freedom to explore at your own pace. So, take a deep breath, and relax. In the end, you'll be known not for a fleeting moment of recognition but for a lasting contribution to your field—a testament to your dedication, perseverance, and passion for your work.
+
+
+![DALL-E generated image for slow science](cover.png)

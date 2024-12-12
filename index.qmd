@@ -22,11 +22,11 @@ aliases: ["blog/"]
 
 ::: {layout="[25,80]" .profile-header}
 
-![](avartar.JPG){.profile-pic}
+![](banana.jpeg){.profile-pic}
 
 
-I lead a [research group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholz Center in Berlin.
-I'm using computational tools and machine learning to capture the tacit dimension of chemistry.
+I lead a [research group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin.
+I'm using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science.
 
 :::
 

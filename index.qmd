@@ -32,8 +32,6 @@ I'm using computational tools and machine learning to capture the tacit and fuzz
 
 
 ::: {.callout-note icon=false title="Find out more on the lab website"}
-# Find out more on the lab website
-
 Check out the [website of our lab](https://jablonkagroup.uni-jena.de/). We are still hiring! You can find more details [here](openings.qmd).
 :::
 

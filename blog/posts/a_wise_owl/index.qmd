@@ -1,0 +1,24 @@
+---
+title: 'A wise bird'
+sidebar: false
+categories:
+  - life
+date: "1/5/2025"
+bibliography: references.bib
+format:
+  html:
+    code-tools: true
+---
+
+As I reflect on the past on the upcoming year, I really enjoyed [Rockefeller's favorite poem](https://en.wikipedia.org/wiki/A_Wise_Old_Owl) [@Housel2020-tx].
+
+> A wise old owl lived in an oak,
+> 
+> The more he saw, the less he spoke
+> 
+> The less he spoke, the more he heard,
+> 
+> Now, wasn't he a wise old bird?
+>
+
+![We need more wise owls.](owl.jpeg)

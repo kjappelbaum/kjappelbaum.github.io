@@ -1,0 +1,48 @@
+---
+title: "Trust Me, There's a Method to This Madness"
+description: "Why I work on LLMs in a chemistry department"
+image: ""
+sidebar: false
+categories:
+  - academia
+  - llm
+date: "1/5/2025"
+bibliography: references.bib
+include-in-header:
+  text: |
+    <style>
+    .cell-output-stdout {
+      overflow-y: scroll;
+      max-height: 400px;
+    }
+    </style>
+---
+
+Even though I work in a chemistry department, much of the recent work in my team has been focused on Large Language Models (LLMs) - or, more generally, frontier models. 
+This isn't a departure from chemistry; rather, we believe these could be crucial building blocks for solving some of the most fundamental problems in chemistry and materials science.
+
+[Sam Rodrigues](https://calvinball.substack.com/p/a-preliminary-roadmap-for-ai-assisted) (as so often) put it best: Science is about doing things for the first time. What's remarkable is that recent frontier models show sparks of an ability to perform impressive tasks they weren't explicitly trained for. 
+More importantly, they're showing promising capabilities in developing what scientists have long considered crucial: good taste in choosing what is interesting. [@zhang2024omniopenendednessmodelshuman] 
+This intuition, traditionally developed through years of experience, can now be augmented by models that have synthesized patterns from vast amounts of scientific literature and data.
+
+One of the most striking inefficiencies in academic research is how knowledge dissipates: when a PhD student leaves after four years in the lab, their accumulated experience often vanishes with them. Imagine if we could capture and share all this tacit knowledge - the failed experiments, the subtle technique adjustments, the unwritten rules - through training models on lab notes and conversations [@Jablonka_2022].
+
+While recent research suggests that language isn't necessarily used for reasoning [@reasoning], its flexibility makes it an unparalleled tool for communicating ideas, methods, and observations (just look at how synthesis protocols are reported). Yes, schemas, figures, and equations are crucial, but language remains our most versatile medium - and with multimodal approaches, we're pushing to combine the best of all worlds [@alampara2024probinglimitationsmultimodallanguage].
+(And there are tons of things for which we will need to go beyond naively treating everything as text [@alampara2024mattextlanguagemodelsneed]).
+
+However, the practical impact is already visible: tasks that once required a PhD thesis can now be accomplished within a Master's project. During my PhD, training a model for a novel application without existing datasets would have consumed my entire PhD. Now, our team routinely collects custom datasets for new applications [@Schilling_Wilhelmi_2025]. This scalability is crucial because science is inherently long-tailed: breakthrough innovations often emerge from unexpected corners of research and we have so many different instrument, techniques, questions that only a scalable technique can have a shot at capturing any of it.
+
+Similarly, there have been tons of efforts in developing ontologies, defining APIs, and how to talk between different systems, and [I have been involved in those efforts](https://madices.github.io). 
+But, I more and more come to the belief that we might be better off (at least for the long tail) just by letting models figure out how to talk to different things and build new tools in this way. Tools, are the way science progresses.
+As Sydney Brenner noted, "Progress in science depends on new techniques, new discoveries and new ideas, probably in that order" [@Robertson_1980;@Dyson_2012]. 
+
+However, working with these models daily also [raises concerns](https://michaelnotebook.com/optimism/index.html). While there's [significant](https://darioamodei.com/machines-of-loving-grace#4-peace-and-governance) [potential upside](https://ia.samaltman.com), we who develop these tools bear responsibility for ensuring they benefit society. Beyond immediate concerns about bio- and chemical weapons [@peppin2025realityaibiorisk], I worry about [information overflow](https://www.argmin.net/p/too-much-information) and the proliferation of bullshit [@Frankfurt2005] and disinformation of all sorts [@Europol2023] along with a possibility to further increase inequalities.
+
+The relative lack of some governments investment in building AI expertise is concerning, as is the potential erosion of critical thinking skills in some quarters. "We live in a society exquisitely dependent on science and technology, in which hardly anyone knows anything about science and technology" [@Sagan1990]. And, clearly, the scope researches beyond knowing things about science and technology and perhaps even makes a general liberal arts education more valuable then ever.
+
+> For progress there is no cure. Any attempt to find automatically safe channels for the present explosive variety of progress must lead to frustration. The only safety possible is relative, and it lies in an intelligent exercise of day-to-day judgement… these transformations are not a priori predictable and… most contemporary “first guesses” concerning them are wrong…
+> 
+> 
+> [CAN WE SURVIVE TECHNOLOGY?
+> by John von Neumann](https://sseh.uchicago.edu/doc/von_Neumann_1955.pdf)
+>

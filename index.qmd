@@ -26,19 +26,19 @@ aliases: ["blog/"]
 
 
 I lead a [research group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin.
-I'm using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science.
+I'm using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science -- to design materials that work in the real world.
 
 :::
 
 
 ::: {.callout-note icon=false title="Find out more on the lab website"}
-Check out the [website of our lab](https://jablonkagroup.uni-jena.de/). We are still hiring! You can find more details [here](openings.qmd).
+Check out the [website of our lab](https://jablonkagroup.uni-jena.de/) (which needs a bit of updating). We are still hiring! You can find more details [here](openings.qmd).
 :::
 
 
 ## 💼 Get in Touch
 
-[Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-twitter.png){width="3%"}](https://twitter.com/kmjablonka) if you'd like to chat!
+[Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-bluesky.png){width="3%"}](https://bsky.app/profile/kjablonka.com) if you'd like to chat!
 
 I appreciate any kind of feedback. If you want to leave some, you can do so anonymously [here](https://www.admonymous.co/kjappelbaum).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Take it easy my friend'
+title: 'Take it easy, my friend'
 description: <i>A letter to my younger self</i>
 
 sidebar: false
@@ -40,3 +40,6 @@ So, if you are feeling the pressure to constantly and rapidly produce, remember 
 
 
 ![DALL-E generated image for slow science](cover.png)
+
+
+This text is inspired by a conversation with Alán Aspuru-Guzik. Alán also suggested the title with a reference to a song. 

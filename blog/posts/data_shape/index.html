@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-01-09">
+<meta name="description" content="Some ideas on why some domains will benefit more from general-purpose models than others">
+
+<title>Kevin’s Homepage - Thinking aloud about the shape of scientific data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S9W9LVHXJK"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
+</script>
+<style>
+.cell-output-stdout {
+  overflow-y: scroll;
+  max-height: 400px;
+}
+</style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Kevin’s Homepage - Thinking aloud about the shape of scientific data">
+<meta property="og:description" content="Some ideas on why some domains will benefit more from general-purpose models than others">
+<meta property="og:image" content="https://kjablonka.com/blog/posts/data_shape/quarto.png">
+<meta property="og:site_name" content="Kevin's Homepage">
+<meta name="twitter:title" content="Kevin’s Homepage - Thinking aloud about the shape of scientific data">
+<meta name="twitter:description" content="Some ideas on why some domains will benefit more from general-purpose models than others">
+<meta name="twitter:image" content="https://kjablonka.com/blog/posts/data_shape/quarto.png">
+<meta name="twitter:creator" content="@kmjablonka">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../opensource/opensource.html"> 
+<span class="menu-text">Open Source</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+</ul>
+          <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-shape-of-scientific-data" id="toc-the-shape-of-scientific-data" class="nav-link" data-scroll-target="#the-shape-of-scientific-data">The Shape of Scientific Data</a>
+  <ul class="collapse">
+  <li><a href="#molecular-properties" id="toc-molecular-properties" class="nav-link" data-scroll-target="#molecular-properties">Molecular Properties</a></li>
+  <li><a href="#chemical-experiments" id="toc-chemical-experiments" class="nav-link" data-scroll-target="#chemical-experiments">Chemical Experiments</a></li>
+  <li><a href="#biological-sequences" id="toc-biological-sequences" class="nav-link" data-scroll-target="#biological-sequences">Biological Sequences</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  </ul></li>
+  <li><a href="#implications-for-model-choice" id="toc-implications-for-model-choice" class="nav-link" data-scroll-target="#implications-for-model-choice">Implications for Model Choice</a>
+  <ul class="collapse">
+  <li><a href="#the-structure-to-noise-ratio-and-types-of-structure" id="toc-the-structure-to-noise-ratio-and-types-of-structure" class="nav-link" data-scroll-target="#the-structure-to-noise-ratio-and-types-of-structure">The Structure-to-Noise Ratio and Types of Structure</a></li>
+  <li><a href="#the-role-of-hidden-variables" id="toc-the-role-of-hidden-variables" class="nav-link" data-scroll-target="#the-role-of-hidden-variables">The Role of Hidden Variables</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/data_shape/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Thinking aloud about the shape of scientific data</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">llm</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Some ideas on why some domains will benefit more from general-purpose models than others
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 9, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1 page-columns page-full">
+<h1>Introduction</h1>
+<p>In many scientific fields, we are witnessing the emergence of “foundation models” - a term that, while widely used, often lacks precise definition. For our purposes, we consider foundation models to be those that can be readily adapted to diverse tasks within a domain, serving as a foundation for modeling various phenomena.</p>
+<div class="page-columns page-full"><p>In chemistry, we observe two parallel trends. On one side, there’s growing enthusiasm for general-purpose large language models (LLMs), with some arguing that “The future of chemistry is language” <span class="citation" data-cites="White_2023">(<a href="#ref-White_2023" role="doc-biblioref">White 2023</a>)</span> - a perspective I largely share. Simultaneously, we see the development of specialized foundation models, such as MACE-MP <span class="citation" data-cites="batatia2024foundationmodelatomisticmaterials">(<a href="#ref-batatia2024foundationmodelatomisticmaterials" role="doc-biblioref">Batatia et al. 2024</a>)</span> for molecular simulations and AlphaFold <span class="citation" data-cites="Abramson_2024">(<a href="#ref-Abramson_2024" role="doc-biblioref">Abramson et al. 2024</a>)</span> for protein structure prediction .</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Even though it is very interesting to ponder that <a href="https://harrisbio.substack.com/p/alphafold3-a-foundation-model-for">some equivariance features were thrown out in AF3 — in favor of scale</a>, which one might think of as the <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Bitter lesson</a> hitting again.</span></div></div>
+<p>This duality raises a crucial question: “When should we invest in specialized architectures that incorporate domain knowledge, and when might general-purpose approaches be more effective?” The question becomes particularly relevant as we observe both specialized models achieving remarkable success and general-purpose LLMs demonstrating unexpected capabilities across scientific domains.</p>
+<div class="page-columns page-full"><p>In my research group, we’ve focused on applying general-purpose LLMs to chemistry - an approach that might seem counterintuitive. Here, I attempt a systematic (though admittedly preliminary) analysis of when different modeling approaches might be most appropriate by examining the fundamental structure of scientific data spaces. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Big parts of this discussion are inspired by the excellent <a href="https://towardsdatascience.com/the-road-to-biology-2-0-will-pass-through-black-box-data-bbd00fabf959">Biology 2.0 post from Michael Bronstein and Luca Naef</a>.</span></div></div>
+</section>
+<section id="the-shape-of-scientific-data" class="level1 page-columns page-full">
+<h1>The Shape of Scientific Data</h1>
+<p>To understand why different modeling approaches succeed or fail, we need to examine the inherent structure of their data spaces. We’ll focus on four fundamental types of scientific data that represent distinct points along the spectrum of structure and complexity: molecular properties (governed by physical laws), chemical experiments (complex real-world scenarios), biological sequences (shaped by evolution), and code (human-created structure).</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Aspect</th>
+<th style="text-align: left;">Molecular Properties</th>
+<th style="text-align: left;">Chemical Experiments</th>
+<th style="text-align: left;">Biological Sequences</th>
+<th style="text-align: left;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">State Space</td>
+<td style="text-align: left;"><span class="math inline">\(\psi \in L^2(\mathbb{R}^{3N})\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathcal{R}(t)=\{(c_i, n_i, p_i)\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\{0,1,\ldots,k\}^n\)</span></td>
+<td style="text-align: left;">Discrete tree <span class="math inline">\(\mathcal{T}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Governing Distribution</td>
+<td style="text-align: left;"><span class="math inline">\(P(\psi) \propto e^{-\beta E[\psi]}\)</span></td>
+<td style="text-align: left;">Complex, multi-modal</td>
+<td style="text-align: left;"><span class="math inline">\(\log P(s) \propto f(s)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(\text{code}) = P(\text{syntax}) \cdot P(\text{semantics}\|\text{syntax})\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Structure-to-Noise Ratio</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Very High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reproducibility</td>
+<td style="text-align: left;">Very high</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Perfect</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hidden Variables</td>
+<td style="text-align: left;">No/Few</td>
+<td style="text-align: left;">Many</td>
+<td style="text-align: left;">No/Few</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Validation</td>
+<td style="text-align: left;">Physical laws</td>
+<td style="text-align: left;">Empirical</td>
+<td style="text-align: left;">Functional tests</td>
+<td style="text-align: left;">Compiler</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Causality</td>
+<td style="text-align: left;">Quantum mechanics</td>
+<td style="text-align: left;">Partially hidden</td>
+<td style="text-align: left;">Evolutionary force</td>
+<td style="text-align: left;">Explicit</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s examine each domain in detail to understand why they might require different modeling approaches: Here’s Part 2, continuing with the domain-specific sections:</p>
+<section id="molecular-properties" class="level2">
+<h2 class="anchored" data-anchor-id="molecular-properties">Molecular Properties</h2>
+<p>The quantum mechanical description of molecular properties provides perhaps the cleanest example of a structured scientific data space. Here, the state space is described by wavefunctions <span class="math inline">\(\psi \in L^2(\mathbb{R}^{3N})\)</span>, representing the quantum state of N particles in three-dimensional space. Several key characteristics make this domain particularly amenable to specialized models:</p>
+<ul>
+<li><strong>High Structure-to-Noise Ratio</strong>: The underlying physics is well-understood and deterministic (up to quantum mechanical uncertainties)</li>
+<li><strong>Clear Symmetries</strong>: Physical laws impose translational and rotational invariance, providing strong inductive biases for model design</li>
+<li><strong>Few Hidden Variables</strong>: All molecular properties can, in principle, be determined from the wavefunction, requiring only atomic positions and types as input</li>
+<li><strong>Perfect Reproducibility</strong>: While numerical implementations introduce some noise, quantum mechanical measurements are fully determined by their corresponding operators</li>
+</ul>
+</section>
+<section id="chemical-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="chemical-experiments">Chemical Experiments</h2>
+<p>Chemical experiments present a striking contrast. Despite being fundamentally governed by quantum mechanics, “real world” experimental chemistry introduces numerous complexities:</p>
+<ul>
+<li><strong>Complex State Space</strong>: While we can represent basic parameters as <span class="math inline">\(\mathcal{R}(t)=\{(c_i, n_i, p_i)\}\)</span> (concentrations, stoichiometry, phase information), many crucial variables remain hidden</li>
+<li><strong>Low Structure-to-Noise Ratio</strong>: Hidden features and their interactions lead to high variability in outcomes</li>
+<li><strong>Hidden Variables</strong>: Critical factors often go unrecorded or unrecognized (impurities, atmospheric conditions, surface effects) and might only be implicitly captured in experimental protocols</li>
+<li><strong>Limited Reproducibility</strong>: Even carefully controlled experiments may yield different results due to uncontrolled variables</li>
+</ul>
+</section>
+<section id="biological-sequences" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="biological-sequences">Biological Sequences</h2>
+<div class="page-columns page-full"><p>Biological sequences present a unique case where their distribution in sequence space (<span class="math inline">\(\{0,1,\ldots,k\}^n\)</span>) is shaped by evolution, creating a direct link between sequence distribution and fitness <span class="citation" data-cites="Sella_2005">(<a href="#ref-Sella_2005" role="doc-biblioref">Sella and Hirsh 2005</a>)</span>. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Notably, such a driving force does not exist in chemistry, where the space of synthetic molecules seems mostly shaped by human imagination.</span></div></div>
+<ul>
+<li><strong>Medium Structure-to-Noise Ratio</strong>: Evolution provides underlying structure, while neutral mutations introduce noise</li>
+<li><strong>Clear Alphabet</strong>: Fixed set of building blocks (amino acids, nucleotides) constrains the possible space</li>
+<li><strong>Evolutionary Causality</strong>: Natural selection provides a clear driving force for sequence distributions</li>
+<li><strong>High Reproducibility</strong>: Modern sequence determination is highly reliable</li>
+</ul>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Programming languages represent a fascinating case of highly structured but human-created information:</p>
+<ul>
+<li><strong>Discrete, Tree-like Structure</strong>: Abstract syntax trees provide clear organization</li>
+<li><strong>Perfect Reproducibility</strong>: Same input consistently produces the same output</li>
+<li><strong>Explicit Causality</strong>: Control flow and data dependencies are explicit</li>
+<li><strong>Human-Created Rules</strong>: Unlike physical laws, programming language rules are human-designed and well-documented</li>
+<li><strong>Rich Training Data</strong>: Vast amounts of self-documenting code examples and error messages are available</li>
+</ul>
+<p>Here’s Part 3, continuing with the implications and conclusions:</p>
+</section>
+</section>
+<section id="implications-for-model-choice" class="level1">
+<h1>Implications for Model Choice</h1>
+<p>Our analysis of data spaces reveals a nuanced framework for choosing modeling approaches, one that goes beyond simple metrics to consider the fundamental nature of structure in each domain.</p>
+<section id="the-structure-to-noise-ratio-and-types-of-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure-to-noise-ratio-and-types-of-structure">The Structure-to-Noise Ratio and Types of Structure</h2>
+<p>We can (somewhat handwavily) formalize the structure-to-noise ratio as:</p>
+<p><span class="math display">\[ R = \frac{\text{structured\_information}}{\text{unstructured\_variation}} \]</span></p>
+<p>However, this ratio alone is insufficient. We must distinguish between fundamentally different types of structure:</p>
+<ol type="1">
+<li><strong>Physical/Mathematical Structure</strong> (Molecular Properties):
+<ul>
+<li>Governed by immutable natural laws</li>
+<li>Benefits from explicit architectural enforcement</li>
+<li>Can data-efficiently be handled by specialized architectures (e.g., equivariant neural networks)</li>
+</ul></li>
+<li><strong>Human-Created Structure</strong> (Code):
+<ul>
+<li>Well-documented in training data</li>
+<li>Can be learned statistically</li>
+<li>Amenable to general-purpose models like LLMs</li>
+</ul></li>
+<li><strong>Mixed or Emergent Structure</strong> (Biological Sequences):
+<ul>
+<li>Combines physical constraints with evolutionary patterns</li>
+<li>Benefits from hybrid approaches</li>
+</ul></li>
+</ol>
+<p>This refined view explains several observed patterns in scientific machine learning:</p>
+<ol type="1">
+<li><strong>Domains with Physical Structure</strong> (Molecular Properties):
+<ul>
+<li>Specialized architectures effectively leverage conservation laws and symmetries</li>
+<li>Investment in domain-specific inductive biases pays off</li>
+<li>Example: Equivariant neural networks for molecular properties</li>
+</ul></li>
+<li><strong>Domains with Human-Created Structure</strong> (Code):
+<ul>
+<li>General-purpose models can learn patterns effectively</li>
+<li>Benefit from large amounts of self-documenting training data</li>
+<li>Example: LLMs for code generation</li>
+</ul></li>
+<li><strong>Low-Structure Domains</strong> (Chemical Experiments):
+<ul>
+<li>General-purpose models may be more effective (as we do not even know what inductive biases to design and many factors are hidden/implicit)</li>
+<li>Pattern recognition and statistical approaches shine</li>
+<li>Example: LLMs leveraging implicit knowledge from literature</li>
+</ul></li>
+<li><strong>Mixed-Structure Domains</strong> (Biological Sequences):
+<ul>
+<li>Hybrid approaches combining structure and statistics work well</li>
+<li>Balance between specialized architectures and statistical power</li>
+<li>Example: AlphaFold’s combination of structural constraints with evolutionary information</li>
+</ul></li>
+</ol>
+</section>
+<section id="the-role-of-hidden-variables" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-hidden-variables">The Role of Hidden Variables</h2>
+<p>The presence and nature of hidden variables significantly impacts model choice:</p>
+<ul>
+<li><strong>Few Hidden Variables</strong>: Enables direct modeling with specialized architectures</li>
+<li><strong>Many Unknown Hidden Variables</strong>: Benefits from models that can learn representations from data</li>
+</ul>
+</section>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<p>This analysis, while admittedly preliminary, provides a framework for understanding when to apply specialized versus general-purpose models in scientific domains. The choice appears guided by three key factors:</p>
+<ol type="1">
+<li>The type of structure present (physical, human-created, or mixed)</li>
+<li>The structure-to-noise ratio</li>
+<li>The presence and nature of hidden variables</li>
+</ol>
+<p>In domains with physical structure and few hidden variables, specialized architectures can effectively leverage domain knowledge. However, in domains with human-created structure or many hidden variables, general-purpose models may be more appropriate. This explains why our group remains optimistic about applying LLMs to chemistry - the complexity and hidden variables in chemical experiments might make them particularly suitable for statistical pattern recognition through large language models.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Abramson_2024" class="csl-entry" role="listitem">
+Abramson, Josh, Jonas Adler, Jack Dunger, Richard Evans, Tim Green, Alexander Pritzel, Olaf Ronneberger, et al. 2024. <span>“Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3.”</span> <em>Nature</em> 630 (8016): 493–500. <a href="https://doi.org/10.1038/s41586-024-07487-w">https://doi.org/10.1038/s41586-024-07487-w</a>.
+</div>
+<div id="ref-batatia2024foundationmodelatomisticmaterials" class="csl-entry" role="listitem">
+Batatia, Ilyes, Philipp Benner, Yuan Chiang, Alin M. Elena, Dávid P. Kovács, Janosh Riebesell, Xavier R. Advincula, et al. 2024. <span>“A Foundation Model for Atomistic Materials Chemistry.”</span> <a href="https://arxiv.org/abs/2401.00096">https://arxiv.org/abs/2401.00096</a>.
+</div>
+<div id="ref-Sella_2005" class="csl-entry" role="listitem">
+Sella, Guy, and Aaron E. Hirsh. 2005. <span>“The Application of Statistical Physics to Evolutionary Biology.”</span> <em>Proceedings of the National Academy of Sciences</em> 102 (27): 9541–46. <a href="https://doi.org/10.1073/pnas.0501865102">https://doi.org/10.1073/pnas.0501865102</a>.
+</div>
+<div id="ref-White_2023" class="csl-entry" role="listitem">
+White, Andrew D. 2023. <span>“The Future of Chemistry Is Language.”</span> <em>Nature Reviews Chemistry</em> 7 (7): 457–58. <a href="https://doi.org/10.1038/s41570-023-00502-0">https://doi.org/10.1038/s41570-023-00502-0</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kjablonka\.com\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/kmjablonka">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kjappelbaum">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://mailhide.io/e/o4LeOUlq">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=R2ntI8IAAAAJ&amp;hl=en">
+      <i class="bi bi-mortarboard-fill" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/data_shape/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

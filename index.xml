@@ -15,7 +15,235 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Sat, 04 Jan 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 08 Jan 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Thinking aloud about the shape of scientific data</title>
+  <link>https://kjablonka.com/blog/posts/data_shape/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="introduction" class="level1 page-columns page-full">
+<h1>Introduction</h1>
+<p>In many scientific fields, we are witnessing the emergence of “foundation models” - a term that, while widely used, often lacks precise definition. For our purposes, we consider foundation models to be those that can be readily adapted to diverse tasks within a domain, serving as a foundation for modeling various phenomena.</p>
+<div class="page-columns page-full"><p>In chemistry, we observe two parallel trends. On one side, there’s growing enthusiasm for general-purpose large language models (LLMs), with some arguing that “The future of chemistry is language” <span class="citation" data-cites="White_2023">(White 2023)</span> - a perspective I largely share. Simultaneously, we see the development of specialized foundation models, such as MACE-MP <span class="citation" data-cites="batatia2024foundationmodelatomisticmaterials">(Batatia et al. 2024)</span> for molecular simulations and AlphaFold <span class="citation" data-cites="Abramson_2024">(Abramson et al. 2024)</span> for protein structure prediction .</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Even though it is very interesting to ponder that <a href="https://harrisbio.substack.com/p/alphafold3-a-foundation-model-for">some equivariance features were thrown out in AF3 — in favor of scale</a>, which one might think of as the <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Bitter lesson</a> hitting again.</span></div></div>
+<p>This duality raises a crucial question: “When should we invest in specialized architectures that incorporate domain knowledge, and when might general-purpose approaches be more effective?” The question becomes particularly relevant as we observe both specialized models achieving remarkable success and general-purpose LLMs demonstrating unexpected capabilities across scientific domains.</p>
+<div class="page-columns page-full"><p>In my research group, we’ve focused on applying general-purpose LLMs to chemistry - an approach that might seem counterintuitive. Here, I attempt a systematic (though admittedly preliminary) analysis of when different modeling approaches might be most appropriate by examining the fundamental structure of scientific data spaces. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Big parts of this discussion are inspired by the excellent <a href="https://towardsdatascience.com/the-road-to-biology-2-0-will-pass-through-black-box-data-bbd00fabf959">Biology 2.0 post from Michael Bronstein and Luca Naef</a>.</span></div></div>
+</section>
+<section id="the-shape-of-scientific-data" class="level1 page-columns page-full">
+<h1>The Shape of Scientific Data</h1>
+<p>To understand why different modeling approaches succeed or fail, we need to examine the inherent structure of their data spaces. We’ll focus on four fundamental types of scientific data that represent distinct points along the spectrum of structure and complexity: molecular properties (governed by physical laws), chemical experiments (complex real-world scenarios), biological sequences (shaped by evolution), and code (human-created structure).</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Aspect</th>
+<th style="text-align: left;">Molecular Properties</th>
+<th style="text-align: left;">Chemical Experiments</th>
+<th style="text-align: left;">Biological Sequences</th>
+<th style="text-align: left;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">State Space</td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cpsi%20%5Cin%20L%5E2(%5Cmathbb%7BR%7D%5E%7B3N%7D)"></td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BR%7D(t)=%5C%7B(c_i,%20n_i,%20p_i)%5C%7D"></td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5C%7B0,1,%5Cldots,k%5C%7D%5En"></td>
+<td style="text-align: left;">Discrete tree <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BT%7D"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Governing Distribution</td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?P(%5Cpsi)%20%5Cpropto%20e%5E%7B-%5Cbeta%20E%5B%5Cpsi%5D%7D"></td>
+<td style="text-align: left;">Complex, multi-modal</td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Clog%20P(s)%20%5Cpropto%20f(s)"></td>
+<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?P(%5Ctext%7Bcode%7D)%20=%20P(%5Ctext%7Bsyntax%7D)%20%5Ccdot%20P(%5Ctext%7Bsemantics%7D%5C%7C%5Ctext%7Bsyntax%7D)"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Structure-to-Noise Ratio</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Very High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reproducibility</td>
+<td style="text-align: left;">Very high</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Perfect</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hidden Variables</td>
+<td style="text-align: left;">No/Few</td>
+<td style="text-align: left;">Many</td>
+<td style="text-align: left;">No/Few</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Validation</td>
+<td style="text-align: left;">Physical laws</td>
+<td style="text-align: left;">Empirical</td>
+<td style="text-align: left;">Functional tests</td>
+<td style="text-align: left;">Compiler</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Causality</td>
+<td style="text-align: left;">Quantum mechanics</td>
+<td style="text-align: left;">Partially hidden</td>
+<td style="text-align: left;">Evolutionary force</td>
+<td style="text-align: left;">Explicit</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s examine each domain in detail to understand why they might require different modeling approaches: Here’s Part 2, continuing with the domain-specific sections:</p>
+<section id="molecular-properties" class="level2">
+<h2 class="anchored" data-anchor-id="molecular-properties">Molecular Properties</h2>
+<p>The quantum mechanical description of molecular properties provides perhaps the cleanest example of a structured scientific data space. Here, the state space is described by wavefunctions <img src="https://latex.codecogs.com/png.latex?%5Cpsi%20%5Cin%20L%5E2(%5Cmathbb%7BR%7D%5E%7B3N%7D)">, representing the quantum state of N particles in three-dimensional space. Several key characteristics make this domain particularly amenable to specialized models:</p>
+<ul>
+<li><strong>High Structure-to-Noise Ratio</strong>: The underlying physics is well-understood and deterministic (up to quantum mechanical uncertainties)</li>
+<li><strong>Clear Symmetries</strong>: Physical laws impose translational and rotational invariance, providing strong inductive biases for model design</li>
+<li><strong>Few Hidden Variables</strong>: All molecular properties can, in principle, be determined from the wavefunction, requiring only atomic positions and types as input</li>
+<li><strong>Perfect Reproducibility</strong>: While numerical implementations introduce some noise, quantum mechanical measurements are fully determined by their corresponding operators</li>
+</ul>
+</section>
+<section id="chemical-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="chemical-experiments">Chemical Experiments</h2>
+<p>Chemical experiments present a striking contrast. Despite being fundamentally governed by quantum mechanics, “real world” experimental chemistry introduces numerous complexities:</p>
+<ul>
+<li><strong>Complex State Space</strong>: While we can represent basic parameters as <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BR%7D(t)=%5C%7B(c_i,%20n_i,%20p_i)%5C%7D"> (concentrations, stoichiometry, phase information), many crucial variables remain hidden</li>
+<li><strong>Low Structure-to-Noise Ratio</strong>: Hidden features and their interactions lead to high variability in outcomes</li>
+<li><strong>Hidden Variables</strong>: Critical factors often go unrecorded or unrecognized (impurities, atmospheric conditions, surface effects) and might only be implicitly captured in experimental protocols</li>
+<li><strong>Limited Reproducibility</strong>: Even carefully controlled experiments may yield different results due to uncontrolled variables</li>
+</ul>
+</section>
+<section id="biological-sequences" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="biological-sequences">Biological Sequences</h2>
+<div class="page-columns page-full"><p>Biological sequences present a unique case where their distribution in sequence space (<img src="https://latex.codecogs.com/png.latex?%5C%7B0,1,%5Cldots,k%5C%7D%5En">) is shaped by evolution, creating a direct link between sequence distribution and fitness <span class="citation" data-cites="Sella_2005">(Sella and Hirsh 2005)</span>. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Notably, such a driving force does not exist in chemistry, where the space of synthetic molecules seems mostly shaped by human imagination.</span></div></div>
+<ul>
+<li><strong>Medium Structure-to-Noise Ratio</strong>: Evolution provides underlying structure, while neutral mutations introduce noise</li>
+<li><strong>Clear Alphabet</strong>: Fixed set of building blocks (amino acids, nucleotides) constrains the possible space</li>
+<li><strong>Evolutionary Causality</strong>: Natural selection provides a clear driving force for sequence distributions</li>
+<li><strong>High Reproducibility</strong>: Modern sequence determination is highly reliable</li>
+</ul>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Programming languages represent a fascinating case of highly structured but human-created information:</p>
+<ul>
+<li><strong>Discrete, Tree-like Structure</strong>: Abstract syntax trees provide clear organization</li>
+<li><strong>Perfect Reproducibility</strong>: Same input consistently produces the same output</li>
+<li><strong>Explicit Causality</strong>: Control flow and data dependencies are explicit</li>
+<li><strong>Human-Created Rules</strong>: Unlike physical laws, programming language rules are human-designed and well-documented</li>
+<li><strong>Rich Training Data</strong>: Vast amounts of self-documenting code examples and error messages are available</li>
+</ul>
+<p>Here’s Part 3, continuing with the implications and conclusions:</p>
+</section>
+</section>
+<section id="implications-for-model-choice" class="level1">
+<h1>Implications for Model Choice</h1>
+<p>Our analysis of data spaces reveals a nuanced framework for choosing modeling approaches, one that goes beyond simple metrics to consider the fundamental nature of structure in each domain.</p>
+<section id="the-structure-to-noise-ratio-and-types-of-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure-to-noise-ratio-and-types-of-structure">The Structure-to-Noise Ratio and Types of Structure</h2>
+<p>We can (somewhat handwavily) formalize the structure-to-noise ratio as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20R%20=%20%5Cfrac%7B%5Ctext%7Bstructured%5C_information%7D%7D%7B%5Ctext%7Bunstructured%5C_variation%7D%7D%20"></p>
+<p>However, this ratio alone is insufficient. We must distinguish between fundamentally different types of structure:</p>
+<ol type="1">
+<li><strong>Physical/Mathematical Structure</strong> (Molecular Properties):
+<ul>
+<li>Governed by immutable natural laws</li>
+<li>Benefits from explicit architectural enforcement</li>
+<li>Can data-efficiently be handled by specialized architectures (e.g., equivariant neural networks)</li>
+</ul></li>
+<li><strong>Human-Created Structure</strong> (Code):
+<ul>
+<li>Well-documented in training data</li>
+<li>Can be learned statistically</li>
+<li>Amenable to general-purpose models like LLMs</li>
+</ul></li>
+<li><strong>Mixed or Emergent Structure</strong> (Biological Sequences):
+<ul>
+<li>Combines physical constraints with evolutionary patterns</li>
+<li>Benefits from hybrid approaches</li>
+</ul></li>
+</ol>
+<p>This refined view explains several observed patterns in scientific machine learning:</p>
+<ol type="1">
+<li><strong>Domains with Physical Structure</strong> (Molecular Properties):
+<ul>
+<li>Specialized architectures effectively leverage conservation laws and symmetries</li>
+<li>Investment in domain-specific inductive biases pays off</li>
+<li>Example: Equivariant neural networks for molecular properties</li>
+</ul></li>
+<li><strong>Domains with Human-Created Structure</strong> (Code):
+<ul>
+<li>General-purpose models can learn patterns effectively</li>
+<li>Benefit from large amounts of self-documenting training data</li>
+<li>Example: LLMs for code generation</li>
+</ul></li>
+<li><strong>Low-Structure Domains</strong> (Chemical Experiments):
+<ul>
+<li>General-purpose models may be more effective (as we do not even know what inductive biases to design and many factors are hidden/implicit)</li>
+<li>Pattern recognition and statistical approaches shine</li>
+<li>Example: LLMs leveraging implicit knowledge from literature</li>
+</ul></li>
+<li><strong>Mixed-Structure Domains</strong> (Biological Sequences):
+<ul>
+<li>Hybrid approaches combining structure and statistics work well</li>
+<li>Balance between specialized architectures and statistical power</li>
+<li>Example: AlphaFold’s combination of structural constraints with evolutionary information</li>
+</ul></li>
+</ol>
+</section>
+<section id="the-role-of-hidden-variables" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-hidden-variables">The Role of Hidden Variables</h2>
+<p>The presence and nature of hidden variables significantly impacts model choice:</p>
+<ul>
+<li><strong>Few Hidden Variables</strong>: Enables direct modeling with specialized architectures</li>
+<li><strong>Many Unknown Hidden Variables</strong>: Benefits from models that can learn representations from data</li>
+</ul>
+</section>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<p>This analysis, while admittedly preliminary, provides a framework for understanding when to apply specialized versus general-purpose models in scientific domains. The choice appears guided by three key factors:</p>
+<ol type="1">
+<li>The type of structure present (physical, human-created, or mixed)</li>
+<li>The structure-to-noise ratio</li>
+<li>The presence and nature of hidden variables</li>
+</ol>
+<p>In domains with physical structure and few hidden variables, specialized architectures can effectively leverage domain knowledge. However, in domains with human-created structure or many hidden variables, general-purpose models may be more appropriate. This explains why our group remains optimistic about applying LLMs to chemistry - the complexity and hidden variables in chemical experiments might make them particularly suitable for statistical pattern recognition through large language models.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-Abramson_2024" class="csl-entry">
+Abramson, Josh, Jonas Adler, Jack Dunger, Richard Evans, Tim Green, Alexander Pritzel, Olaf Ronneberger, et al. 2024. <span>“Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3.”</span> <em>Nature</em> 630 (8016): 493–500. <a href="https://doi.org/10.1038/s41586-024-07487-w">https://doi.org/10.1038/s41586-024-07487-w</a>.
+</div>
+<div id="ref-batatia2024foundationmodelatomisticmaterials" class="csl-entry">
+Batatia, Ilyes, Philipp Benner, Yuan Chiang, Alin M. Elena, Dávid P. Kovács, Janosh Riebesell, Xavier R. Advincula, et al. 2024. <span>“A Foundation Model for Atomistic Materials Chemistry.”</span> <a href="https://arxiv.org/abs/2401.00096">https://arxiv.org/abs/2401.00096</a>.
+</div>
+<div id="ref-Sella_2005" class="csl-entry">
+Sella, Guy, and Aaron E. Hirsh. 2005. <span>“The Application of Statistical Physics to Evolutionary Biology.”</span> <em>Proceedings of the National Academy of Sciences</em> 102 (27): 9541–46. <a href="https://doi.org/10.1073/pnas.0501865102">https://doi.org/10.1073/pnas.0501865102</a>.
+</div>
+<div id="ref-White_2023" class="csl-entry">
+White, Andrew D. 2023. <span>“The Future of Chemistry Is Language.”</span> <em>Nature Reviews Chemistry</em> 7 (7): 457–58. <a href="https://doi.org/10.1038/s41570-023-00502-0">https://doi.org/10.1038/s41570-023-00502-0</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>llm</category>
+  <guid>https://kjablonka.com/blog/posts/data_shape/</guid>
+  <pubDate>Wed, 08 Jan 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/data_shape" medium="image"/>
+</item>
 <item>
   <title>A wise bird</title>
   <link>https://kjablonka.com/blog/posts/a_wise_owl/</link>
@@ -7174,7 +7402,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="73d99a25" class="cell" data-execution_count="1">
+<div id="f371b4cb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -7437,7 +7665,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="4cdee92b" class="cell" data-execution_count="2">
+<div id="942bc6b9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -7679,7 +7907,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="7eb5b7d3" class="cell" data-execution_count="3">
+<div id="ff8ab59e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -7718,7 +7946,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="e8d8a01d" class="cell" data-execution_count="4">
+<div id="e272494c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -7738,7 +7966,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="7e193053" class="cell" data-execution_count="5">
+<div id="d055d176" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -7751,7 +7979,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="2a6d7f19" class="cell" data-execution_count="6">
+<div id="0b86fd69" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -7796,7 +8024,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="21710a49" class="cell" data-execution_count="7">
+<div id="581fd645" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -7972,7 +8200,7 @@ background-color: null;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="f61613d4" class="cell" data-execution_count="8">
+<div id="3c3ba30c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -8420,7 +8648,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="389f04ba" class="cell" data-execution_count="9">
+<div id="9d9a101e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -8514,7 +8742,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="259e5460" class="cell" data-execution_count="10">
+<div id="093d63a1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8522,7 +8750,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="aadbf753" class="cell" data-execution_count="11">
+<div id="0338c8c5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8534,7 +8762,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="231db556" class="cell" data-execution_count="12">
+<div id="e647cb4e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8546,7 +8774,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="06094c3b" class="cell" data-execution_count="13">
+<div id="b91813a9" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8558,7 +8786,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="b79dc490" class="cell" data-execution_count="14">
+<div id="5670cc83" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8570,7 +8798,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="2516d6f6" class="cell" data-execution_count="15">
+<div id="66f03748" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8582,7 +8810,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="b69b4d69" class="cell" data-execution_count="16">
+<div id="3f049662" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8594,7 +8822,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="6a7dc85e" class="cell" data-execution_count="17">
+<div id="4e2e963a" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8609,7 +8837,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="24d724da" class="cell" data-execution_count="18">
+<div id="bb60cf7a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -8656,7 +8884,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="9e6d0e4d" class="cell" data-execution_count="19">
+<div id="493de660" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8744,7 +8972,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="30ff5a3a" class="cell" data-execution_count="20">
+<div id="49c7d48f" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8827,7 +9055,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="5c04a8a5" class="cell" data-execution_count="21">
+<div id="f47f1b0b" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -8881,7 +9109,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="9075458e" class="cell" data-execution_count="22">
+<div id="bfcaca53" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -9108,7 +9336,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="271e38c1" class="cell" data-execution_count="23">
+<div id="01e2225c" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> complex_function(x):</span>

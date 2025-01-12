@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/ai_thinking/index.html",
       "/blog/posts/data_shape/index.html",
       "/blog/posts/a_wise_owl/index.html",
       "/blog/posts/why_llm/index.html",

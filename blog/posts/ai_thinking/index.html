@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Kevin Maik Jablonka’s personal homepage">
+<meta name="dcterms.date" content="2025-01-12">
 
-<title>Kevin’s Homepage</title>
+<title>Kevin’s Homepage - Dear Claude: Are We Getting Too Close?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,28 +21,46 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +88,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-blog-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-blog-listings'] = new List('listing-blog-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S9W9LVHXJK"></script>
 
 <script type="text/javascript">
@@ -108,45 +97,22 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
+<style>
+.cell-output-stdout {
+  overflow-y: scroll;
+  max-height: 400px;
 }
-window.Quarto = {
-  typesetMath
-};
-</script>
+</style>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Kevin's Homepage" href="index.xml" data-external="1"><meta property="og:title" content="Kevin’s Homepage">
-<meta property="og:description" content="Kevin Maik Jablonka’s personal homepage">
-<meta property="og:image" content="https://kjablonka.com/quarto.png">
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Kevin’s Homepage - Dear Claude: Are We Getting Too Close?">
+<meta property="og:description" content="Kevin Maik Jablonka’s homepage.">
+<meta property="og:image" content="https://kjablonka.com/blog/posts/ai_thinking/quarto.png">
 <meta property="og:site_name" content="Kevin's Homepage">
-<meta name="twitter:title" content="Kevin’s Homepage">
-<meta name="twitter:description" content="Kevin Maik Jablonka’s personal homepage">
-<meta name="twitter:image" content="https://kjablonka.com/quarto.png">
+<meta name="twitter:title" content="Kevin’s Homepage - Dear Claude: Are We Getting Too Close?">
+<meta name="twitter:description" content="Kevin Maik Jablonka’s homepage.">
+<meta name="twitter:image" content="https://kjablonka.com/blog/posts/ai_thinking/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -159,24 +125,24 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./opensource/opensource.html"> 
+    <a class="nav-link" href="../../../opensource/opensource.html"> 
 <span class="menu-text">Open Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> 
+    <a class="nav-link" href="../../../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
@@ -191,185 +157,94 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#get-in-touch" id="toc-get-in-touch" class="nav-link active" data-scroll-target="#get-in-touch">💼 Get in Touch</a></li>
-  <li><a href="#feed" id="toc-feed" class="nav-link" data-scroll-target="#feed">📮 Feed</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dear Claude: Are We Getting Too Close?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">llm</div>
+    <div class="quarto-category">academia</div>
+    <div class="quarto-category">society</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 12, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Lately, I have been wondering a lot about what the biggest impact of generative models on science and society can be.</p>
+<p>While <a href="https://kjablonka.com/blog/posts/why_llm/">I see many upsides</a>, I am also very puzzled and concerned by things happening to myself and many around me.</p>
+<p>This week, the Atlantic ran an outstanding piece by Derek Thompson on <a href="https://www.theatlantic.com/magazine/archive/2025/02/american-loneliness-personality-politics/681091/">The anti-social century</a>, and last year, Kevin Roose <a href="https://www.nytimes.com/2024/12/13/technology/claude-ai-anthropic.html">described how some people now run everything, every decision, every through through Claude</a> and perhaps talk more to Claude to their friends.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+i'm starting to see differences between those who have integrated claude deeply into their lives and those who haven't. its still too early for me to put words on it… i think the ones who have feel better supported? it's been ~universally healthy so far from what i can tell
+</p>
+— Nick (<span class="citation" data-cites="nickcammarata">(<a href="#ref-nickcammarata" role="doc-biblioref"><strong>nickcammarata?</strong></a>)</span>) <a href="https://twitter.com/nickcammarata/status/1862000614508777779?ref_src=twsrc%5Etfw">November 28, 2024</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I also talk to Claude a lot. I asked Claude to review this post critically. I ask it to do the same for most of my writing. Many of my friends and colleagues do the same. Basically, all of the students I work with do talk to Claude. However, I am nervous about how some of us use it.</p>
+<blockquote class="bluesky-embed blockquote" data-bluesky-uri="at://did:plc:u3o6qejoryiezdwepzbl4hqm/app.bsky.feed.post/3lfiu7ewr6k23" data-bluesky-cid="bafyreie7pp4xrcaibuxgoshgdycd2ffzatqbqnezaplimji5g25hswicjy">
+<p lang="en">
+I had big hopes for the application of AI to education. I saw it as one of the most important problems of our time. I did not expect there could be a possibility that AI would not only keep students ignorant, but in fact make them fundamentally incapable of learning anything
+</p>
+— François Chollet (<a href="https://bsky.app/profile/did:plc:u3o6qejoryiezdwepzbl4hqm?ref_src=embed"><span class="citation" data-cites="fchollet.bsky.social">(</span></a><a href="#ref-fchollet.bsky.social" role="doc-biblioref"><strong>fchollet.bsky.social?</strong></a>)) <a href="https://bsky.app/profile/did:plc:u3o6qejoryiezdwepzbl4hqm/post/3lfiu7ewr6k23?ref_src=embed">Jan 12, 2025 at 12:26 AM</a>
+</blockquote>
+<script async="" src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+<p>We have a tool in our hands that could do so much good. We could provide everyone with a personal tutor. We could use the models to bounce off ideas, think more critically, find loopholes, and brainstorm new ideas.</p>
+<p>The challenge isn’t just technological - it’s deeply human: perhaps our human nature makes it too tempting to take shortcuts <span class="citation" data-cites="Easter2021-gx">(<a href="#ref-Easter2021-gx" role="doc-biblioref">Easter 2021</a>)</span>. To just directly let Claude solve a coding or homework problem or to just let Claude be the best friend.</p>
+<div class="page-columns page-full"><p>This is worrying because, as the models continue to saturate all our benchmarks,  the marginal value of interesting and wise thought increases. “Low hanging fruit” test solving and knowledge retrieval are being commoditized - but we still need people who can set the agenda and push thought beyond the current frontiers.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Very interestingly, in creating <a href="https://arxiv.org/abs/2404.01475">our own benchmark for chemistry</a> our limiting factor was human ingenuity and knowledge in coming up with questions that are challenging enough for the models.</span></div></div>
+<p>Being able to do so requires a broad education and playful curiosity <span class="citation" data-cites="Feynman1985-gy">(<a href="#ref-Feynman1985-gy" role="doc-biblioref">Feynman and Leighton 1985</a>)</span>.</p>
+<p>To me, one of the big challenges is how we can ensure most people and our students use generative AI as cointelligence <span class="citation" data-cites="Mollick2024-kq Mollick_2024">(<a href="#ref-Mollick2024-kq" role="doc-biblioref">E. Mollick 2024</a>; <a href="#ref-Mollick_2024" role="doc-biblioref">E. R. Mollick and Mollick 2024</a>)</span> and not as a replacement for their own thought. <a href="https://www.oneusefulthing.org/p/post-apocalyptic-education">As Ethan Mollick pointedly observed: Education is hard.</a> Growth is hard - but this is the point of it.</p>
+<p>Perhaps we need to do a better job of showing the value of going through the grind and the fun it takes. And that shortcuts make us miss most of the journey. Perhaps we need to emphasize process over outcomes and reward original thinking over execution.</p>
+<p>Learning, thinking, and talking to others <span class="citation" data-cites="Yanai_2024">(<a href="#ref-Yanai_2024" role="doc-biblioref">Yanai and Lercher 2024</a>)</span> is where the real magic happens — most of my best projects emerged from seemingly random discussions about seemingly unrelated topics (which some of the new <a href="https://www.firstthings.com/article/2020/03/secular-monks">secular monks</a> might see as a waste of time).</p>
+<p>The shortcuts AI offers might save time, but they could cost us something far more valuable: our capacity for genuine intellectual and personal growth and connection.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="claude_at_date.png" class="img-fluid figure-img"></p>
+<figcaption>I am sure that some ask Claude for help in all situations of their life and there are situations like this out in the wild. Image generated with getimg.ai</figcaption>
+</figure>
+</div>
 
 
 
 
-<div>
-
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Easter2021-gx" class="csl-entry" role="listitem">
+Easter, Michael. 2021. <em>The Comfort Crisis</em>. Emmaus, PA: Rodale Books.
 </div>
-<div class="profile-header quarto-layout-panel" data-layout="[25,80]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 23.8%;justify-content: center;">
-<p><img src="banana.jpeg" class="profile-pic img-fluid"></p>
+<div id="ref-Feynman1985-gy" class="csl-entry" role="listitem">
+Feynman, Richard P, and Ralph Leighton. 1985. <em>Surely You’re Joking, <span>Mr.Feynman</span>!</em> Edited by Edward Hutchings. New York, NY: WW Norton.
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 76.2%;justify-content: flex-start;">
-<p>I lead a <a href="https://jablonkagroup.uni-jena.de/">research group</a> (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin. I’m using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science – to design materials that work in the real world.</p>
+<div id="ref-Mollick2024-kq" class="csl-entry" role="listitem">
+Mollick, Ethan. 2024. <em>Co-Intelligence</em>. New York, NY: Portfolio.
 </div>
+<div id="ref-Mollick_2024" class="csl-entry" role="listitem">
+Mollick, Ethan R., and Lilach Mollick. 2024. <span>“Instructors as Innovators: A Future-Focused Approach to New AI Learning Opportunities, with Prompts.”</span> <em>SSRN Electronic Journal</em>. <a href="https://doi.org/10.2139/ssrn.4802463">https://doi.org/10.2139/ssrn.4802463</a>.
 </div>
+<div id="ref-Yanai_2024" class="csl-entry" role="listitem">
+Yanai, Itai, and Martin J. Lercher. 2024. <span>“It Takes Two to Think.”</span> <em>Nature Biotechnology</em> 42 (1): 18–19. <a href="https://doi.org/10.1038/s41587-023-02074-2">https://doi.org/10.1038/s41587-023-02074-2</a>.
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Find out more on the lab website">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Find out more on the lab website
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Check out the <a href="https://jablonkagroup.uni-jena.de/">website of our lab</a> (which needs a bit of updating). We are still hiring! You can find more details <a href="./openings.html">here</a>.</p>
-</div>
-</div>
-<section id="get-in-touch" class="level2">
-<h2 class="anchored" data-anchor-id="get-in-touch">💼 Get in Touch</h2>
-<p><a href="https://mailhide.io/e/o4LeOUlq">Email me</a>, or DM me on <a href="https://www.linkedin.com/in/kevin-maik-jablonka-538655200/"><img src="icon-linkedin.png" class="img-fluid" style="width:3.0%"></a> or <a href="https://bsky.app/profile/kjablonka.com"><img src="icon-bluesky.png" class="img-fluid" style="width:3.0%"></a> if you’d like to chat!</p>
-<p>I appreciate any kind of feedback. If you want to leave some, you can do so anonymously <a href="https://www.admonymous.co/kjappelbaum">here</a>.</p>
-<p>If you are looking for a short bio or a headshot, you can find them <a href="./bio.html">here</a>.</p>
-</section>
-<section id="feed" class="level2">
-<h2 class="anchored" data-anchor-id="feed">📮 Feed</h2>
-<p>Below you can find some of my notes.</p>
-<div id="listing-blog-listings" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="llm,academia,society" data-listing-date-sort="1736636400000" data-listing-file-modified-sort="1736681273999" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="638" data-listing-title-sort="Dear Claude: Are We Getting Too Close?" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">1/12/25</span>
-</td>
-<td>
-<a href="./blog/posts/ai_thinking/index.html" class="title listing-title">Dear Claude: Are We Getting Too Close?</a>
-</td>
-</tr>
-<tr data-index="1" data-categories="llm" data-listing-date-sort="1736377200000" data-listing-file-modified-sort="1736414402548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1310" data-listing-title-sort="Thinking aloud about the shape of scientific data" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">1/9/25</span>
-</td>
-<td>
-<a href="./blog/posts/data_shape/index.html" class="title listing-title">Thinking aloud about the shape of scientific data</a>
-</td>
-</tr>
-<tr data-index="2" data-categories="life" data-listing-date-sort="1736031600000" data-listing-file-modified-sort="1736100945011" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56" data-listing-title-sort="A wise bird" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">1/5/25</span>
-</td>
-<td>
-<a href="./blog/posts/a_wise_owl/index.html" class="title listing-title">A wise bird</a>
-</td>
-</tr>
-<tr data-index="3" data-categories="academia,llm" data-listing-date-sort="1736031600000" data-listing-file-modified-sort="1736177433040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678" data-listing-title-sort="Trust Me, There's a Method to This Madness" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">1/5/25</span>
-</td>
-<td>
-<a href="./blog/posts/why_llm/index.html" class="title listing-title">Trust Me, There’s a Method to This Madness</a>
-</td>
-</tr>
-<tr data-index="4" data-categories="life,academia" data-listing-date-sort="1733094000000" data-listing-file-modified-sort="1734511855748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="744" data-listing-title-sort="Take it easy, my friend" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">12/2/24</span>
-</td>
-<td>
-<a href="./blog/posts/take_it_easy/index.html" class="title listing-title">Take it easy, my friend</a>
-</td>
-</tr>
-<tr data-index="5" data-categories="life" data-listing-date-sort="1726869600000" data-listing-file-modified-sort="1726942655249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="627" data-listing-title-sort="The Tail End" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">9/21/24</span>
-</td>
-<td>
-<a href="./blog/posts/visualizing_the_tail_end/index.html" class="title listing-title">The Tail End</a>
-</td>
-</tr>
-<tr data-index="6" data-categories="machine-learning,llm,teaching" data-listing-date-sort="1714687200000" data-listing-file-modified-sort="1714914071936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703" data-listing-title-sort="Performing basic analysis of molecules generated by ML models" data-listing-filename-sort="index.ipynb">
-<td>
-<span class="listing-date">5/3/24</span>
-</td>
-<td>
-<a href="./blog/posts/evaluation_performance_generative_molecular_models/index.html" class="title listing-title">Performing basic analysis of molecules generated by ML models</a>
-</td>
-</tr>
-<tr data-index="7" data-categories="machine-learning,llm,teaching" data-listing-date-sort="1714600800000" data-listing-file-modified-sort="1714913415942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3621" data-listing-title-sort="Building a GPT that can generate molecules from scratch" data-listing-filename-sort="index.ipynb">
-<td>
-<span class="listing-date">5/2/24</span>
-</td>
-<td>
-<a href="./blog/posts/building_an_llm/index.html" class="title listing-title">Building a GPT that can generate molecules from scratch</a>
-</td>
-</tr>
-<tr data-index="8" data-categories="machine-learning,llm,teaching" data-listing-date-sort="1714600800000" data-listing-file-modified-sort="1715324216324" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1203" data-listing-title-sort="Building an LLM agent from scratch" data-listing-filename-sort="index.ipynb">
-<td>
-<span class="listing-date">5/2/24</span>
-</td>
-<td>
-<a href="./blog/posts/building_an_llm_agent/index.html" class="title listing-title">Building an LLM agent from scratch</a>
-</td>
-</tr>
-<tr data-index="9" data-categories="academia,metascience" data-listing-date-sort="1711234800000" data-listing-file-modified-sort="1736102010889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="831" data-listing-title-sort="The 'researcher's stuff'" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">3/24/24</span>
-</td>
-<td>
-<a href="./blog/posts/researchers_stuff/index.html" class="title listing-title">The ‘researcher’s stuff’</a>
-</td>
-</tr>
-<tr data-index="10" data-categories="academia,communication" data-listing-date-sort="1709334000000" data-listing-file-modified-sort="1714736645422" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="437" data-listing-title-sort="Language I want to be more mindful of" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">3/2/24</span>
-</td>
-<td>
-<a href="./blog/posts/bad_language/index.html" class="title listing-title">Language I want to be more mindful of</a>
-</td>
-</tr>
-<tr data-index="11" data-categories="machine-learning" data-listing-date-sort="1709334000000" data-listing-file-modified-sort="1714736645431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="997" data-listing-title-sort="Multiple instances learning" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">3/2/24</span>
-</td>
-<td>
-<a href="./blog/posts/mil/index.html" class="title listing-title">Multiple instances learning</a>
-</td>
-</tr>
-<tr data-index="12" data-categories="machine-learning" data-listing-date-sort="1708642800000" data-listing-file-modified-sort="1714736645422" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7308" data-listing-title-sort="Developing an intuition for backpropagation" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2/23/24</span>
-</td>
-<td>
-<a href="./blog/posts/backprop/index.html" class="title listing-title">Developing an intuition for backpropagation</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-
-
-
-</section>
-
-</main> <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -820,7 +695,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/ai_thinking/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -44,10 +44,10 @@ I had big hopes for the application of AI to education. I saw it as one of the m
 <script async="" src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
 <p>We have a tool in our hands that could do so much good. We could provide everyone with a personal tutor. We could use the models to bounce off ideas, think more critically, find loopholes, and brainstorm new ideas.</p>
 <p>The challenge isn’t just technological - it’s deeply human: perhaps our human nature makes it too tempting to take shortcuts <span class="citation" data-cites="Easter2021-gx">(Easter 2021)</span>. To just directly let Claude solve a coding or homework problem or to just let Claude be the best friend.</p>
-<div class="page-columns page-full"><p>This is worrying because, as the models continue to saturate all our benchmarks,  the marginal value of interesting and wise thought increases. “Low hanging fruit” test solving and knowledge retrieval are being commoditized - but we still need people who can set the agenda and push thought beyond the current frontiers.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Very interestingly, in creating <a href="https://arxiv.org/abs/2404.01475">our own benchmark for chemistry</a> our limiting factor was human ingenuity and knowledge in coming up with questions that are challenging enough for the models.</span></div></div>
-<p>Being able to do so requires a broad education and playful curiosity <span class="citation" data-cites="Feynman1985-gy">(Feynman and Leighton 1985)</span>.</p>
+<div class="page-columns page-full"><p>This is worrying because, as the models continue to saturate all our benchmarks,  <a href="https://fs.blog/why-write/">the marginal value of interesting, clear, and wise thought increases</a>. “Low hanging fruit” test solving and knowledge retrieval are being commoditized - but we still need people who can set the agenda and push thought beyond the current frontiers.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Very interestingly, in creating <a href="https://arxiv.org/abs/2404.01475">our own benchmark for chemistry</a> our limiting factor was human ingenuity and knowledge in coming up with questions that are challenging enough for the models.</span></div></div>
+<p>Being able to do so requires a <a href="https://paulgraham.com/know.html">broad foundation of mental models</a> and playful curiosity <span class="citation" data-cites="Feynman1985-gy">(Feynman and Leighton 1985)</span>.</p>
 <p>To me, one of the big challenges is how we can ensure most people and our students use generative AI as cointelligence <span class="citation" data-cites="Mollick2024-kq Mollick_2024">(E. Mollick 2024; E. R. Mollick and Mollick 2024)</span> and not as a replacement for their own thought. <a href="https://www.oneusefulthing.org/p/post-apocalyptic-education">As Ethan Mollick pointedly observed: Education is hard.</a> Growth is hard - but this is the point of it.</p>
-<p>Perhaps we need to do a better job of showing the value of going through the grind and the fun it takes. And that shortcuts make us miss most of the journey. Perhaps we need to emphasize process over outcomes and reward original thinking over execution.</p>
+<p>Perhaps we need to do a better job of showing <a href="https://paulgraham.com/hwh.html">the value of going through the grind</a> and the fun it takes. <a href="https://paulgraham.com/writes.html">And that shortcuts make us miss most of the journey.</a> Perhaps we need to emphasize process over outcomes and reward original thinking over execution.</p>
 <p>Learning, thinking, and talking to others <span class="citation" data-cites="Yanai_2024">(Yanai and Lercher 2024)</span> is where the real magic happens — most of my best projects emerged from seemingly random discussions about seemingly unrelated topics (which some of the new <a href="https://www.firstthings.com/article/2020/03/secular-monks">secular monks</a> might see as a waste of time).</p>
 <p>The shortcuts AI offers might save time, but they could cost us something far more valuable: our capacity for genuine intellectual and personal growth and connection.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -7470,7 +7470,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="6a01bc5d" class="cell" data-execution_count="1">
+<div id="33d10292" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -7733,7 +7733,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="2ecb6258" class="cell" data-execution_count="2">
+<div id="ec60bba8" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -7975,7 +7975,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="4c4ea047" class="cell" data-execution_count="3">
+<div id="61d5dea9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -8014,7 +8014,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="3adaf9c5" class="cell" data-execution_count="4">
+<div id="af8404ad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8034,7 +8034,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="3a597b71" class="cell" data-execution_count="5">
+<div id="6b916feb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -8047,7 +8047,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="90a49681" class="cell" data-execution_count="6">
+<div id="cc115ecf" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -8092,7 +8092,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="bd64361c" class="cell" data-execution_count="7">
+<div id="6375420d" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -8268,7 +8268,7 @@ background-color: null;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="15d32530" class="cell" data-execution_count="8">
+<div id="3ef0ded1" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -8716,7 +8716,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="ddb554e2" class="cell" data-execution_count="9">
+<div id="87544db3" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -8810,7 +8810,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="25d328c1" class="cell" data-execution_count="10">
+<div id="83207b9a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8818,7 +8818,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="e068a6b4" class="cell" data-execution_count="11">
+<div id="2a4fb5fb" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8830,7 +8830,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="f54f84ed" class="cell" data-execution_count="12">
+<div id="742cc08a" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8842,7 +8842,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="37427cb7" class="cell" data-execution_count="13">
+<div id="0639d2b3" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8854,7 +8854,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="c518e97f" class="cell" data-execution_count="14">
+<div id="1607784a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8866,7 +8866,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="84b14be4" class="cell" data-execution_count="15">
+<div id="665239d7" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8878,7 +8878,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="599b3b37" class="cell" data-execution_count="16">
+<div id="f934419e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8890,7 +8890,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="ebf1ff01" class="cell" data-execution_count="17">
+<div id="eaf0c51b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -8905,7 +8905,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="fc4c0193" class="cell" data-execution_count="18">
+<div id="50756c1e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -8952,7 +8952,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="98fc71da" class="cell" data-execution_count="19">
+<div id="313b7eb3" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9040,7 +9040,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="a69676ac" class="cell" data-execution_count="20">
+<div id="19d8e2dc" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9123,7 +9123,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="cfd26f5a" class="cell" data-execution_count="21">
+<div id="4ea6124b" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -9177,7 +9177,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="2c193403" class="cell" data-execution_count="22">
+<div id="78ee88dc" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -9404,7 +9404,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="3668f4ad" class="cell" data-execution_count="23">
+<div id="63c943e5" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> complex_function(x):</span>

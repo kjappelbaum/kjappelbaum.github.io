@@ -135,7 +135,10 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#more" id="toc-more" class="nav-link active" data-scroll-target="#more">More</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#more" id="toc-more" class="nav-link" data-scroll-target="#more">More</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/bio.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -167,11 +170,23 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 
 <p>Kevin Jablonka is a researcher with over 30 peer-reviewed publications in machine learning for materials science and digital chemistry. He leads an independent research group at the Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center Berlin. Kevin has received numerous awards, such as the Dimitris N. Chorafas Foundation award for outstanding Ph.D.&nbsp;work. He is an active member of the scientific community, serving as a peer reviewer for over 20 journals and as an area chair for machine learning conferences. Kevin belongs to a new generation of scientists with a broad skill set, combining expertise in chemistry, materials science, and artificial intelligence. His research focuses on the digitization of chemistry, from developing electronic lab notebook ecosystems to creating toolboxes for digital reticular chemistry. Recently, Kevin has been at the forefront of applying Large Language Models (LLMs) to chemistry and materials science, co-organizing hackathons and workshops in this rapidly evolving field. Kevin’s research addresses challenges across scales, from atomic-level simulations to pilot plant operations, pushing the boundaries of AI-accelerated discovery in chemistry and materials science.</p>
-<section id="more" class="level3">
-<h3 class="anchored" data-anchor-id="more">More</h3>
-<p>If you need a headshot, you can use <a href="portrait3.JPG">one</a> <a href="portrait1.jpg">of</a> <a href="portrait2.jpg">these</a>.</p>
+<section id="section" class="level1">
+<h1></h1>
+<p>class TestParameterToleranceResult: def test_str_representation_with_error(self): result = ParameterToleranceResult( within_tolerance=True, relative_error=0.03, truth_value=20.0, pred_value=19.4, tolerance=0.05, ) assert str(result) == “Error: 0.0300, Within 5.0% tolerance: True”</p>
+<pre><code>def test_str_representation_without_error(self):
+    result = ParameterToleranceResult(
+        within_tolerance=False,
+        relative_error=None,
+        truth_value=None,
+        pred_value=None,
+    )
+    assert str(result) == "Match: False"</code></pre>
+<section id="more" class="level2">
+<h2 class="anchored" data-anchor-id="more">More</h2>
+<p>If you need a headshot, you can use <a href="portrait3.JPG">one</a> <a href="portrait1.jpg">of</a> <a href="portrait2.jpg">these</a> (photographer: Marina Romanova/HIPOLE Jena).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

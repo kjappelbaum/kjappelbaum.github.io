@@ -15,7 +15,70 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Sat, 01 Feb 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Feb 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Beyond the Era of Accidental Discovery</title>
+  <link>https://kjablonka.com/blog/posts/materials_intelligence/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The foundational challenge of materials science isn’t just creating new materials - it’s developing them systematically rather than by accident. For centuries, materials discovery has remained surprisingly artisanal despite its outsized impact on human civilization. The design of new materials is the bottleneck for solving many of society’s most pressing challenges, from sustainable energy to quantum computing.</p>
+<section id="building-a-collective-scientific-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-collective-scientific-intelligence">Building a Collective Scientific Intelligence</h2>
+<p>One of the most tragic inefficiencies in science is how poorly we transfer experience. A PhD student spends 4-5 years developing deep experimental intuition about a specific material system or characterization technique. When they leave, most of that knowledge leaves with them.</p>
+<p>A large opportunity lies in general-purpose models and alignment approaches that can:</p>
+<ul>
+<li>Learn from unstructured experimental data across different modalities</li>
+<li>Bridge the gap between synthesis conditions and material properties</li>
+<li>Surface non-obvious connections between seemingly unrelated research areas</li>
+</ul>
+<p>The technical breakthrough enabling this is our ability to simultaneously handle:</p>
+<ol type="1">
+<li>Synthesis protocols (as structured text and process graphs)</li>
+<li>Characterization data (spectroscopy, microscopy, diffraction)</li>
+<li>Property measurements (electronic, mechanical, optical)</li>
+<li>Theoretical calculations (DFT, molecular dynamics)</li>
+</ol>
+</section>
+<section id="expert-councils-beyond-single-models" class="level2">
+<h2 class="anchored" data-anchor-id="expert-councils-beyond-single-models">Expert Councils: Beyond Single Models</h2>
+<p>We do not only want to have the average representation of materials data - we need specialized expertise for various topics and the ability to let these experts interact. This mirrors how human experts work together, bringing different perspectives and expertise to complex problems.</p>
+<p>The key is bootstrapping specialized models using:</p>
+<ul>
+<li>Integration with physics-based simulations</li>
+<li>Iterative refinement through experimental feedback</li>
+<li>Domain-specific inductive biases that constrain the solution space</li>
+<li>Validation through robust tools and theoretical frameworks</li>
+</ul>
+<p>For example, we can: - Generate feedback through simulations and experiments - Use iterative training approaches similar to Beyond A* - Constrain function spaces using inductive biases - Hand over specific predictive tasks to specialized architectures</p>
+<p>The specialized models can be bootstrapped with information from general-purpose models, making them more data-efficient while maintaining domain expertise.</p>
+</section>
+<section id="guiding-discovery-through-interestingness" class="level2">
+<h2 class="anchored" data-anchor-id="guiding-discovery-through-interestingness">Guiding Discovery Through “Interestingness”</h2>
+<p>Optimizations - or searches through materials space - are often compared with finding a needle in a haystack. Some try to design ML approaches as a “magnet” or “filter” to more efficiently find the needle. This could not be more misguided for two reasons:</p>
+<ol type="1">
+<li>We often don’t even know what we’re looking for (we often cannot define what metrics would be important before we have the solution)</li>
+<li>Looking for a needle in a haystack suggests searching through an unstructured space, but materials space has rich patterns we can exploit</li>
+</ol>
+<p>Instead, we’re developing ways to identify scientifically promising directions through:</p>
+<ul>
+<li>Novelty detection that can spot meaningful deviations from known patterns</li>
+<li>Uncertainty quantification that highlights areas where models disagree</li>
+<li>Causal reasoning that can extract mechanistic insights</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>science</category>
+  <guid>https://kjablonka.com/blog/posts/materials_intelligence/</guid>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>10 Reasons to Aim Higher. And Higher.</title>
   <link>https://kjablonka.com/blog/posts/harder/</link>
@@ -7764,7 +7827,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="ed133493" class="cell" data-execution_count="1">
+<div id="5b808af6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -8041,7 +8104,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="6d68d30c" class="cell" data-execution_count="2">
+<div id="22d5fd0d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -8289,7 +8352,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="12139b01" class="cell" data-execution_count="3">
+<div id="99e10e2d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -8328,7 +8391,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="20ada64a" class="cell" data-execution_count="4">
+<div id="7acd5334" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8348,7 +8411,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="b2b14757" class="cell" data-execution_count="5">
+<div id="8a33fbcf" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -8361,7 +8424,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="06844dff" class="cell" data-execution_count="6">
+<div id="56d5b9d4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -8406,7 +8469,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="400a5d91" class="cell" data-execution_count="7">
+<div id="bf57a9e1" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -8599,7 +8662,7 @@ font-weight: bold;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="88f9a675" class="cell" data-execution_count="8">
+<div id="4402c07c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -9083,7 +9146,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="1068e5c3" class="cell" data-execution_count="9">
+<div id="3a86b7fd" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -9177,7 +9240,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="a80adc3e" class="cell" data-execution_count="10">
+<div id="210b8c9e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9185,7 +9248,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="382aba57" class="cell" data-execution_count="11">
+<div id="da952ac9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9197,7 +9260,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="d4d542f1" class="cell" data-execution_count="12">
+<div id="bd3876c2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9209,7 +9272,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="dec2313c" class="cell" data-execution_count="13">
+<div id="73a871a4" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9221,7 +9284,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="d1aafc6b" class="cell" data-execution_count="14">
+<div id="28f3f9b3" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9233,7 +9296,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="cdc42d04" class="cell" data-execution_count="15">
+<div id="0f44c66f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9245,7 +9308,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="92303c70" class="cell" data-execution_count="16">
+<div id="11a1ef54" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9257,7 +9320,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="ac121ec8" class="cell" data-execution_count="17">
+<div id="cc14655b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9272,7 +9335,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="0de61cb3" class="cell" data-execution_count="18">
+<div id="607ddabf" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -9325,7 +9388,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="c36dcaf7" class="cell" data-execution_count="19">
+<div id="5c25e1cb" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9413,7 +9476,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="268c8ff5" class="cell" data-execution_count="20">
+<div id="2ac030bb" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9498,7 +9561,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="b2a0bf73" class="cell" data-execution_count="21">
+<div id="9cdfe958" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -9554,7 +9617,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="7c1cf5b3" class="cell" data-execution_count="22">
+<div id="60de2a8c" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -9803,7 +9866,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="316a9339" class="cell" data-execution_count="23">
+<div id="9926dfca" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;

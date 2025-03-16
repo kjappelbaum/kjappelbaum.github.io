@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3a751e4d48817b0aacecf974f477ff73.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f4ed29be9f94c8431cc02458ea51e422.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-3a7b482c16db3b601c97d3e06527e4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -173,22 +173,6 @@ window.Quarto = {
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../publications.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../opensource/opensource.html"> 
-<span class="menu-text">Open Source</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
-  </li>  
 </ul>
           <div class="quarto-navbar-tools">
 </div>
@@ -200,45 +184,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a>
-  <ul class="collapse">
-  <li><a href="#where-does-ml-fit-in-the-design-process" id="toc-where-does-ml-fit-in-the-design-process" class="nav-link" data-scroll-target="#where-does-ml-fit-in-the-design-process">Where does ML fit in the design process?</a></li>
-  </ul></li>
-  <li><a href="#supervised-ml-workflow" id="toc-supervised-ml-workflow" class="nav-link" data-scroll-target="#supervised-ml-workflow">Supervised ML workflow</a></li>
-  <li><a href="#feeding-structures-into-models" id="toc-feeding-structures-into-models" class="nav-link" data-scroll-target="#feeding-structures-into-models">Feeding structures into models</a>
-  <ul class="collapse">
-  <li><a href="#incorporating-symmetriesinvariancesequivariances" id="toc-incorporating-symmetriesinvariancesequivariances" class="nav-link" data-scroll-target="#incorporating-symmetriesinvariancesequivariances">Incorporating symmetries/invariances/equivariances</a></li>
-  </ul></li>
-  <li><a href="#training-a-model" id="toc-training-a-model" class="nav-link" data-scroll-target="#training-a-model">Training a model</a>
-  <ul class="collapse">
-  <li><a href="#how-to-know-if-a-model-is-good" id="toc-how-to-know-if-a-model-is-good" class="nav-link" data-scroll-target="#how-to-know-if-a-model-is-good">How to know if a model is good?</a></li>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear regression</a></li>
-  </ul></li>
-  <li><a href="#bias-variance-trade-off" id="toc-bias-variance-trade-off" class="nav-link" data-scroll-target="#bias-variance-trade-off">Bias-variance trade-off</a></li>
-  <li><a href="#hyperparameters" id="toc-hyperparameters" class="nav-link" data-scroll-target="#hyperparameters">Hyperparameters</a></li>
-  <li><a href="#kernel-trick" id="toc-kernel-trick" class="nav-link" data-scroll-target="#kernel-trick">Kernel trick</a></li>
-  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance">Feature importance</a>
-  <ul class="collapse">
-  <li><a href="#permutation-feature-importance" id="toc-permutation-feature-importance" class="nav-link" data-scroll-target="#permutation-feature-importance">Permutation feature importance</a></li>
-  </ul></li>
-  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature selection</a>
-  <ul class="collapse">
-  <li><a href="#curse-of-dimensionality" id="toc-curse-of-dimensionality" class="nav-link" data-scroll-target="#curse-of-dimensionality">Curse of dimensionality</a></li>
-  <li><a href="#feature-selection-approaches" id="toc-feature-selection-approaches" class="nav-link" data-scroll-target="#feature-selection-approaches">Feature selection approaches</a></li>
-  </ul></li>
-  <li><a href="#feature-projection" id="toc-feature-projection" class="nav-link" data-scroll-target="#feature-projection">Feature projection</a>
-  <ul class="collapse">
-  <li><a href="#principal-component-analysis" id="toc-principal-component-analysis" class="nav-link" data-scroll-target="#principal-component-analysis">Principal component analysis</a></li>
-  <li><a href="#t-distributed-stochastic-neighbor-embedding" id="toc-t-distributed-stochastic-neighbor-embedding" class="nav-link" data-scroll-target="#t-distributed-stochastic-neighbor-embedding">t-distributed stochastic neighbor embedding</a></li>
-  </ul></li>
-  <li><a href="#feature-learning" id="toc-feature-learning" class="nav-link" data-scroll-target="#feature-learning">Feature learning</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching/ml/ml_notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -1764,8 +1710,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1777,12 +1721,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/kmjablonka">
-      <i class="bi bi-twitter" role="img">
 </i> 
     </a>
   </li>  
@@ -1805,7 +1743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/teaching/ml/ml_notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/teaching/ml/ml_notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

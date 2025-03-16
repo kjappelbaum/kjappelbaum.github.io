@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3a751e4d48817b0aacecf974f477ff73.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-f4ed29be9f94c8431cc02458ea51e422.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-3a7b482c16db3b601c97d3e06527e4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -165,7 +165,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -176,22 +176,6 @@ window.Quarto = {
     <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html"> 
-<span class="menu-text">Open Source</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -204,39 +188,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#dealing-with-smiles" id="toc-dealing-with-smiles" class="nav-link active" data-scroll-target="#dealing-with-smiles">Dealing with SMILES</a>
-  <ul class="collapse">
-  <li><a href="#tokenization" id="toc-tokenization" class="nav-link" data-scroll-target="#tokenization">Tokenization</a></li>
-  <li><a href="#embeddings" id="toc-embeddings" class="nav-link" data-scroll-target="#embeddings">Embeddings</a></li>
-  <li><a href="#positional-encoding" id="toc-positional-encoding" class="nav-link" data-scroll-target="#positional-encoding">Positional encoding</a></li>
-  <li><a href="#language-modeling-dataset" id="toc-language-modeling-dataset" class="nav-link" data-scroll-target="#language-modeling-dataset">Language modeling dataset</a></li>
-  </ul></li>
-  <li><a href="#a-simple-bigram-model" id="toc-a-simple-bigram-model" class="nav-link" data-scroll-target="#a-simple-bigram-model">A simple bigram model</a>
-  <ul class="collapse">
-  <li><a href="#training-the-model" id="toc-training-the-model" class="nav-link" data-scroll-target="#training-the-model">Training the model</a></li>
-  </ul></li>
-  <li><a href="#making-tokens-talk-using-attention" id="toc-making-tokens-talk-using-attention" class="nav-link" data-scroll-target="#making-tokens-talk-using-attention">Making tokens talk using attention</a>
-  <ul class="collapse">
-  <li><a href="#refactoring-into-a-module" id="toc-refactoring-into-a-module" class="nav-link" data-scroll-target="#refactoring-into-a-module">Refactoring into a module</a></li>
-  <li><a href="#revamped-bigram-model" id="toc-revamped-bigram-model" class="nav-link" data-scroll-target="#revamped-bigram-model">Revamped Bigram Model</a></li>
-  </ul></li>
-  <li><a href="#interlude-additional-perspectives-on-attention" id="toc-interlude-additional-perspectives-on-attention" class="nav-link" data-scroll-target="#interlude-additional-perspectives-on-attention">Interlude: Additional perspectives on attention</a>
-  <ul class="collapse">
-  <li><a href="#attention-as-gnn" id="toc-attention-as-gnn" class="nav-link" data-scroll-target="#attention-as-gnn">Attention as GNN</a></li>
-  <li><a href="#attention-as-kernel-smoothing" id="toc-attention-as-kernel-smoothing" class="nav-link" data-scroll-target="#attention-as-kernel-smoothing">Attention as Kernel smoothing</a></li>
-  </ul></li>
-  <li><a href="#adding-more-expressive-power-with-more-heads-and-fully-connected-layers" id="toc-adding-more-expressive-power-with-more-heads-and-fully-connected-layers" class="nav-link" data-scroll-target="#adding-more-expressive-power-with-more-heads-and-fully-connected-layers">Adding more expressive power with more heads and fully connected layers</a></li>
-  <li><a href="#abstracting-transformers-into-blocks" id="toc-abstracting-transformers-into-blocks" class="nav-link" data-scroll-target="#abstracting-transformers-into-blocks">Abstracting transformers into blocks</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -2856,8 +2808,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -2869,12 +2819,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/kmjablonka">
-      <i class="bi bi-twitter" role="img">
 </i> 
     </a>
   </li>  
@@ -2897,7 +2841,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/main/blog/posts/building_an_llm/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

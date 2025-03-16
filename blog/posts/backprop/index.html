@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3a751e4d48817b0aacecf974f477ff73.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-f4ed29be9f94c8431cc02458ea51e422.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-3a7b482c16db3b601c97d3e06527e4ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -159,7 +159,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -170,22 +170,6 @@ window.Quarto = {
     <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html"> 
-<span class="menu-text">Open Source</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -198,38 +182,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#setting-weights-in-neural-networks" id="toc-setting-weights-in-neural-networks" class="nav-link active" data-scroll-target="#setting-weights-in-neural-networks">Setting weights in neural networks</a>
-  <ul class="collapse">
-  <li><a href="#option-1-randomly-choose-weights" id="toc-option-1-randomly-choose-weights" class="nav-link" data-scroll-target="#option-1-randomly-choose-weights">Option 1: Randomly choose weights</a></li>
-  <li><a href="#option-2-using-numerical-gradients" id="toc-option-2-using-numerical-gradients" class="nav-link" data-scroll-target="#option-2-using-numerical-gradients">Option 2: Using numerical gradients</a></li>
-  <li><a href="#option-3-analytical-gradients" id="toc-option-3-analytical-gradients" class="nav-link" data-scroll-target="#option-3-analytical-gradients">Option 3: Analytical gradients</a></li>
-  </ul></li>
-  <li><a href="#evaluating-analytical-gradients-for-any-function-backpropagation" id="toc-evaluating-analytical-gradients-for-any-function-backpropagation" class="nav-link" data-scroll-target="#evaluating-analytical-gradients-for-any-function-backpropagation">Evaluating analytical gradients for any function: Backpropagation</a>
-  <ul class="collapse">
-  <li><a href="#calculus-101-rules-for-computing-derivatives" id="toc-calculus-101-rules-for-computing-derivatives" class="nav-link" data-scroll-target="#calculus-101-rules-for-computing-derivatives">Calculus 101: Rules for computing derivatives</a></li>
-  <li><a href="#computing-derivatives-as-in-calculus-101" id="toc-computing-derivatives-as-in-calculus-101" class="nav-link" data-scroll-target="#computing-derivatives-as-in-calculus-101">Computing derivatives as in calculus 101</a></li>
-  <li><a href="#making-it-efficient-with-caching" id="toc-making-it-efficient-with-caching" class="nav-link" data-scroll-target="#making-it-efficient-with-caching">Making it efficient with caching</a></li>
-  <li><a href="#application-to-neural-networks" id="toc-application-to-neural-networks" class="nav-link" data-scroll-target="#application-to-neural-networks">Application to neural networks</a></li>
-  </ul></li>
-  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a>
-  <ul class="collapse">
-  <li><a href="#who-invented-backpropagation" id="toc-who-invented-backpropagation" class="nav-link" data-scroll-target="#who-invented-backpropagation">Who “invented” backpropagation</a></li>
-  <li><a href="#backpropagation-and-lagrangian" id="toc-backpropagation-and-lagrangian" class="nav-link" data-scroll-target="#backpropagation-and-lagrangian">Backpropagation and Lagrangian</a></li>
-  <li><a href="#forward-vs.-reverse-mode-autodiff" id="toc-forward-vs.-reverse-mode-autodiff" class="nav-link" data-scroll-target="#forward-vs.-reverse-mode-autodiff">Forward vs.&nbsp;reverse mode autodiff</a></li>
-  <li><a href="#symbolic-differentiation-vs.-numerical-differentiation-vs.-autodiff" id="toc-symbolic-differentiation-vs.-numerical-differentiation-vs.-autodiff" class="nav-link" data-scroll-target="#symbolic-differentiation-vs.-numerical-differentiation-vs.-autodiff">Symbolic differentiation vs.&nbsp;numerical differentiation vs.&nbsp;autodiff</a></li>
-  <li><a href="#dual-numbers" id="toc-dual-numbers" class="nav-link" data-scroll-target="#dual-numbers">Dual numbers</a></li>
-  <li><a href="#differentiating-complex-programs" id="toc-differentiating-complex-programs" class="nav-link" data-scroll-target="#differentiating-complex-programs">Differentiating complex programs</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/backprop/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -492,7 +445,7 @@ window.Quarto = {
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="5b808af6" class="cell" data-execution_count="1">
+<div id="752d91e4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -579,7 +532,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <span class="math inline">\(h\)</span> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="22d5fd0d" class="cell" data-execution_count="2">
+<div id="a0cb3f09" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -741,7 +694,7 @@ f = pz
 \]</span></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="99e10e2d" class="cell" data-execution_count="3">
+<div id="8c92918e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the inputs we will use </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span></span>
@@ -752,7 +705,7 @@ f = pz
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> t1 <span class="op">*</span> z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="7acd5334" class="cell" data-execution_count="4">
+<div id="ee17e597" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dt1dx <span class="op">=</span> <span class="fl">1.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dt1dy <span class="op">=</span> <span class="fl">1.</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -760,12 +713,12 @@ f = pz
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dfdz <span class="op">=</span> t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="8a33fbcf" class="cell" data-execution_count="5">
+<div id="950356b0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dfdx <span class="op">=</span> dfdt1 <span class="op">*</span> dt1dx</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dfdy <span class="op">=</span> dfdt1 <span class="op">*</span> dt1dy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The sensitivity to <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> is hence</p>
-<div id="56d5b9d4" class="cell" data-execution_count="6">
+<div id="ecaa95cf" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dfdz, dfdy, dfdz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3 -4.0 3</code></pre>
@@ -859,7 +812,7 @@ t_8 = t_7^2.
 \end{align}
 \]</span></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="bf57a9e1" class="cell" data-execution_count="7">
+<div id="729333e3" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code taken from https://github.com/karpathy/micrograd/blob/master/trace_graph.ipynb</span></span>
@@ -897,7 +850,7 @@ t_8 = t_7^2.
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4402c07c" class="cell" data-execution_count="8">
+<div id="556dc46b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># taken from micrograd</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Value:</span>
@@ -981,7 +934,7 @@ t_8 = t_7^2.
 <span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Value(data=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>data<span class="sc">}</span><span class="ss">, grad=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>grad<span class="sc">}</span><span class="ss">)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="3a86b7fd" class="cell" data-execution_count="9">
+<div id="8bfd3112" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize some values</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> Value(<span class="fl">2.0</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Value(<span class="fl">0.0</span>)</span>
@@ -1011,11 +964,11 @@ t_8 = t_7^2.
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="210b8c9e" class="cell" data-execution_count="10">
+<div id="fb59c4b5" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>t8.grad <span class="op">=</span> <span class="fl">1.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="da952ac9" class="cell" data-execution_count="11">
+<div id="f6be8a78" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t8._backward()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1023,7 +976,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="bd3876c2" class="cell" data-execution_count="12">
+<div id="e05ac93c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>t7._backward()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1031,7 +984,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="73a871a4" class="cell" data-execution_count="13">
+<div id="bbe183ff" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>t6._backward()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1039,7 +992,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="28f3f9b3" class="cell" data-execution_count="14">
+<div id="c7f281ad" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t5._backward()  </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1047,7 +1000,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="0f44c66f" class="cell" data-execution_count="15">
+<div id="3cdbc008" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>t4._backward()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1055,7 +1008,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="11a1ef54" class="cell" data-execution_count="16">
+<div id="a64e93eb" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>t3._backward()</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, w.grad, b.grad, x.grad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1063,7 +1016,7 @@ t_8 = t_7^2.
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="cc14655b" class="cell" data-execution_count="17">
+<div id="93b083b8" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>t2._backward()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>w._backward()</span>
@@ -1074,7 +1027,7 @@ t_8 = t_7^2.
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="607ddabf" class="cell" data-execution_count="18">
+<div id="2864602d" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> []</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>visited <span class="op">=</span> <span class="bu">set</span>()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_topo(v):</span>
@@ -1103,7 +1056,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="5c25e1cb" class="cell" data-execution_count="19">
+<div id="b038bc12" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #| </span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize some values</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> Value(<span class="fl">2.0</span>)</span>
@@ -1125,7 +1078,7 @@ Why does this sorting algorithm work?
 <span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>t8 <span class="op">=</span> t7<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="2ac030bb" class="cell" data-execution_count="20">
+<div id="133c5d0f" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>t8.grad <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>build_topo(t8)</span>
@@ -1204,7 +1157,7 @@ Why does this sorting algorithm work?
 <li>Numerical differentiation involves computing a term like <span class="math inline">\(\frac{\partial f}{\partial x_i} \approx \frac{f(x+h) - f(x)}{h}\)</span> for a small <span class="math inline">\(h\)</span>. While this is might be relatively easy to implement, but requires <span class="math inline">\(\mathcal{O(n)}\)</span> evaluations for <span class="math inline">\(n\)</span> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="9cdfe958" class="cell" data-execution_count="21">
+<div id="2354dab1" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy </span>
@@ -1246,7 +1199,7 @@ f(a + \dot{v}\epsilon) = f(a) + f'(a)\dot{v}\epsilon
 \left. \frac{\mathrm{d}f}{\mathrm{d}x}\right|_{x=a} = \text{epsilon coefficient}(\text{dual version}(f)(a+1\epsilon))
 \]</span></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <span class="math inline">\(\dot{v}\)</span>). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="60de2a8c" class="cell" data-execution_count="22">
+<div id="9906e788" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DualNumber:</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, real, dual):</span>
@@ -1285,7 +1238,7 @@ f(a + \dot{v}\epsilon) = f(a) + f'(a)\dot{v}\epsilon
 <span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Squaring the dual number</span></span>
 <span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> DualNumber(<span class="va">self</span>.real<span class="op">**</span><span class="dv">2</span>, <span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.real <span class="op">*</span> <span class="va">self</span>.dual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9926dfca" class="cell" data-execution_count="23">
+<div id="f7c406db" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> complex_function(x):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x.square() <span class="op">*</span> x.exp() <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>x</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1784,8 +1737,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb34" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'Developing an intuition for backpropagation'</span></span>
@@ -3012,12 +2963,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/kmjablonka">
-      <i class="bi bi-twitter" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/kjappelbaum">
       <i class="bi bi-github" role="img">
 </i> 
@@ -3036,7 +2981,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/backprop/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/blog/posts/backprop/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/reviewing/index.html",
       "/blog/posts/materials_intelligence/index.html",
       "/blog/posts/harder/index.html",
       "/blog/posts/ai_thinking/index.html",

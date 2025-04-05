@@ -15,7 +15,99 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Wed, 05 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 04 Apr 2025 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Notes on My Peer Review Process: An Invitation to Compare Practices</title>
+  <link>https://kjablonka.com/blog/posts/reviewing/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="how-i-approach-peer-review" class="level2">
+<h2 class="anchored" data-anchor-id="how-i-approach-peer-review">How I Approach Peer Review</h2>
+<p>Peer review is something most of us learn by doing, with little formal training. After stumbling through my early reviews, I’ve gradually developed practices that work for me. I’m sharing them here not as a model to follow, but to start a conversation about how we might all improve this critical part of science.</p>
+<section id="impact-neutrality" class="level3">
+<h3 class="anchored" data-anchor-id="impact-neutrality">Impact Neutrality</h3>
+<p>I rarely suggest rejection. This comes from my attempt to be “impact neutral” in reviewing, an approach I’ve found useful after reading <a href="https://proteinsandwavefunctions.blogspot.com/2016/01/writing-impact-neutral-review.html">Jan Jensen’s thoughts</a> and seeing the <a href="https://en.wikipedia.org/wiki/PLOS_ONE#Publication_concept">PLoS ONE</a> model in action.</p>
+<p>By “relatively impact neutral,” I mean I focus primarily on scientific soundness. I’ll still praise work I find particularly important and note when novelty seems lacking, but these observations inform rather than dictate my recommendations. I try to keep acceptance/rejection opinions out of my review’s main body. If there are forms, I do not fill them if I do not have to: knowledge work is notoriously difficult to measure <span class="citation" data-cites="drucker1999knowledge">(Drucker 1999)</span>, and the stepping stones that lead to discoveries often cannot be anticipated <span class="citation" data-cites="stanley2015why">(Stanley and Lehman 2015)</span>.</p>
+</section>
+<section id="looking-for-value" class="level3">
+<h3 class="anchored" data-anchor-id="looking-for-value">Looking for Value</h3>
+<p>Even in papers I initially find underwhelming, I deliberately search for strengths. What makes this work add to our existing knowledge? How could the authors better emphasize these aspects?</p>
+<p>This isn’t just kindness—it’s also practical. By focusing on what works, I can help authors build on their strengths and often discover value I initially missed.</p>
+</section>
+<section id="making-feedback-actionable" class="level3">
+<h3 class="anchored" data-anchor-id="making-feedback-actionable">Making Feedback Actionable</h3>
+<p>Vague criticism helps no one. I try to make every comment actionable by offering specific suggestions and quoting the relevant text.</p>
+</section>
+<section id="maintaining-an-objective-tone" class="level3">
+<h3 class="anchored" data-anchor-id="maintaining-an-objective-tone">Maintaining an Objective Tone</h3>
+<p>Throughout my reviews, I write in an objective, non-judgmental tone. Critical analysis doesn’t require harsh language. Scientific evaluation can be thorough and rigorous while remaining respectful of the authors’ efforts and expertise.</p>
+</section>
+</section>
+<section id="my-review-structure" class="level2">
+<h2 class="anchored" data-anchor-id="my-review-structure">My Review Structure</h2>
+<p>My reviews typically include:</p>
+<ol type="1">
+<li><strong>Summary</strong>: My understanding of the work, which helps authors see if I’ve missed something crucial.</li>
+<li><strong>Major Points</strong>: Critical flaws in design, analysis, or unsupported claims.</li>
+<li><strong>Minor Points</strong>: Suggestions that don’t affect the core message but would strengthen the paper.</li>
+<li><strong>Reproducibility</strong>: Assessment of code and data availability.</li>
+<li><strong>Limitations of Expertise</strong>: Areas where my knowledge is limited, particularly important for interdisciplinary work.</li>
+</ol>
+</section>
+<section id="my-process" class="level2">
+<h2 class="anchored" data-anchor-id="my-process">My Process</h2>
+<p>Good reviews take time. My typical approach:</p>
+<ol type="1">
+<li>Read the manuscript thoroughly first.</li>
+<li>Do a quick literature check using tools like <a href="https://paperqa.app/">PaperQA</a> or <a href="https://scholarqa.allen.ai/chat">Ai2 ScholarQA</a>.</li>
+<li>Take a few days away to let thoughts settle.</li>
+<li>Write the review.</li>
+<li>Get feedback from a local LLM to check if I’ve followed my own guidelines.</li>
+</ol>
+<p>I’ve found acknowledging <a href="https://implicit.harvard.edu/implicit/takeatest.html">my own biases</a> helps me compensate for them. We all bring preferences to reviews—naming them doesn’t eliminate them but makes them visible.</p>
+<p>I don’t review for publishers <a href="https://www.predatoryjournals.org/news/is-mdpi-predatory">I consider predatory, such as MDPI</a>.</p>
+</section>
+<section id="the-case-for-kindness-and-diversity" class="level2">
+<h2 class="anchored" data-anchor-id="the-case-for-kindness-and-diversity">The Case for Kindness and Diversity</h2>
+<p>Our field would benefit from more kindness in the review process. The harsh, dismissive tone of some reviews doesn’t improve science—it discourages innovative thinking and disproportionately impacts early-career researchers and those from underrepresented groups.</p>
+<p>Similarly, greater diversity of thought would strengthen our collective work. When reviewers from varied backgrounds, methodological traditions, and theoretical perspectives evaluate research, we catch blind spots and identify new possibilities. Homogeneous reviewing leads to homogeneous science.</p>
+<p>Both kindness and diversity ultimately serve the same goal: creating an environment where the best ideas can emerge, regardless of their source or how they challenge conventional thinking.</p>
+<section id="on-anonymous-reviews" class="level3">
+<h3 class="anchored" data-anchor-id="on-anonymous-reviews">On Anonymous Reviews</h3>
+<p>At this point in my career, I don’t sign my reviews. This is a personal choice in a complex debate. While signed reviews might promote accountability, anonymous reviews can allow early-career scientists to evaluate work honestly without fear of repercussion, particularly when reviewing senior colleagues’ work (who might write letters for my tenure case). The power dynamics in science are real, and our review systems should acknowledge them.</p>
+<p>I suspect that as our community evolves better practices around constructive criticism and reduces the career consequences of scholarly disagreement, more reviewers may feel comfortable signing their reviews. But we’re not there yet.</p>
+</section>
+</section>
+<section id="open-questions" class="level2">
+<h2 class="anchored" data-anchor-id="open-questions">Open Questions</h2>
+<ul>
+<li>I’m also interested in how the community might evolve publication models. Could approaches like <a href="https://yoshuabengio.org/2020/02/26/time-to-rethink-the-publication-process-in-machine-learning/">Bengio’s proposal of submitting to journals and conference chairs picking “interesting articles”</a> or <a href="https://aclrollingreview.org/">rolling reviews</a> address some current frustrations?</li>
+<li>In an era of information overload, might versioned, updateable articles serve science better than our current static approach?</li>
+</ul>
+
+
+<!-- -->
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-drucker1999knowledge" class="csl-entry">
+Drucker, Peter F. 1999. <span>“Knowledge-Worker Productivity: The Biggest Challenge.”</span> <em>California Management Review</em> 41 (2): 79–94. <a href="https://doi.org/10.2307/41165987">https://doi.org/10.2307/41165987</a>.
+</div>
+<div id="ref-stanley2015why" class="csl-entry">
+Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned: The Myth of the Objective</em>. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-15524-1">https://doi.org/10.1007/978-3-319-15524-1</a>.
+</div>
+</div></section></div> ]]></description>
+  <category>academia</category>
+  <category>peer review</category>
+  <category>scientific community</category>
+  <guid>https://kjablonka.com/blog/posts/reviewing/</guid>
+  <pubDate>Fri, 04 Apr 2025 22:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Beyond the Era of Accidental Discovery</title>
   <link>https://kjablonka.com/blog/posts/materials_intelligence/</link>
@@ -77,7 +169,7 @@
  ]]></description>
   <category>science</category>
   <guid>https://kjablonka.com/blog/posts/materials_intelligence/</guid>
-  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>10 Reasons to Aim Higher. And Higher.</title>
@@ -112,7 +204,7 @@
  ]]></description>
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/harder/</guid>
-  <pubDate>Sun, 02 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 01 Feb 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Dear Claude: Are We Getting Too Close?</title>
@@ -179,7 +271,7 @@ Yanai, Itai, and Martin J. Lercher. 2024. <span>“It Takes Two to Think.”</sp
   <category>academia</category>
   <category>society</category>
   <guid>https://kjablonka.com/blog/posts/ai_thinking/</guid>
-  <pubDate>Sun, 12 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 11 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/ai_thinking" medium="image"/>
 </item>
 <item>
@@ -407,7 +499,7 @@ White, Andrew D. 2023. <span>“The Future of Chemistry Is Language.”</span> <
 </div></section></div> ]]></description>
   <category>llm</category>
   <guid>https://kjablonka.com/blog/posts/data_shape/</guid>
-  <pubDate>Thu, 09 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 08 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/data_shape" medium="image"/>
 </item>
 <item>
@@ -444,7 +536,7 @@ Housel, Morgan. 2020. <em>The Psychology of Money</em>. Petersfield, England: Ha
 </div></section></div> ]]></description>
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/a_wise_owl/</guid>
-  <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Trust Me, There’s a Method to This Madness</title>
@@ -511,7 +603,7 @@ Zhang, Jenny, Joel Lehman, Kenneth Stanley, and Jeff Clune. 2024. <span>“OMNI:
   <category>academia</category>
   <category>llm</category>
   <guid>https://kjablonka.com/blog/posts/why_llm/</guid>
-  <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/why_llm" medium="image"/>
 </item>
 <item>
@@ -581,7 +673,7 @@ Thiel, Peter. 2014. <span>“Competition Is for Losers.”</span> <em>Wall Stree
   <category>life</category>
   <category>academia</category>
   <guid>https://kjablonka.com/blog/posts/take_it_easy/</guid>
-  <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Dec 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The Tail End</title>
@@ -688,7 +780,7 @@ updatePlot(34);
  ]]></description>
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/visualizing_the_tail_end/</guid>
-  <pubDate>Fri, 20 Sep 2024 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 20 Sep 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/visualizing_the_tail_end" medium="image"/>
 </item>
 <item>
@@ -1112,7 +1204,7 @@ font-style: inherit;">=</span> internal_diversity(generated)   </span></code></p
   <category>llm</category>
   <category>teaching</category>
   <guid>https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models/</guid>
-  <pubDate>Thu, 02 May 2024 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models" medium="image"/>
 </item>
 <item>
@@ -5617,7 +5709,7 @@ font-style: inherit;">'</span>)</span></code></pre></div>
   <category>llm</category>
   <category>teaching</category>
   <guid>https://kjablonka.com/blog/posts/building_an_llm/</guid>
-  <pubDate>Wed, 01 May 2024 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/building_an_llm" medium="image"/>
 </item>
 <item>
@@ -7364,7 +7456,7 @@ None</code></pre>
   <category>llm</category>
   <category>teaching</category>
   <guid>https://kjablonka.com/blog/posts/building_an_llm_agent/</guid>
-  <pubDate>Wed, 01 May 2024 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/building_an_llm_agent" medium="image"/>
 </item>
 <item>
@@ -7421,7 +7513,7 @@ None</code></pre>
   <category>academia</category>
   <category>metascience</category>
   <guid>https://kjablonka.com/blog/posts/researchers_stuff/</guid>
-  <pubDate>Sun, 24 Mar 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 23 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/researchers_stuff" medium="image"/>
 </item>
 <item>
@@ -7475,7 +7567,7 @@ None</code></pre>
   <category>academia</category>
   <category>communication</category>
   <guid>https://kjablonka.com/blog/posts/bad_language/</guid>
-  <pubDate>Sat, 02 Mar 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 01 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/bad_language" medium="image"/>
 </item>
 <item>
@@ -7590,7 +7682,7 @@ None</code></pre>
  ]]></description>
   <category>machine-learning</category>
   <guid>https://kjablonka.com/blog/posts/mil/</guid>
-  <pubDate>Sat, 02 Mar 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 01 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/mil" medium="image"/>
 </item>
 <item>
@@ -7827,7 +7919,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="752d91e4" class="cell" data-execution_count="1">
+<div id="04349316" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -8104,7 +8196,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="a0cb3f09" class="cell" data-execution_count="2">
+<div id="23935129" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -8352,7 +8444,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="8c92918e" class="cell" data-execution_count="3">
+<div id="be3b4cb0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -8391,7 +8483,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="ee17e597" class="cell" data-execution_count="4">
+<div id="cf3c0f26" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -8411,7 +8503,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="950356b0" class="cell" data-execution_count="5">
+<div id="7d118c3d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -8424,7 +8516,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="ecaa95cf" class="cell" data-execution_count="6">
+<div id="c8774519" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -8469,7 +8561,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="729333e3" class="cell" data-execution_count="7">
+<div id="01b3b808" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -8662,7 +8754,7 @@ font-weight: bold;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="556dc46b" class="cell" data-execution_count="8">
+<div id="94aeabb0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -9146,7 +9238,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="8bfd3112" class="cell" data-execution_count="9">
+<div id="a2df7032" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -9240,7 +9332,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="fb59c4b5" class="cell" data-execution_count="10">
+<div id="8f593073" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9248,7 +9340,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="f6be8a78" class="cell" data-execution_count="11">
+<div id="f558eb54" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9260,7 +9352,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="e05ac93c" class="cell" data-execution_count="12">
+<div id="11a359cd" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9272,7 +9364,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="bbe183ff" class="cell" data-execution_count="13">
+<div id="36652bf5" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9284,7 +9376,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="c7f281ad" class="cell" data-execution_count="14">
+<div id="fbcc71e1" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9296,7 +9388,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="3cdbc008" class="cell" data-execution_count="15">
+<div id="2afcdfd7" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9308,7 +9400,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="a64e93eb" class="cell" data-execution_count="16">
+<div id="88531424" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9320,7 +9412,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="93b083b8" class="cell" data-execution_count="17">
+<div id="618e0df6" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9335,7 +9427,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="2864602d" class="cell" data-execution_count="18">
+<div id="74351cd2" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -9388,7 +9480,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="b038bc12" class="cell" data-execution_count="19">
+<div id="25cb7ff0" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -9476,7 +9568,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="133c5d0f" class="cell" data-execution_count="20">
+<div id="db5426c9" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9561,7 +9653,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="2354dab1" class="cell" data-execution_count="21">
+<div id="9703e0e0" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -9617,7 +9709,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="9906e788" class="cell" data-execution_count="22">
+<div id="1d2fdf4c" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -9866,7 +9958,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="f7c406db" class="cell" data-execution_count="23">
+<div id="63d9f756" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -9924,7 +10016,7 @@ font-style: inherit;">=</span> complex_function(x)</span>
  ]]></description>
   <category>machine-learning</category>
   <guid>https://kjablonka.com/blog/posts/backprop/</guid>
-  <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 Feb 2024 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/backprop" medium="image"/>
 </item>
 </channel>

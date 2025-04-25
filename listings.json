@@ -6,6 +6,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/ai4science_european_academia/index.html",
+      "/blog/posts/autencoder_spectroscopy/index.html",
       "/blog/posts/reviewing/index.html",
       "/blog/posts/materials_intelligence/index.html",
       "/blog/posts/harder/index.html",
@@ -18,9 +20,8 @@
       "/blog/posts/evaluation_performance_generative_molecular_models/index.html",
       "/blog/posts/building_an_llm/index.html",
       "/blog/posts/building_an_llm_agent/index.html",
-      "/blog/posts/bad_language/index.html",
-      "/blog/posts/autencoder_spectroscopy/index.html",
       "/blog/posts/researchers_stuff/index.html",
+      "/blog/posts/bad_language/index.html",
       "/blog/posts/mil/index.html",
       "/blog/posts/backprop/index.html"
     ]

@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/ai_scientists/index.html",
       "/blog/posts/ai4science_european_academia/index.html",
       "/blog/posts/autencoder_spectroscopy/index.html",
       "/blog/posts/reviewing/index.html",

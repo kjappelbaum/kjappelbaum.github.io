@@ -15,7 +15,106 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Thu, 24 Apr 2025 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 31 May 2025 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>The Epistemic Risks of AI-Only Science</title>
+  <link>https://kjablonka.com/blog/posts/ai_scientists/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I work on machine learning for science, and I believe deeply in its transformative potential. From predicting protein structures <span class="citation" data-cites="Abramson_2024">(Abramson et al. 2024)</span> to modeling climate systems <span class="citation" data-cites="Bodnar_2025 Allen_2025">(Bodnar et al. 2025; Allen et al. 2025)</span>, AI is accelerating research in ways that seemed implausible just a few years ago. The potential is genuinely remarkable, and I’m not here to argue otherwise.</p>
+<p>But there’s something troubling about the current trajectory toward fully autonomous “AI scientists”—systems designed to independently formulate hypotheses, design experiments, and draw conclusions. While these systems will certainly produce impressive results, their widespread adoption might risk something more subtle and perhaps more dangerous: the gradual erosion of epistemic diversity that makes science robust.</p>
+<section id="on-value-lock-in-and-scientific-monocultures" class="level2">
+<h2 class="anchored" data-anchor-id="on-value-lock-in-and-scientific-monocultures">On Value Lock-In and Scientific Monocultures</h2>
+<p>Value lock-in describes what happens when systems become so entrenched that they perpetuate specific ways of thinking, making alternatives prohibitively difficult to pursue.<sup>1</sup></p>
+<p>Science faces an analogous risk. Once AI scientists become the dominant research paradigm—and given their speed and cost advantages, this seems likely—they won’t simply reflect current scientific values. They’ll crystallize them. What appears today as one approach among many could become the only viable approach, not through conscious choice but through path dependence.</p>
+<p>The concern isn’t that AI scientists will be poorly designed, but rather that they’ll be too successful at optimizing for current definitions of scientific progress. This creates the “lock-in effect”: the more we invest in AI-driven research infrastructure, the harder it becomes to pursue alternatives, regardless of their potential merit.</p>
+</section>
+<section id="the-myth-of-value-neutral-science" class="level2">
+<h2 class="anchored" data-anchor-id="the-myth-of-value-neutral-science">The Myth of Value-Neutral Science</h2>
+<p>Science has never been value-neutral, though we often pretend otherwise. Every research program embeds choices about what questions matter, what methods are legitimate, what constitutes adequate evidence <span class="citation" data-cites="Huff_2017">(Huff 2017)</span>.</p>
+<p>Take computer vision’s relationship with ImageNet. This single benchmark, created by a particular research community with specific assumptions about visual recognition, shaped an entire field for over a decade. It privileged approaches that performed well on a large, static, pre-labeled photographs <span class="citation" data-cites="dotan2019value0laden">(Dotan and Milli 2019)</span>.</p>
+<p>These kind of value-laden choices are the along the entire chain of (AI) research <span class="citation" data-cites="dehghani2021benchmark hooker2020hardware alampara2025lessons">(Dehghani et al. 2021; Hooker 2020; Alampara, Schilling-Wilhelmi, and Jablonka 2025)</span>.</p>
+</section>
+<section id="concentration-and-its-discontents" class="level2">
+<h2 class="anchored" data-anchor-id="concentration-and-its-discontents">Concentration and Its Discontents</h2>
+<p>Contemporary AI scientists emerge from a remarkably homogeneous ecosystem: similar academic backgrounds, shared technical assumptions, a handful of dominant companies providing the underlying infrastructure. This concentration creates troubling dynamics <span class="citation" data-cites="paul2019disastrous crawford2021atlas">(Paul 2019; Crawford 2021)</span>.</p>
+<p>First, epistemic monoculture becomes increasingly likely. When AI systems trained on similar data with comparable objectives dominate research, they’ll systematically favor certain types of questions. Approaches that don’t translate well into current AI paradigms—perhaps because they rely on tacit knowledge, or require forms of reasoning that resist formalization—risk being dismissed as unscientific rather than simply incompatible with our current tools.</p>
+<p>Second, we face the prospect of algorithmic gatekeeping. As AI scientists become more productive, human researchers will encounter mounting pressure to adopt these tools or become irrelevant (and performing “current science” as a form of “art”). A small number of AI platforms could effectively determine which ideas get explored and which get ignored—not through explicit censorship, but through the subtler mechanism of making alternatives economically unviable: Power tends to concentrate, and scientific institutions aren’t immune to this tendency.</p>
+</section>
+<section id="normal-science-and-revolutionary-potential" class="level2">
+<h2 class="anchored" data-anchor-id="normal-science-and-revolutionary-potential">Normal Science and Revolutionary Potential</h2>
+<p>According to Thomas Kuhn’s philosophy of science, science alternates between periods of “normal science”—where researchers work productively within established paradigms—and revolutionary episodes that fundamentally reframe entire fields <span class="citation" data-cites="kuhn1962structure">(Kuhn 1962)</span>. Crucially, Kuhn observed that normal science “often suppresses fundamental novelties because those novelties are necessarily subversive of its basic commitments.”</p>
+<p>AI scientists, optimized on existing scientific literature, might end up being just sophisticated normal science machines. They could excel at incremental advances within current paradigms but struggle with the radical reconceptualization that drives scientific revolutions. This is because current paradigms of machine learning systems easily question their foundational assumptions because those assumptions are embedded in their training data and optimization targets .</p>
+<p>This isn’t a design flaw—it’s an inevitable consequence of how these systems work: They are trained to maximize the likelihood of the training data. But it suggests that a science dominated by AI scientists might become extraordinarily good at certain kinds of progress while systematically failing at others.</p>
+</section>
+<section id="toward-epistemic-pluralism" class="level2">
+<h2 class="anchored" data-anchor-id="toward-epistemic-pluralism">Toward Epistemic Pluralism</h2>
+<p>None of this constitutes an argument against AI in science, which would be both futile and counterproductive. Rather, it’s a case for what we might call epistemic pluralism: the deliberate maintenance of diverse approaches to scientific inquiry.</p>
+<p>We need something like a portfolio approach to scientific methodology. Some research should leverage AI scientists for their remarkable speed and scale. Other investigations should preserve space for human-led inquiry. Still other work should explore hybrid approaches that combine artificial and human intelligence in novel configurations.</p>
+<p>Monocultures are efficient under stable conditions but catastrophically vulnerable to unexpected challenges. Diverse ecosystems sacrifice some efficiency for resilience. Given the stakes involved in scientific knowledge production, resilience seems worth prioritizing.</p>
+<p>The robustness of scientific knowledge depends not on any single approach, however sophisticated, but on the productive tension between multiple ways of understanding the world. Preserving that tension, even as AI transforms scientific practice, may be one of the most important challenges facing the scientific community today.</p>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-Abramson_2024" class="csl-entry">
+Abramson, Josh, Jonas Adler, Jack Dunger, Richard Evans, Tim Green, Alexander Pritzel, Olaf Ronneberger, et al. 2024. <span>“Accurate Structure Prediction of Biomolecular Interactions with AlphaFold 3.”</span> <em>Nature</em> 630 (8016): 493–500. <a href="https://doi.org/10.1038/s41586-024-07487-w">https://doi.org/10.1038/s41586-024-07487-w</a>.
+</div>
+<div id="ref-alampara2025lessons" class="csl-entry">
+Alampara, Nawaf, Mara Schilling-Wilhelmi, and Kevin Maik Jablonka. 2025. <span>“Lessons from the Trenches on Evaluating Machine-Learning Systems in Materials Science.”</span> <em>arXiv Preprint arXiv:2503.10837</em>.
+</div>
+<div id="ref-Allen_2025" class="csl-entry">
+Allen, Anna, Stratis Markou, Will Tebbutt, James Requeima, Wessel P. Bruinsma, Tom R. Andersson, Michael Herzog, et al. 2025. <span>“End-to-End Data-Driven Weather Prediction.”</span> <em>Nature</em> 641 (8065): 1172–79. <a href="https://doi.org/10.1038/s41586-025-08897-0">https://doi.org/10.1038/s41586-025-08897-0</a>.
+</div>
+<div id="ref-Bodnar_2025" class="csl-entry">
+Bodnar, Cristian, Wessel P. Bruinsma, Ana Lucic, Megan Stanley, Anna Allen, Johannes Brandstetter, Patrick Garvan, et al. 2025. <span>“A Foundation Model for the Earth System.”</span> <em>Nature</em> 641 (8065): 1180–87. <a href="https://doi.org/10.1038/s41586-025-09005-y">https://doi.org/10.1038/s41586-025-09005-y</a>.
+</div>
+<div id="ref-crawford2021atlas" class="csl-entry">
+Crawford, Kate. 2021. <em>Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence</em>. New Haven, CT: Yale University Press. <a href="https://yalebooks.yale.edu/book/9780300209570/atlas-of-ai/">https://yalebooks.yale.edu/book/9780300209570/atlas-of-ai/</a>.
+</div>
+<div id="ref-dehghani2021benchmark" class="csl-entry">
+Dehghani, Mostafa, Yi Tay, Alexey A. Gritsenko, Zhe Zhao, Neil Houlsby, Fernando Diaz, Donald Metzler, and Oriol Vinyals. 2021. <span>“The Benchmark Lottery.”</span> <em>arXiv Preprint arXiv: 2107.07002</em>.
+</div>
+<div id="ref-dotan2019value0laden" class="csl-entry">
+Dotan, Ravit, and S. Milli. 2019. <span>“Value-Laden Disciplinary Shifts in Machine Learning.”</span> <em>FAT*</em>. <a href="https://doi.org/10.1145/3351095.3373157">https://doi.org/10.1145/3351095.3373157</a>.
+</div>
+<div id="ref-hooker2020hardware" class="csl-entry">
+Hooker, Sara. 2020. <span>“The Hardware Lottery.”</span> <em>Communications of the ACM</em>. <a href="https://doi.org/10.1145/3467017">https://doi.org/10.1145/3467017</a>.
+</div>
+<div id="ref-Huff_2017" class="csl-entry">
+Huff, Toby E. 2017. <em>The Rise of Early Modern Science</em>. 1st ed. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-kuhn1962structure" class="csl-entry">
+Kuhn, Thomas S. 1962. <em>The Structure of Scientific Revolutions</em>. University of Chicago Press.
+</div>
+<div id="ref-macaskill2022what" class="csl-entry">
+MacAskill, William. 2022. <em>What We Owe the Future</em>. New York: Basic Books.
+</div>
+<div id="ref-paul2019disastrous" class="csl-entry">
+Paul, Kari. 2019. <span>“<span>‘Disastrous’</span> Lack of Diversity in AI Industry Perpetuates Bias, Study Finds.”</span> <em>The Guardian</em>. <a href="https://www.theguardian.com/technology/2019/apr/16/artificial-intelligence-lack-diversity-new-york-university-study">https://www.theguardian.com/technology/2019/apr/16/artificial-intelligence-lack-diversity-new-york-university-study</a>.
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Consider American urban development: what began as apparently rational choices about highways and suburbs eventually made walkable neighborhoods economically unfeasible to build. The infrastructure didn’t merely reflect certain values—it enforced them, long after those values might have been questioned. Similarly, the economic investments in American slavery created powerful incentives to maintain the system—once millions of dollars were invested in enslaved people as “property,” with entire industries and political systems built around protecting those investments, the institution became extremely resistant to change even as moral opposition grew. <span class="citation" data-cites="macaskill2022what">(MacAskill 2022)</span>↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>ai</category>
+  <category>science</category>
+  <guid>https://kjablonka.com/blog/posts/ai_scientists/</guid>
+  <pubDate>Sat, 31 May 2025 22:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/ai_scientists" medium="image"/>
+</item>
 <item>
   <title>The Optimal Amount of Wasted Research Funding Is Non-Zero</title>
   <link>https://kjablonka.com/blog/posts/ai4science_european_academia/</link>
@@ -129,7 +228,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="97ff669f" class="cell" data-execution_count="2">
+<div id="e130fb46" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -209,7 +308,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="d9811921" class="cell" data-execution_count="3">
+<div id="093a09ee" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -262,7 +361,7 @@ The Math Behind Clustering
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="b4a9ac83" class="cell" data-execution_count="4">
+<div id="7c8cfa0d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -473,7 +572,7 @@ The Mathematical Connection Between PCA and Linear Autoencoders
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="a8eee6c5" class="cell" data-execution_count="6">
+<div id="1caac973" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -775,7 +874,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="27a41d01" class="cell" data-execution_count="8">
+<div id="ae4bb898" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -888,7 +987,7 @@ The Power of Nonlinearity
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="6aadaaae" class="cell" data-execution_count="9">
+<div id="fef7631d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1088,7 +1187,7 @@ Why the KL Term Matters for the Manifold
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="b02d61aa" class="cell" data-execution_count="10">
+<div id="d10fa62a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -9099,7 +9198,7 @@ None</code></pre>
 <section id="option-2-using-numerical-gradients" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-using-numerical-gradients">Option 2: Using numerical gradients</h3>
 <p>When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:</p>
-<div id="88283448" class="cell" data-execution_count="1">
+<div id="54126527" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -9376,7 +9475,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>If we compute numerical gradients, we have two main sources of error. One stems from the fact that <img src="https://latex.codecogs.com/png.latex?h"> in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number.</p>
-<div id="c4d8eec9" class="cell" data-execution_count="2">
+<div id="c43a45fd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
@@ -9624,7 +9723,7 @@ Intuitive understanding of chain rule
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20f(p,z)%7D%7B%5Cpartial%20x%7D%20=%20%5Cfrac%7B%5Cpartial%20f(p,%20x)%7D%7B%5Cpartial%20p%7D%20%20%5Cfrac%7B%5Cpartial%20p(x,y)%7D%7B%5Cpartial%20x%7D%0A"></p>
 <p>This typically means that two numbers are multiplied.</p>
 <p>If we try it for the example above we can use the following code. Note how we <em>cache</em> intermediate results (i.e.&nbsp;trade off time- vs.&nbsp;space-complexity).</p>
-<div id="c05e9ed0" class="cell" data-execution_count="3">
+<div id="e2e041e3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># the inputs we will use </span></span>
@@ -9663,7 +9762,7 @@ background-color: null;
 font-style: inherit;">*</span> z</span></code></pre></div>
 </div>
 <p>Now, we can look at the derivatives we got above</p>
-<div id="0e9845f7" class="cell" data-execution_count="4">
+<div id="e57698bd" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dt1dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -9683,7 +9782,7 @@ background-color: null;
 font-style: inherit;">=</span> t1</span></code></pre></div>
 </div>
 <p>Now, we can use the chain rule to combine them</p>
-<div id="14db69a9" class="cell" data-execution_count="5">
+<div id="aba126cc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">dfdx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dfdt1 <span class="op" style="color: #5E5E5E;
@@ -9696,7 +9795,7 @@ background-color: null;
 font-style: inherit;">*</span> dt1dy</span></code></pre></div>
 </div>
 <p>The sensitivity to <img src="https://latex.codecogs.com/png.latex?x">, <img src="https://latex.codecogs.com/png.latex?y">, and <img src="https://latex.codecogs.com/png.latex?z"> is hence</p>
-<div id="fb760023" class="cell" data-execution_count="6">
+<div id="1e84be70" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
@@ -9741,7 +9840,7 @@ font-style: inherit;">print</span>(dfdz, dfdy, dfdz)</span></code></pre></div>
 <p>Armed with those partial derivatives, we can now multiply them to get the final goal – the derivative of the loss w.r.t. the weight (<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20L%7D%7B%5Cpartial%20w%7D">).</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_7%7D%20%5Cfrac%7B%5Cpartial%20t_7%7D%7B%5Cpartial%20t_6%7D%20=%202%20t_7%20%5Ccdot%201%20=%202(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_6%7D%20%5Cfrac%7B%5Cpartial%20t_6%7D%7B%5Cpartial%20t_5%7D%20=%202(t_6%20-y)%20%5Ccdot%20%20%5Cleft(-%5Cfrac%7B1%7D%7Bt_5%5E2%7D%20%5Cright)%20=%20%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_5%7D%20%5Cfrac%7B%5Cpartial%20t_5%7D%7B%5Cpartial%20t_4%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%201%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_4%7D%20%5Cfrac%7B%5Cpartial%20t_4%7D%7B%5Cpartial%20t_3%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_3%7D%20%5Cfrac%7B%5Cpartial%20t_3%7D%7B%5Cpartial%20t_2%7D%20=%20-2/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20-1%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_2%7D%20%5Cfrac%7B%5Cpartial%20t_2%7D%7B%5Cpartial%20t_1%7D%20=%20%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20w%7D%20&amp;=%20%5Cfrac%7B%5Cpartial%20t_8%7D%7B%5Cpartial%20t_1%7D%20%5Cfrac%7B%5Cpartial%20t_1%7D%7B%5Cpartial%20w%7D%20=%202/t_5%5E2%20(t_6%20-y)%20%5Ccdot%20%5Cexp(t_3)%20t_3%20%5Ccdot%20x%0A%5Cend%7Balign%7D%0A"></p>
 <p>In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.</p>
-<div id="0ab8e2a2" class="cell" data-execution_count="7">
+<div id="f7d57935" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
@@ -9934,7 +10033,7 @@ font-weight: bold;
 font-style: inherit;">return</span> dot</span></code></pre></div>
 </details>
 </div>
-<div id="039ec3ab" class="cell" data-execution_count="8">
+<div id="a27616dc" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># taken from micrograd</span></span>
@@ -10418,7 +10517,7 @@ background-color: null;
 font-style: inherit;">)"</span></span></code></pre></div>
 </div>
 <p>We can now write down our expression from before using the <code>Value</code> class</p>
-<div id="1ce4433e" class="cell" data-execution_count="9">
+<div id="d27e45db" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># initialize some values</span></span>
@@ -10512,7 +10611,7 @@ font-style: inherit;">2</span></span>
 </div>
 </div>
 <p>We need to seed the gradient of the loss</p>
-<div id="ce4f2b49" class="cell" data-execution_count="10">
+<div id="e7e9695b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -10520,7 +10619,7 @@ background-color: null;
 font-style: inherit;">1.0</span></span></code></pre></div>
 </div>
 <p>Now, we can perform the backward pass by calling the <code>_backward</code> function of the loss node, which will in turn call the <code>_backward</code> functions of all its parents, and so on, until the entire graph has been visited.</p>
-<div id="c044b85f" class="cell" data-execution_count="11">
+<div id="8b8f1efd" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10532,7 +10631,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 0 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="c55cce9e" class="cell" data-execution_count="12">
+<div id="b8389580" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10544,7 +10643,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 0 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="1d95e523" class="cell" data-execution_count="13">
+<div id="96d2b613" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10556,7 +10655,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 0 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="33dbf9d1" class="cell" data-execution_count="14">
+<div id="cea3438d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10568,7 +10667,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 0 0 0 0</code></pre>
 </div>
 </div>
-<div id="3a4e5ee2" class="cell" data-execution_count="15">
+<div id="f249748f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10580,7 +10679,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="6c9a9279" class="cell" data-execution_count="16">
+<div id="76443a17" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10592,7 +10691,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 <pre><code>-18.238405844044234 -18.238405844044234 14.149418952798422 14.149418952798422 1.9149156216104704 0 0 0</code></pre>
 </div>
 </div>
-<div id="681e3ac0" class="cell" data-execution_count="17">
+<div id="9b7bc6e6" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10607,7 +10706,7 @@ font-style: inherit;">print</span>(t7.grad, t6.grad, t5.grad, t4.grad, t3.grad, 
 </div>
 <p>To avoid calling the backward function multiple times, we can implement a <code>backprop</code> function that traverses the graph in reverse topological order and calls the <code>_backward</code> function of each node only once.</p>
 <p>Topological sorting can be implemented using the following code</p>
-<div id="97a30bc3" class="cell" data-execution_count="18">
+<div id="0eff6ed7" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">topo <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
@@ -10660,7 +10759,7 @@ Why does this sorting algorithm work?
 </div>
 </div>
 <p>Now, we can simply write</p>
-<div id="19d0f13c" class="cell" data-execution_count="19">
+<div id="32704d46" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># #| </span></span>
@@ -10748,7 +10847,7 @@ background-color: null;
 font-style: inherit;">2</span></span></code></pre></div>
 </div>
 <p>And now call the topological sorting and then <code>_backward</code> for all nodes</p>
-<div id="3d6375b4" class="cell" data-execution_count="20">
+<div id="a4019159" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">t8.grad <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -10833,7 +10932,7 @@ font-style: inherit;">reversed</span>(topo):</span>
 <li>Numerical differentiation involves computing a term like <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20x_i%7D%20%5Capprox%20%5Cfrac%7Bf(x+h)%20-%20f(x)%7D%7Bh%7D"> for a small <img src="https://latex.codecogs.com/png.latex?h">. While this is might be relatively easy to implement, but requires <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BO(n)%7D"> evaluations for <img src="https://latex.codecogs.com/png.latex?n"> gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).</li>
 <li>Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us <em>expressions</em> for the derivatives, which might grow exponentially large (in blind application).</li>
 </ul>
-<div id="5d4aba0c" class="cell" data-execution_count="21">
+<div id="fafe8f34" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="im" style="color: #00769E;
@@ -10889,7 +10988,7 @@ font-style: inherit;">4</span></span></code></pre></div>
 <p>That is, we can do something like</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cleft.%20%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%5Cright%7C_%7Bx=a%7D%20=%20%5Ctext%7Bepsilon%20coefficient%7D(%5Ctext%7Bdual%20version%7D(f)(a+1%5Cepsilon))%0A"></p>
 <p>This means that we directly compute f(x) and the derivative (scaled by <img src="https://latex.codecogs.com/png.latex?%5Cdot%7Bv%7D">). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows</p>
-<div id="8d36d23a" class="cell" data-execution_count="22">
+<div id="c7c0ea07" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> math </span>
@@ -11138,7 +11237,7 @@ font-style: inherit;">*</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.dual)</span></code></pre></div>
 </div>
-<div id="15192306" class="cell" data-execution_count="23">
+<div id="293f6268" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;

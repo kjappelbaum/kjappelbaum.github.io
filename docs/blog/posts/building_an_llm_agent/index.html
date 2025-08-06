@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-05-02">
 <meta name="description" content="Developing an understanding for how LLM-based agents work.">
 
-<title>Kevin’s Homepage - Building an LLM agent from scratch</title>
+<title>Building an LLM agent from scratch – Kevin’s Homepage</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3a751e4d48817b0aacecf974f477ff73.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-2f37bee87c45ee91f2836123699e7799.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,18 +121,22 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Kevin’s Homepage - Building an LLM agent from scratch">
+<meta property="og:title" content="Building an LLM agent from scratch – Kevin’s Homepage">
 <meta property="og:description" content="Developing an understanding for how LLM-based agents work.">
-<meta property="og:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/quarto.png">
+<meta property="og:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/index_files/figure-html/cell-5-output-1.png">
 <meta property="og:site_name" content="Kevin's Homepage">
-<meta name="twitter:title" content="Kevin’s Homepage - Building an LLM agent from scratch">
+<meta property="og:image:height" content="150">
+<meta property="og:image:width" content="450">
+<meta name="twitter:title" content="Building an LLM agent from scratch – Kevin’s Homepage">
 <meta name="twitter:description" content="Developing an understanding for how LLM-based agents work.">
-<meta name="twitter:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/quarto.png">
+<meta name="twitter:image" content="https://kjablonka.com/blog/posts/building_an_llm_agent/index_files/figure-html/cell-5-output-1.png">
 <meta name="twitter:creator" content="@kmjablonka">
+<meta name="twitter:image-height" content="150">
+<meta name="twitter:image-width" content="450">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -143,22 +147,6 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
     <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html"> 
-<span class="menu-text">Open Source</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -171,18 +159,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#mrkl-and-react" id="toc-mrkl-and-react" class="nav-link active" data-scroll-target="#mrkl-and-react">MRKL and ReAct</a></li>
-  <li><a href="#using-the-react-prompt" id="toc-using-the-react-prompt" class="nav-link" data-scroll-target="#using-the-react-prompt">Using the ReAct prompt</a></li>
-  <li><a href="#outlook-beyond-hard-coding-prompts" id="toc-outlook-beyond-hard-coding-prompts" class="nav-link" data-scroll-target="#outlook-beyond-hard-coding-prompts">Outlook: Beyond hard-coding prompts</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -588,72 +565,90 @@ Action Input: aspirin
 [14:30:00] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
 </div>
 <div class="cell-output cell-output-error">
-<pre><code>ArgumentError: Python argument types in
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ArgumentError</span>                             Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[49], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> answer_question(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">What is the number of hydrogen bond donors in aspirin?</span><span style="color:rgb(175,0,0)">"</span>, [hydrogenbonddonor_tool, nameresolver_tool])
+
+Cell <span class="ansi-green-fg">In[36], line 45</span>, in <span class="ansi-cyan-fg">answer_question</span><span class="ansi-blue-fg">(prompt, tools)</span>
+<span class="ansi-green-fg ansi-bold">     43</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> tool <span style="font-weight:bold;color:rgb(175,0,255)">in</span> tools:
+<span class="ansi-green-fg ansi-bold">     44</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">str</span>(tool) <span style="color:rgb(98,98,98)">==</span> action:
+<span class="ansi-green-fg">---&gt; 45</span>         observation <span style="color:rgb(98,98,98)">=</span> tool<span style="color:rgb(98,98,98)">.</span>run(action_input)
+<span class="ansi-green-fg ansi-bold">     46</span>         scratchpad <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">Observation: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>observation<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">     47</span>         <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Observation: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>observation<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">"</span>)
+
+Cell <span class="ansi-green-fg">In[9], line 6</span>, in <span class="ansi-cyan-fg">HydrogenBondDonorTool.run</span><span class="ansi-blue-fg">(self, input)</span>
+<span class="ansi-green-fg ansi-bold">      5</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">run</span>(<span style="color:rgb(0,135,0)">self</span>, <span style="color:rgb(0,135,0)">input</span>):
+<span class="ansi-green-fg">----&gt; 6</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>method(Chem<span style="color:rgb(98,98,98)">.</span>MolFromSmiles(<span style="color:rgb(0,135,0)">input</span>))
+
+<span class="ansi-red-fg">ArgumentError</span>: Python argument types in
     rdkit.Chem.rdMolDescriptors.CalcNumHBD(NoneType)
 did not match C++ signature:
-    CalcNumHBD(RDKit::ROMol mol)</code></pre>
+    CalcNumHBD(RDKit::ROMol mol)</pre>
+</div>
 </div>
 </div>
 <p>That doesn’t look good! But we can let the model fix it by giving it access to the error message. To do so, we will catch exceptions and feed them into the LLM as observations.</p>
 <div id="cell-53" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_question_with_self_healing(prompt, tools):</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    scratchpad <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>: </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># as before, we start by filling the prompt</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> REACT_PROMPT.<span class="bu">format</span>(</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>            tools <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([<span class="ss">f"- </span><span class="sc">{</span>tool<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>tool<span class="sc">.</span>description<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> tool <span class="kw">in</span> tools]),</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>            tool_names <span class="op">=</span> <span class="st">", "</span>.join([<span class="bu">str</span>(tool) <span class="cf">for</span> tool <span class="kw">in</span> tools]),</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            <span class="bu">input</span> <span class="op">=</span> prompt,</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>            agent_scratchpad <span class="op">=</span> scratchpad</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we then send the prompt to the model</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> completion(</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> <span class="st">'gpt-3.5-turbo'</span>,</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>            messages <span class="op">=</span> [</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>                {</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'content'</span>: prompt</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>                }</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>            ],</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>            stop <span class="op">=</span> <span class="st">"Observation:"</span>,</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>            temperature<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        ).choices[<span class="dv">0</span>].message.content</span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we update the scratchpad with the message</span></span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># the scratchpad will be used to keep track of the state of the agent</span></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># it will contain all the messages received so far</span></span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># and also all the observations made by the tools</span></span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>        scratchpad <span class="op">+=</span> message</span>
-<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to keep track, we can print the message</span></span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Message: "</span>, message)</span>
-<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if the message contains "Final Answer", we return it</span></span>
-<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"Final Answer"</span> <span class="kw">in</span> message:</span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> message</span>
-<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if the message contains "Action", we extract the action and the action input</span></span>
-<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># and we run the action with the input</span></span>
-<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="st">"Action"</span> <span class="kw">in</span> message:</span>
-<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> re.search(<span class="vs">r"Action: (.*)"</span>, message).group(<span class="dv">1</span>)</span>
-<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>            action_input <span class="op">=</span> re.search(<span class="vs">r"Action Input: (.*)"</span>, message).group(<span class="dv">1</span>).strip()</span>
-<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> tool <span class="kw">in</span> tools:</span>
-<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">str</span>(tool) <span class="op">==</span> action:</span>
-<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># we wrap the tool execution in a try/except block</span></span>
-<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># to catch any exception that might occur</span></span>
-<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># if an exception occurs, we update the scratchpad with the error message</span></span>
-<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># this will allow the agent to self-heal</span></span>
-<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">try</span>: </span>
-<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>                        observation <span class="op">=</span> tool.run(action_input)</span>
-<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>                        observation <span class="op">=</span> <span class="ss">f"Observation: An error occurred, try to fix it: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>                    scratchpad <span class="op">+=</span> <span class="ss">f"</span><span class="ch">\n</span><span class="ss">Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_question_with_self_healing(prompt, tools):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    scratchpad <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>: </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># as before, we start by filling the prompt</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> REACT_PROMPT.<span class="bu">format</span>(</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>            tools <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join([<span class="ss">f"- </span><span class="sc">{</span>tool<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>tool<span class="sc">.</span>description<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> tool <span class="kw">in</span> tools]),</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>            tool_names <span class="op">=</span> <span class="st">", "</span>.join([<span class="bu">str</span>(tool) <span class="cf">for</span> tool <span class="kw">in</span> tools]),</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>            <span class="bu">input</span> <span class="op">=</span> prompt,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>            agent_scratchpad <span class="op">=</span> scratchpad</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we then send the prompt to the model</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> completion(</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> <span class="st">'gpt-3.5-turbo'</span>,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>            messages <span class="op">=</span> [</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'content'</span>: prompt</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>            stop <span class="op">=</span> <span class="st">"Observation:"</span>,</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>            temperature<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>        ).choices[<span class="dv">0</span>].message.content</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we update the scratchpad with the message</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># the scratchpad will be used to keep track of the state of the agent</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># it will contain all the messages received so far</span></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># and also all the observations made by the tools</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>        scratchpad <span class="op">+=</span> message</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to keep track, we can print the message</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Message: "</span>, message)</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if the message contains "Final Answer", we return it</span></span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"Final Answer"</span> <span class="kw">in</span> message:</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> message</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if the message contains "Action", we extract the action and the action input</span></span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># and we run the action with the input</span></span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="st">"Action"</span> <span class="kw">in</span> message:</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> re.search(<span class="vs">r"Action: (.*)"</span>, message).group(<span class="dv">1</span>)</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>            action_input <span class="op">=</span> re.search(<span class="vs">r"Action Input: (.*)"</span>, message).group(<span class="dv">1</span>).strip()</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> tool <span class="kw">in</span> tools:</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">str</span>(tool) <span class="op">==</span> action:</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># we wrap the tool execution in a try/except block</span></span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># to catch any exception that might occur</span></span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># if an exception occurs, we update the scratchpad with the error message</span></span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># this will allow the agent to self-heal</span></span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">try</span>: </span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>                        observation <span class="op">=</span> tool.run(action_input)</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>                        observation <span class="op">=</span> <span class="ss">f"Observation: An error occurred, try to fix it: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>                    scratchpad <span class="op">+=</span> <span class="ss">f"</span><span class="ch">\n</span><span class="ss">Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"Observation: </span><span class="sc">{</span>observation<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s try again!</p>
 <div id="cell-55" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>answer_question_with_self_healing(<span class="ss">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>answer_question_with_self_healing(<span class="ss">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
 
@@ -664,8 +659,14 @@ Observation: Observation: An error occurred, try to fix it: Python argument type
     rdkit.Chem.rdMolDescriptors.CalcNumHBD(NoneType)
 did not match C++ signature:
     CalcNumHBD(RDKit::ROMol mol)
-
-Message:  Thought: It seems like there was an issue with the input for the num_hydrogenbond_donors tool. I should use the name_resolver tool to convert "aspirin" to SMILES representation first.
+</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[14:31:11] SMILES Parse Error: syntax error while parsing: aspirin
+[14:31:11] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Message:  Thought: It seems like there was an issue with the input for the num_hydrogenbond_donors tool. I should use the name_resolver tool to convert "aspirin" to SMILES representation first.
 
 Action: name_resolver
 Action Input: aspirin, smiles
@@ -682,10 +683,6 @@ Action Input: CC(=O)Oc1ccccc1C(O)=O
 Observation: 1
 
 Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[14:31:11] SMILES Parse Error: syntax error while parsing: aspirin
-[14:31:11] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>'Final Answer: The number of hydrogen bond donors in aspirin is 1.'</code></pre>
@@ -763,6 +760,9 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 <div class="cell-output cell-output-stdout">
 <pre><code>Average Metric: 6 / 10  (60.0%)</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>60.0</code></pre>
 </div>
@@ -782,24 +782,27 @@ The code below is expensive
 </div>
 </div>
 <div id="cell-73" class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.teleprompt <span class="im">import</span> BootstrapFewShotWithRandomSearch</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(max_bootstrapped_demos<span class="op">=</span><span class="dv">4</span>, max_labeled_demos<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>teleprompter <span class="op">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op">=</span>gsm8k_metric, <span class="op">**</span>config)</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>optimized_cot <span class="op">=</span> teleprompter.<span class="bu">compile</span>(CoT(), trainset<span class="op">=</span>gsm8k_trainset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dspy.teleprompt <span class="im">import</span> BootstrapFewShotWithRandomSearch</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(max_bootstrapped_demos<span class="op">=</span><span class="dv">4</span>, max_labeled_demos<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>teleprompter <span class="op">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op">=</span>gsm8k_metric, <span class="op">**</span>config)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>optimized_cot <span class="op">=</span> teleprompter.<span class="bu">compile</span>(CoT(), trainset<span class="op">=</span>gsm8k_trainset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now test it</p>
 <div id="cell-75" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate our `optimized_cot` program.</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>evaluate(optimized_cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate our `optimized_cot` program.</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>evaluate(optimized_cot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.05it/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Average Metric: 8 / 10  (80.0%)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>80.0</code></pre>
@@ -807,7 +810,7 @@ The code below is expensive
 </div>
 <p>It seems that things improved. How did they improve? What did the optimizer do? We can see that by looking into the optimization history.</p>
 <div id="cell-77" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(turbo.inspect_history(n<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(turbo.inspect_history(n<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -1080,18 +1083,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1123,7 +1115,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -1182,7 +1194,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1279,7 +1291,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1505,8 +1516,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1518,12 +1527,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/kmjablonka">
-      <i class="bi bi-twitter" role="img">
 </i> 
     </a>
   </li>  
@@ -1546,7 +1549,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/master/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.dev/kjappelbaum/kjappelbaum.github.io/blob/main/blog/posts/building_an_llm_agent/index.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

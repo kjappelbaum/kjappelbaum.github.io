@@ -1,0 +1,73 @@
+---
+title: 'Notes on My Peer Review Process: An Invitation to Compare Practices'
+description: <i>Some thoughts on how I approach reviewing scientific papers</i>
+sidebar: false
+categories:
+  - academia
+  - peer review
+  - scientific community
+date: "04/05/2025"
+bibliography: references.bib
+format:
+  html:
+    code-tools: true
+---
+
+## How I Approach Peer Review
+Peer review is something most of us learn by doing, with little formal training. After stumbling through my early reviews, I've gradually developed practices that work for me. I'm sharing them here not as a model to follow, but to start a conversation about how we might all improve this critical part of science.
+
+### Impact Neutrality
+I rarely suggest rejection. This comes from my attempt to be "impact neutral" in reviewing, an approach I've found useful after reading [Jan Jensen's thoughts](https://proteinsandwavefunctions.blogspot.com/2016/01/writing-impact-neutral-review.html) and seeing the [PLoS ONE](https://en.wikipedia.org/wiki/PLOS_ONE#Publication_concept) model in action.
+
+By "relatively impact neutral," I mean I focus primarily on scientific soundness. I'll still praise work I find particularly important and note when novelty seems lacking, but these observations inform rather than dictate my recommendations. I try to keep acceptance/rejection opinions out of my review's main body. If there are forms, I do not fill them if I do not have to: knowledge work is notoriously difficult to measure [@drucker1999knowledge], and the stepping stones that lead to discoveries often cannot be anticipated [@stanley2015why].
+
+### Looking for Value
+Even in papers I initially find underwhelming, I deliberately search for strengths. What makes this work add to our existing knowledge? How could the authors better emphasize these aspects?
+
+This isn't just kindness---it's also practical. By focusing on what works, I can help authors build on their strengths and often discover value I initially missed.
+
+### Making Feedback Actionable
+Vague criticism helps no one. I try to make every comment actionable by offering specific suggestions and quoting the relevant text.
+
+### Maintaining an Objective Tone
+Throughout my reviews, I write in an objective, non-judgmental tone. Critical analysis doesn't require harsh language. Scientific evaluation can be thorough and rigorous while remaining respectful of the authors' efforts and expertise.
+
+## My Review Structure
+My reviews typically include:
+
+1. **Summary**: My understanding of the work, which helps authors see if I've missed something crucial.
+2. **Major Points**: Critical flaws in design, analysis, or unsupported claims.
+3. **Minor Points**: Suggestions that don't affect the core message but would strengthen the paper.
+4. **Reproducibility**: Assessment of code and data availability.
+5. **Limitations of Expertise**: Areas where my knowledge is limited, particularly important for interdisciplinary work.
+
+## My Process
+Good reviews take time. My typical approach:
+
+1. Read the manuscript thoroughly first.
+2. Do a quick literature check using tools like [PaperQA](https://paperqa.app/) or [Ai2 ScholarQA](https://scholarqa.allen.ai/chat).
+3. Take a few days away to let thoughts settle.
+4. Write the review.
+5. Get feedback from a local LLM to check if I've followed my own guidelines.
+
+I've found acknowledging [my own biases](https://implicit.harvard.edu/implicit/takeatest.html) helps me compensate for them. We all bring preferences to reviews---naming them doesn't eliminate them but makes them visible.
+
+I don't review for publishers [I consider predatory, such as MDPI](https://www.predatoryjournals.org/news/is-mdpi-predatory).
+
+## The Case for Kindness and Diversity
+
+Our field would benefit from more kindness in the review process. The harsh, dismissive tone of some reviews doesn't improve science---it discourages innovative thinking and disproportionately impacts early-career researchers and those from underrepresented groups.
+
+Similarly, greater diversity of thought would strengthen our collective work. When reviewers from varied backgrounds, methodological traditions, and theoretical perspectives evaluate research, we catch blind spots and identify new possibilities. Homogeneous reviewing leads to homogeneous science.
+
+Both kindness and diversity ultimately serve the same goal: creating an environment where the best ideas can emerge, regardless of their source or how they challenge conventional thinking.
+
+### On Anonymous Reviews
+
+At this point in my career, I don't sign my reviews. This is a personal choice in a complex debate. While signed reviews might promote accountability, anonymous reviews can allow early-career scientists to evaluate work honestly without fear of repercussion, particularly when reviewing senior colleagues' work (who might write letters for my tenure case). The power dynamics in science are real, and our review systems should acknowledge them.
+
+I suspect that as our community evolves better practices around constructive criticism and reduces the career consequences of scholarly disagreement, more reviewers may feel comfortable signing their reviews. But we're not there yet.
+
+## Open Questions
+- I'm also interested in how the community might evolve publication models. Could approaches like [Bengio's proposal of submitting to journals and conference chairs picking "interesting articles"](https://yoshuabengio.org/2020/02/26/time-to-rethink-the-publication-process-in-machine-learning/) or [rolling reviews](https://aclrollingreview.org/) address some current frustrations?
+- In an era of information overload, might versioned, updateable articles serve science better than our current static approach?

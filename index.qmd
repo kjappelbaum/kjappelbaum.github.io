@@ -20,35 +20,32 @@ aliases: ["blog/"]
 #     anchor-sections: true
 ---
 
-::: {layout="[25,80]" .profile-header}
+::: {layout="[30,70]" .profile-header}
 
 ![](banana.jpeg){.profile-pic}
 
 
-I lead a [research group](https://jablonkagroup.uni-jena.de/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin.
+I lead a [research group](https://lamalab.org/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin.
 I'm using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science -- to design materials that work in the real world.
 
 :::
 
 
-::: {.callout-note icon=false title="Find out more on the lab website"}
-Check out the [website of our lab](https://jablonkagroup.uni-jena.de/) (which needs a bit of updating). We are still hiring! You can find more details [here](openings.qmd).
+::: {.callout appearance="simple"}
+Check out the lab website [lamalab.org](https://lamalab.org/) -- we're hiring!
 :::
 
 
-## 💼 Get in Touch
+## Contact
 
-[Email me](https://mailhide.io/e/o4LeOUlq), or DM me on [![](icon-linkedin.png){width="3%"}](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) or [![](icons-bluesky.png){width="3%"}](https://bsky.app/profile/kjablonka.com) if you'd like to chat!
-
-I appreciate any kind of feedback. If you want to leave some, you can do so anonymously [here](https://www.admonymous.co/kjappelbaum).
-
-If you are looking for a short bio or a headshot, you can find them [here](bio.qmd).
+[email](https://mailhide.io/e/o4LeOUlq) | [LinkedIn](https://www.linkedin.com/in/kevin-maik-jablonka-538655200/) | [Bluesky](https://bsky.app/profile/kjablonka.com)  | [Google Scholar](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en) | [Bio & Photos](bio.qmd) | [Feedback](https://www.admonymous.co/kjappelbaum)
 
 
 
-## 📮 Feed
+## Notes
 
-Below you can find some of my notes.
+A collection of unfinished thoughts and ideas.
 
 ::: {#blog-listings}
 :::
+

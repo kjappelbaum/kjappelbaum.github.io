@@ -13,8 +13,8 @@ website:
     center:
       - icon: linkedin
         href: https://www.linkedin.com/in/kevin-maik-jablonka/
-      - icon: twitter
-        href: https://twitter.com/kmjablonka
+      # - icon: twitter
+      #   href: https://twitter.com/kmjablonka
       - icon: github
         href: https://github.com/kjappelbaum
       - icon: envelope
@@ -29,33 +29,30 @@ website:
   description: "Kevin Maik Jablonka's homepage."
   repo-url: https://github.com/kjappelbaum/kjappelbaum.github.io
   repo-actions: [edit]
-  repo-branch: master
+  repo-branch: main
   navbar:
     title: false
-    background: dark
+    background: light
     pinned: false
     collapse: false
     left:
-      # # 🏠 📮 👨🏽‍💻 🍎 🎤 📚
       - icon: home
         text: "Home"
         href: index.qmd
-      - text: "Publications"
-        href: publications.qmd
-      # - text: "CV"
-      #   href: cv.qmd
-      - text: Research
-        href: research.qmd
-      - text: Open Source
-        file: opensource/opensource.qmd
-      - text: Teaching
-        href: teaching.qmd
+      # - text: "Publications"
+      #   href: publications.qmd
+      # - text: Research
+      #   href: research.qmd
+      # - text: Open Source
+      #   file: opensource/opensource.qmd
+      # - text: Teaching
+      #   href: teaching.qmd
 format:
   html:
-    theme: [solar, custom.scss]
+    theme: [custom.scss]
     css:
       - styles.css
-    toc: true
-    comments:
-      utterances:
-        repo: kjappelbaum/kjappelbaum.github.io
+    toc: false
+    # comments:
+    #   utterances:
+    #     repo: kjappelbaum/kjappelbaum.github.io

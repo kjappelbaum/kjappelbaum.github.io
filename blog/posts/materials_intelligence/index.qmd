@@ -1,0 +1,61 @@
+---
+title: 'Beyond the Era of Accidental Discovery'
+sidebar: false
+categories:
+  - science
+date: "2/5/2025"
+format:
+  html:
+    code-tools: true
+---
+
+The foundational challenge of materials science isn't just creating new materials - it's developing them systematically rather than by accident. For centuries, materials discovery has remained surprisingly artisanal despite its outsized impact on human civilization. The design of new materials is the bottleneck for solving many of society's most pressing challenges, from sustainable energy to quantum computing.
+
+## Building a Collective Scientific Intelligence
+
+One of the most tragic inefficiencies in science is how poorly we transfer experience. A PhD student spends 4-5 years developing deep experimental intuition about a specific material system or characterization technique. When they leave, most of that knowledge leaves with them. 
+
+A large opportunity lies in general-purpose models and alignment approaches that can:
+
+- Learn from unstructured experimental data across different modalities
+- Bridge the gap between synthesis conditions and material properties
+- Surface non-obvious connections between seemingly unrelated research areas
+
+The technical breakthrough enabling this is our ability to simultaneously handle:
+
+1. Synthesis protocols (as structured text and process graphs)
+2. Characterization data (spectroscopy, microscopy, diffraction)
+3. Property measurements (electronic, mechanical, optical)
+4. Theoretical calculations (DFT, molecular dynamics)
+
+## Expert Councils: Beyond Single Models
+
+We do not only want to have the average representation of materials data - we need specialized expertise for various topics and the ability to let these experts interact. This mirrors how human experts work together, bringing different perspectives and expertise to complex problems.
+
+The key is bootstrapping specialized models using:
+
+- Integration with physics-based simulations
+- Iterative refinement through experimental feedback
+- Domain-specific inductive biases that constrain the solution space
+- Validation through robust tools and theoretical frameworks
+
+For example, we can:
+- Generate feedback through simulations and experiments
+- Use iterative training approaches similar to Beyond A* 
+- Constrain function spaces using inductive biases
+- Hand over specific predictive tasks to specialized architectures
+
+The specialized models can be bootstrapped with information from general-purpose models, making them more data-efficient while maintaining domain expertise.
+
+## Guiding Discovery Through "Interestingness"
+
+Optimizations - or searches through materials space - are often compared with finding a needle in a haystack. Some try to design ML approaches as a "magnet" or "filter" to more efficiently find the needle. This could not be more misguided for two reasons:
+
+1. We often don't even know what we're looking for (we often cannot define what metrics would be important before we have the solution)
+2. Looking for a needle in a haystack suggests searching through an unstructured space, but materials space has rich patterns we can exploit
+
+Instead, we're developing ways to identify scientifically promising directions through:
+
+- Novelty detection that can spot meaningful deviations from known patterns
+- Uncertainty quantification that highlights areas where models disagree
+- Causal reasoning that can extract mechanistic insights

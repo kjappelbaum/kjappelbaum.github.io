@@ -10,7 +10,7 @@ format:
     code-tools: true
 ---
 
-As I reflect on the past on the upcoming year, I really enjoyed [Rockefeller's favorite poem](https://en.wikipedia.org/wiki/A_Wise_Old_Owl) [@Housel2020-tx].
+As I reflect on the past and on the upcoming year, I really enjoyed [Rockefeller's favorite poem](https://en.wikipedia.org/wiki/A_Wise_Old_Owl) [@Housel2020-tx].
 
 > A wise old owl lived in an oak,
 > 

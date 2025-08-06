@@ -5,6 +5,7 @@ image: ""
 sidebar: false
 categories:
   - machine-learning
+  - teaching
 date: "2/23/2024"
 format:
   html:

@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-01-05">
 <meta name="description" content="Why I work on LLMs in a chemistry department">
 
-<title>Kevin’s Homepage - Trust Me, There’s a Method to This Madness</title>
+<title>Trust Me, There’s a Method to This Madness – Kevin's Homepage</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,10 +58,10 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-3a751e4d48817b0aacecf974f477ff73.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-2f37bee87c45ee91f2836123699e7799.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,18 +107,18 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Kevin’s Homepage - Trust Me, There’s a Method to This Madness">
+<meta property="og:title" content="Trust Me, There’s a Method to This Madness – Kevin’s Homepage">
 <meta property="og:description" content="Why I work on LLMs in a chemistry department">
 <meta property="og:image" content="https://kjablonka.com/blog/posts/why_llm/quarto.png">
 <meta property="og:site_name" content="Kevin's Homepage">
-<meta name="twitter:title" content="Kevin’s Homepage - Trust Me, There’s a Method to This Madness">
+<meta name="twitter:title" content="Trust Me, There’s a Method to This Madness – Kevin’s Homepage">
 <meta name="twitter:description" content="Why I work on LLMs in a chemistry department">
 <meta name="twitter:image" content="https://kjablonka.com/blog/posts/why_llm/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,22 +129,6 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
     <a class="nav-link" href="../../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../publications.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../opensource/opensource.html"> 
-<span class="menu-text">Open Source</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -157,9 +141,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -203,7 +185,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <p>While recent research suggests that language isn’t necessarily used for reasoning <span class="citation" data-cites="reasoning">(<a href="#ref-reasoning" role="doc-biblioref">Fedorenko, Piantadosi, and Gibson 2024</a>)</span>, its flexibility makes it an unparalleled tool for communicating ideas, methods, and observations (just look at how synthesis protocols are reported). Yes, schemas, figures, and equations are crucial, but language remains our most versatile medium - and with multimodal approaches, we’re pushing to combine the best of all worlds <span class="citation" data-cites="alampara2024probinglimitationsmultimodallanguage">(<a href="#ref-alampara2024probinglimitationsmultimodallanguage" role="doc-biblioref">Alampara et al. 2024</a>)</span>. (And there are tons of things for which we will need to go beyond naively treating everything as text <span class="citation" data-cites="alampara2024mattextlanguagemodelsneed">(<a href="#ref-alampara2024mattextlanguagemodelsneed" role="doc-biblioref">Alampara, Miret, and Jablonka 2024</a>)</span>).</p>
 <p>However, the practical impact is already visible: tasks that once required a PhD thesis can now be accomplished within a Master’s project. During my PhD, training a model for a novel application without existing datasets would have consumed my entire PhD. Now, our team routinely collects custom datasets for new applications <span class="citation" data-cites="Schilling_Wilhelmi_2025">(<a href="#ref-Schilling_Wilhelmi_2025" role="doc-biblioref">Schilling-Wilhelmi et al. 2025</a>)</span>. This scalability is crucial because science is inherently long-tailed: breakthrough innovations often emerge from unexpected corners of research and we have so many different instrument, techniques, questions that only a scalable technique can have a shot at capturing any of it.</p>
 <p>Similarly, there have been tons of efforts in developing ontologies, defining APIs, and how to talk between different systems, and <a href="https://madices.github.io">I have been involved in those efforts</a>. But, I more and more come to the belief that we might be better off (at least for the long tail) just by letting models figure out how to talk to different things and build new tools in this way. Tools, are the way science progresses. As Sydney Brenner noted, “Progress in science depends on new techniques, new discoveries and new ideas, probably in that order” <span class="citation" data-cites="Robertson_1980 Dyson_2012">(<a href="#ref-Robertson_1980" role="doc-biblioref">Robertson 1980</a>; <a href="#ref-Dyson_2012" role="doc-biblioref">Dyson 2012</a>)</span>.</p>
-<p>However, working with these models daily also <a href="https://michaelnotebook.com/optimism/index.html">raises concerns</a>. While there’s <a href="https://darioamodei.com/machines-of-loving-grace#4-peace-and-governance">significant</a> <a href="https://ia.samaltman.com">potential upside</a>, we who develop these tools bear responsibility for ensuring they benefit society. Beyond immediate concerns about bio- and chemical weapons <span class="citation" data-cites="peppin2025realityaibiorisk">(<a href="#ref-peppin2025realityaibiorisk" role="doc-biblioref">Peppin et al. 2025</a>)</span>, I worry about <a href="https://www.argmin.net/p/too-much-information">information overflow</a> and the proliferation of bullshit <span class="citation" data-cites="Frankfurt2005">(<a href="#ref-Frankfurt2005" role="doc-biblioref">Frankfurt 2005</a>)</span> and disinformation of all sorts <span class="citation" data-cites="Europol2023">(<a href="#ref-Europol2023" role="doc-biblioref">Europol 2023</a>)</span> along with a possibility to further increase inequalities.</p>
+<p>However, working with these models daily also <a href="https://michaelnotebook.com/optimism/index.html">raises concerns</a>. While there’s <a href="https://darioamodei.com/machines-of-loving-grace#4-peace-and-governance">significant</a> <a href="https://ia.samaltman.com">potential upside</a>, we who develop these tools bear responsibility for ensuring they benefit society. Beyond immediate concerns about bio- and chemical weapons <span class="citation" data-cites="peppin2025realityaibiorisk">(<a href="#ref-peppin2025realityaibiorisk" role="doc-biblioref">Peppin et al. 2025</a>)</span>, I worry about <a href="https://www.argmin.net/p/too-much-information">information overflow</a> and the proliferation of bullshit <span class="citation" data-cites="Frankfurt2005">(<a href="#ref-Frankfurt2005" role="doc-biblioref">Frankfurt 2005</a>)</span> and disinformation of all sorts <span class="citation" data-cites="Europol2023">(<a href="#ref-Europol2023" role="doc-biblioref">Europol 2023</a>)</span> along with a possibility to further increase inequalities (with some dominant players accumulating nation-state-like power and Orwellian centralization of “truth”).</p>
 <p>The relative lack of some governments investment in building AI expertise is concerning, as is the potential erosion of critical thinking skills in some quarters. “We live in a society exquisitely dependent on science and technology, in which hardly anyone knows anything about science and technology” <span class="citation" data-cites="Sagan1990">(<a href="#ref-Sagan1990" role="doc-biblioref">Sagan 1990</a>)</span>. And, clearly, the scope researches beyond knowing things about science and technology and perhaps even makes a general liberal arts education more valuable then ever.</p>
 <blockquote class="blockquote">
 <p>For progress there is no cure. Any attempt to find automatically safe channels for the present explosive variety of progress must lead to frustration. The only safety possible is relative, and it lies in an intelligent exercise of day-to-day judgement… these transformations are not a priori predictable and… most contemporary “first guesses” concerning them are wrong…</p>
@@ -286,18 +268,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -329,7 +300,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/kjablonka\.com\/");
@@ -337,7 +328,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -434,7 +425,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -660,8 +650,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="kjappelbaum/kjappelbaum.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -673,12 +661,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kevin-maik-jablonka/">
       <i class="bi bi-linkedin" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/kmjablonka">
-      <i class="bi bi-twitter" role="img">
 </i> 
     </a>
   </li>  
@@ -701,7 +683,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/master/blog/posts/why_llm/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/blog/posts/why_llm/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

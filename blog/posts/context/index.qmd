@@ -1,0 +1,68 @@
+---
+title: "All of AI is Context Engineering"
+image: ""
+sidebar: false
+bibliography: references.bib
+categories:
+  - ai
+  - science
+date: "08-05-2025"
+---
+
+
+Recent discussions around context engineering (for LLMs) have exploded across the AI community.
+
+Our work follows this trend—we optimize and understand context to improve agent performance. But zooming out reveals a deeper truth: context has always been the way to make things work.
+
+## Context Shapes Everything
+
+Theodore Roszak constructed a thought experiment that illustrates this perfectly [@roszak1992]:
+
+Imagine watching a skilled psychiatrist at work. His waiting room overflows with patients suffering various emotional and mental disorders—some nearly hysterical, others plagued by suicidal thoughts, hallucinations, nightmares, or paranoid delusions about being watched by people who will hurt them.
+
+The psychiatrist listens attentively and tries his best to help, but without success. His patients worsen despite heroic efforts.
+
+Now Roszak asks us to consider the larger context: The psychiatrist's office sits in a building. The building sits in a place. That place is Buchenwald, and the patients are concentration camp prisoners.
+
+**Context changes everything.**
+
+This principle extends beyond clinical settings. We experience this daily in human interactions—we can only meaningfully connect with others when we understand their full context: their background, experiences, current circumstances, and unspoken assumptions. Without this context, even well-intentioned communication fails.
+
+## The Systems Science Perspective
+
+Systems science teaches us that emergent properties arise from interactions between components, not from components themselves [@meadows2008]. A material's performance emerges from atomic structure *within* its manufacturing context, operating environment, and lifecycle constraints.
+
+Yet current AI for science systems remain myopically focused on small subsets, failing to integrate broader contextual factors. We optimize binding energies while ignoring synthesis routes. We predict properties while ignoring cost, scalability, or environmental impact.
+
+Kenneth Stanley and Jeff Clune argue in "Greatness Cannot Be Planned" that optimizing for ambitious goals fails because the stepping stones to greatness are deceptive [@stanley2015].
+
+In practice, designing materials with single goals that might seem sensible (e.g., optimize CO₂ binding energy) proves deceptive. Materials exist within complex systems, and myopically optimizing one metric prevents success.
+
+Consider a battery material with perfect energy density that degrades after ten cycles, costs $10,000 per gram, or requires mining rare elements from conflict zones. The system context reveals why single-metric optimization fails.
+
+## The Tacit Knowledge Gap
+
+This context problem connects to missing tacit knowledge in our AI systems.
+
+Philosopher-chemist Michael Polanyi famously observed: "We know more than we can tell" [@polanyi1966]. Much of this unverbalized knowledge drives scientific greatness.
+
+Tacit knowledge helps scientists prune search spaces and recognize when experiments or spectra "don't look right." This intuition emerges from years of contextual experience—understanding how synthesis conditions affect structure, how processing history influences properties, how real-world operating conditions differ from laboratory ideals.
+
+Current AI systems lack this systems-level understanding, focusing instead on isolated predictions divorced from broader context.
+
+## Moving Forward
+
+Building AI systems that understand context requires integrating knowledge across scales, disciplines, and domains. We need systems that consider not just atomic structure but also synthesis pathways, processing conditions, operating environments, economic constraints, and sustainability impacts. They need to be able to gather this context by experiencing it.
+
+The best materials aren't just optimized—they're appropriate for their contexts: manufacturability, cost, environmental impact, supply chains, regulatory approval, and real-world operating conditions.
+
+**Context engineering isn't just another AI technique—it's the foundation of intelligent systems that work in the real world.**
+
+**Just as meaningful human connection requires understanding full context, breakthrough AI for science demands systems-level thinking that integrates the complex, interconnected reality in which materials actually exist and function.**
+
+## References
+
+::: {#refs}
+:::
+
+

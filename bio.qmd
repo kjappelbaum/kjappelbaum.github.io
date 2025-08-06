@@ -8,6 +8,61 @@ sidebar: false
 Kevin Jablonka is a researcher with over 30 peer-reviewed publications in machine learning for materials science and digital chemistry. He leads an independent research group at the Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center Berlin. Kevin has received numerous awards, such as the Dimitris N. Chorafas Foundation award for outstanding Ph.D. work. He is an active member of the scientific community, serving as a peer reviewer for over 20 journals and as an area chair for machine learning conferences. Kevin belongs to a new generation of scientists with a broad skill set, combining expertise in chemistry, materials science, and artificial intelligence. His research focuses on the digitization of chemistry, from developing electronic lab notebook ecosystems to creating toolboxes for digital reticular chemistry. Recently, Kevin has been at the forefront of applying Large Language Models (LLMs) to chemistry and materials science, co-organizing hackathons and workshops in this rapidly evolving field. 
 Kevin's research addresses challenges across scales, from atomic-level simulations to pilot plant operations, pushing the boundaries of AI-accelerated discovery in chemistry and materials science.
 
-### More 
-If you need more info, see my [CV](cv.qmd).
-If you need a headshot, you can use this one: [portrait.jpg](portrait.jpg). 
+## Shorter version 
+
+Kevin Jablonka leads an independent research group at the Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center Berlin where we focusses on designing materials that work in the real world using data-driven techniques. He belongs to a new generation of scientists with a broad skill set, combining expertise in chemistry, materials science, and artificial intelligence. Recently, Kevin has been at the forefront of applying Large Language Models to chemistry and materials science.
+
+
+## More 
+If you need a headshot, you can use [one](portrait3.JPG) [of](portrait1.jpg) [these](portrait2.jpg) (photographer: Marina Romanova/HIPOLE Jena).
+
+## Short CV 
+
+### Key Career Milestones
+
+**Jun 2023 - Present:** Independent Research Group Leader (Tenure Track with right to award doctoral degrees)  
+CZS Research Group at HIPOLE Jena and Friedrich-Schiller University Jena
+
+**Jul 2024 - Present:** Red Teamer (Independent Contractor)  
+OpenAI
+
+**Aug 2019 - Jun 2023:** Ph.D. in Chemistry and Chemical Engineering  
+École polytechnique fédérale de Lausanne (EPFL), Switzerland  
+*Dimitris N. Chorafas Foundation award for outstanding Ph.D. work*  
+*Doctoral program Top 8% Thesis Distinction*
+
+**Sep 2017 - Jul 2019:** MSc. in Chemistry (high distinction, 5.95/6.00)  
+École polytechnique fédérale de Lausanne (EPFL), Switzerland  
+*2nd best GPA among all master graduates at EPFL, best GPA in chemistry*
+
+**Oct 2014 - Aug 2017:** BSc. in Chemistry (high distinction, 1.2/1.0)  
+Technical University of Munich, Germany
+
+### Academic Summary
+
+#### Leadership
+Research group with >12 members. Founder of the [LAMALab](https://lamalab.org) focused on AI-accelerated materials discovery. Lead of the "Artificial-intelligence Toolkit" of the FAIRMat NFDI consortium. Co-Leader of WG3 (Multi-modal machine learning methods) in DAEMON COST action. Organized global LLM hackathons for materials science, resulting in publications with >40 co-authors.
+
+#### Research Impact
+Research highlighted, among others, in *Nature Reviews Materials*, *Materials Today*, *Chemistry World*, *MIT Technology Review*, and *RTS Radio Télévision Suisse*. See [Google Scholar](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en).
+Over 43% of first- or corresponding author papers in Nature/Science family.
+
+#### Funding
+Secured over €4M as PI from diverse sources, including Carl-Zeiss Foundation, OpenPhilanthropy, Intel-Merck, and Helmholtz Foundation Model Initiative.
+
+#### Teaching Innovation
+Developed flipped classroom ML courses. Created open educational resources: [online book on LLM data extraction methods](https://matextract.pub) and [interactive web environments for spectroscopy teaching](https://ir.cheminfo.org/). Guest lecturer at international schools.
+
+#### Mentorship
+Currently mentoring 9 Ph.D. students and 2 M.Sc. students. Trained in scientific leadership by the Helmholtz Leadership Academy. Nominated for "best research environment" award by the Young Academy.
+
+#### Public Impact
+Featured on AI podcasts ([e.g. from ARD](https://www.ardaudiothek.de/episode/ki-verstehen/ki-in-der-wissenschaft-wie-kuenstliche-intelligenz-die-forschung-umkrempelt/deutschlandfunk/13608991/)). Jury member and mentor for German national student science fairs. Speaker at Young Chemists Network of the German Chemical Society. Hands-on workshop organizer for international [hackathons](https://pubs.rsc.org/en/content/articlehtml/2023/dd/d3dd00113j), [workshops](https://sites.google.com/view/ai4mat/ai4mat-vienna-2024/ai4mat-vienna-2024-program) and [conferences](https://www.cecam.org/workshop-details/l2m3-large-language-models-for-materials-molecules-and-beyond-1291).
+
+### Selected Honors
+
+- Finalist for "Rising Star in Computational Materials Science" (2025)
+- Dimitris N. Chorafas Foundation award for outstanding Ph.D. thesis (2023)
+- Member of the CAS FutureLeaders 2022 cohort
+- Alfred-Werner scholarship by the Swiss Chemical Society (2017)
+- Scholarship by the German scholarship foundation (Studienstiftung des Deutschen Volkes, 2015)

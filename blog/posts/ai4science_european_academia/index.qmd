@@ -1,0 +1,53 @@
+---
+title: "The Optimal Amount of Wasted Research Funding Is Non-Zero"
+description: <i>Thinking aloud about doing AI4Science research in a European university</i>
+sidebar: false
+date: "2025-04-25"
+format:
+  html:
+    code-tools: true
+bibliography: references.bib
+categories: [academia, Europe]
+---
+
+Europe’s universities are caught between measured caution and the breakneck pace of AI-driven discovery. We prize rigorous scholarship and public service, yet solving climate crises or designing new materials demands speed, scale—and yes, daring. This means accepting that some portion of research funding will be wasted—or even misused—but the optimal amount of “waste” is non‑zero: enough risk to ignite breakthroughs, without unraveling public trust [@Klein2025-rf].
+
+## Counting Beans vs. Cultivating Breakthroughs
+
+Imagine a director of university research budgets aiming for zero waste. Every euro precisely tracked, every grant stringently justified. At first glance, it sounds prudent—until innovation grinds to a halt. PIs slice projects into the smallest publishable nibble, chase citations instead of ideas, and hide minor shortcuts under the rug. Edwards and Roy call this the [perverse incentive](https://blog.regehr.org/archives/632): metrics as targets erode integrity and stifle creativity [@EdwardsRoy2017].
+
+In AI4Science bureaucracy does more than nudge corners: it constrains bright minds to granular targets and routine forms. We select researchers through [“Bestenauslese,”](https://de.wikipedia.org/wiki/Artikel_33_des_Grundgesetzes_f%C3%BCr_die_Bundesrepublik_Deutschland#Prinzip_der_Bestenauslese,_Art._33_Absatz_2_GG) ["Bestenauslese" ("selection of the best")  is Germany’s rigorous (ostensibly) merit‑based academic selection process for professors, involving multiple stages of peer review, public lectures, and politiekorale vetting to appoint only the top candidates. Ironically, those once hailed as the nation’s brightest are then often constrained by procedural minutiae that discourage bold thinking.
+]{.aside} celebrating the "highest achievers", then tie them to Excel sheets and compliance checklists. Such perverse incentives shrink ambitions and discourage moonshots. Yet true leaps require room to experiment: some ideas will flop, data pipelines will fail, and yes, a few grants will yield nothing of note. That’s not waste alone; it’s the price of possibility. 
+
+
+
+## A Fraud‑Inspired Analogy
+
+[In credit‑card fraud, businesses calculate an acceptable fraud rate—say](https://www.bitsaboutmoney.com/archive/optimal-amount-of-fraud/), 0.5% of transactions—because the cost of preventing every single fraudulent swipe would choke off legitimate commerce. They bake that “waste” into budgets, balancing losses against user friction. Too little fraud tolerance, and customers face endless identity checks; too much, and bad actors thrive.
+
+Similarly, Europe’s research ecosystem must decide its fraud‑rate equivalent: how many dead‑end experiments, unused datasets or stalled hires do we permit to enable the rest to flourish? The answer is not zero.
+
+## Building the Right Ecosystem
+
+- *New Data Organizations.*  Establish mission‑driven entities whose sole purpose is to create and share scientific data at minimal cost per replicable datapoint. Fund them to accept researcher proposals, execute experiments—robotic or computational—and retain public rights so that every dataset becomes a reusable building block. Those organizations would also be best place to organize competitions such as CASP to measure real-world impact of AI innovations.
+
+- *Data as Public Good.*  Complement these organizations with micro‑grants for labs and individual researchers to curate and submit annotated datasets—including negative results—to a pan‑European repository. .
+
+- *Engineering Partnerships and Product Teams.*  Embed research software engineers and product managers in academic groups to build, maintain and ship AI tools, applications and data products. Treat code libraries and computational platforms as first‑class research outputs, fostering shared solutions rather than isolated prototypes.
+
+## Catalyzing Real‑World Impact
+
+Only by stepping beyond the lab walls—talking with clinicians, industry users, policy makers and citizens—can AI4Science tackle system‑level problems and rediscover its path toward truth. As Daniel Sarewitz argues [@Sarewitz2016], science must shed its ivory‑tower aloofness, embrace accountability, and co‑create solutions with the communities it aims to serve.
+
+Imagine an "Academic Free Zone" pilot in which select institutions are empowered to hire swiftly, manage their own budgets, and report not on form‑counts but on real societal outcomes. Such “bubbles of exploration”-intensive zones where shared optimism, dedicated infrastructure and a tolerable failure rate yield transformative breakthroughs might reflect the best of positive bubble dynamics [@Sargeant2025].
+
+Rather than endless approvals, researchers would report toward tangible public benefits. In this way, we treat researchers as accountable professionals and align incentives with Europe's mission: ensuring that AI4Science delivers societal value, not just publication counts.
+
+## Personal Reflections
+
+I often ask myself: "where can my AI4Science efforts matter most?". I want that a skill set as mine remains in public service: I worry about centralization of power in AI [@Harari2018].
+Yet I share colleagues’ frustration at bureaucratic inertia: a promising algorithm may sit unused for years behind grant cycles and compliance checks. If Europe is serious about impact, we must dismantle these barriers.
+
+## Trust‑Driven Transformation
+
+Europe’s strength is freedom[In the words of the Economist's Charlemange: "But in their own plodding way, Europeans have created a place where they are guaranteed rights to what others yearn for: life, liberty, and the pursuit of happiness." [@Charlemagne2025]]{.aside} [@Charlemagne2025]. By shifting incentives from bean‑counting to value‑driven autonomy, investing boldly in shared data and infrastructure, and tolerating a non‑zero rate of “waste,” we can lead the AI for Science revolution on our own terms.

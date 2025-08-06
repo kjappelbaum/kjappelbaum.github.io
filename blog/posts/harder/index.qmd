@@ -1,0 +1,38 @@
+---
+title: '10 Reasons to Aim Higher. And Higher.'
+sidebar: false
+categories:
+  - life
+date: "2/2/2025"
+format:
+  html:
+    code-tools: true
+---
+
+I aim high. Most often, I don't reach there, but here are ten reasons why I still try:
+
+1. It is fun.
+
+2. It gives me freedom. Focusing on "low-hanging fruits" or shorter-term goals shrinks the solution space. Aiming further, my solution space expands and easily accommodates detours.
+
+3. It demands creativity. Most challenging problems can't be solved with existing tools, forcing creative solutions.
+
+4. [It often isn't that much harder.](https://karpathy.github.io/2016/09/07/phd/)
+
+5. [Something that is hard for you likely is impossible for your competitor.](https://paulgraham.com/wealth.html)
+
+6. It lets me ignore noise. With a longer path ahead, I can tune out distractions (like most new papers) along the way.
+
+7. It allows me to relax. Oliver Burkeman [references](https://www.penguin.co.uk/books/456705/meditations-for-mortals-by-burkeman-oliver/9781847927613) [Hōun Jiyu-Kennett](https://en.wikipedia.org/wiki/Houn_Jiyu-Kennett) who taught by making tasks so demanding that students stop struggling, relax, and then accomplish more.
+
+8. Even failing might leave you with something quite impactful.
+
+9. Growth only happens by crossing boundaries.
+
+10. It changes your default.
+
+
+> Whatever you can do or dream you can, begin it;
+Boldness has genius, power, and magic in it.
+> 
+>  -- [Often attributed to Goethe](https://quoteinvestigator.com/2016/02/09/boldness/)

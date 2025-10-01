@@ -1,0 +1,157 @@
+---
+title: 'Lessons Learned from Writing My First ERC Proposal'
+description: <i>A letter to my younger self (while procrastinating on revisions)</i>
+
+sidebar: false
+categories:
+  - academia
+  - writing
+  - grants
+date: "1/15/2025"
+bibliography: references.bib
+format:
+  html:
+    code-tools: false
+---
+
+Dear younger me,
+
+I'm writing this instead of revising the proposal. I know, I know—classic avoidance behavior. But maybe writing this down will help me (you? us?) make sense of what just happened. Or rather: what is happening.
+
+You're about to write your first ERC proposal, and it's going to take a bigger emotional toll than any writing you've done before. Yes, even though you love writing. Especially because you love writing.
+
+Let me tell you what I wish I'd known.
+
+## You're Going to Forget Which Game You're Playing
+
+Here's what's going to happen: You'll get so caught up in what James Carse calls the "finite game" [@carse1986finite] that you'll forget about the infinite game entirely.
+
+The finite game is winning the ERC. The infinite game? That's the research itself—the questions that genuinely excite you, the work you'd want to do regardless of whether anyone gives you money for it.
+
+Carse distinguishes between games we play to win (finite) and games we play to keep playing (infinite). Your proposal will be full of research you find genuinely important, exciting, and novel. But somewhere along the way, the narrative will become "winning the ERC is the only way to do this exciting work."
+
+That's not true. You know that's not true. But you're going to forget it anyway.
+
+And look—I know you're hungry for a win right now. After the losses you've experienced recently (and we both know what I'm talking about), you need this. I get it. But being thirsty for a win makes it almost impossible to stay in the infinite game mindset.
+
+Try anyway.
+
+## Someone Will Tell You You're Late (You're Not)
+
+An advisor is going to tell you you're late. This will happen when you have a 17-page draft completed, 1.5 months before the deadline.
+
+You're not late.
+
+But their anxiety will become your anxiety, and you'll carry that weight through the rest of the process. I wish I could tell you how to avoid internalizing this, but I can't. Just... know that it's happening. Maybe that awareness will help a little.
+
+## You're Writing for Everyone, Which Means No One
+
+You're going to write a transdisciplinary proposal that fits into multiple panels. This will feel strategic. It's actually a trap.
+
+You can't assume background knowledge in anything. Every discipline has its own language, its own implicit assumptions, its own way of framing problems. How do you write for everyone without writing for no one? How do you balance depth and accessibility when your readers might come from entirely different fields?
+
+Maybe the answer is simpler than you think: assume less in general, but write it in an interesting way. Don't dumb it down—just explain more. Make your enthusiasm for the ideas carry the reader through the explanations they need.
+
+I still don't know if you solved this problem. I hope the reviewers will tell us.
+
+## The Structure You Think You Have
+
+You think you have good structure. You don't.
+
+What you need: the same subheadings for each Work Package. Visual emphasis—color, even. Clear blocks for deliverables and contingency planning. Make it obvious what you'll produce and what you'll do when (not if) things don't go according to plan.
+
+Here's what structure is really about: convincing reviewers that you have a plan and that you're worth the money. 
+Every Work Package should make it crystal clear what you're going to deliver, when you're going to deliver it, and what could go wrong. 
+
+Also, try to write it so readers don't need to read everything linearly. Each section should stand somewhat independently. Reviewers are busy. Give them permission to jump to what matters to them. They should be able to skip around and still understand that you know what you're doing and that funding you makes sense.
+
+You won't get this right on the first try. Or the second. Keep iterating.
+
+## On Intensity and Timing
+
+You're going to wonder if you should start earlier. Don't.
+
+Work in waves. One full day exclusively on the proposal, then wait for new feedback or inspiration before opening the document again. This rhythm keeps the intensity without burning you out.
+
+And yes, the intensity is necessary. Some things can't be done slowly.
+
+## Lead with the Answer 
+
+You're going to slowly—too slowly—move toward using what's called the McKinsey Pyramid Principle [@minto2009pyramid]. Stop resisting this. Just do it from the start.
+
+Here's the deal: Instead of building up to your point (how you naturally think), start with the answer and then provide supporting arguments and evidence. Barbara Minto developed this approach at McKinsey for communicating with busy executives—which is basically what grant reviewers are.
+
+Why? Because reviewers are busy. They need to grasp your core contribution immediately. Lead with the answer. Tell them what you're going to do and why it matters. Then—and only then—show them the supporting details.
+
+You're going to resist this because it feels unnatural, like you're giving away the ending. Do it anyway.
+
+## AI Is Helpful But Forgetful
+
+You're going to use AI extensively:
+
+- Prompting it to act as reviewers from various disciplines
+- Using Deep Research and platforms like FutureHouse for literature review
+- Getting help finding effective examples
+
+But here's what you need to know: **AI forgets things across long documents.**
+
+When you're working on a 15-20 page proposal, edits in one section require changes elsewhere. The introduction needs updating after you rework the objectives. A change in methodology impacts your timeline. Your risk mitigation needs to align with your deliverables.
+
+AI doesn't naturally track these dependencies. You become the keeper of the narrative arc, the one who remembers what you said ten pages ago. The iterative process of checking for consistency, updating multiple sections, ensuring coherence—that's all you.
+
+Is it worth using AI? Yes. But it's not magic. It's a tool that requires active management.
+
+## Give Yourself Permission to Write Badly
+
+Anne Lamott writes in *Bird by Bird* that perfectionism is "the voice of the oppressor" and "the main obstacle between you and a shitty first draft." [@lamott1994bird]
+
+Listen to her.
+
+Don't start in the official ERC template. Write one long messy document first. Give yourself permission to write badly, to explore, to ramble. When you share it for feedback, you can say: "This is not yet the ERC proposal." That distinction matters. It gives both you and your readers permission to focus on the ideas rather than the polish.
+
+Then, after feedback, move it to the template. Write Part B1 first, then B2. Share both. Iterate. Rewrite. Iterate again.
+
+The messiness is part of the process, not a sign that you're doing it wrong.
+
+## That Harsh Feedback? You Need It
+
+Someone is going to destroy your Part B2. Just absolutely tear it apart.
+
+It's going to hurt. And then, surprisingly, it's going to help enormously.
+
+The harsh feedback will give you the push you need to attempt another complete rewrite when you're feeling unmotivated and lacking confidence. Sometimes the feedback that stings the most is exactly what you need to hear.
+
+Try to remember that when you're in the moment of pain.
+
+## What You'd Change (And What You Wouldn't)
+
+You're going to wish you'd converged earlier on which panel to target. But the story develops in the process of writing it. How can you know which panel you're targeting before you know what story you're telling? Maybe this is one of those things that can't be optimized.
+
+You're also going to almost miss formal requirements—confirming your PhD defense date, for instance. Without institutional support, you would have completely overlooked these. Next time, make a checklist of procedural matters from the start.
+
+But starting earlier? No. The intensity of the compressed timeline is necessary, not just stressful.
+
+## What This Is Really About
+
+Here's what you need to understand: Grant writing is as much about managing yourself—your anxiety, your relationship with success and failure, your writing process—as it is about the research.
+
+Are you playing the finite game or the infinite game? Are you optimizing for winning, or for continuing to play?
+
+The proposal you're about to write is valuable beyond its immediate outcome. It's a crystallization of your thinking, a test of your communication, a forcing function for clarity. Whether you win this particular finite game or not, the infinite game—your research, your contribution to the field, the questions that genuinely excite you—continues.
+
+Writing the proposal will help you crystallize ideas. It will help you find people who are good sounding boards. It will give you clear signals that your writing still isn't as clear as you think it is.
+
+These things are valuable regardless of the outcome.
+
+## A Final Note
+
+I don't know yet what the outcome will be. I'm still skeptical about whether this proposal will "fly"—some ideas may require too much shared background knowledge that reviewers won't have.
+
+But I'm excited about the ideas regardless. We'll find ways to pursue them no matter what happens.
+
+Remember which game you're really playing.
+
+And now, I suppose, back to those revisions.
+
+With solidarity and hope,  
+Your slightly-less-young self

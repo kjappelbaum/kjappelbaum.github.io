@@ -4,6 +4,7 @@ project:
 
 exeucte:
   eval: false
+  freeze: autp
 
 website:
   title: "Kevin's Homepage"

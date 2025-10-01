@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/writing_erc/index.html",
       "/blog/posts/context/index.html",
       "/blog/posts/ai_scientists/index.html",
       "/blog/posts/ai4science_european_academia/index.html",

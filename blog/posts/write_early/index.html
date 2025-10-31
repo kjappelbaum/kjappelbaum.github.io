@@ -126,9 +126,47 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 
 
-<p>The way I used to do research is to start writing early. Very early. Perhaps way more early than many people feel comfortable with.</p>
+— title: “Why I Start Things Uncomfortably Early” image: “” sidebar: false categories: - academia date: “10/31/2025” include-in-header: text: |
+<style>
+    .cell-output-stdout {
+      overflow-y: scroll;
+      max-height: 400px;
+    }
+    </style>
+<p>—</p>
+<p>Over time, I’ve developed a habit that feels wrong: I start writing, integrating, and testing way earlier than seems reasonable. When I have just the first “signs of life” in a project, I’m already drafting paper sections. When my code modules are 70% done, I’m already trying to wire them together.</p>
+<p>This goes against the instinct to wait until things are “ready.” But I think there are good reasons for doing it this way.</p>
+<p>Ambitious research has a fundamental difficulty: rewards are sparse and delayed. I won’t know if my approach works until months in, when I finally have the complete system and results. But I need to make decisions now: which direction to explore, which component to prioritize, what to try next.</p>
+<p>This is essentially the credit assignment problem from reinforcement learning. When the signal (the discovery of a new method, a successful validation) is very far away, how do I navigate?</p>
+<section id="the-working-memory-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-working-memory-problem">The Working Memory Problem</h2>
+<p>I can only hold about 4 things in working memory at once. When I’m juggling 15 design decisions and vague intuitions about what might work, most of it is slipping away. I need concrete signals.</p>
+<p>Writing and sketching force me to make things concrete. <a href="https://www.nature.com/articles/s44222-025-00323-4">Writing is thinking.</a> When I try to draft a results section for experiments I haven’t run yet, I immediately hit questions: “Wait, what’s the y-axis here? How would I actually measure this?” Those questions become my experimental plan.</p>
+<p>Similarly, when I integrate code modules before they’re polished, the failures tell me what actually matters. Often the “polish” I was planning turns out to be unnecessary. And the failures tell me what actually matters.</p>
+</section>
+<section id="what-i-actually-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-actually-do">What I Actually Do</h2>
+<ul>
+<li>I start writing paper drafts at the first signs of life. Playing with different introductions helps me figure out which story actually makes sense. Sketching figure layouts exposes which experiments I’m missing.</li>
+<li>I wire together code modules when they’re partially done. The integration failures are informative.</li>
+<li>I run simplified experiments first—1000 examples instead of 1M, 2 layers instead of 12. I can add complexity once I know the direction has promise. This is to maximize <a href="https://web.stanford.edu/class/cs197/lectures/cs197-05-velocity.pdf">research velocity</a>.</li>
+<li>I submit to workshops before papers feel “fully baked.” The writing process and feedback catch blind spots.</li>
+<li>I share half-baked ideas. A conversation can save months of heading the wrong direction.</li>
+</ul>
+</section>
+<section id="pride-vs.-progress" class="level2">
+<h2 class="anchored" data-anchor-id="pride-vs.-progress">Pride vs.&nbsp;Progress</h2>
+<p>These practices aren’t technically hard. What makes them difficult is the discomfort of showing work that isn’t impressive yet, of risking visible mistakes, of accepting that my initial intuitions might be wrong.</p>
+<p>But I’ve noticed that waiting for things to feel “ready” often means operating in the dark for too long. The cost of being wrong in private—spending months on the wrong path—tends to be much higher than the awkwardness of being wrong in public. And if we talk about spending public research money, <a href="https://kjablonka.com/blog/posts/on_impactful_research/">we should minimize this cost</a>.</p>
+</section>
+<section id="how-fast-is-too-fast" class="level2">
+<h2 class="anchored" data-anchor-id="how-fast-is-too-fast">How Fast Is Too Fast?</h2>
+<p>There is a limit, of course. If I’m moving so fast that I can’t reproduce last week’s experiments or I’ve lost track of what I’ve tried, I’ve gone too far. Clean experiments matter even when iterating quickly.</p>
+<p>But I find I’m rarely limited by going too fast. More often, I’m limited by waiting too long—by postponing the test that would have given me signal.</p>
+<p>So now when I catch myself thinking “this isn’t ready yet,” I try to ask: ready for what? Often the answer is: ready to learn something from. And that bar is much lower than I think.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

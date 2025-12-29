@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/manifold/geometry_blog.html",
       "/blog/posts/write_early/index.html",
       "/blog/posts/on_impactful_research/index.html",
       "/blog/posts/writing_erc/index.html",

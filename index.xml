@@ -15,7 +15,1080 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Thu, 30 Oct 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 28 Dec 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>The Geometry of Not Enough Data</title>
+  <link>https://kjablonka.com/blog/posts/manifold/geometry_blog.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<style>
+.key-point {
+    background: #f8f6f1;
+    border-left: 3px solid #b8860b;
+    padding: 1.2em 1.5em;
+    margin: 1.8em 0;
+    border-radius: 0 4px 4px 0;
+}
+.aside-box {
+    background: #f0f0f0;
+    padding: 1em 1.2em;
+    margin: 1.5em 0;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+.aside-title {
+    font-weight: 600;
+    margin-bottom: 0.3em;
+    color: #555;
+}
+</style>
+<section id="the-puzzle-of-too-many-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="the-puzzle-of-too-many-parameters">The Puzzle of Too Many Parameters</h2>
+<p>Monthly airline passengers from 1949 to 1960. You want to forecast the next few years. A linear model has 2 parameters. A cubic polynomial has 4. A degree-20 polynomial has 21.<sup>1</sup></p>
+<p>Classical statistics warns against the high-parameter option. More parameters, more opportunities to chase noise instead of signal. The cubic should suffice.</p>
+<p>Yet modern deep learning uses models with billions of parameters trained on datasets that cover a vanishing fraction of possible inputs. By classical logic, these models should memorize their training data and fail on anything new. Still, they seem to ace very difficult benchmarks.</p>
+</section>
+<section id="the-arithmetic-of-impossibility" class="level2">
+<h2 class="anchored" data-anchor-id="the-arithmetic-of-impossibility">The Arithmetic of Impossibility</h2>
+<p>A language model predicts the next token given all previous tokens:</p>
+<p><img src="https://latex.codecogs.com/png.latex?p(w_%7B1001%7D%20%5Cmid%20w_%7B1000%7D,%20w_%7B999%7D,%20%5Cldots,%20w_1)"></p>
+<p>With vocabulary <img src="https://latex.codecogs.com/png.latex?V%20%5Capprox%20100%7B,%7D000"> and context length <img src="https://latex.codecogs.com/png.latex?L%20%5Capprox%208%7B,%7D000">, the input space contains:</p>
+<p><img src="https://latex.codecogs.com/png.latex?V%5EL%20=%20100%7B,%7D000%5E%7B8%7B,%7D000%7D%20=%2010%5E%7B40%7B,%7D000%7D"></p>
+<p>possible sequences. Training corpora contain perhaps <img src="https://latex.codecogs.com/png.latex?10%5E%7B14%7D"> tokens. The ratio of observed to possible:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B10%5E%7B14%7D%7D%7B10%5E%7B40%7B,%7D000%7D%7D%20=%2010%5E%7B-39%7B,%7D986%7D"></p>
+<p>If every atom in the observable universe were a training example, we’d still have seen essentially nothing. The model encounters novel inputs on every forward pass, yet produces sensible outputs.</p>
+<p>The arithmetic says learning is impossible. The models work anyway. One of these must be wrong.</p>
+</section>
+<section id="real-data-is-not-random-data" class="level2">
+<h2 class="anchored" data-anchor-id="real-data-is-not-random-data">Real Data Is Not Random Data</h2>
+<p>Sample an image uniformly at random from the space of all 256×256 RGB images. You get noise. Sample a million. Still noise. The space of natural images—photographs, paintings, anything a human would recognize—occupies a measure-zero subset of pixel space.</p>
+<p>A striking way to see this: take two random points in pixel space and walk linearly between them. Every step is noise. Now take two real images and walk between them along the data manifold (as a generative model learns to do). The intermediate points look like images—blurry perhaps, but recognizably structured.</p>
+<div id="cell-fig-random-walk" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">np.random.seed(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6">fig, axes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4.5</span>))</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Top row: random walk in pixel space</span></span>
+<span id="cb1-9">start_random <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.rand(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb1-10">end_random <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.rand(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, alpha <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(np.linspace(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)):</span>
+<span id="cb1-13">    interp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> alpha) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> start_random <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> end_random</span>
+<span id="cb1-14">    axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, i].imshow(interp)</span>
+<span id="cb1-15">    axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, i].axis(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'off'</span>)</span>
+<span id="cb1-16">    axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, i].set_title(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'α=</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>alpha<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.1f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>, fontsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb1-17"></span>
+<span id="cb1-18">axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Random</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">interpolation'</span>, fontsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>, rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, ha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'right'</span>, va<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'center'</span>)</span>
+<span id="cb1-19"></span>
+<span id="cb1-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Bottom row: "manifold" interpolation (simulated with smooth structure)</span></span>
+<span id="cb1-21"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, alpha <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(np.linspace(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)):</span>
+<span id="cb1-22">    freq_blend <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> alpha</span>
+<span id="cb1-23">    x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>)</span>
+<span id="cb1-24">    y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>)</span>
+<span id="cb1-25">    X, Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.meshgrid(x, y)</span>
+<span id="cb1-26">    </span>
+<span id="cb1-27">    img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.zeros((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>))</span>
+<span id="cb1-28">    base <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.sin(freq_blend <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.cos(freq_blend <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> alpha)</span>
+<span id="cb1-29">    img[:,:,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> base <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.sin(X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb1-30">    img[:,:,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> base <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.cos(Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb1-31">    img[:,:,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> base <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.12</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.sin((X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> Y) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> alpha)</span>
+<span id="cb1-32">    img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.clip(img, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb1-33">    </span>
+<span id="cb1-34">    axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, i].imshow(img)</span>
+<span id="cb1-35">    axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, i].axis(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'off'</span>)</span>
+<span id="cb1-36"></span>
+<span id="cb1-37">axes[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Manifold</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">interpolation'</span>, fontsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>, rotation<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, ha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'right'</span>, va<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'center'</span>)</span>
+<span id="cb1-38"></span>
+<span id="cb1-39">plt.tight_layout()</span>
+<span id="cb1-40">plt.show()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-random-walk" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://kjablonka.com/blog/posts/manifold/geometry_blog_files/figure-html/fig-random-walk-output-1.png" width="1142" height="406" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Walking through image space. Top: linear interpolation between random points yields noise throughout. Bottom: interpolation along a learned manifold produces structured images at every step.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The same holds for text. Random token sequences are gibberish. Coherent sentences, paragraphs, arguments—these live on a thin subspace of token-sequence space, constrained by grammar, semantics, and the structure of ideas worth expressing.</p>
+<p>This resolves the arithmetic paradox. The impossibility proof assumes you need to cover the full input space. But the data we care about concentrates on a low-dimensional structure, and coverage of that structure is tractable.</p>
+</section>
+<section id="the-manifold-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="the-manifold-hypothesis">The Manifold Hypothesis</h2>
+<p>The standard formalization: data lies on or near a <img src="https://latex.codecogs.com/png.latex?d">-dimensional manifold <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BM%7D"> embedded in the ambient space <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BR%7D%5ED">, where <img src="https://latex.codecogs.com/png.latex?d%20%5Cll%20D">.</p>
+<p>Covering a <img src="https://latex.codecogs.com/png.latex?d">-dimensional manifold requires samples scaling as <img src="https://latex.codecogs.com/png.latex?%5Cepsilon%5E%7B-d%7D">, not <img src="https://latex.codecogs.com/png.latex?%5Cepsilon%5E%7B-D%7D">. If images live on a manifold of dimension 1,000 rather than filling a space of dimension 200,000, the sample complexity drops from astronomical to merely large.</p>
+<p><span class="citation" data-cites="pope2021intrinsic">Pope et al. (2021)</span> measured intrinsic dimensions of standard image datasets and found values in the hundreds to low thousands—far below ambient dimension, though not trivially small.</p>
+<div class="aside-box">
+<div class="aside-title">
+<p>A circularity to notice</p>
+</div>
+<p>The manifold hypothesis is typically invoked after observing that deep learning works. Rarely does anyone estimate the intrinsic dimension before training and verify it’s small enough for the available data. The hypothesis is plausible, but its use is often post-hoc rationalization.</p>
+</div>
+</section>
+<section id="the-geometry-of-piecewise-linear-functions" class="level2">
+<h2 class="anchored" data-anchor-id="the-geometry-of-piecewise-linear-functions">The Geometry of Piecewise Linear Functions</h2>
+<p>ReLU networks compute piecewise linear functions. Not approximately linear. Exactly linear, within each piece.</p>
+<p>The ReLU activation <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BReLU%7D(x)%20=%20%5Cmax(0,%20x)"> is piecewise linear with two pieces. Compositions of affine transformations and coordinate-wise ReLUs yield piecewise linear functions on convex polytopes. Within each polytope, the network computes <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20Wx%20+%20b"> for some <img src="https://latex.codecogs.com/png.latex?W"> and <img src="https://latex.codecogs.com/png.latex?b"> specific to that region.</p>
+<div id="cell-fig-relu-regions" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb2-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb2-3"></span>
+<span id="cb2-4">np.random.seed(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>)</span>
+<span id="cb2-5">n_units <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span></span>
+<span id="cb2-6"></span>
+<span id="cb2-7">w1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.randn(n_units, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb2-8">b1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.randn(n_units) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span></span>
+<span id="cb2-9">w2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.randn(n_units) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> np.sqrt(n_units)</span>
+<span id="cb2-10">b2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.random.randn() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> forward(x, y):</span>
+<span id="cb2-13">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.stack([x.flatten(), y.flatten()], axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb2-14">    hidden <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.maximum(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span> w1.T <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b1)</span>
+<span id="cb2-15">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> (hidden <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span> w2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b2).reshape(x.shape)</span>
+<span id="cb2-16"></span>
+<span id="cb2-17">g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span></span>
+<span id="cb2-18">xs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, g)</span>
+<span id="cb2-19">ys <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, g)</span>
+<span id="cb2-20">X, Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.meshgrid(xs, ys)</span>
+<span id="cb2-21">Z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> forward(X, Y)</span>
+<span id="cb2-22"></span>
+<span id="cb2-23">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>))</span>
+<span id="cb2-24">contour <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ax.contourf(X, Y, Z, levels<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'RdBu'</span>)</span>
+<span id="cb2-25">plt.colorbar(contour, ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>ax, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'f(x)'</span>)</span>
+<span id="cb2-26"></span>
+<span id="cb2-27"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(n_units):</span>
+<span id="cb2-28">    a, b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> w1[i]</span>
+<span id="cb2-29">    c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> b1[i]</span>
+<span id="cb2-30">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(b) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>:</span>
+<span id="cb2-31">        line_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.array([<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])</span>
+<span id="cb2-32">        line_y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>(a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> line_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> c) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> b</span>
+<span id="cb2-33">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(line_y) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>):</span>
+<span id="cb2-34">            ax.plot(line_x, np.clip(line_y, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k-'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb2-35">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(a) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>:</span>
+<span id="cb2-36">        xi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> a</span>
+<span id="cb2-37">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(xi) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>:</span>
+<span id="cb2-38">            ax.axvline(xi, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>)</span>
+<span id="cb2-39"></span>
+<span id="cb2-40">ax.set_xlim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb2-41">ax.set_ylim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb2-42">ax.set_xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'$x_1$'</span>)</span>
+<span id="cb2-43">ax.set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'$x_2$'</span>)</span>
+<span id="cb2-44">ax.set_aspect(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'equal'</span>)</span>
+<span id="cb2-45">plt.tight_layout()</span>
+<span id="cb2-46">plt.show()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-relu-regions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://kjablonka.com/blog/posts/manifold/geometry_blog_files/figure-html/fig-relu-regions-output-1.png" width="658" height="548" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: A ReLU network partitions the input space into convex polytopes. Within each region, the function is exactly affine.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>There’s a topological way to think about this. A neural network progressively transforms the input space, stretching and folding it until the data becomes linearly separable.<sup>2</sup> The network learns a coordinate system in which the problem is simple.</p>
+<p>The number of linear regions grows exponentially with depth. A network can have far more regions than training points. Most regions contain no data at all.</p>
+</section>
+<section id="what-training-determines" class="level2">
+<h2 class="anchored" data-anchor-id="what-training-determines">What Training Determines</h2>
+<p>Consider a single linear region containing <img src="https://latex.codecogs.com/png.latex?n"> training points in <img src="https://latex.codecogs.com/png.latex?D">-dimensional space. The network computes <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20Wx%20+%20b"> throughout this region. Training enforces:</p>
+<p><img src="https://latex.codecogs.com/png.latex?Wx%5E%7B(i)%7D%20+%20b%20=%20y%5E%7B(i)%7D%20%5Cquad%20%5Ctext%7Bfor%20%7D%20i%20=%201,%20%5Cldots,%20n"></p>
+<p>These are <img src="https://latex.codecogs.com/png.latex?n"> constraints on a gradient <img src="https://latex.codecogs.com/png.latex?W"> with <img src="https://latex.codecogs.com/png.latex?D"> components. When <img src="https://latex.codecogs.com/png.latex?n%20%3C%20D">—the typical case in high dimensions—infinitely many gradients satisfy the constraints.</p>
+<p>The training points span at most an <img src="https://latex.codecogs.com/png.latex?(n-1)">-dimensional subspace. Along directions in this subspace, the gradient is pinned down. Along orthogonal directions, it’s arbitrary.</p>
+<p>This connects to a classical result in learning theory. The representer theorem says that in kernel methods, the optimal solution can be written as a linear combination of kernel evaluations at the training points—only the training data matters, and only along the directions it spans. The geometry here is analogous: training constrains the function along directions spanned by the data and nowhere else.</p>
+<p>If training data lies on a low-dimensional manifold, the constrained directions align with the manifold’s tangent space. Normal directions—perpendicular to the manifold—remain free. Training pins down the function on the manifold but leaves it underdetermined elsewhere.</p>
+<div class="key-point">
+<p>Training determines the function along directions spanned by the data. Orthogonal directions are unconstrained. The function off the data manifold is not learned—it’s an artifact of whatever the optimization happened to find/the initalization <span class="citation" data-cites="he2023side">(He, Tsai, and Ward 2023)</span>.</p>
+</div>
+</section>
+<section id="pretraining-as-learning-the-manifold" class="level2">
+<h2 class="anchored" data-anchor-id="pretraining-as-learning-the-manifold">Pretraining as Learning the Manifold</h2>
+<p>Large-scale pretraining can be understood as learning the data manifold itself. When a language model predicts the next token on a massive text corpus, it learns the structure of “valid text space”—which sequences are probable, which transitions are natural, what the local geometry of text looks like.</p>
+<p>This perspective is supported by work showing that deep networks learn representations capturing manifold structure <span class="citation" data-cites="bengio2013representation">(Bengio, Courville, and Vincent 2013)</span>. The hidden layers build a coordinate system aligned with the data manifold, making downstream tasks easier by providing a representation where relevant variation is explicit.</p>
+<p>This explains why pretraining helps so much. A randomly initialized network must simultaneously learn manifold structure and the task-specific function. A pretrained network already knows the manifold; fine-tuning only needs to learn the function on it.</p>
+<div class="aside-box">
+<div class="aside-title">
+<p>The role of scale</p>
+</div>
+<p>Larger models and more data allow learning finer manifold details. This may partly explain “emergent abilities” in large language models—capabilities appearing suddenly at scale. The model may need enough capacity and data to capture relevant structure before certain tasks become possible.</p>
+</div>
+</section>
+<section id="why-the-underdetermined-directions-dont-usually-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-underdetermined-directions-dont-usually-matter">Why the Underdetermined Directions Don’t (Usually) Matter</h2>
+<p>Three factors make underdetermination benign in practice.</p>
+<p><strong>The data manifold is where queries live.</strong> If test data comes from the same distribution as training, test points lie on or near the same manifold. The underdetermined normal directions are never queried.</p>
+<p><strong>Neural networks prefer simple functions.</strong> Not all functions consistent with training data are equally likely to emerge. Networks exhibit a bias toward low-complexity functions, formalizable via Kolmogorov complexity <span class="citation" data-cites="valle2019deep goldblum2023free">(Valle-Perez, Camargo, and Louis 2019; Goldblum et al. 2023)</span>. The functions networks actually learn tend to be simple.</p>
+<p><strong>Real data is generated by simple processes.</strong> Biological structures reflect evolutionary compression. Human artifacts encode low-dimensional intentions. The data we care about is often output of structured processes.</p>
+<p>The match between neural networks’ simplicity bias and the simplicity of real-world data may be the deeper reason deep learning works. The manifold hypothesis is a geometric consequence of this match, not the fundamental explanation.</p>
+</section>
+<section id="an-unexpected-success-language-models-for-chemistry" class="level2">
+<h2 class="anchored" data-anchor-id="an-unexpected-success-language-models-for-chemistry">An Unexpected Success: Language Models for Chemistry</h2>
+<p>In <span class="citation" data-cites="jablonka2024leveraging">Jablonka et al. (2024)</span>, we fine-tuned large language models to predict chemical properties: bandgaps, photoswitching wavelengths, toxicity. Language models are trained on text, not molecules. The transfer seems absurd.</p>
+<p>Yet it works. Fine-tuned LLMs achieve competitive performance, sometimes matching purpose-built molecular models.</p>
+<p>The geometric interpretation: LLMs have learned inductive biases—preferences for compositional, hierarchical, smoothly-varying functions—that transfer across domains. Chemistry and language are (sometimes?) both structured.</p>
+<div class="aside-box">
+<div class="aside-title">
+<p>Structure in chemistry</p>
+</div>
+<p>In biology, evolution provides a strong prior. Existing structures have been selected for function, so <a href="https://medium.com/@jkbjablonka/the-road-to-biology-2-0-will-pass-through-black-box-data-bbd00fabf959">structure correlates with function</a> in ways that learning can exploit. Chemistry lacks this selection pressure. The space of possible molecules wasn’t shaped by any optimization process—we’re exploring territory with no guarantee of low-dimensional structure. This may make chemical property prediction fundamentally harder than biological function prediction.</p>
+</div>
+</section>
+<section id="when-deep-learning-fails" class="level2">
+<h2 class="anchored" data-anchor-id="when-deep-learning-fails">When Deep Learning Fails</h2>
+<p>The geometric picture predicts specific failure modes, all involving queries that leave the training manifold.</p>
+<p><strong>Distribution shift.</strong> <span class="citation" data-cites="zech2018variable">Zech et al. (2018)</span> analyzed a deep learning model for detecting pneumonia in chest X-rays. The model achieved high accuracy—but partly by detecting which hospital the X-ray came from, using equipment artifacts like metal tokens. At a new hospital with different equipment, performance collapsed. The test manifold diverged from training.</p>
+<div id="cell-fig-shift" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb3-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb3-3"></span>
+<span id="cb3-4">train_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span>)</span>
+<span id="cb3-5">train_y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.sin(train_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span></span>
+<span id="cb3-6">test_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>)</span>
+<span id="cb3-7">test_y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.sin(test_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span></span>
+<span id="cb3-8"></span>
+<span id="cb3-9">model_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.linspace(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>)</span>
+<span id="cb3-10">slope <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (train_y[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> train_y[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (train_x[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> train_x[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>])</span>
+<span id="cb3-11">model_y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.where(model_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, np.sin(model_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, train_y[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (model_x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> slope)</span>
+<span id="cb3-12"></span>
+<span id="cb3-13">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb3-14">ax.axvspan(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, alpha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'red'</span>)</span>
+<span id="cb3-15">ax.plot(model_x, model_y, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'k-'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Model'</span>)</span>
+<span id="cb3-16">ax.scatter(train_x, train_y, c<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'#3b82f6'</span>, s<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Training'</span>, zorder<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb3-17">ax.scatter(test_x, test_y, c<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'#dc2626'</span>, s<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, marker<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Test (shifted)'</span>, zorder<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb3-18">ax.axvline(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gray'</span>, linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">':'</span>, linewidth<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb3-19">ax.set_xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>)</span>
+<span id="cb3-20">ax.set_ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'f(x)'</span>)</span>
+<span id="cb3-21">ax.set_xlim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb3-22">ax.set_ylim(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>)</span>
+<span id="cb3-23">ax.legend(loc<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'upper right'</span>)</span>
+<span id="cb3-24">plt.tight_layout()</span>
+<span id="cb3-25">plt.show()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-shift" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://kjablonka.com/blog/posts/manifold/geometry_blog_files/figure-html/fig-shift-output-1.png" width="758" height="374" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Distribution shift: the model extrapolates linearly into regions without training data.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Adversarial examples.</strong> Small perturbations orthogonal to the data manifold move inputs into regions where the function is underdetermined. The output changes dramatically because the gradient in that direction was never constrained.</p>
+<p><strong>Extrapolation.</strong> ReLU networks extend linearly beyond the convex hull of training data. If the true function curves, the linear extrapolation diverges.</p>
+<p><strong>High intrinsic dimension.</strong> If data doesn’t concentrate on a low-dimensional manifold, most directions are unconstrained and generalization fails.</p>
+</section>
+<section id="the-problem-of-missing-negative-examples" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-of-missing-negative-examples">The Problem of Missing Negative Examples</h2>
+<p>A subtler failure mode matters enormously in practice: the model can only learn the manifold from data it sees.</p>
+<p>Consider predicting which chemical reactions succeed. Published literature overwhelmingly reports reactions that worked. Failed reactions—attempts producing no product, conditions causing decomposition—are rarely published. The model sees only one side of the decision boundary.</p>
+<p>This creates a systematic blind spot. The model learns what successful reactions look like but has no information about the landscape of failures. It can’t distinguish “this will work” from “this is unlike anything I’ve seen.” Both map to the same uncertainty—off the manifold of observed successes.</p>
+<p>To learn a manifold’s boundary, you need to see both sides. Without negative examples, the learned manifold may be far too permissive.</p>
+<div class="aside-box">
+<div class="aside-title">
+<p>Verification versus generation</p>
+</div>
+<p>This asymmetry suggests a strategy: verifying whether something is on the manifold is often easier than generating valid points. A verifier trained on both positive and negative examples can check a generator’s outputs. This is the logic behind RLVR: creating systems that identify good outputs from bad is easier than creating systems that generate good outputs directly.<sup>3</sup></p>
+</div>
+</section>
+<section id="the-limits-of-the-framework" class="level2">
+<h2 class="anchored" data-anchor-id="the-limits-of-the-framework">The Limits of the Framework</h2>
+<p>The “real data is simple” argument works for perception, language, games—domains with abundant data from stable distributions. Scientific discovery is different. It seeks patterns in domains where structure is unknown (or questioning the structure is the point).</p>
+<p>The domains where machine learning would be most valuable—genuine discovery, not pattern-matching on known distributions—are exactly where the assumptions might not hold.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The counting argument was correct: learning an arbitrary function in <img src="https://latex.codecogs.com/png.latex?10%5E%7B40,000%7D"> dimensions is impossible with <img src="https://latex.codecogs.com/png.latex?10%5E%7B14%7D"> samples. But the functions we care about aren’t arbitrary. They’re generated by structured processes—physics, biology, human intention—that produce structured outputs.</p>
+<p>Neural networks work because they share this preference for structure. They’re biased toward simple, compositional functions, and real data happens to be simple and compositional. The manifold hypothesis is a symptom of this alignment, not the cause.</p>
+<p>Understanding the geometry clarifies both successes and failures. Successes come from fitting smooth functions to structured data on low-dimensional manifolds. Failures come from queries leaving the manifold, shifting distributions, or domains where structure assumptions don’t hold.</p>
+<p>For perception and pattern-matching, the framework suggests continued progress. For scientific discovery—finding patterns where structure is unknown—it counsels caution. The assumptions making deep learning work are precisely those we can’t verify in genuinely novel domains.</p>
+<hr>
+<p><em>This post draws on work by Andrew Gordon Wilson on inductive bias and Bayesian deep learning, Ben Recht on what machine learning can and cannot do, and Mikhail Belkin on interpolation and generalization. The geometric intuitions build on <a href="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/">Chris Olah’s writing on topology</a> and <a href="https://12gramsofcarbon.com/p/deep-learning-is-applied-topology">Riley Goodside’s essays</a>. Errors are my own.</em></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-bengio2013representation" class="csl-entry">
+Bengio, Yoshua, Aaron Courville, and Pascal Vincent. 2013. <span>“Representation Learning: A Review and New Perspectives.”</span> <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em> 35 (8): 1798–828.
+</div>
+<div id="ref-goldblum2023free" class="csl-entry">
+Goldblum, Micah, Marc Finzi, Keefer Rowan, and Andrew Gordon Wilson. 2023. <span>“The No Free Lunch Theorem, Kolmogorov Complexity, and the Role of Inductive Biases in Machine Learning.”</span> <em>arXiv Preprint arXiv: 2304.05366</em>.
+</div>
+<div id="ref-he2023side" class="csl-entry">
+He, Juncai, Richard Tsai, and Rachel Ward. 2023. <span>“Side Effects of Learning from Low-Dimensional Data Embedded in a Euclidean Space.”</span> <em>Research in the Mathematical Sciences</em> 10 (1): 13.
+</div>
+<div id="ref-jablonka2024leveraging" class="csl-entry">
+Jablonka, Kevin Maik, Philippe Schwaller, Andres Ortega-Guerrero, and Berend Smit. 2024. <span>“Leveraging Large Language Models for Predictive Chemistry.”</span> <em>Nature Machine Intelligence</em> 6: 161–69.
+</div>
+<div id="ref-pope2021intrinsic" class="csl-entry">
+Pope, Phillip, Chen Zhu, Ahmed Abdelkader, Micah Goldblum, and Tom Goldstein. 2021. <span>“The Intrinsic Dimension of Images and Its Impact on Learning.”</span> <em>arXiv Preprint arXiv:2104.08894</em>.
+</div>
+<div id="ref-valle2019deep" class="csl-entry">
+Valle-Perez, Guillermo, Chico Q Camargo, and Ard A Louis. 2019. <span>“Deep Learning Generalizes Because the Parameter-Function Map Is Biased Towards Simple Functions.”</span> <em>arXiv Preprint arXiv:1805.08522</em>.
+</div>
+<div id="ref-zech2018variable" class="csl-entry">
+Zech, John R, Marcus A Badgeley, Manway Liu, Anthony B Costa, Joseph J Titano, and Eric Karl Oermann. 2018. <span>“Variable Generalization Performance of a Deep Learning Model to Detect Pneumonia in Chest Radiographs: A Cross-Sectional Study.”</span> <em>PLoS Medicine</em> 15 (11): e1002683.
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This example is from Andrew Gordon Wilson’s <a href="https://www.youtube.com/watch?v=lhwk4ESlyMA">talk on the foundations of deep learning</a>.↩︎</p></li>
+<li id="fn2"><p>For visualizations of this perspective, see <a href="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/">Chris Olah’s post on neural networks and topology</a>.↩︎</p></li>
+<li id="fn3"><p>As <a href="https://12gramsofcarbon.com/p/deep-learning-is-applied-topology">noted by Riley Goodside</a>: “Creating systems that can identify good reasoning from bad is a much easier task than creating systems that can reason well to begin with.”↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>ml</category>
+  <category>deeplearning</category>
+  <guid>https://kjablonka.com/blog/posts/manifold/geometry_blog.html</guid>
+  <pubDate>Sun, 28 Dec 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/manifold" medium="image"/>
+</item>
 <item>
   <title>Why I Start Things Uncomfortably Early</title>
   <link>https://kjablonka.com/blog/posts/write_early/</link>
@@ -513,7 +1586,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="df83d7ea" class="cell" data-execution_count="2">
+<div id="270c70fa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -593,7 +1666,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="00ff72b1" class="cell" data-execution_count="3">
+<div id="18933747" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -646,7 +1719,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="5767bafd" class="cell" data-execution_count="4">
+<div id="d8038beb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -857,7 +1930,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="0267b916" class="cell" data-execution_count="6">
+<div id="2d1463a7" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -1159,7 +2232,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="a2040e22" class="cell" data-execution_count="8">
+<div id="4b942826" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1272,7 +2345,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="4f453139" class="cell" data-execution_count="9">
+<div id="7c3e93f7" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1472,7 +2545,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="0cc6811d" class="cell" data-execution_count="10">
+<div id="489162e4" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -9402,63 +10475,6 @@ None
   <guid>https://kjablonka.com/blog/posts/building_an_llm_agent/</guid>
   <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/building_an_llm_agent" medium="image"/>
-</item>
-<item>
-  <title>The ‘researcher’s stuff’</title>
-  <link>https://kjablonka.com/blog/posts/researchers_stuff/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In the hope of trying to better understand the thing I pretend to do for a living, I have been reading <a href="https://en.wikipedia.org/wiki/Isabelle_Stengers">Isabelle Stenger</a>’s <a href="https://www.wiley.com/en-gb/Another+Science+is+Possible:+A+Manifesto+for+Slow+Science+-p-9781509521814">“Another Science is Possible: A Manifesto for Slow Science”</a>. My goal is to better understand why I feel that <a href="https://www.theatlantic.com/science/archive/2018/11/diminishing-returns-science/575665/">science is seemingly less efficient</a> and why academia is a, perhaps, an increasingly “special” place to work in.</p>
-<p>Early in the book, she compares the “right stuff” NASA test pilots needed to have with what she calls the “researcher’s stuff”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://kjablonka.com/blog/posts/researchers_stuff/dalle_right_stuff.png" class="img-fluid figure-img"></p>
-<figcaption>DALL E’s illustration of the “right stuff” and “researcher’s stuff”</figcaption>
-</figure>
-</div>
-<p><a href="https://en.wikipedia.org/wiki/The_Right_Stuff_(book)">In Tom Wolfe’s book the “right stuff”</a> was the “stuff” the NASA pilots who survived had — and those who died didn’t have</p>
-<blockquote class="blockquote">
-<p>In this fraternity, even though it was military, men were not rated by their outward rank as ensigns, lieutenants, commanders, or whatever. No, herein the world was divided into those who had it and those who did not. This quality, this it, was never named, however, nor was it talked about in any way.</p>
-</blockquote>
-<p>Stenger rephrases this as</p>
-<blockquote class="blockquote">
-<p>It is precisely this unacceptable degree of dependency that the expression hides: whatever flying coffin they were given to test, those who were killed didn’t have the right stuff.</p>
-</blockquote>
-<p>and links this to working conditions in academia</p>
-<blockquote class="blockquote">
-<p>Far from being treated as a primary resource that is now under threat, young researchers of either gender, doctoral students or postdocs, have to accept the realities of onerous working conditions and fierce competition. They are supposed to grin and bear it: the great adventure of human curiosity presented to them as children is replaced by the theme of a vocation that demands body-and-soul commitment. And this is what we accuse today’s young people of no longer accepting: compliance with the sacrifices that service to science demands.</p>
-</blockquote>
-<p>While there <a href="https://milan.cvitkovic.net/writing/market_failures_in_science/">is</a> <a href="https://x.com/ashleyruba_phd/status/1720105966165762269?s=20">a</a> <a href="https://rowanzellers.com/blog/rowan-job-search2/">lot</a> <a href="https://forbetterscience.com/2020/09/06/new-jacs-eic-erick-carreira-correct-your-work-ethic-immediately/">to</a> <a href="https://www.republik.ch/2021/04/15/eidgenoessische-toxische-hochschule">say</a> <a href="https://www.nature.com/articles/s41562-021-01178-6">about</a> (<a href="https://www.nature.com/articles/d41586-021-03567-3">working</a>) <a href="https://www.theatlantic.com/business/archive/2010/05/why-does-academia-treat-its-workforce-so-badly/56829/">conditions</a> <a href="https://www.theatlantic.com/science/archive/2016/11/why-would-a-poor-kid-want-to-work-in-academia/622698/">in</a> <a href="https://www.theatlantic.com/education/archive/2019/04/adjunct-professors-higher-education-thea-hunter/586168/">academia</a> and how the system in many parts failed to evolve, the link to “over objectivization”, which is perhaps very natural to many scientists, was more interesting to me. In an attempt to increase transparency and objectivity, “objective metrics” are being used to quantify how much “researcher stuff” a researcher has. However, those metrics do, of course, not work for every type of science (Stenger’s attempts to show that they stem from what she calls “fast sciences”). More importantly, however, we know from works such as the one from <a href="https://link.springer.com/book/10.1007/978-3-319-15524-1">Kenneth Stanley and Joel Lehman that “greatness cannot be planned”</a> as paths to great discoveries ofteen go via “stepping stones” we cannot anticipate and which optimization of “naiive” metrics would us not lead to.</p>
-<p>There is <a href="https://wiki.santafe.edu/images/3/34/Stanley_innovation_workshop14.pdf">empirical research that some things can be found more easily when not looking for it</a>. This could, for example, be seen in the PicBreeder experiment where participants were asked to “breed” images. <img src="https://kjablonka.com/blog/posts/researchers_stuff/picbreeder.jpeg" class="img-fluid" alt="Stepping stones found in the picbreeder experiments."></p>
-<p><a href="https://www.lesswrong.com/posts/wd7qxFBF2swRscBiS/academia-as-company-hierarchy">From this point of view, viewing academia via the lense of the comic Company Hierarchy by Hugh MacLeod makes some sense.</a> In many layers of academia we have the tendency to optimize for metrics (h index, citations, …) which is in this perspective the definition of the “clueless”. [Stenger also has an interesting tangent how this might be tight to current science education. In a Kuhnian perspective of paradigms and “normal science”, we are not really taught to question different ways of thinking, but rather focus in methodological details. Questioning different schools of thinking is perhaps more natural to the social sciences.]{:.aside}</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://39669.cdn.cke-cs.com/rQvD3VnunXZu34m86e5f/images/18d38a134d5c8109364d169f34a464d4d8b7ca91aaf600de.jpg/w_400.png" class="img-fluid figure-img"></p>
-<figcaption>Hugh MacLeod’s Company Hierarchy.</figcaption>
-</figure>
-</div>
-<blockquote class="blockquote">
-<p>The Clueless cannot process anything that is not finite, countable and external. They can only process the legible.” Certainly this describes the behavior of faculty, literally counting lines on their CV, grubbing for citations, breathlessly calculating their h-index.</p>
-</blockquote>
-<p>To help science, Stenger argues that scientists should start caring more about the broader relevance of their work and not forget, what relevance means in the end: Not bibliometric metrics but rather evaluation by the community</p>
-<blockquote class="blockquote">
-<p>“if a scientific claim can be trusted as reliable, it is not because scientists are objective, but because the claim has been exposed to the demanding objections of competent colleagues concerned about its reliability”</p>
-</blockquote>
-<p>Latter might sometimes correlate with bibliometric metrics but will not always do so. Simply because we rely on many different things (software, databases, …) that are created on <a href="https://www.nature.com/articles/495300a">very different timescales</a>.</p>
-<p>To me, Stenger really urges us to step out of the “ivory tower” and “appreciate the originality or the relevance of an idea but also pay attention to questions or possibilities that were not taken into account in its production, but that might become important in other circumstances”. This is also very important when we think about all the ways technologies can be misused. Stepping out of the ivory tower and taking society serious, however, probably also has to prompt us to rethink working conditions in academia.</p>
-<p>In any case, I am very happy to see that <a href="https://www.convergentresearch.org/">new forms of doing science</a> <a href="https://arcinstitute.org/">are</a> <a href="https://arenabio.works/">being</a> explored, <a href="https://www.sam-rodriques.com/blog">because academia certainly is not the only and best way to do science</a>.</p>
-
-
-
- ]]></description>
-  <category>academia</category>
-  <category>metascience</category>
-  <guid>https://kjablonka.com/blog/posts/researchers_stuff/</guid>
-  <pubDate>Sat, 23 Mar 2024 23:00:00 GMT</pubDate>
-  <media:content url="https://kjablonka.com/blog/posts/researchers_stuff" medium="image"/>
 </item>
 </channel>
 </rss>

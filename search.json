@@ -613,7 +613,14 @@
     "href": "index.html",
     "title": "Kevin's Homepage",
     "section": "",
-    "text": "I lead a research group (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin. I’m using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science – to design materials that work in the real world."
+    "text": "I lead a research group. I’m using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science – to design materials that work in the real world."
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Kevin's Homepage",
+    "section": "Contact",
+    "text": "Contact\nemail | LinkedIn | Bluesky | Google Scholar | Bio & Photos | Feedback"
   },
   {
     "objectID": "index.html#errors-and-corrections",
@@ -627,14 +634,7 @@
     "href": "index.html#consulting",
     "title": "Kevin's Homepage",
     "section": "Consulting",
-    "text": "Consulting\nI provide pro-bono consultations (2 hours/month) for non-profits and organizations working for the public good who think they can benefit from my experience in ML, chemistry, and data management.\nI’m also open to discussing consulting and advice for for-profit organizations for a fee.\nContact me via email for either."
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "Kevin's Homepage",
-    "section": "Contact",
-    "text": "Contact\nemail | LinkedIn | Bluesky | Google Scholar | Bio & Photos | Feedback"
+    "text": "Consulting\nI provide pro-bono consultations (2 hours/month) for non-profits and organizations working for the public good who think they can benefit from my experience in ML, chemistry, and data management.\nFor students interested in mentoring, there is a program my lab is starting at lamalab.org/mentoring - please reach out via that one.\nI’m also open to discussing consulting and advice for for-profit organizations for a fee.\nContact me via email for either."
   },
   {
     "objectID": "index.html#notes",

@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/deep_learning_mechanisms_lecture/index.html",
       "/blog/posts/manifold/geometry_blog.html",
       "/blog/posts/write_early/index.html",
       "/blog/posts/on_impactful_research/index.html",
@@ -28,7 +29,6 @@
       "/blog/posts/building_an_llm_agent/index.html",
       "/blog/posts/researchers_stuff/index.html",
       "/blog/posts/bad_language/index.html",
-      "/blog/posts/deep_learning_mechanisms_lecture/index.html",
       "/blog/posts/mil/index.html",
       "/blog/posts/backprop/index.html"
     ]

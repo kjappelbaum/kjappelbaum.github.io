@@ -17,7 +17,6 @@
       "/blog/posts/reviewing/index.html",
       "/blog/posts/materials_intelligence/index.html",
       "/blog/posts/harder/index.html",
-      "/blog/posts/deep_learning_mechanisms_lecture/index.html",
       "/blog/posts/ai_thinking/index.html",
       "/blog/posts/data_shape/index.html",
       "/blog/posts/a_wise_owl/index.html",
@@ -29,6 +28,7 @@
       "/blog/posts/building_an_llm_agent/index.html",
       "/blog/posts/researchers_stuff/index.html",
       "/blog/posts/bad_language/index.html",
+      "/blog/posts/deep_learning_mechanisms_lecture/index.html",
       "/blog/posts/mil/index.html",
       "/blog/posts/backprop/index.html"
     ]

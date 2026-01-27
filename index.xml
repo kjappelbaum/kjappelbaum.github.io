@@ -1586,7 +1586,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="fb90e681" class="cell" data-execution_count="2">
+<div id="29cbc85d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1666,7 +1666,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="1a656653" class="cell" data-execution_count="3">
+<div id="ee59008d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -1719,7 +1719,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="68a2404b" class="cell" data-execution_count="4">
+<div id="9f8df948" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1930,7 +1930,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="d73c19dd" class="cell" data-execution_count="6">
+<div id="3a13f313" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -2232,7 +2232,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="176c3c6b" class="cell" data-execution_count="8">
+<div id="df691e5f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2345,7 +2345,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="bbadedfe" class="cell" data-execution_count="9">
+<div id="a43adc1e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2545,7 +2545,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="7b0795d8" class="cell" data-execution_count="10">
+<div id="696c858d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2842,28 +2842,6 @@ Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned:
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/harder/</guid>
   <pubDate>Sat, 01 Feb 2025 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Deep Networks as Elastic Origami</title>
-  <link>https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>My first recorded lecture (20 min) covers the manifold hypothesis and how we can view deep networks as elastic origami.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/JPH0qrRefBo" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>The lecture explores how deep networks fold and transform data through high-dimensional space, much like origami shapes paper into new forms.</p>
-
-
-
- ]]></description>
-  <category>teaching</category>
-  <category>deep learning</category>
-  <category>manifolds</category>
-  <guid>https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture/</guid>
-  <pubDate>Sun, 26 Jan 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture" medium="image"/>
 </item>
 <item>
   <title>Dear Claude: Are We Getting Too Close?</title>
@@ -8482,6 +8460,2021 @@ font-style: inherit;">'</span>)</span></code></pre></div></div>
   <guid>https://kjablonka.com/blog/posts/building_an_llm/</guid>
   <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/building_an_llm" medium="image"/>
+</item>
+<item>
+  <title>Building an LLM agent from scratch</title>
+  <link>https://kjablonka.com/blog/posts/building_an_llm_agent/</link>
+  <description><![CDATA[ 
+
+
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> litellm</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> litellm <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> completion</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> litellm.caching <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Cache</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> rdkit <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Chem</span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> rdkit.Chem <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> rdMolDescriptors</span>
+<span id="cb1-7">litellm.cache <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Cache()</span>
+<span id="cb1-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dotenv <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> load_dotenv</span>
+<span id="cb1-9">_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> load_dotenv()</span></code></pre></div></div>
+</div>
+<p>LLM-powered agents have caught a lot of an attention. They are interesting, because they allow us to couple the flexibility of LLMs with the power of robust tools or knowledge bases.</p>
+<p>In the chemical sciences, this approach has been popularized by <a href="https://arxiv.org/abs/2304.05376">ChemCrow</a> and <a href="https://www.nature.com/articles/s41586-023-06792-0">Coscientist</a>. In those systems, the LLMs had access to tools such as reaction planner and a cloud laboratory and, in this way, could plan and perform experiments autonomously.</p>
+<p>While it might seem that these systems are very complex, they are are surprisingly simple. Unfortunately, this simplicity is sometimes <a href="https://hamel.dev/blog/posts/prompt/">hidden below layers of abstractions in libraries and frameworks</a>.</p>
+<p>In this post, we will implement a simple agent from scratch.</p>
+<p>Our goal is to answer simple questions about molecules (such as the number of hydrogen bond donors) reliably.</p>
+<p>If we simply prompt an LLM to answer the question about hydrogen bond donors, it might give us something like the completion shown below.</p>
+<div id="cell-7" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">molecule  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"[C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)"</span></span></code></pre></div></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">message <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(</span>
+<span id="cb3-2">    model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo'</span>, </span>
+<span id="cb3-3">    messages <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb3-4">        {</span>
+<span id="cb3-5">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>,</span>
+<span id="cb3-6">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>molecule<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">?"</span></span>
+<span id="cb3-7">        }</span>
+<span id="cb3-8">    ]</span>
+<span id="cb3-9">).choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb3-10"></span>
+<span id="cb3-11"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(message)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In the given molecule, there are three hydrogen bond donors. The three hydrogen atoms attached to the hydroxyl groups (-OH) are the hydrogen bond donors.</code></pre>
+</div>
+</div>
+<p>If we look at the molecule …</p>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Chem.MolFromSmiles(molecule)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<figure class="figure">
+<p><img src="https://kjablonka.com/blog/posts/building_an_llm_agent/index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>… or compute the number of hydrogen bond donors in the molecule using RDKit …</p>
+<div id="cell-12" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">rdMolDescriptors.CalcNumHBD(Chem.MolFromSmiles(molecule))</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>… we find that the model perhaps is not able to answer such questions. This is also reflected in our recent <a href="https://arxiv.org/abs/2404.01475">ChemBench paper</a>.</p>
+<p>The <a href="https://arxiv.org/abs/2304.05376">ChemCrow paper</a> echoes the same sentiment and shows that it can be (partially) fixed by giving the LLM access to tools such as <code>rdkit</code>.</p>
+<section id="mrkl-and-react" class="level2">
+<h2 class="anchored" data-anchor-id="mrkl-and-react">MRKL and ReAct</h2>
+<p>One of the most common ways of building LLM powered agents is using the <a href="https://arxiv.org/pdf/2205.00445">MRKL</a> architecture implemented using the <a href="https://arxiv.org/pdf/2210.03629">ReAct</a> framework.</p>
+<p>MRKL describes in a very general way systems that augment LLMs with external knowledge sources and symbolic reasoning. ReAct is a specific prompt that implements MRKL by:</p>
+<ul>
+<li>Prompting the model to think</li>
+<li>Prompting the model to act</li>
+<li>Prompting the model to observe</li>
+</ul>
+<p>The following figure from <a href="https://haystack.deepset.ai/blog/introducing-haystack-agents">Haystack</a> nicely illustrates the ReAct loop:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://haystack.deepset.ai/blog/introducing-haystack-agents/agents.png" class="img-fluid figure-img"></p>
+<figcaption>Figure taken from HayStack (by deepset) illustrating the ReaAct loop.</figcaption>
+</figure>
+</div>
+<p>This is inspired by chain-of-thought prompting, which has been shown to be effective in improving the performance of LLMs on a variety of tasks.</p>
+</section>
+<section id="using-the-react-prompt" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-react-prompt">Using the ReAct prompt</h2>
+<p>By reading the ReAct paper (or digging <a href="https://smith.langchain.com/hub/hwchase17/react">very deep into Langchain’s codebase</a>), we find that the following text is at the heart of the ReAct framework.</p>
+<div id="cell-19" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">REACT_PROMPT<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""Answer the following questions as best you can. You have access to the following tools:</span></span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{tools}</span></span>
+<span id="cb8-4"></span>
+<span id="cb8-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Use the following format:</span></span>
+<span id="cb8-6"></span>
+<span id="cb8-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Question: the input question you must answer</span></span>
+<span id="cb8-8"></span>
+<span id="cb8-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Thought: you should always think about what to do</span></span>
+<span id="cb8-10"></span>
+<span id="cb8-11"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Action: the action to take, should be one of [</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{tool_names}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">]</span></span>
+<span id="cb8-12"></span>
+<span id="cb8-13"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Action Input: the input to the action</span></span>
+<span id="cb8-14"></span>
+<span id="cb8-15"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Observation: the result of the action</span></span>
+<span id="cb8-16"></span>
+<span id="cb8-17"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">... (this Thought/Action/Action Input/Observation can repeat N times)</span></span>
+<span id="cb8-18"></span>
+<span id="cb8-19"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Thought: I now know the final answer</span></span>
+<span id="cb8-20"></span>
+<span id="cb8-21"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Final Answer: the final answer to the original input question</span></span>
+<span id="cb8-22"></span>
+<span id="cb8-23"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Begin!</span></span>
+<span id="cb8-24"></span>
+<span id="cb8-25"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Question: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{input}</span></span>
+<span id="cb8-26"></span>
+<span id="cb8-27"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Thought:</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{agent_scratchpad}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span></code></pre></div></div>
+</div>
+<p>The <code>tools</code> field will contain descriptions of the tools the agent has access to. The <code>tool_names</code> field will contain the names of the tools the agent has access to. The <code>input</code> field will contain the input question. The <code>agent_scratchpad</code> field will contain the scratchpad of the agent.</p>
+<p>What we might now be tempted to do is to just send this prompt with a question to OpenAI…</p>
+<p>For this, we, of course, will first need to define the tools we will give the model access to. To facilitate this, we will define a tool as a Python object that knows something about how the tool should be called and described</p>
+<div id="cell-23" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> Tool:</span>
+<span id="cb9-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, name, description, method):</span>
+<span id="cb9-3">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.name <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> name</span>
+<span id="cb9-4">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.description <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> description</span>
+<span id="cb9-5">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.method <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> method</span>
+<span id="cb9-6">    </span>
+<span id="cb9-7">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__str__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>):</span>
+<span id="cb9-8">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.name</span>
+<span id="cb9-9">    </span>
+<span id="cb9-10">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>):</span>
+<span id="cb9-11">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.method(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>)</span></code></pre></div></div>
+</div>
+<p>For example, the following code defines a tool that can calculate the number of hydrogen bond donors in a molecule:</p>
+<div id="cell-25" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> HydrogenBondDonorTool(Tool):</span>
+<span id="cb10-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>):</span>
+<span id="cb10-3">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">super</span>().<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'num_hydrogenbond_donors'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Calculates the number of hydrogen bond donors in a molecule based on a SMILES'</span>, rdMolDescriptors.CalcNumHBD)</span>
+<span id="cb10-4">    </span>
+<span id="cb10-5">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>):</span>
+<span id="cb10-6">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.method(Chem.MolFromSmiles(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>))</span></code></pre></div></div>
+</div>
+<p>If we instantiate the tool and run it, we get the number of hydrogen bond donors in the molecule.</p>
+<div id="cell-27" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">hydrogenbonddonor_tool <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> HydrogenBondDonorTool()</span></code></pre></div></div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">hydrogenbonddonor_tool.run(molecule)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>With the tool in hand, we can now generate the ReAct prompt:</p>
+<div id="cell-30" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> REACT_PROMPT.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span>(</span>
+<span id="cb14-2">    tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"- </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>name<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>hydrogenbonddonor_tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>description<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>,</span>
+<span id="cb14-3">    tool_names <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> hydrogenbonddonor_tool.name,</span>
+<span id="cb14-4">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>molecule<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">?"</span>,</span>
+<span id="cb14-5">    agent_scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb14-6">)</span></code></pre></div></div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(prompt)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Answer the following questions as best you can. You have access to the following tools:
+
+- num_hydrogenbond_donors: Calculates the number of hydrogen bond donors in a molecule based on a SMILES
+
+Use the following format:
+
+Question: the input question you must answer
+
+Thought: you should always think about what to do
+
+Action: the action to take, should be one of [num_hydrogenbond_donors]
+
+Action Input: the input to the action
+
+Observation: the result of the action
+
+... (this Thought/Action/Action Input/Observation can repeat N times)
+
+Thought: I now know the final answer
+
+Final Answer: the final answer to the original input question
+
+Begin!
+
+Question: What is the number of hydrogen bond donors in the molecule [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)?
+
+Thought:</code></pre>
+</div>
+</div>
+<p>Let’s see what happens when we put this prompt into the model.</p>
+<div id="cell-33" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">message <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(</span>
+<span id="cb17-2">    model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo'</span>, </span>
+<span id="cb17-3">    messages <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb17-4">        {</span>
+<span id="cb17-5">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>,</span>
+<span id="cb17-6">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: prompt</span>
+<span id="cb17-7">        }</span>
+<span id="cb17-8">    ]</span>
+<span id="cb17-9">).choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span></code></pre></div></div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(message)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I need to use the num_hydrogenbond_donors tool to calculate the number of hydrogen bond donors in the given molecule.
+
+Action: num_hydrogenbond_donors
+Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
+Observation: 5
+
+Final Answer: The number of hydrogen bond donors in the molecule [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O) is 5.</code></pre>
+</div>
+</div>
+<p>The model hallucinated! It gave us everything, including the final answer. This is not what we wanted. We wanted to only have the model select the tool, generate the input and then observe the output.</p>
+<p>It seems that we need to stop it from jumping ahead to quickly. Luckily, we can do this quite easily by stopping the generation at the word “Observation”.</p>
+<div id="cell-36" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">message <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(</span>
+<span id="cb20-2">    model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb20-3">    messages <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb20-4">        {</span>
+<span id="cb20-5">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>,</span>
+<span id="cb20-6">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: prompt</span>
+<span id="cb20-7">        }</span>
+<span id="cb20-8">    ],</span>
+<span id="cb20-9">    stop <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Observation:"</span></span>
+<span id="cb20-10">).choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb20-11"></span>
+<span id="cb20-12"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(message)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I need to determine the number of hydrogen bond donors in the given molecule.
+
+Action: num_hydrogenbond_donors
+Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
+</code></pre>
+</div>
+</div>
+<p>That already looks way better! We now need to only extract the <code>Action Input</code> and pass it to our tool. Let’s do that next.</p>
+<p>For that we will all thought/observation cycle continue until we have a final answer. We can do this with a <code>while</code> loop that we will run until we have a final answer.</p>
+<div id="cell-38" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> answer_question(prompt, tools):</span>
+<span id="cb22-2">    scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb22-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>: </span>
+<span id="cb22-4">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># as before, we start by filling the prompt</span></span>
+<span id="cb22-5">        prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> REACT_PROMPT.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span>(</span>
+<span id="cb22-6">            tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.join([<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"- </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>name<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>description<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]),</span>
+<span id="cb22-7">            tool_names <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>.join([<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(tool) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]),</span>
+<span id="cb22-8">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> prompt,</span>
+<span id="cb22-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> scratchpad</span>
+<span id="cb22-10">        )</span>
+<span id="cb22-11"></span>
+<span id="cb22-12">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we then send the prompt to the model</span></span>
+<span id="cb22-13">        message <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(</span>
+<span id="cb22-14">            model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb22-15">            messages <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb22-16">                {</span>
+<span id="cb22-17">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>,</span>
+<span id="cb22-18">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: prompt</span>
+<span id="cb22-19">                }</span>
+<span id="cb22-20">            ],</span>
+<span id="cb22-21">            stop <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Observation:"</span>, </span>
+<span id="cb22-22">            temperature<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb22-23">        ).choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb22-24"></span>
+<span id="cb22-25">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we update the scratchpad with the message</span></span>
+<span id="cb22-26">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># the scratchpad will be used to keep track of the state of the agent</span></span>
+<span id="cb22-27">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># it will contain all the messages received so far</span></span>
+<span id="cb22-28">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and also all the observations made by the tools</span></span>
+<span id="cb22-29">        scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> message</span>
+<span id="cb22-30"></span>
+<span id="cb22-31">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># to keep track, we can print the message</span></span>
+<span id="cb22-32">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Message: "</span>, message)</span>
+<span id="cb22-33">        </span>
+<span id="cb22-34">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if the message contains "Final Answer", we return it</span></span>
+<span id="cb22-35">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Final Answer"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> message:</span>
+<span id="cb22-36">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> message</span>
+<span id="cb22-37">    </span>
+<span id="cb22-38">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if the message contains "Action", we extract the action and the action input</span></span>
+<span id="cb22-39">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and we run the action with the input</span></span>
+<span id="cb22-40">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Action"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> message:</span>
+<span id="cb22-41">            action <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.search(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"Action: </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, message).group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb22-42">            action_input <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.search(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"Action Input: </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, message).group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>).strip()</span>
+<span id="cb22-43">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools:</span>
+<span id="cb22-44">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(tool) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> action:</span>
+<span id="cb22-45">                    observation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tool.run(action_input)</span>
+<span id="cb22-46">                    scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Observation: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>observation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb22-47">                    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Observation: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>observation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)    </span></code></pre></div></div>
+</div>
+<div id="cell-39" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">answer_question(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"What is the number of hydrogen bond donors in the molecule </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>molecule<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">?"</span>, [hydrogenbonddonor_tool])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Message:  This is a SMILES representation of a molecule, so I should use the tool num_hydrogenbond_donors to calculate the number of hydrogen bond donors.
+
+Action: num_hydrogenbond_donors
+Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
+
+Observation: 2
+
+Message:  
+Thought: The molecule has 2 hydrogen bond donors.
+
+Final Answer: The number of hydrogen bond donors in the molecule is 2.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>'\nThought: The molecule has 2 hydrogen bond donors.\n\nFinal Answer: The number of hydrogen bond donors in the molecule is 2.'</code></pre>
+</div>
+</div>
+<p>That looks good! The function used the LLM to decide what tool to use, what input to give to the tool, and then performed an observation by calling the tool.</p>
+<p>However, the usefulness of our agent is still limited as it only has one tool. Let’s add another tool to make the system more powerful.</p>
+<p>One very convenient functionality would be to robustly deal with various forms of molecular representations. For this we can use the chemical name resolver.</p>
+<div id="cell-42" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> resolve_identifier(identifier, representation):</span>
+<span id="cb26-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># http:///chemical/structure/"structure identifier"/"representation"</span></span>
+<span id="cb26-3">    <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> requests</span>
+<span id="cb26-4">    response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"https://cactus.nci.nih.gov/chemical/structure/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>identifier<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>representation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb26-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> response.text</span></code></pre></div></div>
+</div>
+<p>Let’s test this function</p>
+<div id="cell-44" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1">resolve_identifier(molecule, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inchi"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>'InChI=1/C6H8O5/c7-3-1-2-4(8)5(9)6(10)11/h1-5,8-9H,(H,10,11)/p-1/t4-,5-/m0/s1/fC6H7O5/q-1'</code></pre>
+</div>
+</div>
+<p>We can now put this into a tool. We must, however, be careful since the LLM can only produce text. Our function, however, wants two specific strings. Thus, we will need to parse the output of the LLM to make it work.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Constrained generation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Constrained generation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can make the system much more robust by constraining the generation of the LLM. For instance, we could constrain it to only return a special kind of JSON.</p>
+<p>This works, because we can make the LLM sample only a subset of tokens from the vocabulary. Many LLM providers give access to such functionality via what is called <a href="https://platform.openai.com/docs/guides/text-generation/json-mode">JSON mode</a> or <a href="https://platform.openai.com/docs/guides/function-calling">function calling</a>. Some packages such as <a href="https://jxnl.github.io/instructor/why/">instructor</a> specialize on this functionality.</p>
+</div>
+</div>
+<div id="cell-46" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> NameResolverTool(Tool):</span>
+<span id="cb29-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>):</span>
+<span id="cb29-3">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">super</span>().<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name_resolver'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Converts chemical identifiers (e.g. common names and SMILES). The input is pair of two strings `identifier, representation`, for example, `CCCC, inchi` or `benzene, smiles`'</span>, resolve_identifier)</span>
+<span id="cb29-4">    </span>
+<span id="cb29-5">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>):</span>
+<span id="cb29-6">        identifier, representation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span>.split(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>)</span>
+<span id="cb29-7">        identifier <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> identifier.strip()</span>
+<span id="cb29-8">        representation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> representation.strip()</span>
+<span id="cb29-9">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.method(identifier, representation)</span></code></pre></div></div>
+</div>
+<p>Let’s try this tool</p>
+<div id="cell-48" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">nameresolver_tool <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> NameResolverTool()</span></code></pre></div></div>
+</div>
+<div id="cell-49" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1">nameresolver_tool.run(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CCCC, inchi"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>'InChI=1/C4H10/c1-3-4-2/h3-4H2,1-2H3'</code></pre>
+</div>
+</div>
+<p>Now, let’s add the <code>NameResolverTool</code> to the list of tools and run the <code>answer_question</code> function with the new list of tools.</p>
+<div id="cell-51" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">answer_question(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
+
+Action: num_hydrogenbond_donors
+Action Input: aspirin
+</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[14:30:00] SMILES Parse Error: syntax error while parsing: aspirin
+[14:30:00] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ArgumentError</span>                             Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[49], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> answer_question(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">What is the number of hydrogen bond donors in aspirin?</span><span style="color:rgb(175,0,0)">"</span>, [hydrogenbonddonor_tool, nameresolver_tool])
+
+Cell <span class="ansi-green-fg">In[36], line 45</span>, in <span class="ansi-cyan-fg">answer_question</span><span class="ansi-blue-fg">(prompt, tools)</span>
+<span class="ansi-green-fg ansi-bold">     43</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> tool <span style="font-weight:bold;color:rgb(175,0,255)">in</span> tools:
+<span class="ansi-green-fg ansi-bold">     44</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">str</span>(tool) <span style="color:rgb(98,98,98)">==</span> action:
+<span class="ansi-green-fg">---&gt; 45</span>         observation <span style="color:rgb(98,98,98)">=</span> tool<span style="color:rgb(98,98,98)">.</span>run(action_input)
+<span class="ansi-green-fg ansi-bold">     46</span>         scratchpad <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">Observation: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>observation<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">     47</span>         <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Observation: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>observation<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="font-weight:bold;color:rgb(175,95,0)">\n</span><span style="color:rgb(175,0,0)">"</span>)
+
+Cell <span class="ansi-green-fg">In[9], line 6</span>, in <span class="ansi-cyan-fg">HydrogenBondDonorTool.run</span><span class="ansi-blue-fg">(self, input)</span>
+<span class="ansi-green-fg ansi-bold">      5</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">run</span>(<span style="color:rgb(0,135,0)">self</span>, <span style="color:rgb(0,135,0)">input</span>):
+<span class="ansi-green-fg">----&gt; 6</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>method(Chem<span style="color:rgb(98,98,98)">.</span>MolFromSmiles(<span style="color:rgb(0,135,0)">input</span>))
+
+<span class="ansi-red-fg">ArgumentError</span>: Python argument types in
+    rdkit.Chem.rdMolDescriptors.CalcNumHBD(NoneType)
+did not match C++ signature:
+    CalcNumHBD(RDKit::ROMol mol)</pre>
+</div>
+</div>
+</div>
+<p>That doesn’t look good! But we can let the model fix it by giving it access to the error message. To do so, we will catch exceptions and feed them into the LLM as observations.</p>
+<div id="cell-53" class="cell" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> answer_question_with_self_healing(prompt, tools):</span>
+<span id="cb36-2">    scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb36-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>: </span>
+<span id="cb36-4">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># as before, we start by filling the prompt</span></span>
+<span id="cb36-5">        prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> REACT_PROMPT.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span>(</span>
+<span id="cb36-6">            tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.join([<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"- </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>name<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>tool<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>description<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]),</span>
+<span id="cb36-7">            tool_names <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>.join([<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(tool) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]),</span>
+<span id="cb36-8">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">input</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> prompt,</span>
+<span id="cb36-9">            agent_scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> scratchpad</span>
+<span id="cb36-10">        )</span>
+<span id="cb36-11"></span>
+<span id="cb36-12">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we then send the prompt to the model</span></span>
+<span id="cb36-13">        message <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(</span>
+<span id="cb36-14">            model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo'</span>,</span>
+<span id="cb36-15">            messages <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb36-16">                {</span>
+<span id="cb36-17">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>,</span>
+<span id="cb36-18">                    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: prompt</span>
+<span id="cb36-19">                }</span>
+<span id="cb36-20">            ],</span>
+<span id="cb36-21">            stop <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Observation:"</span>,</span>
+<span id="cb36-22">            temperature<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb36-23">        ).choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb36-24"></span>
+<span id="cb36-25">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we update the scratchpad with the message</span></span>
+<span id="cb36-26">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># the scratchpad will be used to keep track of the state of the agent</span></span>
+<span id="cb36-27">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># it will contain all the messages received so far</span></span>
+<span id="cb36-28">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and also all the observations made by the tools</span></span>
+<span id="cb36-29">        scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> message</span>
+<span id="cb36-30"></span>
+<span id="cb36-31">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># to keep track, we can print the message</span></span>
+<span id="cb36-32">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Message: "</span>, message)</span>
+<span id="cb36-33">        </span>
+<span id="cb36-34">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if the message contains "Final Answer", we return it</span></span>
+<span id="cb36-35">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Final Answer"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> message:</span>
+<span id="cb36-36">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> message</span>
+<span id="cb36-37">    </span>
+<span id="cb36-38">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if the message contains "Action", we extract the action and the action input</span></span>
+<span id="cb36-39">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and we run the action with the input</span></span>
+<span id="cb36-40">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Action"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> message:</span>
+<span id="cb36-41">            action <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.search(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"Action: </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, message).group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb36-42">            action_input <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.search(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"Action Input: </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">(</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">)</span><span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, message).group(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>).strip()</span>
+<span id="cb36-43">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> tool <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools:</span>
+<span id="cb36-44">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(tool) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> action:</span>
+<span id="cb36-45">                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we wrap the tool execution in a try/except block</span></span>
+<span id="cb36-46">                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># to catch any exception that might occur</span></span>
+<span id="cb36-47">                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if an exception occurs, we update the scratchpad with the error message</span></span>
+<span id="cb36-48">                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># this will allow the agent to self-heal</span></span>
+<span id="cb36-49">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">try</span>: </span>
+<span id="cb36-50">                        observation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tool.run(action_input)</span>
+<span id="cb36-51">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Exception</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> e:</span>
+<span id="cb36-52">                        observation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Observation: An error occurred, try to fix it: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>e<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb36-53">                    scratchpad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Observation: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>observation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb36-54">                    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Observation: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>observation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)    </span></code></pre></div></div>
+</div>
+<p>Now, let’s try again!</p>
+<div id="cell-55" class="cell" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1">answer_question_with_self_healing(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"What is the number of hydrogen bond donors in aspirin?"</span>, [hydrogenbonddonor_tool, nameresolver_tool])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Message:  I should use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors in aspirin.
+
+Action: num_hydrogenbond_donors
+Action Input: aspirin
+
+Observation: Observation: An error occurred, try to fix it: Python argument types in
+    rdkit.Chem.rdMolDescriptors.CalcNumHBD(NoneType)
+did not match C++ signature:
+    CalcNumHBD(RDKit::ROMol mol)
+</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[14:31:11] SMILES Parse Error: syntax error while parsing: aspirin
+[14:31:11] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Message:  Thought: It seems like there was an issue with the input for the num_hydrogenbond_donors tool. I should use the name_resolver tool to convert "aspirin" to SMILES representation first.
+
+Action: name_resolver
+Action Input: aspirin, smiles
+
+
+Observation: CC(=O)Oc1ccccc1C(O)=O
+
+Message:  Thought: Now that I have the SMILES representation for aspirin, I can use the num_hydrogenbond_donors tool to find the number of hydrogen bond donors.
+
+Action: num_hydrogenbond_donors
+Action Input: CC(=O)Oc1ccccc1C(O)=O
+
+
+Observation: 1
+
+Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>'Final Answer: The number of hydrogen bond donors in aspirin is 1.'</code></pre>
+</div>
+</div>
+<p>That looks way better! Our system can now:</p>
+<ul>
+<li>Select external tools to use and create suitable inputs</li>
+<li>Use the tools to answer questions</li>
+<li>Self-heal in case of errors</li>
+</ul>
+<p>While out system is still very simple, it hopefully illustrates the power and potential of LLM-powered agents.</p>
+</section>
+<section id="outlook-beyond-hard-coding-prompts" class="level2">
+<h2 class="anchored" data-anchor-id="outlook-beyond-hard-coding-prompts">Outlook: Beyond hard-coding prompts</h2>
+<p>A big limitation of our approach is that we hard-coded the prompts. A lot of the performance of the system is determined by the quality of the prompt. Hence, it is common practice to manually optimize the prompt to obtain better performance.</p>
+<p>This, however, feels like manually optimizing the weights of a neural network.</p>
+<p>To overcome this, tools such as <a href="https://github.com/stanfordnlp/dspy">DSPy</a> have been developed. Those frameworks see prompts as parameters that can be automatically optimized (based on training data or automatically generated examples).</p>
+<p>If we follow the basic <a href="https://dspy-docs.vercel.app/docs/quick-start/minimal-example">DSPy tutorial</a> we get an idea of how this works.</p>
+<div id="cell-61" class="cell" data-execution_count="62">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> dspy</span>
+<span id="cb42-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dspy.datasets.gsm8k <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> GSM8K, gsm8k_metric</span>
+<span id="cb42-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dspy.evaluate <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Evaluate</span>
+<span id="cb42-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set up the LM</span></span>
+<span id="cb42-5">turbo <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dspy.OpenAI(model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'gpt-3.5-turbo-instruct'</span>, max_tokens<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>)</span>
+<span id="cb42-6">dspy.settings.configure(lm<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>turbo)</span>
+<span id="cb42-7"></span>
+<span id="cb42-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load math questions from the GSM8K dataset</span></span>
+<span id="cb42-9">gsm8k <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> GSM8K()</span>
+<span id="cb42-10">gsm8k_trainset, gsm8k_devset <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> gsm8k.train[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>], gsm8k.dev[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 7473/7473 [00:00&lt;00:00, 30592.35it/s]
+100%|██████████| 1319/1319 [00:00&lt;00:00, 36387.29it/s]</code></pre>
+</div>
+</div>
+<p>The datasets contain question/answer pairs</p>
+<div id="cell-63" class="cell" data-execution_count="58">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1">gsm8k_trainset</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>[Example({'question': "The result from the 40-item Statistics exam Marion and Ella took already came out. Ella got 4 incorrect answers while Marion got 6 more than half the score of Ella. What is Marion's score?", 'gold_reasoning': "Ella's score is 40 items - 4 items = &lt;&lt;40-4=36&gt;&gt;36 items. Half of Ella's score is 36 items / 2 = &lt;&lt;36/2=18&gt;&gt;18 items. So, Marion's score is 18 items + 6 items = &lt;&lt;18+6=24&gt;&gt;24 items.", 'answer': '24'}) (input_keys={'question'}),
+ Example({'question': "Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.", 'gold_reasoning': 'Up a mountain, Stephen covered 3/4*40000 = &lt;&lt;3/4*40000=30000&gt;&gt;30000 feet. Coming down, Stephen covered another 30000 feet, making the total distance covered in one round to be 30000+30000 = &lt;&lt;30000+30000=60000&gt;&gt;60000. Since Stephen made 10 round trips up and down the mountain, he covered 10*60000 = &lt;&lt;10*60000=600000&gt;&gt;600000', 'answer': '600000'}) (input_keys={'question'}),
+ Example({'question': 'Bridget counted 14 shooting stars in the night sky.  Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald.  How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?', 'gold_reasoning': 'Reginald counted two fewer shooting stars than did Bridget, or a total of 14-2=&lt;&lt;14-2=12&gt;&gt;12 shooting stars. Sam counted 4 more shooting stars than did Reginald, or a total of 12+4=16 shooting stars. The average number of shooting stars observed for the three of them was (14+12+16)/3 = &lt;&lt;14=14&gt;&gt;14 shooting stars. Thus, Sam counted 16-14=2 more shooting stars than was the average number of shooting stars observed for the three of them.', 'answer': '2'}) (input_keys={'question'}),
+ Example({'question': 'Sarah buys 20 pencils on Monday. Then she buys 18 more pencils on Tuesday. On Wednesday she buys triple the number of pencils she did on Tuesday. How many pencils does she have?', 'gold_reasoning': 'By adding together Monday and Tuesday, Saah has 20+18= &lt;&lt;20+18=38&gt;&gt;38 pencils On Wednesday, she buys 3 * 18= &lt;&lt;3*18=54&gt;&gt;54 pencils All together, Sarah has 38+54= &lt;&lt;38+54=92&gt;&gt;92 pencils', 'answer': '92'}) (input_keys={'question'}),
+ Example({'question': 'Rookie police officers have to buy duty shoes at the full price of $85, but officers who have served at least a year get a 20% discount. Officers who have served at least three years get an additional 25% off the discounted price. How much does an officer who has served at least three years have to pay for shoes?', 'gold_reasoning': 'Cops that served a year pay $85 * 0.2 = $&lt;&lt;85*0.2=17&gt;&gt;17 less. Cops that served a year pay $85 - $17 = $&lt;&lt;85-17=68&gt;&gt;68. Cops that served at least 3 years get a $68 * 0.25 = $&lt;&lt;68*0.25=17&gt;&gt;17 discount. Cops that served at least 3 years pay $68 - $17 = $&lt;&lt;68-17=51&gt;&gt;51 for shoes.', 'answer': '51'}) (input_keys={'question'}),
+ Example({'question': "The average score on last week's Spanish test was 90.  Marco scored 10% less than the average test score and Margaret received 5 more points than Marco.  What score did Margaret receive on her test?", 'gold_reasoning': 'The average test score was 90 and Marco scored 10% less so 90*.10 = &lt;&lt;90*.10=9&gt;&gt;9 points lower The average test score was 90 and Marco scored 9 points less so his test score was 90-9 = &lt;&lt;90-9=81&gt;&gt;81 Margret received 5 more points than Marco whose test score was 81 so she made 5+81 = &lt;&lt;5+81=86&gt;&gt;86 on her test', 'answer': '86'}) (input_keys={'question'}),
+ Example({'question': 'A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?', 'gold_reasoning': 'There are 18/3 = &lt;&lt;18/3=6&gt;&gt;6 female contestants. There are 18-6 = &lt;&lt;18-6=12&gt;&gt;12 male contestants.', 'answer': '12'}) (input_keys={'question'}),
+ Example({'question': 'Nancy bought a pie sliced it into 8 pieces. She gave 1/2 to Joe and Darcy, and she gave 1/4 to Carl. How many slices were left?', 'gold_reasoning': 'The total number of slices she gave to Joe and Darcy is 1/2 x 8 = &lt;&lt;1/2*8=4&gt;&gt;4. The total slice she gave to Carl is 1/4 x 8 = &lt;&lt;1/4*8=2&gt;&gt;2. Therefore, the total slices left is 8 - 4 - 2 = &lt;&lt;8-4-2=2&gt;&gt;2.', 'answer': '2'}) (input_keys={'question'}),
+ Example({'question': 'Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?', 'gold_reasoning': 'Let x be the amount of the discount. We have, 22 - x = $16 We change the writing of the equation: 22 - x + x = 16 + x So, 22 = 16 + x We then Remove 16 from both sides: 22 - 16 = 16 + x - 16 So, 22 - 16 = x So, the amount of the discount is x = $&lt;&lt;6=6&gt;&gt;6.', 'answer': '6'}) (input_keys={'question'}),
+ Example({'question': "Amaya scored 20 marks fewer in Maths than she scored in Arts. She also got 10 marks more in Social Studies than she got in Music. If she scored 70 in Music and scored 1/10 less in Maths, what's the total number of marks she scored in all the subjects?", 'gold_reasoning': 'The total marks Amaya scored more in Music than in Maths is 1/10 * 70 = &lt;&lt;1/10*70=7&gt;&gt;7 marks. So the total marks she scored in Maths is 70 - 7 = &lt;&lt;70-7=63&gt;&gt;63 marks. If she scored 20 marks fewer in Maths than in Arts, then he scored 63 + 20 = &lt;&lt;63+20=83&gt;&gt;83 in Arts. If she scored 10 marks more in Social Studies than in Music, then she scored 70 + 10 = &lt;&lt;10+70=80&gt;&gt;80 marks in Social Studies. The total number of marks for all the subjects is 70 + 63 + 83 + 80 = &lt;&lt;70+63+83+80=296&gt;&gt;296 marks.', 'answer': '296'}) (input_keys={'question'})]</code></pre>
+</div>
+</div>
+<p>We will also set up some tooling for evaluating the model’s performance on the GSM8K dataset.</p>
+<div id="cell-65" class="cell" data-execution_count="63">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1">evaluate <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Evaluate(devset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>gsm8k_devset, metric<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>gsm8k_metric, num_threads<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, display_progress<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, display_table<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span></code></pre></div></div>
+</div>
+<p>We can then define our module. The key in DSPy is the “signature” mapping, for example, inputs to outputs – in natural language. In this case, the signature is <code>question -&gt; answer</code>.</p>
+<div id="cell-67" class="cell" data-execution_count="60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> CoT(dspy.Module):</span>
+<span id="cb47-2">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>):</span>
+<span id="cb47-3">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">super</span>().<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>()</span>
+<span id="cb47-4">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.prog <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dspy.ChainOfThought(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"question -&gt; answer"</span>)</span>
+<span id="cb47-5">    </span>
+<span id="cb47-6">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> forward(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, question):</span>
+<span id="cb47-7">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.prog(question<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>question)</span></code></pre></div></div>
+</div>
+<p>Let’s evaluate the model on the GSM8K dataset</p>
+<div id="cell-69" class="cell" data-execution_count="64">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1">cot <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> CoT()</span></code></pre></div></div>
+</div>
+<div id="cell-70" class="cell" data-execution_count="65">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1">evaluate(cot)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Average Metric: 6 / 10  (60.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.04it/s]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average Metric: 6 / 10  (60.0%)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>60.0</code></pre>
+</div>
+</div>
+<p>DSPy provides <code>Teleprompters</code> that can be used to optimize pipelines. This optimization is called with the <code>compile</code> method.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="The code below is expensive">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The code below is expensive
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The code below makes a large number of API calls to OpenAI’s API. This can be expensive.</p>
+</div>
+</div>
+<div id="cell-73" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dspy.teleprompt <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> BootstrapFewShotWithRandomSearch</span>
+<span id="cb54-2"></span>
+<span id="cb54-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set up the optimizer: we want to "bootstrap" (i.e., self-generate) 4-shot examples of our CoT program.</span></span>
+<span id="cb54-4">config <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>(max_bootstrapped_demos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, max_labeled_demos<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span>
+<span id="cb54-5"></span>
+<span id="cb54-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Optimize! Use the `gsm8k_metric` here. In general, the metric is going to tell the optimizer how well it's doing.</span></span>
+<span id="cb54-7">teleprompter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> BootstrapFewShotWithRandomSearch(metric<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>gsm8k_metric, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>config)</span>
+<span id="cb54-8">optimized_cot <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> teleprompter.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">compile</span>(CoT(), trainset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>gsm8k_trainset)</span></code></pre></div></div>
+</div>
+<p>We can now test it</p>
+<div id="cell-75" class="cell" data-execution_count="73">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Evaluate our `optimized_cot` program.</span></span>
+<span id="cb55-2">evaluate(optimized_cot)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  0%|          | 0/10 [00:00&lt;?, ?it/s]Average Metric: 8 / 10  (80.0): 100%|██████████| 10/10 [00:04&lt;00:00,  2.05it/s]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average Metric: 8 / 10  (80.0%)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>80.0</code></pre>
+</div>
+</div>
+<p>It seems that things improved. How did they improve? What did the optimizer do? We can see that by looking into the optimization history.</p>
+<div id="cell-77" class="cell" data-execution_count="75">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(turbo.inspect_history(n<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>
+
+
+
+
+Given the fields `question`, produce the fields `answer`.
+
+
+
+---
+
+
+
+Follow the following format.
+
+
+
+Question: ${question}
+
+Reasoning: Let's think step by step in order to ${produce the answer}. We ...
+
+Answer: ${answer}
+
+
+
+---
+
+
+
+Question: A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?
+
+Reasoning: Let's think step by step in order to find the number of male contestants. We know that there are 18 contestants in total, and that a third of them are female. This means that 2/3 of the contestants are male. We can find the number of male contestants by multiplying 2/3 by 18.
+
+Answer: 12
+
+
+
+---
+
+
+
+Question: Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?
+
+Reasoning: Let's think step by step in order to find the amount of the discount. We first need to find the difference between the original price and the price paid. We can do this by subtracting the price paid from the original price. This gives us $22 - $16 = $6. Therefore, the amount of the discount is $6.
+
+Answer: $6
+
+
+
+---
+
+
+
+Question: Bridget counted 14 shooting stars in the night sky. Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald. How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?
+
+Answer: 2
+
+
+
+---
+
+
+
+Question: Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.
+
+Answer: 600000
+
+
+
+---
+
+
+
+Question: Roy spends 2 hours on sports activities in school every day. He goes to school 5 days a week. If he missed 2 days within a week, how many hours did he spend on sports in school that week?
+
+Reasoning: Let's think step by step in order to<span class="ansi-green-fg"> find the number of hours Roy spent on sports in school that week. We know that he spends 2 hours on sports activities every day, and he goes to school 5 days a week. This means that he spends 2 x 5 = 10 hours on sports in school every week. However, he missed 2 days within that week, so he only spent 10 - (2 x 2) = 6 hours on sports in school that week.
+
+Answer: 6 hours</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given the fields `question`, produce the fields `answer`.
+
+
+
+---
+
+
+
+Follow the following format.
+
+
+
+Question: ${question}
+
+Reasoning: Let's think step by step in order to ${produce the answer}. We ...
+
+Answer: ${answer}
+
+
+
+---
+
+
+
+Question: A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?
+
+Reasoning: Let's think step by step in order to find the number of male contestants. We know that there are 18 contestants in total, and that a third of them are female. This means that 2/3 of the contestants are male. We can find the number of male contestants by multiplying 2/3 by 18.
+
+Answer: 12
+
+
+
+---
+
+
+
+Question: Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?
+
+Reasoning: Let's think step by step in order to find the amount of the discount. We first need to find the difference between the original price and the price paid. We can do this by subtracting the price paid from the original price. This gives us $22 - $16 = $6. Therefore, the amount of the discount is $6.
+
+Answer: $6
+
+
+
+---
+
+
+
+Question: Bridget counted 14 shooting stars in the night sky. Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald. How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?
+
+Answer: 2
+
+
+
+---
+
+
+
+Question: Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.
+
+Answer: 600000
+
+
+
+---
+
+
+
+Question: Benjamin collects 6 dozen eggs a day. Carla collects 3 times the number of eggs that Benjamin collects. Trisha collects 4 dozen less than Benjamin. How many dozen eggs do the three collect total?
+
+Reasoning: Let's think step by step in order to<span class="ansi-green-fg"> find the total number of dozen eggs collected by Benjamin, Carla, and Trisha. We know that Benjamin collects 6 dozen eggs a day. Carla collects 3 times the number of eggs that Benjamin collects, which is 6 x 3 = 18 dozen eggs. Trisha collects 4 dozen less than Benjamin, which is 6 - 4 = 2 dozen eggs. Therefore, the total number of dozen eggs collected by the three is 6 + 18 + 2 = 26 dozen eggs.
+
+Answer: 26 dozen eggs</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given the fields `question`, produce the fields `answer`.
+
+
+
+---
+
+
+
+Follow the following format.
+
+
+
+Question: ${question}
+
+Reasoning: Let's think step by step in order to ${produce the answer}. We ...
+
+Answer: ${answer}
+
+
+
+---
+
+
+
+Question: A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?
+
+Reasoning: Let's think step by step in order to find the number of male contestants. We know that there are 18 contestants in total, and that a third of them are female. This means that 2/3 of the contestants are male. We can find the number of male contestants by multiplying 2/3 by 18.
+
+Answer: 12
+
+
+
+---
+
+
+
+Question: Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?
+
+Reasoning: Let's think step by step in order to find the amount of the discount. We first need to find the difference between the original price and the price paid. We can do this by subtracting the price paid from the original price. This gives us $22 - $16 = $6. Therefore, the amount of the discount is $6.
+
+Answer: $6
+
+
+
+---
+
+
+
+Question: Bridget counted 14 shooting stars in the night sky. Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald. How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?
+
+Answer: 2
+
+
+
+---
+
+
+
+Question: Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.
+
+Answer: 600000
+
+
+
+---
+
+
+
+Question: Martha's cat catches 3 rats and 7 birds. Cara's cat catches 3 less than five times as many animals as Martha's cat. How many animals does Cara's cat catch?
+
+Reasoning: Let's think step by step in order to<span class="ansi-green-fg"> find the number of animals caught by Cara's cat. We know that Martha's cat catches a total of 3 + 7 = 10 animals. We also know that Cara's cat catches 3 less than five times as many animals as Martha's cat. This means that Cara's cat catches 5 * 10 - 3 = 47 animals.
+
+Answer: 47</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given the fields `question`, produce the fields `answer`.
+
+
+
+---
+
+
+
+Follow the following format.
+
+
+
+Question: ${question}
+
+Reasoning: Let's think step by step in order to ${produce the answer}. We ...
+
+Answer: ${answer}
+
+
+
+---
+
+
+
+Question: A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?
+
+Reasoning: Let's think step by step in order to find the number of male contestants. We know that there are 18 contestants in total, and that a third of them are female. This means that 2/3 of the contestants are male. We can find the number of male contestants by multiplying 2/3 by 18.
+
+Answer: 12
+
+
+
+---
+
+
+
+Question: Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?
+
+Reasoning: Let's think step by step in order to find the amount of the discount. We first need to find the difference between the original price and the price paid. We can do this by subtracting the price paid from the original price. This gives us $22 - $16 = $6. Therefore, the amount of the discount is $6.
+
+Answer: $6
+
+
+
+---
+
+
+
+Question: Bridget counted 14 shooting stars in the night sky. Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald. How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?
+
+Answer: 2
+
+
+
+---
+
+
+
+Question: Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.
+
+Answer: 600000
+
+
+
+---
+
+
+
+Question: Burt spent $2.00 on a packet of basil seeds and $8.00 on potting soil. The packet of seeds yielded 20 basil plants. He sells each basil plant for $5.00 at the local farmer's market. What is the net profit from his basil plants?
+
+Reasoning: Let's think step by step in order to<span class="ansi-green-fg"> find the net profit from Burt's basil plants. We first need to find the total cost of the seeds and soil, which is $2.00 + $8.00 = $10.00. Next, we need to find the total revenue from selling the basil plants, which is 20 plants x $5.00 per plant = $100.00. Finally, we can find the net profit by subtracting the total cost from the total revenue. This gives us $100.00 - $10.00 = $90.00.
+
+Answer: $90.00</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given the fields `question`, produce the fields `answer`.
+
+
+
+---
+
+
+
+Follow the following format.
+
+
+
+Question: ${question}
+
+Reasoning: Let's think step by step in order to ${produce the answer}. We ...
+
+Answer: ${answer}
+
+
+
+---
+
+
+
+Question: A third of the contestants at a singing competition are female, and the rest are male. If there are 18 contestants in total, how many of them are male?
+
+Reasoning: Let's think step by step in order to find the number of male contestants. We know that there are 18 contestants in total, and that a third of them are female. This means that 2/3 of the contestants are male. We can find the number of male contestants by multiplying 2/3 by 18.
+
+Answer: 12
+
+
+
+---
+
+
+
+Question: Megan pays $16 for a shirt that costs $22 before sales. What is the amount of the discount?
+
+Reasoning: Let's think step by step in order to find the amount of the discount. We first need to find the difference between the original price and the price paid. We can do this by subtracting the price paid from the original price. This gives us $22 - $16 = $6. Therefore, the amount of the discount is $6.
+
+Answer: $6
+
+
+
+---
+
+
+
+Question: Bridget counted 14 shooting stars in the night sky. Reginald counted two fewer shooting stars than did Bridget, but Sam counted four more shooting stars than did Reginald. How many more shooting stars did Sam count in the night sky than was the average number of shooting stars observed for the three of them?
+
+Answer: 2
+
+
+
+---
+
+
+
+Question: Stephen made 10 round trips up and down a 40,000 foot tall mountain. If he reached 3/4 of the mountain's height on each of his trips, calculate the total distance he covered.
+
+Answer: 600000
+
+
+
+---
+
+
+
+Question: Trey is raising money for a new bike that costs $112. He plans to spend the next two weeks selling bracelets for $1 each. On average, how many bracelets does he need to sell each day?
+
+Reasoning: Let's think step by step in order to<span class="ansi-green-fg"> find the average number of bracelets Trey needs to sell each day. We know that he needs to raise $112 and each bracelet costs $1. This means he needs to sell 112 bracelets in total. Since he has two weeks, or 14 days, to sell the bracelets, he needs to sell 112/14 = 8 bracelets per day on average.
+
+Answer: 8</span>
+
+
+
+
+
+
+
+None
+</pre>
+</div>
+</div>
+</div>
+<p>We see that the chain optimized the few-shot examples. This has especially a lot of potential for optimizing more involved systems with multiple interacting LLMs and tools.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>As always, there is an <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">awesome blogpost by Lilian Weng</a>.</li>
+<li>This blog post was heavily inspired by <a href="https://blog.scottlogic.com/2023/05/04/langchain-mini.html">Colin Eberhardt’s post on implementing LangChain in 100 lines of code</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>machine-learning</category>
+  <category>llm</category>
+  <category>teaching</category>
+  <guid>https://kjablonka.com/blog/posts/building_an_llm_agent/</guid>
+  <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/building_an_llm_agent" medium="image"/>
 </item>
 </channel>
 </rss>

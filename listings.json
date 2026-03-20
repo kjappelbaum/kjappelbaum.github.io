@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/finances/index.html",
       "/blog/posts/openclaw/index.html",
       "/blog/posts/deep_learning_mechanisms_lecture/index.html",
       "/blog/posts/manifold/geometry_blog.html",

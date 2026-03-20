@@ -15,7 +15,61 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Tue, 03 Mar 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 19 Mar 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>How to Get an Interest-Free Loan</title>
+  <link>https://kjablonka.com/blog/posts/finances/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>If you are a university, this is straightforward. Hire researchers who care about their work more than their money. Make the procurement system slow enough that they cannot use it for the tools they need. They will pay out of their own pockets and forget to ask for the money back. It is an excellent deal. I should know — I am one of those researchers.</p>
+<p>Recently, my partner and I had a fight about money. She told me she doesn’t want to share bank accounts with me. I was surprised this had become a topic at all. I am Swabian — from the part of Germany with a reputation for being careful with money that borders on clinical. I cook at home, I don’t buy things I don’t need, I try to save where I can. The problem is that I use my personal credit card to pay for my research. Cloud compute, API access, dataset subscriptions, development tools — I pay for all of it myself and then <em>try</em> to get reimbursed by my university. The reimbursement forms require invoices that match the charges, converted to the right currency, filed through the right cost center. I am sitting on several thousand euros in unfiled claims right now, expenses I either didn’t find time to submit or gave up on when the paperwork didn’t match. If you can make a Swabian lose track of money he is owed, your system has a serious problem.</p>
+<p>From my partner’s perspective, I am funneling household money into my job. She is right. From where I sit, several things are true at once. I am giving my university an interest-free loan. I am losing money outright, because some of those claims I will never file and some I have already forgotten. But more than either of those: I just want to do research. My field moves fast, and paying out of pocket is the only way I can keep up. When a new model or cloud service becomes relevant to my work, I cannot wait eight weeks for a purchase order. So I pull out my credit card. The alternative — spending my already overwhelming days navigating procurement forms, chasing approvals, matching receipts to charges in the wrong currency — would cost me something I cannot get back, which is time I should be spending on science.</p>
+<p>I suspect this is not uncommon among computational researchers, though few talk about it.</p>
+<section id="the-gap" class="level2">
+<h2 class="anchored" data-anchor-id="the-gap">The gap</h2>
+<p>My university has a straightforward mechanism for paying research costs. I hand in an invoice, and if it is under €7,000, the finance office processes it. This works for lab equipment, conference fees, even computers — anything sold by a vendor who issues a proper invoice.</p>
+<p>Cloud providers and AI companies do not issue invoices to individual researchers. They charge credit cards. My university can process an invoice. OpenAI can charge a credit card. Between those two facts lies an administrative gap that no one is responsible for closing.</p>
+<p>Earlier this year, I sent my partner a photo of myself carrying a stack of new MacBooks for my research group. Tens of thousands of euros worth of hardware, purchased by the university without issue, because the third-party reseller sends invoices. She saw that photo. Weeks later, we had the fight about money, because the code running on those MacBooks makes API requests that cost fractions of a cent each, and those come out of my personal credit card. The hardware cost a hundred times more than the software. The expensive purchase was easy. The cheap one was impossible. Not because anyone decided that MacBooks matter more than API calls, but because one product comes with an invoice and the other requires a credit card.</p>
+<p>This mismatch was invisible ten years ago. Most research costs were physical goods sold through conventional procurement channels. But the tools that computational researchers depend on are now overwhelmingly digital, subscription-based, and billed to credit cards. Research might also have been slower. The gap between what researchers need to buy and what universities can pay for widens every month.</p>
+<p>The result is a hidden tax on digital research, and it gets paid in three currencies: your own money, your own time, or the research you quietly decide not to attempt because the overhead isn’t worth it. That last one is the real cost. You don’t spin up GPU instances, when you are rushing for a deadline. You don’t try the new model. You stick with whatever is already approved, even when better options exist. The procurement system shapes which research gets attempted.</p>
+<p>And it fails on its own terms. The purpose of all this bureaucracy is financial oversight — knowing what was spent, on what, by whom. But when researchers pay personally and file reimbursements months later (or never), the university has no accurate record of research costs. My several thousand euros of unfiled claims are not in anyone’s books. The system designed for accountability produces worse accounting than the alternative.</p>
+</section>
+<section id="why-nobody-fixes-it" class="level2">
+<h2 class="anchored" data-anchor-id="why-nobody-fixes-it">Why nobody fixes it</h2>
+<p>The bottleneck persists because it sits in a crack between institutions. Cloud providers sell to consumers and enterprises. Universities buy from vendors through invoices. Individual researchers fit neither category. Some providers do offer invoicing — I asked Anthropic, and the mechanism exists — but only for customers large enough to justify the setup. A single researcher spending a few hundred euros a month does not qualify. The providers won’t adapt their billing for one lab. The universities won’t adapt their procurement for one new category of expense. Researchers lack the leverage to change either side. So the gap persists, and researchers absorb the cost.</p>
+<p>Underneath this lies a design error worth naming. University procurement optimizes for a world where the optimal amount of misuse is zero — every transaction verified, pre-approved, matched to documentation. But in any system, the optimal amount of fraud is non-zero. The cost of preventing the last fraction of misuse exceeds the cost of the misuse itself. Universities spend hundreds of euros in administrative overhead to control the possibility of someone misspending twenty euros on API tokens. They turn publicly funded researchers into part-time bookkeepers. The control system costs more than what it controls.</p>
+<p>My university already accepts bounded trust for invoice-based purchases — hand in an invoice under €7,000, no (or at least few) questions asked. It just hasn’t extended that trust to the new category of costs that researchers actually face.</p>
+</section>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The proposal</h2>
+<p>Several colleagues have independently given me the same advice: just start a nonprofit to handle your invoicing. When founding a legal entity feels like the path of least resistance for paying a monthly software bill, something has gone wrong at the systems level. But the advice points toward a real solution — not one nonprofit for me, but one that serves researchers like me across institutions.</p>
+<p>The idea is a thin intermediary that does one thing: it pays the credit card, and it sends the university the invoice.</p>
+<p>The intermediary holds accounts with major cloud and AI providers. Each participating researcher gets a virtual account with spending limits tied to their grant or institutional budget. The intermediary tracks usage, handles currency conversion, and generates one consolidated quarterly invoice per researcher, formatted for each university’s procurement system. From the university’s side, it looks like any other vendor. From the researcher’s side, the credit card disappears.</p>
+<p>This works because the invoicing infrastructure already exists on the provider side — it is gated by scale, not by technical barriers. An organization that aggregates demand from dozens of researchers becomes the kind of customer that qualifies for invoiced billing. The bridge can be built. No individual researcher is heavy enough to justify building it for themselves alone.</p>
+<p>Universities would change nothing. Their finance offices process the intermediary’s invoice the way they process every other vendor invoice. They would, in fact, gain better visibility into research spending than they have now, because one clean quarterly report replaces the current mess of scattered personal reimbursements and unfiled claims.</p>
+</section>
+<section id="the-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="the-experiment">The experiment</h2>
+<p>A credible pilot: 15 to 30 researchers across three to five institutions, six months, umbrella accounts with a handful of major providers. The intermediary generates quarterly invoices and submits them through each university’s standard procurement process.</p>
+<p>Four things to measure. Do the invoices get processed without friction — will universities accept the intermediary as a normal vendor? Do researchers increase their use of cloud and digital tools? Do researchers attempt work they previously avoided? And the financial picture: administrative time saved, reimbursement backlogs cleared, savings from volume pricing.</p>
+<p>Setup costs are small. The intermediary needs a legal entity, a bookkeeping system, and credit card accounts with a few providers. If the pilot fails — if universities reject the invoices or researchers don’t change their behavior — that is informative. It tells us the barrier is not administrative plumbing but something deeper, something no intermediary can fix. I doubt it, but the experiment would show it.</p>
+<p>If it works, it scales without institutional reform. Each new university adds one vendor to its approved list. Each new provider adds one billing relationship. The thing grows by making a previously painful resource accessible through a shared layer of infrastructure.</p>
+<p>I am aware that I have spent a considerable number of words on invoicing. That is, in a way, the point. The bottleneck holding back a growing share of digital research is not a scientific problem, not a technical limitation, not a lack of ideas. It is a missing invoice. The fix is comically mundane, which is perhaps why no one has built it. It falls below the threshold of what feels like a problem worth solving. But for researchers paying out of their own pockets, fighting with their partners about shared finances, and quietly deciding which experiments are not worth the administrative pain — it is the problem.</p>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>metascience</category>
+  <category>research-infrastructure</category>
+  <guid>https://kjablonka.com/blog/posts/finances/</guid>
+  <pubDate>Thu, 19 Mar 2026 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>OpenClaw Did Not Save Me</title>
   <link>https://kjablonka.com/blog/posts/openclaw/</link>
@@ -784,27 +838,27 @@ font-style: inherit;">'equal'</span>)</span>
 <span id="cb2-46">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:14: RuntimeWarning:
+<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:14: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:14: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:14: RuntimeWarning:
 
 invalid value encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:15: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:15: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_48201/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_81122/3517710329.py:15: RuntimeWarning:
 
 invalid value encountered in matmul
 </code></pre>
@@ -1693,7 +1747,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="c2de3c58" class="cell" data-execution_count="2">
+<div id="a427d9f0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1773,7 +1827,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="cfb82819" class="cell" data-execution_count="3">
+<div id="b5570b10" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -1826,7 +1880,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="1b03d2c6" class="cell" data-execution_count="4">
+<div id="478431e4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2037,7 +2091,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="4c22aec9" class="cell" data-execution_count="6">
+<div id="0d1e3a74" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -2377,7 +2431,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="43076a76" class="cell" data-execution_count="8">
+<div id="40dcae51" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2490,7 +2544,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="f8962c01" class="cell" data-execution_count="9">
+<div id="b6489c06" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2690,7 +2744,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="67700254" class="cell" data-execution_count="10">
+<div id="5602b90e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3564,430 +3618,6 @@ updatePlot(34);
   <guid>https://kjablonka.com/blog/posts/visualizing_the_tail_end/</guid>
   <pubDate>Fri, 20 Sep 2024 22:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/visualizing_the_tail_end" medium="image"/>
-</item>
-<item>
-  <title>Performing basic analysis of molecules generated by ML models</title>
-  <link>https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In the last post, we created simple generative models for molecules. In this one, we will perform very basic analysis of the generated molecules.</p>
-<p>When we have a molecule that can generate more SMILES, we want to evaluate performance beyond just measuring the perplexity.</p>
-<p>Various metrics have been proposed to evaluate the performance of generative models. Good references to learn more are:</p>
-<ul>
-<li><a href="https://pubs.acs.org/doi/full/10.1021/acs.jcim.8b00839">Guacamol</a></li>
-<li><a href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2020.565644/full">MOSES</a></li>
-</ul>
-<p>For exploring some of these metrics, we will use a file of 1000 SMILES strings that I generated using a GPT like the one we just implemented in the last post</p>
-<div class="callout callout-style-default callout-note callout-titled" data-tile="Conditional vs. uncoditional generation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For many applications, we want to generate molecules that have specific properties. In this case, we can use a conditional model that generates molecules with specific properties. That is, the model is “conditioned” on the properties we want the molecule to have. This conditional generation is one example of what some call <a href="https://www.science.org/doi/10.1126/science.aat2663">“inverse design”</a>.</p>
-<p>In the case of conditional generation, we also would need to evaluate how well the model is able to generate molecules with the desired properties. We will not cover this in this post, but it is an important topic to consider when evaluating generative models.</p>
-</div>
-</div>
-<div id="cell-4" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> typing <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> List, Tuple</span></code></pre></div></div>
-</div>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">with</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'../building_an_llm/generations.txt'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'r'</span>) <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> handle: </span>
-<span id="cb2-2">    generated <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> handle.readlines()</span></code></pre></div></div>
-</div>
-<section id="validity" class="level2">
-<h2 class="anchored" data-anchor-id="validity">Validity</h2>
-<p>The simplest check of the generated SMILES is for syntactic correctness. This is done by using the RDKit to parse the SMILES and check for errors. If the SMILES is syntactically correct, the RDKit will return a molecule object. If the SMILES is not syntactically correct, the RDKit will return None.</p>
-<p>Note that if we were to use a representation such as <a href="https://www.sciencedirect.com/science/article/pii/S2666389922002069">SELFIES, any sequence of SELFIES characters is syntactically correct</a>.</p>
-<div id="cell-8" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> is_valid_smiles(string: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">bool</span>:</span>
-<span id="cb3-2">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">"""</span></span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Check if a string is a valid SMILES string.</span></span>
-<span id="cb3-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    </span></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Args:</span></span>
-<span id="cb3-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        string: A string to be checked.</span></span>
-<span id="cb3-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    </span></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Returns:</span></span>
-<span id="cb3-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        A boolean value indicating whether the string is a valid SMILES string.</span></span>
-<span id="cb3-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    """</span></span>
-<span id="cb3-11">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">try</span>:</span>
-<span id="cb3-12">        <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> rdkit <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Chem</span>
-<span id="cb3-13">        mol <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Chem.MolFromSmiles(string)</span>
-<span id="cb3-14">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> mol <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">is</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb3-15">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span>
-<span id="cb3-16">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span>:</span>
-<span id="cb3-17">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span></span>
-<span id="cb3-18">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">except</span>:</span>
-<span id="cb3-19">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span></code></pre></div></div>
-</div>
-<div id="cell-9" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">is_valid_generated <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [is_valid_smiles(smiles) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> smiles <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> generated]</span></code></pre></div></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>(is_valid_generated) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(is_valid_generated)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0.204</code></pre>
-</div>
-</div>
-<p>The validity we achieved is not impressive, but it at least is something we can now optimize.</p>
-</section>
-<section id="uniqueness-of-smiles" class="level2">
-<h2 class="anchored" data-anchor-id="uniqueness-of-smiles">Uniqueness of SMILES</h2>
-<p>If we sampled a bunch of strings, we would not be happy if all SMILES are the same.</p>
-<p>A metric that captures this is the fraction of unique SMILES in all generated SMILES. Of course, it makes little sense to include invalid SMILES in this calculation.</p>
-<div id="cell-13" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> uniqueness(smiles: List[<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>]) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">float</span>:</span>
-<span id="cb7-2">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">"""</span></span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Calculate the uniqueness of a list of SMILES strings.</span></span>
-<span id="cb7-4"></span>
-<span id="cb7-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Args:</span></span>
-<span id="cb7-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        smiles: A list of SMILES strings.</span></span>
-<span id="cb7-7"></span>
-<span id="cb7-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Returns:</span></span>
-<span id="cb7-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        A float value indicating the uniqueness of the SMILES strings.</span></span>
-<span id="cb7-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    """</span></span>
-<span id="cb7-11">    valid <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [s <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> s <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> smiles <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> is_valid_smiles(s)]</span>
-<span id="cb7-12"></span>
-<span id="cb7-13">    num_unique <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">set</span>(valid))</span>
-<span id="cb7-14"></span>
-<span id="cb7-15">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> num_unique <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(valid)</span></code></pre></div></div>
-</div>
-<div id="cell-14" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">unique <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> uniqueness(generated)</span></code></pre></div></div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">unique</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>0.24509803921568626</code></pre>
-</div>
-</div>
-<p>And in our generation, the redudancy is quite high. However, we also only started sampling from carbon all the time.</p>
-</section>
-<section id="diversity" class="level2">
-<h2 class="anchored" data-anchor-id="diversity">Diversity</h2>
-<p>While diversity is a term that is often used, it is very complicated. First, there are different perspectives on what diversity means. Three useful ones that <a href="https://www.nature.com/articles/s41467-020-17755-8">we used in previous work</a> are:</p>
-<ul>
-<li>disparity: how different are the molecules from each other?</li>
-<li>coverage: how much of the chemical space is covered?</li>
-<li>balance: how evenly are the molecules distributed in the chemical space?</li>
-</ul>
-<p>On top of that, diversity depends on the context. For some applications, certain characteristics do not matter. Hence, considering those characteristics in the diversity metric might be misleading. In the end, any kind of representation will be biased in one form or another.</p>
-<p>Commonly, one uses the average pairwise Tanimoto similarity as a measure of diversity. This comes close to the disparity perspective. However, this moves at least two problems under the carpet:</p>
-<ul>
-<li>We need to define a fingerprint to calculate the Tanimoto similarity. And the choice of fingerprint will influence the result.</li>
-<li>The Tanimoto similarity is not necessarily a good measure of chemical similarity.</li>
-</ul>
-<p>You can find some more discussion in <a href="https://arxiv.org/pdf/2112.12542">this paper by Xie and colleagues</a>.</p>
-<div id="cell-19" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> internal_diversity(smiles: List[<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>]) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">float</span>:</span>
-<span id="cb11-2">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">"""</span></span>
-<span id="cb11-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Calculate the internal diversity of a list of SMILES strings.</span></span>
-<span id="cb11-4"></span>
-<span id="cb11-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Args:</span></span>
-<span id="cb11-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        smiles: A list of SMILES strings.</span></span>
-<span id="cb11-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    </span></span>
-<span id="cb11-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    Returns:</span></span>
-<span id="cb11-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">        A float value indicating the internal diversity of the SMILES strings.</span></span>
-<span id="cb11-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    """</span></span>
-<span id="cb11-11"></span>
-<span id="cb11-12">    valid <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [s <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> s <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> smiles <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> is_valid_smiles(s)]</span>
-<span id="cb11-13"></span>
-<span id="cb11-14">    <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> rdkit <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Chem</span>
-<span id="cb11-15">    <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> rdkit.Chem <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> AllChem</span>
-<span id="cb11-16">    <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> rdkit <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> DataStructs</span>
-<span id="cb11-17"></span>
-<span id="cb11-18">    fps <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(s), <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, nBits<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2048</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> s <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> valid]</span>
-<span id="cb11-19"></span>
-<span id="cb11-20">    similarities <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb11-21">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(fps)):</span>
-<span id="cb11-22">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> j <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(i<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(fps)):</span>
-<span id="cb11-23">            similarities.append(DataStructs.TanimotoSimilarity(fps[i], fps[j]))</span>
-<span id="cb11-24"></span>
-<span id="cb11-25">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>(similarities) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(similarities)</span></code></pre></div></div>
-</div>
-<div id="cell-20" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">generated_diversity <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> internal_diversity(generated)   </span></code></pre></div></div>
-</div>
-<div id="cell-21" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">generated_diversity</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>0.28055909630441767</code></pre>
-</div>
-</div>
-<p>This number is perhaps not so easy to interpret. However, we can compare to other techniques. For instance <a href="https://arxiv.org/pdf/2002.02948">Maragakis et al.</a> performed some basic analysis of different generative models and they found average pairwise Tanimoto similarities in the range of 0.216 to 0.477 (the values are not directly comparable as they depend on the task and the way molecules have been sampled, but it at least gives us a ballbark).</p>
-</section>
-<section id="other-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="other-metrics">Other metrics</h2>
-<section id="fréchet-chemnet-distance" class="level3">
-<h3 class="anchored" data-anchor-id="fréchet-chemnet-distance">Fréchet ChemNet Distance</h3>
-<p>The <a href="https://pubs.acs.org/doi/10.1021/acs.jcim.8b00234">Fréchet ChemNet Distance</a> is a metric used to compare the similarity between chemical compounds. It’s based on the Fréchet distance, which measures the similarity between two curves or shapes, and ChemNet, a neural network trained to predict biological activities of chemical compounds. The Frechet ChemNet Distance can hence be used to measure how close the generated molecules are to the training set.</p>
-</section>
-<section id="kl-divergence" class="level3">
-<h3 class="anchored" data-anchor-id="kl-divergence">KL Divergence</h3>
-<p>Quite related is the KL divergence between the distribution of generated molecules and the distribution of training molecules. This can be used to measure how well the model has learned the distribution of the training data. It is often computed based on molecular descriptors.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>machine-learning</category>
-  <category>llm</category>
-  <category>teaching</category>
-  <guid>https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models/</guid>
-  <pubDate>Thu, 02 May 2024 22:00:00 GMT</pubDate>
-  <media:content url="https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models" medium="image"/>
 </item>
 </channel>
 </rss>

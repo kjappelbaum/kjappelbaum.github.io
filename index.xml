@@ -15,7 +15,71 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Thu, 19 Mar 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Mar 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Science is Too Successful</title>
+  <link>https://kjablonka.com/blog/posts/scientific_freedom/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I am, again, in a personal crisis about science, my career, and stuff like this. I should probably be doing something about that. Instead, I am writing a blog post.</p>
+<p>This is, I recognize, a form of procrastination. But it is also, maybe, a form of thinking — and as we all know, <a href="https://www.nature.com/articles/s44222-025-00323-4">writing is thinking</a>. Since the crisis is partly about not having enough time to think — because the time goes to administration, to procurement, to review rebuttals, to forms — perhaps writing about it counts as a small act of resistance. Or perhaps I’m rationalizing. Either way, here we are.</p>
+<section id="the-money-i-cant-spend" class="level2">
+<h2 class="anchored" data-anchor-id="the-money-i-cant-spend">The money I can’t spend</h2>
+<p>I should start with something that will sound strange to most scientists: I have too much money. Not personally — personally, as I’ve written <a href="https://kjablonka.com/blog/posts/finances/">elsewhere</a>, due to my lack of prioritization of bureaucracy and administration, I pay for my research tools out of my own pocket. But my group has funding that sits unspent. Not because there’s nothing to do with it, but because spending it responsibly would mean hiring more people, and hiring more people would most likely mean growing my group past the size where I can still understand what everyone is working on.</p>
+<p>At the moment, I keep my group small on purpose, and even so it’s already hard. We just came back from a group retreat where I told everyone that I’m struggling to keep all our projects in my head, and that this means we’re not leveraging my strengths in the way we should. If I doubled the group, I’d gain output (more publications) but lose whatever grasp I still have. I’d become even more a manager, not a scientist. The funding system would be delighted — a larger group, more publications, more “impact.” But I would understand less about my own research, which is a trade I’m not willing to make.</p>
+<p>I would happily give the money back if it meant removing the administrative apparatus that comes with having it. The reporting, the oversight, the hierarchy, the coordination overhead — all of it exists because the money exists. The money was supposed to enable the science. Instead, a growing share of it pays for the system that manages the money. I am sometimes not sure who is working for whom.</p>
+</section>
+<section id="how-we-got-here" class="level2">
+<h2 class="anchored" data-anchor-id="how-we-got-here">How we got here</h2>
+<p>None of this was built by villains. Science succeeded. It worked. Governments funded it, and the funding produced results, and the results justified more funding. The system grew — more researchers, more institutions, more publications, more money. Science is great, and we should all be grateful for having science.</p>
+<p><a href="https://press.stripe.com/scientific-freedom">But growth created coordination problems.</a> When you have ten researchers at an institute, you can talk to each of them over lunch. <a href="https://www.experimental-history.com/p/the-rise-and-fall-of-peer-review">When you have a thousand, you need an organizational chart, a procurement office, a grants administration team, an HR department, a compliance unit.</a> Each layer solves a real problem. Each layer also costs money, takes time, and adds friction. And each layer, once established, develops its own logic, its own incentives, its own instinct for self-preservation.</p>
+<p>The funding also required a story. To justify public investment at this scale, science needed to promise something large. The story it told was: we produce truth. Give us money, and we will deliver facts about the world that are reliable, verified, and objective. This is my speculation — I haven’t dug into the historical evidence for this reading, and I would be curious to see it tested (reach out to me!). Metrics also come from a different pressure — science consumes resources that could go to other things society values and needs, and there is an urge to justify that expense. So you build metrics, and metrics need oversight, and oversight needs administrators. And so the system grows — not to produce more understanding, but to demonstrate that it’s delivering on its promises.</p>
+<p>Science doesn’t produce truth. It produces better working hypotheses. That’s a different thing, and it might imply a different kind of institution. A hypothesis is provisional. It’s meant to be revised. It’s useful precisely because it might be wrong. An institution built around truth needs to verify and control. An institution built around hypotheses needs to explore and tolerate uncertainty. We built the first kind and are now surprised that it doesn’t feel like the second.</p>
+</section>
+<section id="we-also-just-got-icml-reviews-back" class="level2">
+<h2 class="anchored" data-anchor-id="we-also-just-got-icml-reviews-back">We also just got ICML reviews back</h2>
+<p>I am writing this shortly after getting reviews back on our ICML papers, so I should be transparent that the timing is not a coincidence. Many of the reviews ask for more benchmarks, more models, more ablations. I don’t see when this actually stops, and I don’t see when adding this form of “more” adds to more insight.</p>
+<p>But I notice the same thing in myself when I review. The form has a field for strengths and a field for weaknesses. The weaknesses field is empty, and it’s waiting for me to fill it. I have noticed that this field, by existing, changes what I do. Even when a paper is good — when I read it and think, yes, this is interesting, this advances understanding — I find myself (subconsciously) scanning for something to put in the weaknesses box. There is always another benchmark the authors didn’t run, another model they didn’t compare against, another dataset they didn’t test on. These are technically valid criticisms. They are also, in most cases, beside the point. The paper taught me something. The missing benchmark would not have taught me more.</p>
+<p>The form asks for weaknesses, so I supply them. The authors write a rebuttal, addressing each weakness with more experiments, more comparisons, more pages. The paper gets longer. I’m not sure it gets better. The cycle consumes weeks of work on both sides, and the decision at the end — accept or reject — is, as multiple studies have shown, <a href="https://arxiv.org/pdf/2109.09774">sometimes barely more reliable than random assignment</a>. We all know this. We do it anyway.</p>
+<p>The request for “more” is the easiest criticism to make because it’s unfalsifiable. There will always be another experiment you didn’t run. If we require proof that something works on everything, we will never be done with anything, and we can stop the business of doing research in the first place.</p>
+<p>And now we have AI reviews. Researchers submit papers, and on the other end, an LLM fills in the same form — strengths, weaknesses, questions for the authors — producing the shape of evaluation without necessarily having any understanding behind it. <a href="https://www.argmin.net/p/information-transit-got-the-wrong">Whatever relationship LLM-generated text has to semantic content and truth is always accidental or incidental.</a> The conferences respond with detection policies, new rules, more oversight. The system treats the symptom by growing the apparatus. <a href="https://artificialbureaucracy.substack.com/p/context-widows">Kevin Baker, put it well “Systems can persist in dysfunction indefinitely, and absurdity is not self-correcting.”</a></p>
+<p>I sometimes think about what peer review was before it scaled. When a field was small enough, a program committee sat in a room and discussed each paper. They argued, they disagreed, they changed their minds. The process was biased, clubby, and imperfect. But it happened at a human scale, which meant that understanding was at least possible. At the current scale, it’s not. No committee can discuss thousands of submissions. So we distribute the work to anonymous individuals, give them forms, aggregate their scores, and pretend the numbers mean something. We scaled the process and lost the thing that made it work.</p>
+</section>
+<section id="science-is-human" class="level2">
+<h2 class="anchored" data-anchor-id="science-is-human">Science is human</h2>
+<p>I think the thing I keep circling around is that science is a human activity. Understanding — the actual thing science is for — happens inside a human mind. A person reads a paper, thinks about it, connects it to what they already know, and updates their picture of how something works. That process doesn’t scale. You can’t make it faster by adding metrics. You can’t outsource it to an AI and call the output “understanding.” You can produce more papers, more data, more benchmarks, but understanding is still bounded by the pace at which a person can absorb and integrate ideas.</p>
+<p>Hartmut Rosa has written about this as a dissonance between the pace of production and the pace of comprehension. We publish more than anyone can read — and perhaps I am also producing blog posts at a higher pace than anyone cares to read. We produce data faster than anyone can analyze. We run experiments faster than anyone can think about what they mean. The institution optimizes for production. Understanding happens on its own schedule, and that schedule has not gotten faster. I honestly don’t see how it can, unless we upgrade the human hardware — and the evidence from recent studies suggests that measured intelligence <a href="https://www.bbc.com/future/article/20190709-has-humanity-reached-peak-intelligence">is maybe even declining</a>.</p>
+<p>And the questions we choose to ask in science are, in the end, value judgments. What’s worth studying? What matters? These are human decisions, rooted in human experience and human priorities. I think, on a societal level, we shouldn’t leave these to an AI scientist or an optimization algorithm or a metric that rewards citation counts. The selection of questions is where human judgment matters most, and it’s exactly the part of the process that gets squeezed when the system demands more output.</p>
+<p>If we’re honest about this fact that science is irreducibly human — then we can start questioning the institutions we’ve built. Because many of them are, in a meaningful sense, inhuman. They operate at scales where no individual can comprehend the whole. They substitute measurement for judgment and volume for depth. They were built to manage a system too large for humans to manage, and in doing so they created an environment that is increasingly difficult for humans to do good work inside.</p>
+</section>
+<section id="a-german-asking-for-austerity" class="level2">
+<h2 class="anchored" data-anchor-id="a-german-asking-for-austerity">A German asking for austerity</h2>
+<p>And now I am here: The German asking for austerity. But I think the answer, for at least parts of the system, is to want less. Not because cutting budgets is virtuous — I have lived through enough austerity discourse to know it isn’t — but because some things that matter in science only survive at a scale where humans can still be fully present.</p>
+<p>Smaller groups where a PI understands every project. Peer review at a scale where people can discuss papers rather than fill in forms. Less pressure to produce more, and more room to understand what’s already been produced. Fewer metrics, more trust. And I mean trust in the full human sense — I crave it, almost, from my institution. The feeling that they trust me to spend wisely the money I brought in through third-party funding. That they trust my judgment about whom I talk to, what I work on, how I run my group. The word “enough” as a legitimate answer to “how much?”</p>
+<p>Is more even better? More papers, more citations, more funding, more people, more benchmarks, more administration to manage all of the above? The system says yes. My experience says: past a certain point, more produces more of everything except the thing science is actually for.</p>
+<p>I would give back money to have less overhead. I would accept fewer publications to have deeper ones. In my group, we have already started saying no — to new projects, to quick workshop papers, to collaborations that would spread us thinner. At the retreat, we discussed doing even more of that. These are not popular positions in a system that equates growth with success. But I think they might be correct. And I also realize that this cannot be the universal prescription. We have important questions to answer and we need science to answer them. And I also recognize that a lot of great science happens in large groups and that humanity benefitted a lot from the growth of science. But I think we can also recognize that there are some things that only happen in small groups, and that we should be careful not to lose those things in the rush to produce more.</p>
+</section>
+<section id="a-caveat" class="level2">
+<h2 class="anchored" data-anchor-id="a-caveat">A caveat</h2>
+<p>There is frustration in all of this, and frustration is not always a reliable guide to systemic problems. Maybe some of what bothers me is just the normal friction of working inside any institution. Maybe I could solve some of it by being more patient, more organized, better at administration. Maybe I am a person with a higher desire for freedom and trust than is usual, and maybe I am coupling some personal frustrations into what I’m presenting as a systemic critique. I don’t claim to have perfectly separated the two. And I don’t claim that any of what I describe is universally true or can be used as an answer for systemtic problems.</p>
+<p>This blog post is itself a symptom. I am a researcher, procrastinating on my research, writing about why the system makes it hard to do research. In a system that worked, the frustration wouldn’t accumulate to the point where it demands an essay. It should just be smoother from the start.</p>
+<p>Where, if not in academia, should we be willing to dream about what the thing could be? Where, if not among people whose job is to ask hard questions, should we ask whether our own institutions are the right ones? Maybe this is utopian. But we are in the business of ideas that sound unrealistic until someone tests them. The least we can do is extend that courtesy to ourselves.</p>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>metascience</category>
+  <category>peer-review</category>
+  <category>scientific-freedom</category>
+  <guid>https://kjablonka.com/blog/posts/scientific_freedom/</guid>
+  <pubDate>Tue, 24 Mar 2026 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How to Get an Interest-Free Loan</title>
   <link>https://kjablonka.com/blog/posts/finances/</link>
@@ -838,27 +902,27 @@ font-style: inherit;">'equal'</span>)</span>
 <span id="cb2-46">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:14: RuntimeWarning:
+<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:14: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:14: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:14: RuntimeWarning:
 
 invalid value encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:15: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:15: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_82241/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_18255/3517710329.py:15: RuntimeWarning:
 
 invalid value encountered in matmul
 </code></pre>
@@ -1747,7 +1811,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="cffc9386" class="cell" data-execution_count="2">
+<div id="b049d969" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1827,7 +1891,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="5375dde9" class="cell" data-execution_count="3">
+<div id="c47ef3eb" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -1880,7 +1944,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="0340652c" class="cell" data-execution_count="4">
+<div id="2213f21e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2091,7 +2155,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="afc9b53a" class="cell" data-execution_count="6">
+<div id="8b31d180" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -2431,7 +2495,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="02f6206a" class="cell" data-execution_count="8">
+<div id="e17d7e2f" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2544,7 +2608,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="69b08fb4" class="cell" data-execution_count="9">
+<div id="25d82b95" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2744,7 +2808,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="b50a4187" class="cell" data-execution_count="10">
+<div id="48aeab23" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3510,114 +3574,6 @@ Thiel, Peter. 2014. <span>“Competition Is for Losers.”</span> <em>Wall Stree
   <category>academia</category>
   <guid>https://kjablonka.com/blog/posts/take_it_easy/</guid>
   <pubDate>Sun, 01 Dec 2024 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>The Tail End</title>
-  <link>https://kjablonka.com/blog/posts/visualizing_the_tail_end/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><a href="https://waitbutwhy.com/2015/12/the-tail-end.html">The Tail End by Tim Urban</a> is a blog post everyone should read.</p>
-<p>I’ve been thinking about it a lot lately, and made a small interactive visualization of one aspect of it. How most of us, including myself, are already in the tails of some aspects of our lives. (Luckily, we are in the opposite tails for some other aspects.)</p>
-<p>If we think, for example, about the times we will still see our parents, we are certainly already in our tails. Most of our interactions with them already happened and there is only a small fraction of them ahead of us.</p>
-<div>
-<p><input type="range" id="ageInput" min="0" max="90" value="34" step="1" style="width: 300px;"> <span id="ageDisplay">Current Age: 34</span></p>
-</div>
-<div id="plotDiv" style="width:600px;height:600px;">
-
-</div>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-// Parameters for life expectancy and stages
-const life_expectancy = 90;
-const childhood_years = 18;
-const childhood_interactions_per_year = 365 * 0.9;
-const adult_visits_per_year = 10;
-const total_dots = 400;
-const parent_start_age = 25;
-const parent_life_expectancy = 80;
-
-function updatePlot(age) {
-    // Calculate parent's current age
-    const parent_age = parent_start_age + age;
-    
-    // Calculate filled interactions
-    let filled_interactions;
-    if (age <= childhood_years) {
-        filled_interactions = age * childhood_interactions_per_year;
-    } else {
-        filled_interactions = childhood_years * childhood_interactions_per_year;
-        const adult_years = Math.min(age - childhood_years, parent_life_expectancy - parent_start_age - childhood_years);
-        filled_interactions += adult_years * adult_visits_per_year;
-    }
-    
-    // Cap filled interactions
-    const max_adult_years = parent_life_expectancy - parent_start_age - childhood_years;
-    const max_interactions = (childhood_years * childhood_interactions_per_year) + max_adult_years * adult_visits_per_year;
-    let filled_dots;
-    if (parent_age >= parent_life_expectancy) {
-        filled_dots = total_dots;
-    } else {
-        filled_dots = Math.min(Math.floor((filled_interactions / max_interactions) * total_dots), total_dots);
-    }
-
-    // Create the grid of dots
-    const x = [];
-    const y = [];
-    const colors = [];
-    for (let i = 0; i < total_dots; i++) {
-        x.push(i % 20);
-        y.push(Math.floor(i / 20));
-        colors.push(i < filled_dots ? 'blue' : 'lightgray');
-    }
-
-    const data = [{
-        x: x,
-        y: y,
-        mode: 'markers',
-        marker: {
-            size: 10,
-            color: colors
-        },
-        type: 'scatter'
-    }];
-
-    const layout = {
-        title: `Remaining Parent Time at Age ${age} (Parent's Age: ${parent_start_age + age})`,
-        xaxis: {showgrid: false, zeroline: false, visible: false},
-        yaxis: {showgrid: false, zeroline: false, visible: false},
-        width: 600,
-        height: 600,
-        hovermode: false
-    };
-
-    Plotly.newPlot('plotDiv', data, layout);
-}
-
-const ageInput = document.getElementById('ageInput');
-const ageDisplay = document.getElementById('ageDisplay');
-
-ageInput.addEventListener('input', function() {
-    const age = parseInt(this.value);
-    ageDisplay.textContent = `Current Age: ${age}`;
-    updatePlot(age);
-});
-
-// Initial plot
-updatePlot(34);
-</script>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>life</category>
-  <guid>https://kjablonka.com/blog/posts/visualizing_the_tail_end/</guid>
-  <pubDate>Fri, 20 Sep 2024 22:00:00 GMT</pubDate>
-  <media:content url="https://kjablonka.com/blog/posts/visualizing_the_tail_end" medium="image"/>
 </item>
 </channel>
 </rss>

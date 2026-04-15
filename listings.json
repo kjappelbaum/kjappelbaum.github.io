@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/bayesian_optimization_materials/index.html",
       "/blog/posts/scientific_freedom/index.html",
       "/blog/posts/finances/index.html",
       "/blog/posts/openclaw/index.html",

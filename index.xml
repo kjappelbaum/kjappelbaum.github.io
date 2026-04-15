@@ -15,7 +15,32 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Tue, 24 Mar 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 14 Apr 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Stop Guessing, Start Investing</title>
+  <link>https://kjablonka.com/blog/posts/bayesian_optimization_materials/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>A short course I developed on <strong>Bayesian optimization in materials synthesis</strong> — built around a single question: <em>ten experiments, five thousand euros, one unknown function — where do you put your experiments?</em></p>
+<p>The course covers grid search and why it fails, the curse of dimensionality, Gaussian processes and the role of calibrated uncertainty, exploitation vs.&nbsp;exploration, Expected Improvement, and a handful of interactive demos. The recurring metaphor is that every experiment is an investment: a serious scientist does not spread the budget uniformly over a plan made before anything is known, but updates beliefs after each measurement and chooses the next experiment so it earns its keep.</p>
+<p>Use ← / → on your keyboard, the arrows in the corner, or a clicker to navigate.</p>
+<div style="position:relative;width:100%;padding-bottom:75%;margin:1.5em 0;border-radius:10px;overflow:hidden;border:1px solid #21262d">
+  <iframe src="slides.html" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allowfullscreen=""></iframe>
+</div>
+<p><a href="slides.html" target="_blank">Open slides in a new tab →</a></p>
+
+
+
+ ]]></description>
+  <category>teaching</category>
+  <category>bayesian optimization</category>
+  <category>materials</category>
+  <guid>https://kjablonka.com/blog/posts/bayesian_optimization_materials/</guid>
+  <pubDate>Tue, 14 Apr 2026 22:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Science is Too Successful</title>
   <link>https://kjablonka.com/blog/posts/scientific_freedom/</link>
@@ -902,27 +927,27 @@ font-style: inherit;">'equal'</span>)</span>
 <span id="cb2-46">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:14: RuntimeWarning:
+<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:14: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:14: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:14: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:14: RuntimeWarning:
 
 invalid value encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:15: RuntimeWarning:
 
 divide by zero encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:15: RuntimeWarning:
 
 overflow encountered in matmul
 
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_49826/3517710329.py:15: RuntimeWarning:
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_68662/3517710329.py:15: RuntimeWarning:
 
 invalid value encountered in matmul
 </code></pre>
@@ -1811,7 +1836,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="eef31d52" class="cell" data-execution_count="2">
+<div id="4d2c022e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1891,7 +1916,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="e4c0cc74" class="cell" data-execution_count="3">
+<div id="12c7a4fd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -1944,7 +1969,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="346bbd50" class="cell" data-execution_count="4">
+<div id="975aa636" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2155,7 +2180,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="2cc21370" class="cell" data-execution_count="6">
+<div id="aefdaf9a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -2495,7 +2520,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="78003da1" class="cell" data-execution_count="8">
+<div id="f5bbc780" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2608,7 +2633,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="069ae57d" class="cell" data-execution_count="9">
+<div id="57a1104b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2808,7 +2833,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="00cab27b" class="cell" data-execution_count="10">
+<div id="894ba6ad" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3505,75 +3530,6 @@ Zhang, Jenny, Joel Lehman, Kenneth Stanley, and Jeff Clune. 2024. <span>“OMNI:
   <guid>https://kjablonka.com/blog/posts/why_llm/</guid>
   <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/why_llm" medium="image"/>
-</item>
-<item>
-  <title>Take it easy, my friend</title>
-  <link>https://kjablonka.com/blog/posts/take_it_easy/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>It’s easy to feel caught up in the (perceived) pressure to produce results quickly. Academia seems to prioritize speed and quantity over depth and quality, which can be overwhelming. But is this really true? If it is something you must rush to publish, is there any real value in it? Is it really of value if you need to “compete”? <span class="citation" data-cites="thiel2014competition">(Thiel 2014)</span> Is the project you are rushing to publish really the question that you are best positioned to answer and that you deeply care about? Isn’t rushing things another form of cargo cult science?</p>
-<p>What if, instead of frantically racing to publish, you took the time to slow down, breathe, and really dig into your research, the research you really care about and take pleasure in craftsmanship? We must admit that we are not immune to the allure of “fast science.” There’s something undeniably exciting about chasing quick breakthroughs and racking up publications. Yet, this isn’t the path to meaningful, impactful, sustainable research and happiness.</p>
-<p>Great outcomes take time and persistence. Take the story of Rosalind Franklin, whose research laid the groundwork for understanding the structure of DNA. Or consider the godfathers of deep learning, who persisted through the AI winter. Galileo took 18 years to finish and write up his pendulum experiments and Newton took four years for his initial writings about gravity. <span class="citation" data-cites="newport2024slow">(Newport 2024)</span></p>
-<p>These scientists didn’t rush their work or cut it into “salami papers.” Instead, they took their time, and their persistence paid off.</p>
-<p>Great outcomes can also not be easily optimized for. And this is, as Peter Drucker already realized, <span class="citation" data-cites="drucker1999knowledge">(Drucker 1999)</span> especially difficult for knowledge work. It is a fact that metrics are deceiving and that stepping stones that lead to discoveries cannot be anticipated. <span class="citation" data-cites="stanley2015why">(Stanley and Lehman 2015)</span> Thus, as a field, we are bound to be less successful in the long run if we only optimize for bibliometrics. Trust yourself that your unique point of view will lead to something exciting. Looking less at oneself, comparing Google Scholar profiles, and instead being in awe of the exciting times we are in will also lead to more happiness. <span class="citation" data-cites="brooks2022dont shiota2007nature dambrun2017self">(Brooks 2022; Shiota, Keltner, and Mossman 2007; Dambrun 2017)</span></p>
-<p>Great outcomes are also very diverse and happen on very different timescales. Even though some of our communications suggest otherwise (“Samantha is a great student because she published in Nature”), <span class="citation" data-cites="lawrence2003politics">(Lawrence 2003)</span> we do not only do well if we publish in Cell, Nature, or Science or other “vanity outlets.” We also do well if we build software that is used and that powers a full line of other research (think of the impact Python, Numpy, RDKit, Pymatgen, and similar tools had on our work). We also do well if we curate datasets that enable new discoveries. <span class="citation" data-cites="abbott2020mind">(Abbott et al. 2020)</span> Ultimately, AlphaFold would not have been possible without the Protein Data Bank. While the systems with which we evaluate scientists only slowly evolve to reflect this reality, <span class="citation" data-cites="hicks2015bibliometrics">(Hicks et al. 2015)</span> it is important to remember that great work will ultimately pay off and lead to much more satisfaction. Ultimately, those who decide on funding and career moves benefit from hindsight that editors do not have. <span class="citation" data-cites="lawrence2003politics">(Lawrence 2003)</span></p>
-<p>In a world filled with one-hit wonders and short-lived trends, it’s more important than ever to focus on creating meaningful, lasting contributions to your field. You want to be known for something great, not just a fleeting moment of recognition. Moreover, slowing down to a sustainable pace can help you avoid the pitfalls of academic burnout. It’s not about the number of publications or the speed at which you produce them; it’s about the quality of your work, the depth of your understanding, and the passion you bring to your research. To our knowledge, being stressed didn’t help anyone to think clearly. <span class="citation" data-cites="mcewen2007physiology">(McEwen 2007)</span></p>
-<p>So, if you are feeling the pressure to constantly and rapidly produce, remember that taking it slow can lead to great things. Embrace the process, pursue your ideas with curiosity and dedication, and, most importantly, take the time to enjoy the journey. This journey isn’t a sprint — it’s a marathon. It will be more rewarding if you allow yourself the freedom to explore at your own pace. So, take a deep breath, and relax. In the end, you’ll be known not for a fleeting moment of recognition but for a lasting contribution to your field—a testament to your dedication, perseverance, and passion for your work.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://kjablonka.com/blog/posts/take_it_easy/cover.png" class="img-fluid figure-img"></p>
-<figcaption>DALL-E generated image for slow science</figcaption>
-</figure>
-</div>
-<p>This text is inspired by a conversation with Alán Aspuru-Guzik. Alán also suggested the title with a reference to a song.</p>
-
-
-<!-- -->
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-abbott2020mind" class="csl-entry">
-Abbott, L. F., D. D. Bock, E. M. Callaway, et al. 2020. <span>“The Mind of a Mouse.”</span> <em>Cell</em> 182 (6): 1372–76. <a href="https://doi.org/10.1016/j.cell.2020.08.010">https://doi.org/10.1016/j.cell.2020.08.010</a>.
-</div>
-<div id="ref-brooks2022dont" class="csl-entry">
-Brooks, Arthur C. 2022. <span>“Don’t Objectify Yourself.”</span> <em>The Atlantic</em>. <a href="https://www.theatlantic.com/family/archive/2022/09/how-be-less-self-centered/671499/">https://www.theatlantic.com/family/archive/2022/09/how-be-less-self-centered/671499/</a>.
-</div>
-<div id="ref-dambrun2017self" class="csl-entry">
-Dambrun, Michael. 2017. <span>“Self-Centeredness and Selflessness: Happiness Correlates and Mediating Psychological Processes.”</span> <em>PeerJ</em> 5: e3306. <a href="https://doi.org/10.7717/peerj.3306">https://doi.org/10.7717/peerj.3306</a>.
-</div>
-<div id="ref-drucker1999knowledge" class="csl-entry">
-Drucker, Peter F. 1999. <span>“Knowledge-Worker Productivity: The Biggest Challenge.”</span> <em>California Management Review</em> 41 (2): 79–94. <a href="https://doi.org/10.2307/41165987">https://doi.org/10.2307/41165987</a>.
-</div>
-<div id="ref-hicks2015bibliometrics" class="csl-entry">
-Hicks, Diana, Paul Wouters, Ludo Waltman, Sarah de Rijcke, and Ismael Rafols. 2015. <span>“Bibliometrics: The Leiden Manifesto for Research Metrics.”</span> <em>Nature</em> 520 (7548): 429–31. <a href="https://doi.org/10.1038/520429a">https://doi.org/10.1038/520429a</a>.
-</div>
-<div id="ref-lawrence2003politics" class="csl-entry">
-Lawrence, Peter A. 2003. <span>“The Politics of Publication.”</span> <em>Nature</em> 422 (6929): 259–61. <a href="https://doi.org/10.1038/422259a">https://doi.org/10.1038/422259a</a>.
-</div>
-<div id="ref-mcewen2007physiology" class="csl-entry">
-McEwen, Bruce S. 2007. <span>“Physiology and Neurobiology of Stress and Adaptation: Central Role of the Brain.”</span> <em>Physiological Reviews</em> 87 (3): 873–904. <a href="https://doi.org/10.1152/physrev.00041.2006">https://doi.org/10.1152/physrev.00041.2006</a>.
-</div>
-<div id="ref-newport2024slow" class="csl-entry">
-Newport, Cal. 2024. <em>Slow Productivity: The Lost Art of Accomplishment Without Burnout</em>. Penguin Books Limited.
-</div>
-<div id="ref-shiota2007nature" class="csl-entry">
-Shiota, Michelle N., Dacher Keltner, and Amanda Mossman. 2007. <span>“The Nature of Awe: Elicitors, Appraisals, and Effects on Self-Concept.”</span> <em>Cognition and Emotion</em> 21 (5): 944–63. <a href="https://doi.org/10.1080/02699930600923668">https://doi.org/10.1080/02699930600923668</a>.
-</div>
-<div id="ref-stanley2015why" class="csl-entry">
-Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned: The Myth of the Objective</em>. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-15524-1">https://doi.org/10.1007/978-3-319-15524-1</a>.
-</div>
-<div id="ref-thiel2014competition" class="csl-entry">
-Thiel, Peter. 2014. <span>“Competition Is for Losers.”</span> <em>Wall Street Journal</em>. <a href="http://online.wsj.com/articles/peter-thiel-competition-is-for-losers-1410535536">http://online.wsj.com/articles/peter-thiel-competition-is-for-losers-1410535536</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>life</category>
-  <category>academia</category>
-  <guid>https://kjablonka.com/blog/posts/take_it_easy/</guid>
-  <pubDate>Sun, 01 Dec 2024 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/new_kinds_ai_scientists/index.html",
       "/blog/posts/bayesian_optimization_materials/index.html",
       "/blog/posts/scientific_freedom/index.html",
       "/blog/posts/finances/index.html",

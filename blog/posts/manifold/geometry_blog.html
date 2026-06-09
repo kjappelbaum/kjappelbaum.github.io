@@ -390,30 +390,18 @@ Figure&nbsp;1: Walking through image space. Top: linear interpolation between ra
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-overflow encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-invalid value encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-overflow encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-invalid value encountered in matmul
-</code></pre>
+<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: divide by zero encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: overflow encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: invalid value encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: divide by zero encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: overflow encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: invalid value encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div id="fig-relu-regions" class="quarto-float quarto-figure quarto-figure-center anchored">

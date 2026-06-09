@@ -15,7 +15,45 @@
 <link>https://kjablonka.com/</link>
 </image>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Tue, 14 Apr 2026 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 08 Jun 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Why solving urgent problems relies on a different kind of “AI scientist”</title>
+  <link>https://kjablonka.com/blog/posts/new_kinds_ai_scientists/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The energy transition is an urgent problem. We can also call it a materials problem: Most likely, breakthrough materials would unlock breakthroughs in the energy transition. So we need to find those materials, and we need to find them fast.</p>
+<p>The good news is that many are trying to do so. Many attempts try to use so-called “AI scientists” to accelerate the search. In these systems (agents) an LLM can orchestrate different tools but also perform some of its own reasoning. Coupling them to robots, one can generate a lot of data.</p>
+<p>Agents they help a lot. They let me run experiments I would never have the time to run on my own. They help me think deeper, acting as a somewhat intelligent rubber duck. They even help me iterate through many different versions of a possible paper until I land on the strongest one. I am not arguing against any of this — it is genuinely useful, and I use it every day.</p>
+<p>But just scaling up the number of datapoints will not get us where we need to go. At least it does not seem to be the right path to the breakthroughs we need.</p>
+<p>We cannot keep building bigger and bigger maps of chemical space, Borges-style. In <em>On Exactitude in Science</em>, Jorge Luis Borges imagines an empire whose cartographers draw a map so detailed it is the exact size of the empire itself — perfect, and completely useless. More detail is not the same thing as more understanding. At some point you have to make sense of the map: to coarse-grain it down to something a human can actually hold in their head.</p>
+<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://kjablonka.com/blog/posts/new_kinds_ai_scientists/data_schematic.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: More data is not the same as more understanding. A map that records every detail (left) is overwhelming; the right schematic (right) throws almost everything away to expose the structure that lets you actually navigate.
+</figcaption>
+</figure>
+</div>
+<p>And this matters for a concrete reason: coarse-graining is what makes search effective.</p>
+<p>People throw around numbers like <img src="https://latex.codecogs.com/png.latex?10%5E%7B60%7D"> compounds. But even if we are humble and say we will only ever consider <img src="https://latex.codecogs.com/png.latex?10%5E%7B20%7D">, the arithmetic is brutal. If a single screening step takes one second, getting through all of them takes about 3.17 trillion years. And if it costs around twenty cents per material — our current cost per paper in the <a href="https://fairmat-nfdi.github.io/perla/">PERLA pipeline</a> — you are looking at roughly €<img src="https://latex.codecogs.com/png.latex?2%20%5Ctimes%2010%5E%7B19%7D"> to brute-force your way through.</p>
+<p>Of course, you could argue that we do not have to be that dumb about it. We could use Bayesian optimization or similar techniques to be clever about how we explore chemical space, and never touch most of those candidates. That is true. But to make the big leaps — and the big cuts — you still need heuristics and understanding. Clever local search inside the wrong frame just gets you efficiently to the wrong place.</p>
+<p>This is the real risk. Scale and robots alone give you what <a href="https://www.asimov.press/p/ai-science?hide_intro_popup=true">Alvin Djajadikerta has called <em>hypernormal science</em></a>: a more and more detailed map of what you already believe. The energy transition does not need a more detailed map. It needs the right schematic — and that only comes from work aimed at understanding, not prediction.</p>
+<p>And, isn’t understanding the point of (fundamental) science in the first place? To make real breakthroughs with “AI Scientists” we need to find ways to not just be faster, larger, greater - but also able to have what my PhD advisor called the “helicoper move”: Zoom in for the details and zoom out for the patterns.</p>
+
+
+
+ ]]></description>
+  <category>ai</category>
+  <category>science</category>
+  <guid>https://kjablonka.com/blog/posts/new_kinds_ai_scientists/</guid>
+  <pubDate>Mon, 08 Jun 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/new_kinds_ai_scientists" medium="image"/>
+</item>
 <item>
   <title>Stop Guessing, Start Investing</title>
   <link>https://kjablonka.com/blog/posts/bayesian_optimization_materials/</link>
@@ -927,30 +965,18 @@ font-style: inherit;">'equal'</span>)</span>
 <span id="cb2-46">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-overflow encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:14: RuntimeWarning:
-
-invalid value encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-overflow encountered in matmul
-
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_32404/3517710329.py:15: RuntimeWarning:
-
-invalid value encountered in matmul
-</code></pre>
+<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: divide by zero encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: overflow encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: invalid value encountered in matmul
+  hidden = np.maximum(0, inp @ w1.T + b1)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: divide by zero encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: overflow encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)
+/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: invalid value encountered in matmul
+  return (hidden @ w2 + b2).reshape(x.shape)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div id="fig-relu-regions" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1836,7 +1862,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="92f4e1ab" class="cell" data-execution_count="2">
+<div id="011a656b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1916,7 +1942,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="150dc6f1" class="cell" data-execution_count="3">
+<div id="33a24fba" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
@@ -1969,7 +1995,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="666f1f78" class="cell" data-execution_count="4">
+<div id="8c2e1d2f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2180,7 +2206,7 @@ Figure&nbsp;1: Illustration of how data might lie on a lower-dimensional manifol
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="02d7d310" class="cell" data-execution_count="6">
+<div id="f6d9e97d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
@@ -2462,42 +2488,24 @@ font-style: inherit;">0.5</span>)</span>
 <span id="cb5-24">plt.show()</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-overflow encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-invalid value encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-overflow encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning:
-
-invalid value encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning:
-
-divide by zero encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning:
-
-overflow encountered in matmul
-
-/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning:
-
-invalid value encountered in matmul
-</code></pre>
+<pre><code>/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: divide by zero encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: overflow encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: invalid value encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: divide by zero encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: overflow encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:152: RuntimeWarning: invalid value encountered in matmul
+  X_transformed = X @ self.components_.T
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning: divide by zero encountered in matmul
+  return X @ self.components_ + self.mean_
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning: overflow encountered in matmul
+  return X @ self.components_ + self.mean_
+/opt/miniconda3/lib/python3.13/site-packages/sklearn/decomposition/_base.py:205: RuntimeWarning: invalid value encountered in matmul
+  return X @ self.components_ + self.mean_</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div id="fig-pca" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2520,7 +2528,7 @@ Figure&nbsp;2: PCA analysis of the redundant spectrum data, showing the explaine
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
 <p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="e589b71c" class="cell" data-execution_count="8">
+<div id="bafba59d" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2633,7 +2641,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="f29c1a65" class="cell" data-execution_count="9">
+<div id="6e07fa36" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2833,7 +2841,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="645d069f" class="cell" data-execution_count="10">
+<div id="72a86957" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3462,74 +3470,6 @@ Housel, Morgan. 2020. <em>The Psychology of Money</em>. Petersfield, England: Ha
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/a_wise_owl/</guid>
   <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Trust Me, There’s a Method to This Madness</title>
-  <link>https://kjablonka.com/blog/posts/why_llm/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Even though I work in a chemistry department, much of the recent work in my team has been focused on Large Language Models (LLMs) - or, more generally, frontier models. This isn’t a departure from chemistry; rather, we believe these could be crucial building blocks for solving some of the most fundamental problems in chemistry and materials science.</p>
-<p><a href="https://calvinball.substack.com/p/a-preliminary-roadmap-for-ai-assisted">Sam Rodrigues</a> (as so often) put it best: Science is about doing things for the first time. What’s remarkable is that recent frontier models show sparks of an ability to perform impressive tasks they weren’t explicitly trained for. More importantly, they’re showing promising capabilities in developing what scientists have long considered crucial: good taste in choosing what is interesting. <span class="citation" data-cites="zhang2024omniopenendednessmodelshuman">(Zhang et al. 2024)</span> This intuition, traditionally developed through years of experience, can now be augmented by models that have synthesized patterns from vast amounts of scientific literature and data.</p>
-<p>One of the most striking inefficiencies in academic research is how knowledge dissipates: when a PhD student leaves after four years in the lab, their accumulated experience often vanishes with them. Imagine if we could capture and share all this tacit knowledge - the failed experiments, the subtle technique adjustments, the unwritten rules - through training models on lab notes and conversations <span class="citation" data-cites="Jablonka_2022">(Jablonka, Patiny, and Smit 2022)</span>.</p>
-<p>While recent research suggests that language isn’t necessarily used for reasoning <span class="citation" data-cites="reasoning">(Fedorenko, Piantadosi, and Gibson 2024)</span>, its flexibility makes it an unparalleled tool for communicating ideas, methods, and observations (just look at how synthesis protocols are reported). Yes, schemas, figures, and equations are crucial, but language remains our most versatile medium - and with multimodal approaches, we’re pushing to combine the best of all worlds <span class="citation" data-cites="alampara2024probinglimitationsmultimodallanguage">(Alampara et al. 2024)</span>. (And there are tons of things for which we will need to go beyond naively treating everything as text <span class="citation" data-cites="alampara2024mattextlanguagemodelsneed">(Alampara, Miret, and Jablonka 2024)</span>).</p>
-<p>However, the practical impact is already visible: tasks that once required a PhD thesis can now be accomplished within a Master’s project. During my PhD, training a model for a novel application without existing datasets would have consumed my entire PhD. Now, our team routinely collects custom datasets for new applications <span class="citation" data-cites="Schilling_Wilhelmi_2025">(Schilling-Wilhelmi et al. 2025)</span>. This scalability is crucial because science is inherently long-tailed: breakthrough innovations often emerge from unexpected corners of research and we have so many different instrument, techniques, questions that only a scalable technique can have a shot at capturing any of it.</p>
-<p>Similarly, there have been tons of efforts in developing ontologies, defining APIs, and how to talk between different systems, and <a href="https://madices.github.io">I have been involved in those efforts</a>. But, I more and more come to the belief that we might be better off (at least for the long tail) just by letting models figure out how to talk to different things and build new tools in this way. Tools, are the way science progresses. As Sydney Brenner noted, “Progress in science depends on new techniques, new discoveries and new ideas, probably in that order” <span class="citation" data-cites="Robertson_1980 Dyson_2012">(Robertson 1980; Dyson 2012)</span>.</p>
-<p>However, working with these models daily also <a href="https://michaelnotebook.com/optimism/index.html">raises concerns</a>. While there’s <a href="https://darioamodei.com/machines-of-loving-grace#4-peace-and-governance">significant</a> <a href="https://ia.samaltman.com">potential upside</a>, we who develop these tools bear responsibility for ensuring they benefit society. Beyond immediate concerns about bio- and chemical weapons <span class="citation" data-cites="peppin2025realityaibiorisk">(Peppin et al. 2025)</span>, I worry about <a href="https://www.argmin.net/p/too-much-information">information overflow</a> and the proliferation of bullshit <span class="citation" data-cites="Frankfurt2005">(Frankfurt 2005)</span> and disinformation of all sorts <span class="citation" data-cites="Europol2023">(Europol 2023)</span> along with a possibility to further increase inequalities (with some dominant players accumulating nation-state-like power and Orwellian centralization of “truth”).</p>
-<p>The relative lack of some governments investment in building AI expertise is concerning, as is the potential erosion of critical thinking skills in some quarters. “We live in a society exquisitely dependent on science and technology, in which hardly anyone knows anything about science and technology” <span class="citation" data-cites="Sagan1990">(Sagan 1990)</span>. And, clearly, the scope researches beyond knowing things about science and technology and perhaps even makes a general liberal arts education more valuable then ever.</p>
-<blockquote class="blockquote">
-<p>For progress there is no cure. Any attempt to find automatically safe channels for the present explosive variety of progress must lead to frustration. The only safety possible is relative, and it lies in an intelligent exercise of day-to-day judgement… these transformations are not a priori predictable and… most contemporary “first guesses” concerning them are wrong…</p>
-<p><a href="https://sseh.uchicago.edu/doc/von_Neumann_1955.pdf">CAN WE SURVIVE TECHNOLOGY? by John von Neumann</a></p>
-</blockquote>
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-alampara2024mattextlanguagemodelsneed" class="csl-entry">
-Alampara, Nawaf, Santiago Miret, and Kevin Maik Jablonka. 2024. <span>“MatText: Do Language Models Need More Than Text &amp; Scale for Materials Modeling?”</span> <a href="https://arxiv.org/abs/2406.17295">https://arxiv.org/abs/2406.17295</a>.
-</div>
-<div id="ref-alampara2024probinglimitationsmultimodallanguage" class="csl-entry">
-Alampara, Nawaf, Mara Schilling-Wilhelmi, Martiño Ríos-García, Indrajeet Mandal, Pranav Khetarpal, Hargun Singh Grover, N. M. Anoop Krishnan, and Kevin Maik Jablonka. 2024. <span>“Probing the Limitations of Multimodal Language Models for Chemistry and Materials Research.”</span> <a href="https://arxiv.org/abs/2411.16955">https://arxiv.org/abs/2411.16955</a>.
-</div>
-<div id="ref-Dyson_2012" class="csl-entry">
-Dyson, Freeman J. 2012. <span>“Is Science Mostly Driven by Ideas or by Tools?”</span> <em>Science</em> 338 (6113): 1426–27. <a href="https://doi.org/10.1126/science.1232773">https://doi.org/10.1126/science.1232773</a>.
-</div>
-<div id="ref-Europol2023" class="csl-entry">
-Europol. 2023. <span>“Criminal Use of ChatGPT: A Cautionary Tale about Large Language Models.”</span> 2023. <a href="https://www.europol.europa.eu/media-press/newsroom/news/criminal-use-of-chatgpt-cautionary-tale-about-large-language-models">https://www.europol.europa.eu/media-press/newsroom/news/criminal-use-of-chatgpt-cautionary-tale-about-large-language-models</a>.
-</div>
-<div id="ref-reasoning" class="csl-entry">
-Fedorenko, Evelina, Steven T. Piantadosi, and Edward A. F. Gibson. 2024. <span>“Language Is Primarily a Tool for Communication Rather Than Thought.”</span> <em>Nature</em> 630 (8017): 575–86. <a href="https://doi.org/10.1038/s41586-024-07522-w">https://doi.org/10.1038/s41586-024-07522-w</a>.
-</div>
-<div id="ref-Frankfurt2005" class="csl-entry">
-Frankfurt, Harry G. 2005. <em>On Bullshit</em>. Princeton University Press.
-</div>
-<div id="ref-Jablonka_2022" class="csl-entry">
-Jablonka, Kevin Maik, Luc Patiny, and Berend Smit. 2022. <span>“Making the Collective Knowledge of Chemistry Open and Machine Actionable.”</span> <em>Nature Chemistry</em> 14 (4): 365–76. <a href="https://doi.org/10.1038/s41557-022-00910-7">https://doi.org/10.1038/s41557-022-00910-7</a>.
-</div>
-<div id="ref-peppin2025realityaibiorisk" class="csl-entry">
-Peppin, Aidan, Anka Reuel, Stephen Casper, Elliot Jones, Andrew Strait, Usman Anwar, Anurag Agrawal, et al. 2025. <span>“The Reality of AI and Biorisk.”</span> <a href="https://arxiv.org/abs/2412.01946">https://arxiv.org/abs/2412.01946</a>.
-</div>
-<div id="ref-Robertson_1980" class="csl-entry">
-Robertson, Miranda. 1980. <span>“Biology in the 1980s, Plus or Minus a Decade.”</span> <em>Nature</em> 285 (5764): 358–59. <a href="https://doi.org/10.1038/285358a0">https://doi.org/10.1038/285358a0</a>.
-</div>
-<div id="ref-Sagan1990" class="csl-entry">
-Sagan, Carl. 1990. <em>Why We Need to Understand Science</em>. Vol. 14. 3.
-</div>
-<div id="ref-Schilling_Wilhelmi_2025" class="csl-entry">
-Schilling-Wilhelmi, Mara, Martiño Ríos-García, Sherjeel Shabih, María Victoria Gil, Santiago Miret, Christoph T. Koch, José A. Márquez, and Kevin Maik Jablonka. 2025. <span>“From Text to Insight: Large Language Models for Chemical Data Extraction.”</span> <em>Chemical Society Reviews</em>. <a href="https://doi.org/10.1039/d4cs00913d">https://doi.org/10.1039/d4cs00913d</a>.
-</div>
-<div id="ref-zhang2024omniopenendednessmodelshuman" class="csl-entry">
-Zhang, Jenny, Joel Lehman, Kenneth Stanley, and Jeff Clune. 2024. <span>“OMNI: Open-Endedness via Models of Human Notions of Interestingness.”</span> <a href="https://arxiv.org/abs/2306.01711">https://arxiv.org/abs/2306.01711</a>.
-</div>
-</div></section></div> ]]></description>
-  <category>academia</category>
-  <category>llm</category>
-  <guid>https://kjablonka.com/blog/posts/why_llm/</guid>
-  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://kjablonka.com/blog/posts/why_llm" medium="image"/>
 </item>
 </channel>
 </rss>

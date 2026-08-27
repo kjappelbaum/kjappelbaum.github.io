@@ -2,12 +2,12 @@ project:
   type: website
   output-dir: docs
 
-exeucte:
+execute:
   eval: false
-  freeze: autp
+  freeze: auto
 
 website:
-  title: "Kevin's Homepage"
+  title: "Kevin Maik Jablonka"
   image: quarto.png
   google-analytics: G-S9W9LVHXJK
   page-footer:
@@ -27,27 +27,10 @@ website:
   twitter-card:
     creator: "@kmjablonka"
   site-url: "https://kjablonka.com/"
-  description: "Kevin Maik Jablonka's homepage."
+  description: "Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument to make chemical concepts measurable and turn raw observations into experiments."
   repo-url: https://github.com/kjappelbaum/kjappelbaum.github.io
   repo-actions: [edit]
   repo-branch: main
-  navbar:
-    title: false
-    background: light
-    pinned: false
-    collapse: false
-    left:
-      - icon: home
-        text: "Home"
-        href: index.qmd
-      # - text: "Publications"
-      #   href: publications.qmd
-      # - text: Research
-      #   href: research.qmd
-      # - text: Open Source
-      #   file: opensource/opensource.qmd
-      # - text: Teaching
-      #   href: teaching.qmd
 format:
   html:
     theme: [custom.scss]

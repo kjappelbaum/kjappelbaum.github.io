@@ -1,0 +1,258 @@
+.quarto-title-block .quarto-title,
+.bio-page {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.quarto-title h1.title,
+.bio-page h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+.quarto-title h1.title {
+  margin: 0;
+}
+
+.bio-page {
+  --bio-ink: #252525;
+  --bio-muted: #666;
+  margin-block: 0;
+  color: var(--bio-ink);
+  letter-spacing: normal;
+}
+
+.bio-page * {
+  box-sizing: border-box;
+}
+
+.bio-page a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.bio-page strong {
+  font-weight: 600;
+}
+
+.bio-page h2 {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.bio-page h3 {
+  margin: 1.6rem 0 0.3rem;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+}
+
+.bio-page p {
+  margin: 0.65rem 0 0;
+}
+
+.bio-hero,
+.bio-section,
+.bio-metrics,
+.weights-aside,
+.headshot-strip {
+  margin: 2.75rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.bio-hero {
+  margin-top: 0;
+}
+
+.bio-section#copy-ready-bios {
+  padding: 1.25rem;
+  border: 1px solid rgba(37, 37, 37, 0.22);
+}
+
+.bio-lede {
+  max-width: none;
+  margin: 0 0 0.9rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.bio-actions,
+.headshot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.bio-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+}
+
+.bio-tablist button,
+.copy-button {
+  appearance: none;
+  min-height: 2.5rem;
+  padding: 0.45rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--bio-muted);
+  font: inherit;
+}
+
+.bio-tablist button[aria-selected="true"] {
+  color: var(--bio-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+}
+
+.bio-tablist button:hover,
+.bio-tablist button:focus-visible,
+.copy-button:hover,
+.copy-button:focus-visible {
+  color: var(--bio-ink);
+}
+
+.bio-panel {
+  min-height: 0;
+  padding: 0.75rem 0 0;
+  border: 0;
+  background: transparent;
+}
+
+.bio-panel[hidden] {
+  display: none;
+}
+
+.bio-panel-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.25rem;
+}
+
+.copy-button {
+  color: var(--bio-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.bio-panel > p[data-bio-copy] {
+  margin: 0;
+}
+
+.copy-status {
+  min-height: 1em;
+  margin-top: 0.5rem;
+  color: var(--bio-muted);
+}
+
+.bio-metrics p {
+  margin: 0;
+}
+
+.weights-aside > summary,
+.cv-panel > summary {
+  min-height: 2.5rem;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.weights-aside > div {
+  padding: 0.5rem 0 0.25rem;
+}
+
+.weights-aside > div p {
+  margin: 0 0 0.7rem;
+}
+
+.cv-panel {
+  border: 0;
+}
+
+.cv-content {
+  padding-top: 0.25rem;
+}
+
+.cv-content > section {
+  margin-top: 2rem;
+}
+
+.cv-content h3 {
+  margin: 0 0 0.65rem;
+}
+
+.career-timeline,
+.cv-list,
+.honours-list {
+  margin: 0;
+}
+
+.career-timeline {
+  padding: 0;
+  list-style: none;
+}
+
+.career-timeline li {
+  margin: 0 0 1.25rem;
+}
+
+.career-date,
+.career-timeline div > span,
+.career-timeline div > strong {
+  display: block;
+}
+
+.career-timeline div > strong {
+  font-weight: 600;
+}
+
+.cv-list,
+.honours-list {
+  padding-inline-start: 1.2rem;
+}
+
+.cv-list li,
+.honours-list li {
+  margin-bottom: 0.45rem;
+}
+
+.honours-list time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.headshot-strip h2 {
+  margin-bottom: 0;
+}
+
+.bio-page :focus-visible {
+  outline: 2px solid var(--bio-ink);
+  outline-offset: 3px;
+}
+
+@media print {
+  .bio-actions,
+  .bio-tablist,
+  .copy-button,
+  .weights-aside {
+    display: none !important;
+  }
+
+  .bio-hero,
+  .bio-section,
+  .bio-metrics,
+  .headshot-strip {
+    margin-top: 1.75rem;
+  }
+}

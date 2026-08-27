@@ -1,6 +1,6 @@
 ---
 sidebar: false
-description: "Kevin Maik Jablonka's personal homepage"
+description: "Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument to make chemical concepts measurable and turn raw observations into experiments."
 image: quarto.png
 toc: true
 listing:
@@ -25,8 +25,9 @@ aliases: ["blog/"]
 ![](banana.jpeg){.profile-pic}
 
 
-I lead a [research group](https://lamalab.org/) (supported by the Carl-Zeiss foundation) at the newly established Helmholtz Institute for Polymers in Energy Applications of the University of Jena and the Helmholtz Center in Berlin.
-I'm using computational tools and machine learning to capture the tacit and fuzzy dimensions of chemistry and materials science -- to design materials that work in the real world.
+I lead [LAMALab](https://lamalab.org/) at Friedrich Schiller University Jena.
+We develop AI as a scientific instrument: making chemical concepts measurable and turning raw observations into experiments.<br>
+[Bio, research programme, and CV](bio.qmd)
 
 :::
 
@@ -48,4 +49,3 @@ A collection of unfinished thoughts and ideas.
 
 ::: {#blog-listings}
 :::
-

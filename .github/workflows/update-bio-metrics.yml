@@ -1,0 +1,67 @@
+name: Refresh bio metrics
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Off the top of the hour to reduce scheduled-run delays.
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-bio-metrics
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Fetch and validate public metrics
+        id: metrics
+        run: |
+          if [ -z "$SERPAPI_KEY" ]; then
+            echo "::notice::SERPAPI_KEY is not configured; keeping the validated cached metrics."
+            echo "refreshed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python scripts/update_bio_metrics.py
+          echo "refreshed=true" >> "$GITHUB_OUTPUT"
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+
+      - name: Sync the browser-facing metric file
+        if: steps.metrics.outputs.refreshed == 'true'
+        run: cp bio-metrics.json docs/bio-metrics.json
+
+      - name: Commit refreshed metric files
+        if: steps.metrics.outputs.refreshed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bio-metrics.json docs/bio-metrics.json
+          if git diff --cached --quiet; then
+            echo "No metric changes to commit."
+          else
+            git commit -m "chore: refresh bio metrics"
+            git push
+          fi
+
+      - name: Publish the rendered site
+        if: steps.metrics.outputs.refreshed == 'true'
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          render: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

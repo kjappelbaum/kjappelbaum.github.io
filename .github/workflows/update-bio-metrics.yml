@@ -57,11 +57,18 @@ jobs:
             git push
           fi
 
-      - name: Publish the rendered site
+      - name: Publish the refreshed metric file
         if: steps.metrics.outputs.refreshed == 'true'
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-          render: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pages_dir="$RUNNER_TEMP/kjablonka-pages"
+          git fetch origin gh-pages
+          git worktree add --detach "$pages_dir" origin/gh-pages
+          cp bio-metrics.json "$pages_dir/bio-metrics.json"
+          git -C "$pages_dir" add bio-metrics.json
+          if git -C "$pages_dir" diff --cached --quiet; then
+            echo "The public metric file is already current."
+          else
+            git -C "$pages_dir" commit -m "chore: refresh public bio metrics"
+            git -C "$pages_dir" push origin HEAD:gh-pages
+          fi
+          git worktree remove "$pages_dir"

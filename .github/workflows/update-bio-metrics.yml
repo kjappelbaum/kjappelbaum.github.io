@@ -62,7 +62,7 @@ jobs:
         run: |
           pages_dir="$RUNNER_TEMP/kjablonka-pages"
           git fetch origin gh-pages
-          git worktree add --detach "$pages_dir" origin/gh-pages
+          git worktree add --detach "$pages_dir" FETCH_HEAD
           cp bio-metrics.json "$pages_dir/bio-metrics.json"
           git -C "$pages_dir" add bio-metrics.json
           if git -C "$pages_dir" diff --cached --quiet; then

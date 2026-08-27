@@ -6,6 +6,16 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/posts/new_kinds_ai_scientists/index.html",
+      "/blog/posts/bayesian_optimization_materials/index.html",
+      "/blog/posts/scientific_freedom/index.html",
+      "/blog/posts/finances/index.html",
+      "/blog/posts/openclaw/index.html",
+      "/blog/posts/deep_learning_mechanisms_lecture/index.html",
+      "/blog/posts/manifold/geometry_blog.html",
+      "/blog/posts/write_early/index.html",
+      "/blog/posts/on_impactful_research/index.html",
+      "/blog/posts/writing_erc/index.html",
       "/blog/posts/context/index.html",
       "/blog/posts/ai_scientists/index.html",
       "/blog/posts/ai4science_european_academia/index.html",

@@ -199,12 +199,41 @@
 }
 
 .career-timeline {
-  padding: 0;
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
   list-style: none;
 }
 
+/* one hairline running the length of the career, nodes on it */
+.career-timeline::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.55em;
+  bottom: 0.55em;
+  width: 1px;
+  background: rgba(37, 37, 37, 0.22);
+}
+
 .career-timeline li {
-  margin: 0 0 1.25rem;
+  position: relative;
+  margin: 0 0 1.35rem;
+}
+
+.career-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bio-ink, #252525);
+}
+
+.career-timeline li:first-child::before {
+  box-shadow: 0 0 0 3px #fff;
 }
 
 .career-date,
@@ -255,4 +284,45 @@
   .headshot-strip {
     margin-top: 1.75rem;
   }
+}
+
+/* Panels arrive rather than appear. */
+.bio-panel:not([hidden]) {
+  animation: bio-panel-in 0.28s ease-out both;
+}
+
+@keyframes bio-panel-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The selected tab's underline grows in. */
+.bio-tablist button {
+  position: relative;
+}
+
+.bio-tablist button[aria-selected="true"] {
+  text-decoration: none;
+}
+
+.bio-tablist button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.55rem;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  animation: bio-underline 0.3s ease-out both;
+}
+
+@keyframes bio-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-panel:not([hidden]),
+  .bio-tablist button[aria-selected="true"]::after { animation: none; }
 }

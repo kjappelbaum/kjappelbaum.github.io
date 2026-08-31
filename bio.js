@@ -4,39 +4,43 @@
   const page = document.querySelector("[data-bio-page]");
   if (!page) return;
 
-  const tabs = [...page.querySelectorAll("[data-bio-tab]")];
-  const panels = [...page.querySelectorAll("[data-bio-panel]")];
+  // Each [data-tabs] wrapper owns its own tabs and panels.
+  page.querySelectorAll("[data-tabs]").forEach((group) => {
+    const tabs = [...group.querySelectorAll("[data-tab]")];
+    const panels = [...group.querySelectorAll("[data-panel]")];
+    if (!tabs.length) return;
 
-  const activateTab = (tab, moveFocus = false) => {
-    const selected = tab.dataset.bioTab;
-    tabs.forEach((candidate) => {
-      const active = candidate === tab;
-      candidate.setAttribute("aria-selected", String(active));
-      candidate.tabIndex = active ? 0 : -1;
-    });
-    panels.forEach((panel) => {
-      panel.hidden = panel.dataset.bioPanel !== selected;
-    });
-    if (moveFocus) tab.focus();
-  };
+    const activateTab = (tab, moveFocus = false) => {
+      const selected = tab.dataset.tab;
+      tabs.forEach((candidate) => {
+        const active = candidate === tab;
+        candidate.setAttribute("aria-selected", String(active));
+        candidate.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== selected;
+      });
+      if (moveFocus) tab.focus();
+    };
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(tab));
-    tab.addEventListener("keydown", (event) => {
-      let nextIndex = null;
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-        nextIndex = (index + 1) % tabs.length;
-      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-        nextIndex = (index - 1 + tabs.length) % tabs.length;
-      } else if (event.key === "Home") {
-        nextIndex = 0;
-      } else if (event.key === "End") {
-        nextIndex = tabs.length - 1;
-      }
-      if (nextIndex !== null) {
-        event.preventDefault();
-        activateTab(tabs[nextIndex], true);
-      }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activateTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex = null;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = tabs.length - 1;
+        }
+        if (nextIndex !== null) {
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        }
+      });
     });
   });
 
@@ -56,7 +60,7 @@
   page.querySelectorAll("[data-copy-bio]").forEach((button) => {
     button.addEventListener("click", async () => {
       const key = button.dataset.copyBio;
-      const panel = page.querySelector(`[data-bio-panel="${key}"]`);
+      const panel = page.querySelector(`[data-panel="${key}"]`);
       const source = panel?.querySelector("[data-bio-copy]");
       const status = page.querySelector(`[data-copy-status="${key}"]`);
       if (!source || !status) return;

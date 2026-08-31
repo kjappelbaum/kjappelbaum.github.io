@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-12-29">
 
-<title>The Geometry of Not Enough Data – Kevin’s Homepage</title>
+<title>The Geometry of Not Enough Data – Kevin Maik Jablonka</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,6 +80,7 @@ div.csl-indent {
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
@@ -93,16 +94,16 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-689f630c68528effd541efe951e5b377.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-4b4e107b9206581a6b5013654ed153a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-bf4529fd89324a82b2d40d18b73c5fdd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-2b540f68344f3b1c70684c252cd199e1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -133,6 +134,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&amp;display=swap">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -164,27 +168,77 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="The Geometry of Not Enough Data – Kevin’s Homepage">
+<meta property="og:title" content="The Geometry of Not Enough Data – Kevin Maik Jablonka">
 <meta property="og:description" content="On why overparameterized models work, when they fail, and what we’re actually learning">
-<meta property="og:image" content="https://kjablonka.com/blog/posts/manifold/geometry_blog_files/figure-html/fig-random-walk-output-1.png">
-<meta property="og:site_name" content="Kevin's Homepage">
-<meta property="og:image:height" content="812">
-<meta property="og:image:width" content="2284">
-<meta name="twitter:title" content="The Geometry of Not Enough Data – Kevin’s Homepage">
+<meta property="og:image" content="https://kjablonka.com/blog/posts/manifold/quarto.png">
+<meta property="og:site_name" content="Kevin Maik Jablonka">
+<meta name="twitter:title" content="The Geometry of Not Enough Data – Kevin Maik Jablonka">
 <meta name="twitter:description" content="On why overparameterized models work, when they fail, and what we’re actually learning">
-<meta name="twitter:image" content="https://kjablonka.com/blog/posts/manifold/geometry_blog_files/figure-html/fig-random-walk-output-1.png">
+<meta name="twitter:image" content="https://kjablonka.com/blog/posts/manifold/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
-<meta name="twitter:image-height" content="812">
-<meta name="twitter:image-width" content="2284">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Kevin Maik Jablonka</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../bio.html"> 
+<span class="menu-text">Bio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://lamalab.org/"> 
+<span class="menu-text">Lab</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kjappelbaum"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=R2ntI8IAAAAJ&amp;hl=en"> <i class="bi bi-mortarboard-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -263,7 +317,9 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="real-data-is-not-random-data">Real Data Is Not Random Data</h2>
 <p>Sample an image uniformly at random from the space of all 256×256 RGB images. You get noise. Sample a million. Still noise. The space of natural images—photographs, paintings, anything a human would recognize—occupies a measure-zero subset of pixel space.</p>
 <p>A striking way to see this: take two random points in pixel space and walk linearly between them. Every step is noise. Now take two real images and walk between them along the data manifold (as a generative model learns to do). The intermediate points look like images—blurry perhaps, but recognizably structured.</p>
-<div id="cell-fig-random-walk" class="cell" data-execution_count="1">
+<div id="fig-random-walk" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -307,18 +363,11 @@ window.Quarto = {
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display">
-<div id="fig-random-walk" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="geometry_blog_files/figure-html/fig-random-walk-output-1.png" width="1142" height="406" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Walking through image space. Top: linear interpolation between random points yields noise throughout. Bottom: interpolation along a learned manifold produces structured images at every step.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>The same holds for text. Random token sequences are gibberish. Coherent sentences, paragraphs, arguments—these live on a thin subspace of token-sequence space, constrained by grammar, semantics, and the structure of ideas worth expressing.</p>
 <p>This resolves the arithmetic paradox. The impossibility proof assumes you need to cover the full input space. But the data we care about concentrates on a low-dimensional structure, and coverage of that structure is tractable.</p>
@@ -339,7 +388,9 @@ Figure&nbsp;1: Walking through image space. Top: linear interpolation between ra
 <h2 class="anchored" data-anchor-id="the-geometry-of-piecewise-linear-functions">The Geometry of Piecewise Linear Functions</h2>
 <p>ReLU networks compute piecewise linear functions. Not approximately linear. Exactly linear, within each piece.</p>
 <p>The ReLU activation <span class="math inline">\(\text{ReLU}(x) = \max(0, x)\)</span> is piecewise linear with two pieces. Compositions of affine transformations and coordinate-wise ReLUs yield piecewise linear functions on convex polytopes. Within each polytope, the network computes <span class="math inline">\(f(x) = Wx + b\)</span> for some <span class="math inline">\(W\)</span> and <span class="math inline">\(b\)</span> specific to that region.</p>
-<div id="cell-fig-relu-regions" class="cell" data-execution_count="2">
+<div id="fig-relu-regions" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -389,32 +440,11 @@ Figure&nbsp;1: Walking through image space. Top: linear interpolation between ra
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: divide by zero encountered in matmul
-  hidden = np.maximum(0, inp @ w1.T + b1)
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: overflow encountered in matmul
-  hidden = np.maximum(0, inp @ w1.T + b1)
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:14: RuntimeWarning: invalid value encountered in matmul
-  hidden = np.maximum(0, inp @ w1.T + b1)
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: divide by zero encountered in matmul
-  return (hidden @ w2 + b2).reshape(x.shape)
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: overflow encountered in matmul
-  return (hidden @ w2 + b2).reshape(x.shape)
-/var/folders/gk/s1v9_48163q2rxpc1x2gq21m0000gn/T/ipykernel_44661/3517710329.py:15: RuntimeWarning: invalid value encountered in matmul
-  return (hidden @ w2 + b2).reshape(x.shape)</code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<div id="fig-relu-regions" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="geometry_blog_files/figure-html/fig-relu-regions-output-2.png" width="658" height="548" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: A ReLU network partitions the input space into convex polytopes. Within each region, the function is exactly affine.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p>There’s a topological way to think about this. A neural network progressively transforms the input space, stretching and folding it until the data becomes linearly separable.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The network learns a coordinate system in which the problem is simple.</p>
 <p>The number of linear regions grows exponentially with depth. A network can have far more regions than training points. Most regions contain no data at all.</p>
@@ -467,47 +497,42 @@ Figure&nbsp;2: A ReLU network partitions the input space into convex polytopes. 
 <h2 class="anchored" data-anchor-id="when-deep-learning-fails">When Deep Learning Fails</h2>
 <p>The geometric picture predicts specific failure modes, all involving queries that leave the training manifold.</p>
 <p><strong>Distribution shift.</strong> <span class="citation" data-cites="zech2018variable">Zech et al. (<a href="#ref-zech2018variable" role="doc-biblioref">2018</a>)</span> analyzed a deep learning model for detecting pneumonia in chest X-rays. The model achieved high accuracy—but partly by detecting which hospital the X-ray came from, using equipment artifacts like metal tokens. At a new hospital with different equipment, performance collapsed. The test manifold diverged from training.</p>
-<div id="cell-fig-shift" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>train_x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">40</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>train_y <span class="op">=</span> np.sin(train_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>test_x <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">2.5</span>, <span class="dv">25</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>test_y <span class="op">=</span> np.sin(test_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>model_x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">2.5</span>, <span class="dv">3</span>, <span class="dv">200</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> (train_y[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> train_y[<span class="op">-</span><span class="dv">5</span>]) <span class="op">/</span> (train_x[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> train_x[<span class="op">-</span><span class="dv">5</span>])</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>model_y <span class="op">=</span> np.where(model_x <span class="op">&lt;=</span> <span class="dv">1</span>, np.sin(model_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span>, train_y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (model_x <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> slope)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.axvspan(<span class="dv">1</span>, <span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.plot(model_x, model_y, <span class="st">'k-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Model'</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax.scatter(train_x, train_y, c<span class="op">=</span><span class="st">'#3b82f6'</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Training'</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ax.scatter(test_x, test_y, c<span class="op">=</span><span class="st">'#dc2626'</span>, s<span class="op">=</span><span class="dv">30</span>, marker<span class="op">=</span><span class="st">'x'</span>, label<span class="op">=</span><span class="st">'Test (shifted)'</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">1</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="fl">2.5</span>, <span class="dv">3</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="fig-shift" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-shift" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="geometry_blog_files/figure-html/fig-shift-output-1.png" width="758" height="374" class="figure-img">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>train_x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">40</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>train_y <span class="op">=</span> np.sin(train_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>test_x <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">2.5</span>, <span class="dv">25</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>test_y <span class="op">=</span> np.sin(test_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>model_x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">2.5</span>, <span class="dv">3</span>, <span class="dv">200</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> (train_y[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> train_y[<span class="op">-</span><span class="dv">5</span>]) <span class="op">/</span> (train_x[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> train_x[<span class="op">-</span><span class="dv">5</span>])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>model_y <span class="op">=</span> np.where(model_x <span class="op">&lt;=</span> <span class="dv">1</span>, np.sin(model_x <span class="op">*</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.8</span>, train_y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (model_x <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> slope)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax.axvspan(<span class="dv">1</span>, <span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax.plot(model_x, model_y, <span class="st">'k-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Model'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax.scatter(train_x, train_y, c<span class="op">=</span><span class="st">'#3b82f6'</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Training'</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.scatter(test_x, test_y, c<span class="op">=</span><span class="st">'#dc2626'</span>, s<span class="op">=</span><span class="dv">30</span>, marker<span class="op">=</span><span class="st">'x'</span>, label<span class="op">=</span><span class="st">'Test (shifted)'</span>, zorder<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">1</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="fl">2.5</span>, <span class="dv">3</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Distribution shift: the model extrapolates linearly into regions without training data.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 <p><strong>Adversarial examples.</strong> Small perturbations orthogonal to the data manifold move inputs into regions where the function is underdetermined. The output changes dramatically because the gradient in that direction was never constrained.</p>
 <p><strong>Extrapolation.</strong> ReLU networks extend linearly beyond the convex hull of training data. If the true function curves, the linear extrapolation diverges.</p>

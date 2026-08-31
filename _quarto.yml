@@ -9,6 +9,23 @@ execute:
 website:
   title: "Kevin Maik Jablonka"
   image: quarto.png
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: bio.qmd
+        text: Bio
+      - href: teaching.qmd
+        text: Teaching
+    right:
+      - text: "Lab"
+        href: https://lamalab.org/
+      - icon: github
+        href: https://github.com/kjappelbaum
+      - icon: bi-mortarboard-fill
+        href: https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en
   google-analytics: G-S9W9LVHXJK
   page-footer:
     center:
@@ -34,8 +51,11 @@ website:
 format:
   html:
     theme: [custom.scss]
-    css:
-      - styles.css
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&amp;display=swap">
     toc: false
     # comments:
     #   utterances:

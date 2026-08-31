@@ -1,0 +1,253 @@
+/* Research programme page — extends the bio.css language.
+   Same ink, same measure, same hairlines. No cards, no colour. */
+
+.rp-page {
+  --rp-ink: #252525;
+  --rp-muted: #666;
+  --rp-rule: rgba(37, 37, 37, 0.22);
+  max-width: 68ch;
+  margin-inline: auto;
+  color: var(--rp-ink);
+  letter-spacing: normal;
+}
+
+.rp-page * { box-sizing: border-box; }
+
+.rp-page a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.rp-page p { margin: 0.65rem 0 0; text-wrap: pretty; }
+.rp-page strong { font-weight: 600; }
+
+.rp-page h2 {
+  margin: 0 0 0.75rem;
+  text-wrap: balance;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.rp-page h3 {
+  margin: 1.5rem 0 0.3rem;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+}
+
+.rp-hero { margin: 0; }
+
+.rp-lede {
+  margin: 0 0 0.9rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.rp-section { margin: 2.75rem 0 0; }
+
+/* Numbered thrusts ---------------------------------------------------- */
+
+.rp-thrusts {
+  margin: 2.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: thrust;
+}
+
+.rp-thrust {
+  margin: 0;
+  padding: 1.75rem 0 0;
+  border-top: 1px solid var(--rp-rule);
+  counter-increment: thrust;
+}
+
+.rp-thrust:first-child { border-top: 0; padding-top: 0; }
+
+.rp-thrust-num {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--rp-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.rp-thrust-num::before {
+  content: counter(thrust, decimal-leading-zero);
+}
+
+.rp-thrust h2 { margin-bottom: 0.5rem; }
+
+.rp-q {
+  margin: 0 0 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rp-rule);
+  color: var(--rp-ink);
+}
+
+.rp-label {
+  display: block;
+  margin: 1.1rem 0 0.1rem;
+  color: var(--rp-muted);
+}
+
+.rp-cite,
+.rp-source {
+  color: var(--rp-muted);
+  font-size: 0.86em;
+}
+
+.rp-source {
+  margin: 0.35rem 0 0;
+  letter-spacing: 0.005em;
+}
+
+/* Resources ----------------------------------------------------------- */
+
+.rp-resources {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rp-resources > li {
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rp-rule);
+}
+
+.rp-resources > li:first-child { border-top: 1px solid var(--rp-rule); }
+
+.rp-res-name { font-weight: 600; }
+
+.rp-res-meta {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--rp-muted);
+}
+
+/* Evidence line ------------------------------------------------------- */
+
+.rp-record {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rp-record > li {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.rp-record time {
+  color: var(--rp-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .rp-record > li { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+/* Buttons / links row ------------------------------------------------- */
+
+.rp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.rp-button {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.rp-page :focus-visible {
+  outline: 2px solid var(--rp-ink);
+  outline-offset: 3px;
+}
+
+@media print {
+  .rp-actions { display: none; }
+}
+
+/* CV additions ------------------------------------------------------- */
+
+.cv-talks { margin: 0; padding: 0; list-style: none; }
+.cv-talks > li {
+  display: grid;
+  grid-template-columns: 1fr 5.5rem;
+  gap: 0 1rem;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(37,37,37,.10);
+}
+.cv-talks > li > span:last-child {
+  color: #666;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.cv-year {
+  margin: 1.5rem 0 .3rem;
+  color: #666;
+  font-variant-numeric: tabular-nums;
+}
+.cv-year:first-child { margin-top: 0; }
+
+.cv-funding { margin: 0; padding: 0; list-style: none; }
+.cv-funding > li {
+  padding: .8rem 0;
+  border-bottom: 1px solid rgba(37,37,37,.12);
+}
+.cv-funding > li:first-child { border-top: 1px solid rgba(37,37,37,.12); }
+.cv-amount { color: #666; font-variant-numeric: tabular-nums; }
+.cv-role { display: block; color: #666; }
+
+.cv-people { width: 100%; border-collapse: collapse; }
+.cv-people td { padding: .35rem .6rem .35rem 0; border-bottom: 1px solid rgba(37,37,37,.10); vertical-align: top; }
+.cv-people td:last-child { color: #666; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+
+@media (max-width: 600px) {
+  .cv-talks > li { grid-template-columns: 1fr; }
+  .cv-talks > li > span:last-child { text-align: left; }
+}
+
+/* Programme figure ---------------------------------------------------- */
+
+.rp-figure {
+  margin: 2.75rem 0 0;
+  padding: 0;
+}
+
+.rp-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+  margin: 0 auto;
+  color: var(--rp-ink);
+}
+
+.rp-figure figcaption {
+  margin-top: 1rem;
+  color: var(--rp-muted);
+}
+
+.rp-open {
+  margin: 0.7rem 0 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rp-rule);
+}
+
+
+/* The loop turns; stop it for anyone who does not want motion. */
+@media (prefers-reduced-motion: reduce) {
+  .rp-figure .rp-runner { display: none; }
+}

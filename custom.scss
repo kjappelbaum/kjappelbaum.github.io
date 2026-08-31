@@ -1,47 +1,256 @@
 /*-- scss:defaults --*/
 $body-bg: #ffffff;
 $body-color: #252525;
-$link-color: #454545;
-$navbar-bg: #f8f9fa;
+$link-color: #252525;
+$navbar-bg: #ffffff;
 $navbar-fg: #252525;
 $navbar-hl: #000000;
-$font-family-sans-serif: "IBM Plex Mono", "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-$font-family-monospace: "IBM Plex Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+$font-family-sans-serif: "Newsreader", Georgia, "Iowan Old Style", "Times New Roman", serif;
+$font-family-monospace: "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
 $headings-font-family: $font-family-sans-serif;
-$font-size-base: 0.95rem;
+$font-size-base: 1.06rem;
 $code-color: #252525;
-$code-bg: #f6f8fa;
+$code-bg: #f6f6f4;
+$border-radius: 0;
 
 /*-- scss:rules --*/
-body {
-  line-height: 1.6;
+
+// One ink, one muted, one hairline. Nothing else.
+:root {
+  --ink: #252525;
+  --muted: #666;
+  --rule: rgba(37, 37, 37, 0.22);
+  --hair: rgba(37, 37, 37, 0.12);
+  --mono: "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
 }
 
-.navbar {
-  border-bottom: 1px solid #e9ecef;
-  box-shadow: none;
+body {
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  letter-spacing: normal;
+  font-variant-numeric: tabular-nums;
+  hanging-punctuation: first last;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container,
+.container-fluid {
+  max-width: 60rem;
+}
+
+main p,
+main li,
+main dd {
+  max-width: 68ch;
+  text-wrap: pretty;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
+  letter-spacing: -0.005em;
 }
 
-.profile-header {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+// A shallow scale. Mono at large sizes gets clumsy fast.
+h1 { font-size: 1.62rem; margin: 0 0 1.25rem; }
+h2 { font-size: 1.2rem; margin: 2.75rem 0 0.7rem; }
+h3 { font-size: 1.02rem; margin: 1.75rem 0 0.3rem; }
+
+p { margin: 0 0 1rem; }
+
+// Mono for anything countable, dated, cited or typed.
+// Mono only where it is genuinely typed. Dates and figures stay in the text
+// face with tabular figures, which sits better beside serif prose.
+code, pre, kbd, samp {
+  font-family: var(--mono);
 }
 
-/* Simple container width for readability */
-.container, .container-fluid {
-  max-width: 980px;
+time,
+.rp-thrust-num,
+.career-date,
+.honours-list time,
+.listing-date {
+  font-variant-numeric: tabular-nums;
 }
+
+figcaption,
+.rp-cite,
+.listing-date {
+  font-size: 0.86em;
+  letter-spacing: 0.005em;
+}
+
+// Links: one rule, no !important, matching bio.css.
 a {
-  text-decoration: underline !important;
-  text-underline-offset: 2px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
-/* Override link color on hover */
-a:hover {
-  color: #000000;
+a:hover { color: #000; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
+
+// Navigation: a hairline, nothing more.
+.navbar {
+  border-bottom: 1px solid var(--hair);
+  box-shadow: none;
+}
+
+.navbar-nav .nav-link { font-weight: 400; }
+
+.page-footer {
+  border-top: 1px solid var(--hair);
+  padding-top: 1rem;
+  margin-top: 3rem;
+}
+
+// Emphasis without fills.
+.key-point {
+  margin: 1.8em 0;
+  padding: 0 0 0 1.1em;
+  border-left: 2px solid var(--rule);
+  background: none;
+}
+
+.key-point p:last-child { margin-bottom: 0; }
+
+.aside-box {
+  margin: 1.5em 0;
+  padding: 0 0 0 1.1em;
+  border-left: 1px solid var(--rule);
+  background: none;
+  color: var(--muted);
+}
+
+.aside-title {
+  font-weight: 600;
+  margin-bottom: 0.3em;
+  color: var(--ink);
+}
+
+blockquote {
+  margin: 1.5em 0;
+  padding: 0 0 0 1.1em;
+  border-left: 1px solid var(--rule);
+  color: var(--muted);
+  font-style: normal;
+}
+
+.callout {
+  border: 0;
+  border-left: 2px solid var(--rule);
+  border-radius: 0;
+  background: none;
+  padding: 0 0 0 1.1em;
+}
+
+.callout-note {
+  background: none;
+  border: 0;
+  border-left: 2px solid var(--rule);
+  padding-left: 1.1em;
+}
+
+.callout-note .callout-icon { display: none; }
+
+// Tables: hairlines only.
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+table th {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 0.75rem 0.6rem 0;
+  font-weight: 600;
+  text-align: left;
+}
+
+table td {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.6rem 0.75rem 0.6rem 0;
+  vertical-align: top;
+}
+
+// Code: a faint ground, no border, no radius.
+code {
+  color: inherit;
+  background: #f6f6f4;
+  padding: 0.1em 0.3em;
+}
+
+pre {
+  padding: 1rem;
+  background: #f6f6f4;
+  border: 0;
+}
+
+pre code { background: none; padding: 0; }
+
+div.sourceCode { background: #f6f6f4; border-radius: 0; }
+
+// Figures.
+.quarto-figure { margin: 2em 0; }
+
+.quarto-figure-center > figcaption {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+
+.math.display {
+  overflow-x: auto;
+  padding: 0.5em 0;
+}
+
+// Home page.
+.profile-header {
+  margin: 2rem 0;
+}
+
+.profile-pic {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--hair);
+}
+
+@media (max-width: 600px) {
+  .profile-header .quarto-layout-row { flex-direction: column; }
+  .profile-pic { max-width: 150px; margin: 0 auto 1.5rem; }
+}
+
+@media (min-width: 600px) {
+  .profile-header .quarto-layout-row {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+#blog-listings table { margin-bottom: 0; }
+
+#blog-listings th { display: none; }
+
+#blog-listings td {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.55rem 0;
+}
+
+#blog-listings .listing-date {
+  color: var(--muted);
+  white-space: nowrap;
+  padding-right: 1.25rem;
+  width: 1%;
+}
+
+#blog-listings .listing-title { font-weight: 400; }
+
+#blog-listings tr:last-child td { border-bottom: 0; }

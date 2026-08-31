@@ -1,0 +1,46 @@
+---
+title: "Colophon"
+pagetitle: "Colophon | Kevin Maik Jablonka"
+description-meta: "Error bounty, site notes, and miscellany."
+sidebar: false
+---
+
+Notes about this site and a standing offer, kept off the main pages.
+
+## Errors and corrections
+
+I offer €5 for minor errors, €15 for moderate errors, and €40 for major errors in my work. While it's difficult to define these categories in advance, I aim to be fair in my assessments.
+
+Very minor errors (typos, grammatical mistakes) earn my gratitude.
+
+If you prefer not to receive a reward, I'll donate the equivalent amount to GiveWell.
+
+Contact me via email if you want a reward, or use the [anonymous feedback form](https://www.admonymous.co/kjappelbaum) if you prefer anonymity.
+
+
+## Miscellany
+
+::: {.callout appearance="simple"}
+<details>
+  <summary>Apparently, I am already in the weights.</summary>
+  <div>
+    <p>A 17-model recognition test found me in 12 models and ranked me <strong>#38,788 of 532,454 people</strong>—the top 7.3% of people represented in their weights.</p>
+    <p>The strongest models described me as a computational chemist, materials scientist, and AI researcher. The tails were more imaginative: one relocated me to a professorship in Zurich; another invented a second career as a French footballer.</p>
+    <a class="bio-button" href="https://intheweights.com/p/kevin-jablonka">Model-by-model result</a>
+  </div>
+</details>
+:::
+
+## Consulting and mentoring
+
+I give two hours a month of pro-bono consultation to non-profits and organisations working for the public good who think they can use my experience in machine learning, chemistry, and data management. I am also open to paid consulting for for-profit organisations. Either way, email me.
+
+Students looking for mentoring should go through the lab's [mentoring programme](https://lamalab.org/mentoring/) rather than writing to me directly.
+
+## Subscribing
+
+New notes go out over [RSS](index.xml). If you would rather have them by email, [Blogtrottr](https://blogtrottr.com) will forward the feed at `https://kjablonka.com/index.xml`.
+
+## About this site
+
+Built with [Quarto](https://quarto.org), set in IBM Plex Mono, and [open source](https://github.com/kjappelbaum/kjappelbaum.github.io). Citation counts on this site are refreshed automatically from Google Scholar; the date shown is the last check.

@@ -1,19 +1,40 @@
-# 👨🏼‍🏫 Teaching 
+---
+title: "Teaching and mentoring"
+pagetitle: "Teaching | Kevin Maik Jablonka"
+description-meta: "Teaching, supervision, and mentoring by Kevin Maik Jablonka at Friedrich Schiller University Jena."
+sidebar: false
+---
 
-I take great pleasure in teaching and mentoring. I gave a number of lectures and tutorials on data management and machine learning at EPFL and the [MolSim winterschool](https://www.acmm.nl/events/molsim2023/).
-Starting from my undergrad at TU Munich, I have been a teaching assistant and mentoring students.
+Teaching and supervision are most of what I actually do, and the part I find hardest to judge. A paper you can point at. Whether someone left the group able to run a programme of their own takes years to find out.
+
+## At Jena
+
+I teach graduate courses on scientific AI, machine learning for chemistry and materials, and the critical questions AI raises for research practice.
+
+| Course | Level | Year |
+|---|---|---|
+| Seminar, *Current Topics in Cheminformatics* | Graduate | 2025 |
+| Seminar, *Critical Aspects of AI* | Graduate | 2025 |
+
+I currently supervise eleven doctoral researchers and one postdoctoral researcher; 26 doctoral, master's, postdoctoral, fellowship, and internship appointments since 2021. Alumni have gone on to graduate study in the United States and to research roles in industry.
+
+The group runs an open [mentoring programme](https://lamalab.org/mentoring/) for students outside it, and keeps how it works in a public [handbook](https://lamalab.org/) rather than as things people are expected to guess.
+
+## Open teaching material
+
+Everything I teach is public, because the students who most need it are usually not the ones in the room.
+
+- [matextract.pub](https://matextract.pub) — extracting structured data from the materials literature.
+- [gpmbook.lamalab.org](https://gpmbook.lamalab.org) — a book on Gaussian processes and probabilistic modelling.
+- [ir.cheminfo.org](https://ir.cheminfo.org) — interactive spectroscopy tools for teaching structure elucidation.
+- [Lectures and exercises](https://github.com/kjappelbaum/ml_molsim) and [live-coding notebooks](https://github.com/kjappelbaum/molsim-ml-code-examples) from the machine learning course.
+
+## Earlier teaching
+
+At the [MolSim winter school](https://www.acmm.nl/events/molsim2023/) in Amsterdam I ran a machine learning lecture and hands-on workshop in a flipped-classroom format from 2020 to 2023, built around a Kaggle competition so that students met a real generalisation gap rather than a tidy example. At EPFL I taught research data management, computational carpentry, and a doctoral course on the electronic lab notebook.
 
 ## Making molecules vibrate
 
-One of my favorite teaching experiences was developing what we call a “virtual laboratory.” 
+A virtual laboratory that lets students manipulate molecular vibrations directly, written up in the [*Journal of Chemical Education*](https://pubs.acs.org/doi/full/10.1021/acs.jchemed.1c01101).
 
 {{< video https://vimeo.com/669548437?embedded=true&source=vimeo_logo&owner=164535089 >}}
-
-For more details, you can check out our [paper in J. Chem. Educ.](https://pubs.acs.org/doi/full/10.1021/acs.jchemed.1c01101)
-
-
-## Introduction to machine learning
-
-I have been lucky to introduce students to machine learning. For this, I have developed a series of lectures and a hands-on exercise, which you can find on [GitHub](https://github.com/kjappelbaum/ml_molsim).
-Usually, we also host a Kaggle competition as part of the hands-on exercise. You can find an example of the competition [here](https://www.kaggle.com/competitions/molsim-2023-ml-challenge/overview).
-Typically, I like to add some live-coding examples to the lecture. You can find the notebooks for those examples on [GitHub](https://github.com/kjappelbaum/molsim-ml-code-examples).

@@ -1,0 +1,23 @@
+---
+title: "Notes"
+pagetitle: "Notes | Kevin Maik Jablonka"
+description-meta: "Unfinished thoughts and things worked out in public, by Kevin Maik Jablonka."
+sidebar: false
+toc: false
+listing:
+  date-format: "D MMM YYYY"
+  feed: false
+  filter-ui: false
+  type: table
+  sort-ui: false
+  sort: "date desc"
+  categories: true
+  fields: [date, title]
+  id: all-notes
+  contents: [blog_data/blogs.yml, blog/posts]
+---
+
+Unfinished thoughts, and things I am working out in public. New ones go out over [RSS](index.xml).
+
+::: {#all-notes}
+:::

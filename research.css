@@ -6,7 +6,7 @@
   --rp-muted: #666;
   --rp-rule: rgba(37, 37, 37, 0.22);
   max-width: 68ch;
-  margin-inline: auto;
+  margin-inline: 0;
   color: var(--rp-ink);
   letter-spacing: normal;
 }
@@ -80,11 +80,16 @@
 
 .rp-thrust h2 { margin-bottom: 0.5rem; }
 
+/* The aim leads the section; the open question closes it. They must not
+   look the same, so only one of them carries a rule. */
 .rp-q {
-  margin: 0 0 0.9rem;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--rp-rule);
+  margin: 0 0 1.1rem;
+  padding: 0;
+  border-left: 0;
+  font-size: 1.08em;
+  line-height: 1.5;
   color: var(--rp-ink);
+  text-wrap: pretty;
 }
 
 .rp-label {
@@ -241,9 +246,21 @@
 }
 
 .rp-open {
-  margin: 0.7rem 0 0;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--rp-rule);
+  margin: 1.15rem 0 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--rp-rule);
+  color: var(--rp-muted);
+}
+
+.rp-open::before {
+  content: "Open";
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 0.66em;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 
 

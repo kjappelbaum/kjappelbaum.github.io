@@ -19,6 +19,8 @@ website:
         text: Bio
       - href: teaching.qmd
         text: Teaching
+      - href: notes.qmd
+        text: Notes
     right:
       - text: "Lab"
         href: https://lamalab.org/

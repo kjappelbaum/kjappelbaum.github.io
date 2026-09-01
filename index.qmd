@@ -2,9 +2,9 @@
 sidebar: false
 description: "Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena. We do not need more predictions; we need actionable understanding — and materials that work in the real world."
 image: quarto.png
-toc: true
+toc: false
 listing:
-  date-format: short
+  date-format: "D MMM YYYY"
   feed: true
   filter-ui: false
   type: table
@@ -12,31 +12,31 @@ listing:
   sort: "date desc"
   categories: false
   fields: [date, title]
-  max-items: 12
+  max-items: 5
   id: blog-listings
   contents: [blog_data/blogs.yml, blog/posts]
 aliases: ["blog/"]
 ---
 
-::: {layout="[28,72]" .profile-header}
+```{=html}
+<div class="profile-header">
+  <img class="profile-pic" src="alpaca.jpeg" alt="Kevin Maik Jablonka">
+  <div class="profile-intro">
+    <p>I lead <a href="https://lamalab.org/">LAMALab</a> at Friedrich Schiller University Jena.</p>
+    <p>We do not need more predictions. We need <a href="research.html">actionable understanding</a>: using AI to understand more about the world, and in that way to guide actions that make it a bit better — starting with materials that work in the real world.</p>
+    <p class="profile-links"><a href="research.html">Research</a> · <a href="bio.html">Bio</a> · <a href="https://mailhide.io/e/o4LeOUlq">Email</a> · <a href="https://scholar.google.com/citations?user=R2ntI8IAAAAJ&amp;hl=en">Scholar</a> · <a href="https://bsky.app/profile/kjablonka.com">Bluesky</a></p>
+    <p class="profile-hiring">The lab is <a href="https://lamalab.org/">hiring</a>.</p>
+  </div>
+</div>
+```
 
-![](alpaca.jpeg){.profile-pic}
-
-I lead [LAMALab](https://lamalab.org/) at Friedrich Schiller University Jena.
-
-We do not need more predictions. We need [actionable understanding](research.qmd): using AI to understand more about the world, and in that way to guide actions that make it a bit better — starting with materials that work in the real world.
-
-[Research](research.qmd) · [Bio](bio.qmd) · [Email](https://mailhide.io/e/o4LeOUlq) · [Scholar](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/kjablonka.com)
-
-The lab is [hiring](https://lamalab.org/).
-
-:::
-
-## Notes
+## Recent notes
 
 ::: {#blog-listings}
 :::
 
----
+[All notes →](notes.qmd)
 
+::: {.home-colophon}
 [Consulting, mentoring, the error bounty, and how this site is made](colophon.qmd) · [RSS](index.xml)
+:::

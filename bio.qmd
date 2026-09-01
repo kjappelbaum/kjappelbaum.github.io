@@ -5,6 +5,7 @@ description-meta: "Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a
 author-meta: "Kevin Maik Jablonka"
 image: "portrait.jpg"
 sidebar: false
+aliases: ["/cv.html"]
 open-graph:
   title: "Kevin Maik Jablonka | AI for Chemistry and Materials Science"
   description: "Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument to make chemical concepts measurable and turn raw observations into experiments."

@@ -1,0 +1,49 @@
+name: Render the site
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      # Nothing on this site executes at render time (_quarto.yml sets
+      # `execute: eval: false` and `freeze: auto`), so Quarto alone is enough.
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.6.43"
+
+      - name: Render
+        run: quarto render
+
+      # A pull request only has to prove the site still builds.
+      - name: Commit docs/ if it changed
+        if: github.event_name != 'pull_request'
+        run: |
+          if [ -z "$(git status --porcelain docs)" ]; then
+            echo "::notice::docs/ is already up to date."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "Render the site"
+          git push

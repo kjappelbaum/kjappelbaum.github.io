@@ -214,43 +214,124 @@ div.sourceCode { background: #f6f6f4; border-radius: 0; }
 
 // Home page.
 .profile-header {
-  margin: 2rem 0;
+  display: flex;
+  gap: 2.25rem;
+  align-items: flex-start;
+  margin: 2.5rem 0 3.5rem;
 }
 
-.profile-pic {
-  max-width: 180px;
-  margin-bottom: 1rem;
+.profile-header .profile-pic {
+  flex: 0 0 200px;
+  width: 200px;
+  height: auto;
+  margin: 0;
   border: 1px solid var(--hair);
 }
 
-@media (max-width: 600px) {
-  .profile-header .quarto-layout-row { flex-direction: column; }
-  .profile-pic { max-width: 150px; margin: 0 auto 1.5rem; }
+.profile-intro {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-@media (min-width: 600px) {
-  .profile-header .quarto-layout-row {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+.profile-intro p {
+  max-width: 58ch;
+  margin: 0 0 0.9rem;
 }
 
-#blog-listings table { margin-bottom: 0; }
+.profile-intro p:last-child { margin-bottom: 0; }
 
-#blog-listings th { display: none; }
-
-#blog-listings td {
-  border-bottom: 1px solid var(--hair);
-  padding: 0.55rem 0;
-}
-
-#blog-listings .listing-date {
+.profile-links,
+.profile-hiring {
   color: var(--muted);
-  white-space: nowrap;
-  padding-right: 1.25rem;
-  width: 1%;
 }
 
-#blog-listings .listing-title { font-weight: 400; }
+@media (max-width: 640px) {
+  .profile-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .profile-header .profile-pic { flex: none; width: 170px; }
+}
 
-#blog-listings tr:last-child td { border-bottom: 0; }
+// Listings: a date, a title, a hairline. Nothing else.
+// Quarto renames `#id` to `#listing-id`, so target the table's own class.
+.quarto-listing-table {
+  width: 100%;
+  margin: 0.9rem 0 1.4rem;
+  border-collapse: collapse;
+  font-size: inherit;
+}
+
+.quarto-listing-table thead { display: none; }
+
+.quarto-listing-table td {
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  padding: 0.5rem 0;
+  vertical-align: baseline;
+  background: none;
+}
+
+.quarto-listing-table td:first-child {
+  width: 1%;
+  white-space: nowrap;
+  padding-right: 1.75rem;
+  color: var(--muted);
+}
+
+.quarto-listing-table tr:last-child td { border-bottom: 0; }
+
+.quarto-listing-table .listing-title {
+  font-weight: 400;
+  text-decoration-color: var(--hair);
+}
+
+.quarto-listing-table .listing-title:hover {
+  text-decoration-color: currentColor;
+}
+
+// A disclosure that stays quiet until someone opens it.
+details.aside-note {
+  margin: 1.5rem 0;
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--hair);
+}
+
+details.aside-note > summary {
+  padding: 0.15rem 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+details.aside-note > summary:hover { color: var(--ink); }
+
+details.aside-note > div { padding-top: 0.5rem; }
+
+details.aside-note p { margin: 0 0 0.7rem; }
+
+details.aside-note > div > p:last-child { margin-bottom: 0.3rem; }
+
+.home-colophon {
+  margin-top: 2.75rem;
+  color: var(--muted);
+  font-size: 0.92em;
+}
+
+// The archive page groups by year and carries categories.
+.quarto-listing-category {
+  margin: 0 0 1.5rem;
+  font-size: 0.92em;
+  color: var(--muted);
+}
+
+.quarto-listing-category .category {
+  padding: 0 0.55rem 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.quarto-listing-category .category.active {
+  color: var(--ink);
+  font-weight: 500;
+}

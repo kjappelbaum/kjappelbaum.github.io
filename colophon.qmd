@@ -20,16 +20,16 @@ Contact me via email if you want a reward, or use the [anonymous feedback form](
 
 ## Miscellany
 
-::: {.callout appearance="simple"}
-<details>
-  <summary>Apparently, I am already in the weights.</summary>
-  <div>
-    <p>A 17-model recognition test found me in 12 models and ranked me <strong>#38,788 of 532,454 people</strong>—the top 7.3% of people represented in their weights.</p>
-    <p>The strongest models described me as a computational chemist, materials scientist, and AI researcher. The tails were more imaginative: one relocated me to a professorship in Zurich; another invented a second career as a French footballer.</p>
-    <a class="bio-button" href="https://intheweights.com/p/kevin-jablonka">Model-by-model result</a>
-  </div>
+```{=html}
+<details class="aside-note">
+<summary>Apparently, I am already in the weights.</summary>
+<div>
+<p>A 17-model recognition test found me in 12 models and ranked me <strong>#38,788 of 532,454 people</strong> — the top 7.3% of people represented in their weights.</p>
+<p>The strongest models described me as a computational chemist, materials scientist, and AI researcher. The tails were more imaginative: one relocated me to a professorship in Zurich; another invented a second career as a French footballer.</p>
+<p><a href="https://intheweights.com/p/kevin-jablonka">Model-by-model result</a></p>
+</div>
 </details>
-:::
+```
 
 ## Consulting and mentoring
 
@@ -43,4 +43,4 @@ New notes go out over [RSS](index.xml). If you would rather have them by email, 
 
 ## About this site
 
-Built with [Quarto](https://quarto.org), set in IBM Plex Mono, and [open source](https://github.com/kjappelbaum/kjappelbaum.github.io). Citation counts on this site are refreshed automatically from Google Scholar; the date shown is the last check.
+Built with [Quarto](https://quarto.org), set in Newsreader with IBM Plex Mono for anything typed, and [open source](https://github.com/kjappelbaum/kjappelbaum.github.io). Citation counts on this site are refreshed automatically from Google Scholar; the date shown is the last check.

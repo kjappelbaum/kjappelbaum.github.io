@@ -1,6 +1,6 @@
 ---
 sidebar: false
-description: "Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena, rebuilding chemistry's working concepts on what instruments record and on what a chemist does next."
+description: "Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena. We do not need more predictions; we need actionable understanding — and materials that work in the real world."
 image: quarto.png
 toc: true
 listing:
@@ -24,7 +24,7 @@ aliases: ["blog/"]
 
 I lead [LAMALab](https://lamalab.org/) at Friedrich Schiller University Jena.
 
-Chemistry's working concepts — oxidation state, aromaticity, strain — were nearly all defined on idealised structures, because that was the only way to compute anything. We are trying to rebuild them on what instruments record, and on what a chemist actually does next: [actionable understanding](research.qmd) rather than a better prediction.
+We do not need more predictions. We need [actionable understanding](research.qmd): using AI to understand more about the world, and in that way to guide actions that make it a bit better — starting with materials that work in the real world.
 
 [Research](research.qmd) · [Bio](bio.qmd) · [Email](https://mailhide.io/e/o4LeOUlq) · [Scholar](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/kjablonka.com)
 

@@ -112,25 +112,31 @@
 /* Resources ----------------------------------------------------------- */
 
 .rp-resources {
-  margin: 0;
+  margin: 1.4rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .rp-resources > li {
   margin: 0;
-  padding: 1rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--rp-rule);
 }
 
 .rp-resources > li:first-child { border-top: 1px solid var(--rp-rule); }
 
-.rp-res-name { font-weight: 600; }
+.rp-res-name {
+  font-weight: 600;
+  text-decoration-color: var(--rp-rule);
+}
+
+.rp-res-name:hover { text-decoration-color: currentColor; }
 
 .rp-res-meta {
   display: block;
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
   color: var(--rp-muted);
+  text-wrap: pretty;
 }
 
 /* Evidence line ------------------------------------------------------- */

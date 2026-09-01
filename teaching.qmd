@@ -5,7 +5,7 @@ description-meta: "Teaching, supervision, and mentoring by Kevin Maik Jablonka a
 sidebar: false
 ---
 
-Teaching and supervision are most of what I do, and the hardest part to judge: a paper you can point at, but whether someone leaves able to run their own programme takes years to find out.
+Teaching is one of the most important things a scientist in academia does.
 
 ## At Jena
 

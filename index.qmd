@@ -1,6 +1,6 @@
 ---
 sidebar: false
-description: "Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment."
+description: "Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena, rebuilding chemistry's working concepts on what instruments record and on what a chemist does next."
 image: quarto.png
 toc: true
 listing:
@@ -22,7 +22,9 @@ aliases: ["blog/"]
 
 ![](alpaca.jpeg){.profile-pic}
 
-I lead [LAMALab](https://lamalab.org/) at Friedrich Schiller University Jena. We develop AI as a scientific instrument: making chemical concepts measurable, and turning raw observations into the next experiment.
+I lead [LAMALab](https://lamalab.org/) at Friedrich Schiller University Jena.
+
+Chemistry's working concepts — oxidation state, aromaticity, strain — were nearly all defined on idealised structures, because that was the only way to compute anything. We are trying to rebuild them on what instruments record, and on what a chemist actually does next: [actionable understanding](research.qmd) rather than a better prediction.
 
 [Research](research.qmd) · [Bio](bio.qmd) · [Email](https://mailhide.io/e/o4LeOUlq) · [Scholar](https://scholar.google.com/citations?user=R2ntI8IAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/kjablonka.com)
 

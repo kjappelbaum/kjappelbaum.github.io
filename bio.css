@@ -262,6 +262,14 @@
   white-space: nowrap;
 }
 
+.honours-note {
+  margin: 1.4rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(37, 37, 37, 0.12);
+  color: var(--bio-muted);
+  text-wrap: pretty;
+}
+
 .headshot-strip h2 {
   margin-bottom: 0;
 }

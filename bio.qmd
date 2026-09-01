@@ -225,6 +225,7 @@ resources:
       <li><time datetime="2017">2017</time> — Alfred Werner scholarship, Swiss Chemical Society</li>
       <li><time datetime="2015">2015</time> — Studienstiftung des deutschen Volkes</li>
     </ul>
+    <p class="honours-note">Before any of that, I feel privileged to have taken part in student science fairs — a silver medal at the International Conference of Young Scientists in 2013, third nationally at <a href="https://www.jugend-forscht.de/projektdatenbank/fotosynthese-ohne-chlorophyll.html">Jugend forscht</a> in 2014 — under the guidance of the mentors at a student research centre.</p>
   </div>
   </div>
 </section>

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Unfinished thoughts and things worked out in public, by Kevin Maik Jablonka.">
 
-<title> Open Source – Kevin Maik Jablonka</title>
+<title>Notes | Kevin Maik Jablonka – Kevin Maik Jablonka</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../favicon.ico" rel="icon">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4b4e107b9206581a6b5013654ed153a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e85071a1193cea3c92f7d23b5ac2020b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4b4e107b9206581a6b5013654ed153a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e85071a1193cea3c92f7d23b5ac2020b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,76 +75,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-mofworld-listings .list');
+    const listingTargetEl = window.document.querySelector('#listing-all-notes .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-mofworld-listings'] = new List('listing-mofworld-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-al-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-al-listings'] = new List('listing-al-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-cheminfo-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-other',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-image","listing-other","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-cheminfo-listings'] = new List('listing-cheminfo-listings', options);
+    window['quarto-listings']['listing-all-notes'] = new List('listing-all-notes', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -199,27 +144,27 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content=" Open Source – Kevin Maik Jablonka">
+<meta property="og:title" content="Notes | Kevin Maik Jablonka">
 <meta property="og:description" content="Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument to make chemical concepts measurable and turn raw observations into experiments.">
-<meta property="og:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
+<meta property="og:image" content="https://kjablonka.com/quarto.png">
 <meta property="og:site_name" content="Kevin Maik Jablonka">
-<meta name="twitter:title" content=" Open Source – Kevin Maik Jablonka">
+<meta name="twitter:title" content="Notes | Kevin Maik Jablonka">
 <meta name="twitter:description" content="Kevin Maik Jablonka leads LAMALab in Jena, developing AI as a scientific instrument to make chemical concepts measurable and turn raw observations into experiments.">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/1483922/208564573-d28e0ef0-984f-43ae-8ede-92b573518c54.png">
+<meta name="twitter:image" content="https://kjablonka.com/quarto.png">
 <meta name="twitter:creator" content="@kmjablonka">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Kevin Maik Jablonka</span>
     </a>
   </div>
@@ -230,23 +175,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../bio.html"> 
+    <a class="nav-link" href="./bio.html"> 
 <span class="menu-text">Bio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
+    <a class="nav-link" href="./teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../notes.html"> 
+    <a class="nav-link active" href="./notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -276,13 +221,14 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(30)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(10)</span></div><div class="category" data-category="YWk=">ai <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YWktYWdlbnRz">ai-agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmF5ZXNpYW4lMjBvcHRpbWl6YXRpb24=">bayesian optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tbXVuaWNhdGlvbg==">communication <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcCUyMGxlYXJuaW5n">deep learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcGxlYXJuaW5n">deeplearning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXVyb3Bl">Europe <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3JhbnRz">grants <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGlmZQ==">life <span class="quarto-category-count">(4)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(6)</span></div><div class="category" data-category="bWFjaGluZS1sZWFybmluZw==">machine-learning <span class="quarto-category-count">(6)</span></div><div class="category" data-category="bWFuaWZvbGRz">manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0ZXJpYWxz">materials <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0YXNjaWVuY2U=">metascience <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bWw=">ml <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVlciUyMHJldmlldw==">peer review <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGVlci1yZXZpZXc=">peer-review <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvZHVjdGl2aXR5">productivity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzZWFyY2gtaW5mcmFzdHJ1Y3R1cmU=">research-infrastructure <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NpZW5jZQ==">science <span class="quarto-category-count">(4)</span></div><div class="category" data-category="c2NpZW50aWZpYyUyMGNvbW11bml0eQ==">scientific community <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2NpZW50aWZpYy1mcmVlZG9t">scientific-freedom <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c29jaWV0eQ==">society <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(7)</span></div><div class="category" data-category="d3JpdGluZw==">writing <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><i class="bi bi-github"></i> Open Source</h1>
+<h1 class="title">Notes</h1>
 </div>
 
 
@@ -299,99 +245,320 @@ window.Quarto = {
 </header>
 
 
-<p>I believe that computational science relies on open code on data and subscribe to the <a href="https://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf">Manifesto put out by Jonathan B. Buckheit and David L. Donoho</a>:</p>
-<blockquote class="blockquote">
-<p>An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.</p>
-<p>– <cite>Jonathan B. Buckheit and David L. Donoho</cite></p>
-</blockquote>
-<section id="digital-reticular-chemistry-mofworld" class="level2">
-<h2 class="anchored" data-anchor-id="digital-reticular-chemistry-mofworld"><img src="img/mofworld.png" class="img-fluid" style="width:10.0%"> Digital reticular chemistry – <a href="mof.world">“MOFworld”</a></h2>
-<p>I have been very active in developing tools for “digital reticular chemistry” (see also <a href="https://www.cell.com/chem/fulltext/S2451-9294(20)30418-6">this article by Yaghi and collaborators</a>), i.e., tools for data-driven science with materials such as metal-organic frameworks (MOFs) and covalent-organic frameworks (COFs).</p>
-<div id="listing-mofworld-listings" class="quarto-listing quarto-listing-container-table">
+<p>Unfinished thoughts, and things I am working out in public. New ones go out over <a href="index.xml">RSS</a>.</p>
+<div id="listing-all-notes" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
 <thead>
 <tr>
 
 <th>
- 
+Date
 </th>
 
 <th>
-Name
-</th>
-
-<th>
-Description
-</th>
-
-<th>
-Other References
+Title
 </th>
 
 </tr>
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>mofdscribe</span>">
+<tr data-index="0" data-categories="YWklMkNzY2llbmNl" data-listing-date-sort="1780956000000" data-listing-file-modified-sort="1781029635058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="581" data-listing-title-sort="Why solving urgent problems relies on a different kind of &quot;AI scientist&quot;" data-listing-filename-sort="index.qmd">
 <td>
-<span class="listing-image"><img loading="lazy" src="img/mofdscribe.png" style="height: 100px;"></span>
+<span class="listing-date">9 Jun 2026</span>
 </td>
 <td>
-<a href="https://github.com/kjappelbaum/mofdscribe" class="title listing-title"><span class="text-nowrap">mofdscribe</span></a>
-</td>
-<td>
-<span class="listing-description">An easy to use tool that accompanies digital reticular chemists on all stages of their work. It provides data sets, more than 40 featurizers, consistent splitting tools to avoid data leakage, as well as tools for evaluating models and comparing them on a leaderboard. </span>
-</td>
-<td>
-<span class="listing-other"><a href="https://chemrxiv.org/engage/chemrxiv/article-details/630d1f6f90802d52c16eceb2">Paper</a></span>
+<a href="./blog/posts/new_kinds_ai_scientists/index.html" class="title listing-title">Why solving urgent problems relies on a different kind of “AI scientist”</a>
 </td>
 
 </tr>
 
-<tr data-index="1" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>mofchecker</span>">
+<tr data-index="1" data-categories="dGVhY2hpbmclMkNiYXllc2lhbiUyMG9wdGltaXphdGlvbiUyQ21hdGVyaWFscw==" data-listing-date-sort="1776204000000" data-listing-file-modified-sort="1776253203167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="137" data-listing-title-sort="Stop Guessing, Start Investing" data-listing-filename-sort="index.qmd">
 <td>
-<span class="listing-image"><img loading="lazy" src="img/mofchecker.png" style="height: 100px;"></span>
+<span class="listing-date">15 Apr 2026</span>
 </td>
 <td>
-<a href="https://github.com/kjappelbaum/mofchecker" class="title listing-title"><span class="text-nowrap">mofchecker</span></a>
-</td>
-<td>
-<span class="listing-description">The mofchecker is a tool that allows to check the “sanity” of a MOF structure. If implements a range of convenient check, such as checking for missing or overlapping atoms, or unreasonable coordination environment in an easy-to-use interface. Some of the checks also have automatic fixes and are implemented in a graphical interface in an <a href="https://aiidalab.materialscloud.org/">AiiDAlab app</a>. </span>
-</td>
-<td>
-<span class="listing-other"><a href="">Web deployment of an earlier version</a></span>
+<a href="./blog/posts/bayesian_optimization_materials/index.html" class="title listing-title">Stop Guessing, Start Investing</a>
 </td>
 
 </tr>
 
-<tr data-index="2" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>moffragmentor</span>">
+<tr data-index="2" data-categories="bWV0YXNjaWVuY2UlMkNwZWVyLXJldmlldyUyQ3NjaWVudGlmaWMtZnJlZWRvbQ==" data-listing-date-sort="1774393200000" data-listing-file-modified-sort="1774455982691" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2205" data-listing-title-sort="Science is Too Successful" data-listing-filename-sort="index.qmd">
 <td>
-<span class="listing-image"><img loading="lazy" src="img/moffragmentor.png" style="height: 100px;"></span>
+<span class="listing-date">25 Mar 2026</span>
 </td>
 <td>
-<a href="https://github.com/kjappelbaum/moffragmentor" class="title listing-title"><span class="text-nowrap">moffragmentor</span></a>
-</td>
-<td>
-<span class="listing-description">The moffragmentor is a tool that allows to fragment MOF structures into building blocks. </span>
-</td>
-<td>
-<span class="listing-other">&nbsp;</span>
+<a href="./blog/posts/scientific_freedom/index.html" class="title listing-title">Science is Too Successful</a>
 </td>
 
 </tr>
 
-<tr data-index="3" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>element-coder</span>">
+<tr data-index="3" data-categories="bWV0YXNjaWVuY2UlMkNyZXNlYXJjaC1pbmZyYXN0cnVjdHVyZQ==" data-listing-date-sort="1773961200000" data-listing-file-modified-sort="1774018556402" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1626" data-listing-title-sort="How to Get an Interest-Free Loan" data-listing-filename-sort="index.qmd">
 <td>
-<span class="listing-image"><img loading="lazy" src="img/elementcoder.png" style="height: 100px;"></span>
+<span class="listing-date">20 Mar 2026</span>
 </td>
 <td>
-<a href="https://github.com/kjappelbaum/element_coder" class="title listing-title"><span class="text-nowrap">element-coder</span></a>
+<a href="./blog/posts/finances/index.html" class="title listing-title">How to Get an Interest-Free Loan</a>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="cHJvZHVjdGl2aXR5JTJDYWktYWdlbnRz" data-listing-date-sort="1772578800000" data-listing-file-modified-sort="1772619133782" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="629" data-listing-title-sort="OpenClaw Did Not Save Me" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">4 Mar 2026</span>
 </td>
 <td>
-<span class="listing-description">Element coder is a tool that allows to encode elements into a vector space—but to also decode them back into the original element. This is useful for machine learning applications where one wants to encode elements into a vector space, but also wants to be able to decode them back into the original element (inverse design). </span>
+<a href="./blog/posts/openclaw/index.html" class="title listing-title">OpenClaw Did Not Save Me</a>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="dGVhY2hpbmclMkNkZWVwJTIwbGVhcm5pbmclMkNtYW5pZm9sZHM=" data-listing-date-sort="1769468400000" data-listing-file-modified-sort="1769509643869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="43" data-listing-title-sort="Deep Networks as Elastic Origami" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">27 Jan 2026</span>
 </td>
 <td>
-<span class="listing-other">&nbsp;</span>
+<a href="./blog/posts/deep_learning_mechanisms_lecture/index.html" class="title listing-title">Deep Networks as Elastic Origami</a>
+</td>
+
+</tr>
+
+<tr data-index="6" data-categories="bWwlMkNkZWVwbGVhcm5pbmc=" data-listing-date-sort="1766962800000" data-listing-file-modified-sort="1767006702636" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2556" data-listing-title-sort="The Geometry of Not Enough Data" data-listing-filename-sort="geometry_blog.qmd">
+<td>
+<span class="listing-date">29 Dec 2025</span>
+</td>
+<td>
+<a href="./blog/posts/manifold/geometry_blog.html" class="title listing-title">The Geometry of Not Enough Data</a>
+</td>
+
+</tr>
+
+<tr data-index="7" data-categories="YWNhZGVtaWE=" data-listing-date-sort="1761865200000" data-listing-file-modified-sort="1761895126773" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="568" data-listing-title-sort="Why I Start Things Uncomfortably Early" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">31 Oct 2025</span>
+</td>
+<td>
+<a href="./blog/posts/write_early/index.html" class="title listing-title">Why I Start Things Uncomfortably Early</a>
+</td>
+
+</tr>
+
+<tr data-index="8" data-categories="YWNhZGVtaWE=" data-listing-date-sort="1760392800000" data-listing-file-modified-sort="1760439619846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521" data-listing-title-sort="On Impactful Research" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">14 Oct 2025</span>
+</td>
+<td>
+<a href="./blog/posts/on_impactful_research/index.html" class="title listing-title">On Impactful Research</a>
+</td>
+
+</tr>
+
+<tr data-index="9" data-categories="YWNhZGVtaWElMkN3cml0aW5nJTJDZ3JhbnRz" data-listing-date-sort="1759269600000" data-listing-file-modified-sort="1759345370579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1439" data-listing-title-sort="Lessons Learned from Writing My First ERC Proposal" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">1 Oct 2025</span>
+</td>
+<td>
+<a href="./blog/posts/writing_erc/index.html" class="title listing-title">Lessons Learned from Writing My First ERC Proposal</a>
+</td>
+
+</tr>
+
+<tr data-index="10" data-categories="YWklMkNzY2llbmNl" data-listing-date-sort="1754344800000" data-listing-file-modified-sort="1759342950821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="547" data-listing-title-sort="All of AI is Context Engineering" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">5 Aug 2025</span>
+</td>
+<td>
+<a href="./blog/posts/context/index.html" class="title listing-title">All of AI is Context Engineering</a>
+</td>
+
+</tr>
+
+<tr data-index="11" data-categories="YWklMkNzY2llbmNl" data-listing-date-sort="1748728800000" data-listing-file-modified-sort="1759342950562" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="891" data-listing-title-sort="The Epistemic Risks of AI-Only Science" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">1 Jun 2025</span>
+</td>
+<td>
+<a href="./blog/posts/ai_scientists/index.html" class="title listing-title">The Epistemic Risks of AI-Only Science</a>
+</td>
+
+</tr>
+
+<tr data-index="12" data-categories="YWNhZGVtaWElMkNFdXJvcGU=" data-listing-date-sort="1745532000000" data-listing-file-modified-sort="1759342950561" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="766" data-listing-title-sort="The Optimal Amount of Wasted Research Funding Is Non-Zero" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">25 Apr 2025</span>
+</td>
+<td>
+<a href="./blog/posts/ai4science_european_academia/index.html" class="title listing-title">The Optimal Amount of Wasted Research Funding Is Non-Zero</a>
+</td>
+
+</tr>
+
+<tr data-index="13" data-categories="bWFjaGluZS1sZWFybmluZyUyQ3RlYWNoaW5n" data-listing-date-sort="1745359200000" data-listing-file-modified-sort="1759342950657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4329" data-listing-title-sort="Autoencoders as Digital Archaeologists for Spectroscopic Data" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">23 Apr 2025</span>
+</td>
+<td>
+<a href="./blog/posts/autencoder_spectroscopy/index.html" class="title listing-title">Autoencoders as Digital Archaeologists for Spectroscopic Data</a>
+</td>
+
+</tr>
+
+<tr data-index="14" data-categories="YWNhZGVtaWElMkNwZWVyJTIwcmV2aWV3JTJDc2NpZW50aWZpYyUyMGNvbW11bml0eQ==" data-listing-date-sort="1743804000000" data-listing-file-modified-sort="1759342950851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="691" data-listing-title-sort="Notes on My Peer Review Process: An Invitation to Compare Practices" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">5 Apr 2025</span>
+</td>
+<td>
+<a href="./blog/posts/reviewing/index.html" class="title listing-title">Notes on My Peer Review Process: An Invitation to Compare Practices</a>
+</td>
+
+</tr>
+
+<tr data-index="15" data-categories="c2NpZW5jZQ==" data-listing-date-sort="1738710000000" data-listing-file-modified-sort="1759342950822" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Beyond the Era of Accidental Discovery" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">5 Feb 2025</span>
+</td>
+<td>
+<a href="./blog/posts/materials_intelligence/index.html" class="title listing-title">Beyond the Era of Accidental Discovery</a>
+</td>
+
+</tr>
+
+<tr data-index="16" data-categories="bGlmZQ==" data-listing-date-sort="1738450800000" data-listing-file-modified-sort="1759342950822" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="170" data-listing-title-sort="10 Reasons to Aim Higher. And Higher." data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">2 Feb 2025</span>
+</td>
+<td>
+<a href="./blog/posts/harder/index.html" class="title listing-title">10 Reasons to Aim Higher. And Higher.</a>
+</td>
+
+</tr>
+
+<tr data-index="17" data-categories="bGxtJTJDYWNhZGVtaWElMkNzb2NpZXR5" data-listing-date-sort="1736636400000" data-listing-file-modified-sort="1759342950566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="642" data-listing-title-sort="Dear Claude: Are We Getting Too Close?" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">12 Jan 2025</span>
+</td>
+<td>
+<a href="./blog/posts/ai_thinking/index.html" class="title listing-title">Dear Claude: Are We Getting Too Close?</a>
+</td>
+
+</tr>
+
+<tr data-index="18" data-categories="bGxt" data-listing-date-sort="1736377200000" data-listing-file-modified-sort="1759342950821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1310" data-listing-title-sort="Thinking aloud about the shape of scientific data" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">9 Jan 2025</span>
+</td>
+<td>
+<a href="./blog/posts/data_shape/index.html" class="title listing-title">Thinking aloud about the shape of scientific data</a>
+</td>
+
+</tr>
+
+<tr data-index="19" data-categories="bGlmZQ==" data-listing-date-sort="1736031600000" data-listing-file-modified-sort="1759342950556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56" data-listing-title-sort="A wise bird" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">5 Jan 2025</span>
+</td>
+<td>
+<a href="./blog/posts/a_wise_owl/index.html" class="title listing-title">A wise bird</a>
+</td>
+
+</tr>
+
+<tr data-index="20" data-categories="YWNhZGVtaWElMkNsbG0=" data-listing-date-sort="1736031600000" data-listing-file-modified-sort="1759342950871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678" data-listing-title-sort="Trust Me, There's a Method to This Madness" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">5 Jan 2025</span>
+</td>
+<td>
+<a href="./blog/posts/why_llm/index.html" class="title listing-title">Trust Me, There’s a Method to This Madness</a>
+</td>
+
+</tr>
+
+<tr data-index="21" data-categories="bGlmZSUyQ2FjYWRlbWlh" data-listing-date-sort="1733094000000" data-listing-file-modified-sort="1759342950871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="744" data-listing-title-sort="Take it easy, my friend" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">2 Dec 2024</span>
+</td>
+<td>
+<a href="./blog/posts/take_it_easy/index.html" class="title listing-title">Take it easy, my friend</a>
+</td>
+
+</tr>
+
+<tr data-index="22" data-categories="bGlmZQ==" data-listing-date-sort="1726869600000" data-listing-file-modified-sort="1759342950871" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="627" data-listing-title-sort="The Tail End" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">21 Sep 2024</span>
+</td>
+<td>
+<a href="./blog/posts/visualizing_the_tail_end/index.html" class="title listing-title">The Tail End</a>
+</td>
+
+</tr>
+
+<tr data-index="23" data-categories="bWFjaGluZS1sZWFybmluZyUyQ2xsbSUyQ3RlYWNoaW5n" data-listing-date-sort="1714687200000" data-listing-file-modified-sort="1759342950822" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703" data-listing-title-sort="Performing basic analysis of molecules generated by ML models" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">3 May 2024</span>
+</td>
+<td>
+<a href="./blog/posts/evaluation_performance_generative_molecular_models/index.html" class="title listing-title">Performing basic analysis of molecules generated by ML models</a>
+</td>
+
+</tr>
+
+<tr data-index="24" data-categories="bWFjaGluZS1sZWFybmluZyUyQ2xsbSUyQ3RlYWNoaW5n" data-listing-date-sort="1714600800000" data-listing-file-modified-sort="1759342950716" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3621" data-listing-title-sort="Building a GPT that can generate molecules from scratch" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">2 May 2024</span>
+</td>
+<td>
+<a href="./blog/posts/building_an_llm/index.html" class="title listing-title">Building a GPT that can generate molecules from scratch</a>
+</td>
+
+</tr>
+
+<tr data-index="25" data-categories="bWFjaGluZS1sZWFybmluZyUyQ2xsbSUyQ3RlYWNoaW5n" data-listing-date-sort="1714600800000" data-listing-file-modified-sort="1759342950820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1203" data-listing-title-sort="Building an LLM agent from scratch" data-listing-filename-sort="index.ipynb">
+<td>
+<span class="listing-date">2 May 2024</span>
+</td>
+<td>
+<a href="./blog/posts/building_an_llm_agent/index.html" class="title listing-title">Building an LLM agent from scratch</a>
+</td>
+
+</tr>
+
+<tr data-index="26" data-categories="YWNhZGVtaWElMkNtZXRhc2NpZW5jZQ==" data-listing-date-sort="1711234800000" data-listing-file-modified-sort="1759342950846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="831" data-listing-title-sort="The 'researcher's stuff'" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">24 Mar 2024</span>
+</td>
+<td>
+<a href="./blog/posts/researchers_stuff/index.html" class="title listing-title">The ‘researcher’s stuff’</a>
+</td>
+
+</tr>
+
+<tr data-index="27" data-categories="YWNhZGVtaWElMkNjb21tdW5pY2F0aW9u" data-listing-date-sort="1709334000000" data-listing-file-modified-sort="1759342950714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="437" data-listing-title-sort="Language I want to be more mindful of" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">2 Mar 2024</span>
+</td>
+<td>
+<a href="./blog/posts/bad_language/index.html" class="title listing-title">Language I want to be more mindful of</a>
+</td>
+
+</tr>
+
+<tr data-index="28" data-categories="bWFjaGluZS1sZWFybmluZw==" data-listing-date-sort="1709334000000" data-listing-file-modified-sort="1759342950830" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="997" data-listing-title-sort="Multiple instances learning" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">2 Mar 2024</span>
+</td>
+<td>
+<a href="./blog/posts/mil/index.html" class="title listing-title">Multiple instances learning</a>
+</td>
+
+</tr>
+
+<tr data-index="29" data-categories="bWFjaGluZS1sZWFybmluZyUyQ3RlYWNoaW5n" data-listing-date-sort="1708642800000" data-listing-file-modified-sort="1759342950714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7308" data-listing-title-sort="Developing an intuition for backpropagation" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">23 Feb 2024</span>
+</td>
+<td>
+<a href="./blog/posts/backprop/index.html" class="title listing-title">Developing an intuition for backpropagation</a>
 </td>
 
 </tr>
@@ -400,189 +567,9 @@ Other References
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-</section>
-<section id="active-learning" class="level2">
-<h2 class="anchored" data-anchor-id="active-learning"><img src="img/natcomm.png" class="img-fluid" style="width:10.0%"> Active learning</h2>
-<div id="listing-al-listings" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
- 
-</th>
-
-<th>
-Name
-</th>
-
-<th>
-Description
-</th>
-
-<th>
-Other References
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>PyePAL</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/pyepal_logo.png" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/kjappelbaum/pyepal" class="title listing-title"><span class="text-nowrap">PyePAL</span></a>
-</td>
-<td>
-<span class="listing-description">PyePAL implements the e-PAL algorithm for Pareto active learning. It comes with interfaces for a range of machine learning models, including scikit-learn, GPy, and jax. It generalizes to any number of objectives and also supports batches sampling as well as various schedulers for (re)-training the model. </span>
-</td>
-<td>
-<span class="listing-other"><a href="https://www.nature.com/articles/s41467-021-22437-0">Paper</a></span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="chemical-data-management" class="level2">
-<h2 class="anchored" data-anchor-id="chemical-data-management"><img src="img/cheminfo_logo.svg" class="img-fluid" style="width:10.0%"> Chemical Data management</h2>
-<p>I have been an active contributor to the <a href="cheminfo.github.io">cheminfo</a> ecosystem. For more details about it, you can give our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective article</a> a look.</p>
-<p>Some of my contributions are listed below:</p>
-<div id="listing-cheminfo-listings" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
- 
-</th>
-
-<th>
-Name
-</th>
-
-<th>
-Description
-</th>
-
-<th>
-Other References
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>isotherm-analysis</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/isotherm.svg" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/cheminfo/isotherm-analysis" class="title listing-title"><span class="text-nowrap">isotherm-analysis</span></a>
-</td>
-<td>
-<span class="listing-description"><code>isotherm-analysis</code> allows to parse and analyze isotherms. It converts from multiple formats to JCAMP-DX and provides utilities for basic analysis. </span>
-</td>
-<td>
-<span class="listing-other">Used in our <a href="">preprint</a></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>pubchem</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/pubchem.svg" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/cheminfo/pubchem" class="title listing-title"><span class="text-nowrap">pubchem</span></a>
-</td>
-<td>
-<span class="listing-description">JavaScript interface to the PubChem API. In the cheminfo ELN, we use this to display safety information. </span>
-</td>
-<td>
-<span class="listing-other">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>xrd-analysis</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/xrd.svg" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/cheminfo/xrd-analysis" class="title listing-title"><span class="text-nowrap">xrd-analysis</span></a>
-</td>
-<td>
-<span class="listing-description"><code>xrd-analysis</code> can convert output files from powder-xray diffraction into JCAMP-DX format and perform analysis (Scherrer equation, …) on the diffractograms. </span>
-</td>
-<td>
-<span class="listing-other">Discussed in our <a href="https://www.nature.com/articles/s41557-022-00910-7">perspective</a></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>tga-analysis</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/tga.svg" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/cheminfo/tga-spectrum" class="title listing-title"><span class="text-nowrap">tga-analysis</span></a>
-</td>
-<td>
-<span class="listing-description"><code>tga-analysis</code> provides tools to convert output files from thermogravimetric analysis (TGA) into JCAMP-DX, as well as tools to analyze the data (mass loss analysis). </span>
-</td>
-<td>
-<span class="listing-other">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>baselines</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/baselines.svg" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://github.com/cheminfo/baselines" class="title listing-title"><span class="text-nowrap">baselines</span></a>
-</td>
-<td>
-<span class="listing-description">Baselines provides a collection of baseline correction methods. </span>
-</td>
-<td>
-<span class="listing-other">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-listing-title-sort="<span class=&quot;text-nowrap&quot;>cheminfo.github.io</span>">
-<td>
-<span class="listing-image"><img loading="lazy" src="img/cheminfo.png" style="height: 50px;"></span>
-</td>
-<td>
-<a href="https://cheminfo.github.io" class="title listing-title"><span class="text-nowrap">cheminfo.github.io</span></a>
-</td>
-<td>
-<span class="listing-description">I created the web page for the cheminfo organization, which is a collection of FAIR building blocks for chemistry and beyond. </span>
-</td>
-<td>
-<span class="listing-other">&nbsp;</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-<!-- ## Other -->
 
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1018,7 +1005,7 @@ Other References
     </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/opensource/opensource.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

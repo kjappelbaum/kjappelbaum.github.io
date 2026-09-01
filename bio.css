@@ -1,7 +1,8 @@
+/* Flush left, so the title and the prose share one edge across the site. */
 .quarto-title-block .quarto-title,
 .bio-page {
   max-width: 72ch;
-  margin-inline: auto;
+  margin-inline: 0;
 }
 
 .quarto-title h1.title,

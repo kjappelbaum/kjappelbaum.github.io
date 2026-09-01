@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kjablonka.com/bio.html</loc>
-    <lastmod>2026-08-31T20:23:50.153Z</lastmod>
+    <lastmod>2026-09-01T06:50:00.821Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
@@ -82,15 +82,19 @@
   </url>
   <url>
     <loc>https://kjablonka.com/index.html</loc>
-    <lastmod>2026-09-01T06:11:01.036Z</lastmod>
+    <lastmod>2026-09-01T06:46:10.630Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/research.html</loc>
-    <lastmod>2026-08-31T20:23:50.143Z</lastmod>
+    <loc>https://kjablonka.com/notes.html</loc>
+    <lastmod>2026-09-01T06:46:10.632Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/teaching.html</loc>
     <lastmod>2026-08-31T20:23:50.148Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/research.html</loc>
+    <lastmod>2026-09-01T06:50:00.822Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/earlier-work.html</loc>
@@ -170,6 +174,6 @@
   </url>
   <url>
     <loc>https://kjablonka.com/colophon.html</loc>
-    <lastmod>2026-08-31T20:23:50.146Z</lastmod>
+    <lastmod>2026-09-01T06:49:07.835Z</lastmod>
   </url>
 </urlset>

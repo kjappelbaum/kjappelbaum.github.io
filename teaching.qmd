@@ -5,7 +5,7 @@ description-meta: "Teaching, supervision, and mentoring by Kevin Maik Jablonka a
 sidebar: false
 ---
 
-Teaching and supervision are most of what I actually do, and the part I find hardest to judge. A paper you can point at. Whether someone left the group able to run a programme of their own takes years to find out.
+Teaching and supervision are most of what I do, and the hardest part to judge: a paper you can point at, but whether someone leaves able to run their own programme takes years to find out.
 
 ## At Jena
 

@@ -1,21 +1,15 @@
 ---
 title: "Colophon"
 pagetitle: "Colophon | Kevin Maik Jablonka"
-description-meta: "Error bounty, site notes, and miscellany."
+description-meta: "Site notes, corrections, and miscellany."
 sidebar: false
 ---
 
-Notes about this site and a standing offer, kept off the main pages.
+Notes about this site, kept off the main pages.
 
 ## Errors and corrections
 
-I offer €5 for minor errors, €15 for moderate errors, and €40 for major errors in my work. While it's difficult to define these categories in advance, I aim to be fair in my assessments.
-
-Very minor errors (typos, grammatical mistakes) earn my gratitude.
-
-If you prefer not to receive a reward, I'll donate the equivalent amount to GiveWell.
-
-Contact me via email if you want a reward, or use the [anonymous feedback form](https://www.admonymous.co/kjappelbaum) if you prefer anonymity.
+If you spot an error in my work, I would like to know. Email me, or use the [anonymous feedback form](https://www.admonymous.co/kjappelbaum) if you prefer anonymity.
 
 
 ## Miscellany

@@ -38,5 +38,5 @@ aliases: ["blog/"]
 [All notes →](notes.qmd)
 
 ::: {.home-colophon}
-[Consulting, mentoring, the error bounty, and how this site is made](colophon.qmd) · [RSS](index.xml)
+[Consulting, mentoring, corrections, and how this site is made](colophon.qmd) · [RSS](index.xml)
 :::

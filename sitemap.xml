@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kjablonka.com/bio.html</loc>
-    <lastmod>2026-09-01T06:50:00.821Z</lastmod>
+    <lastmod>2026-09-01T14:46:38.859Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/teaching/ml/ml_notes.html</loc>
@@ -21,99 +21,79 @@
     <lastmod>2025-10-01T18:22:32.116Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/why_llm/index.html</loc>
+    <loc>https://kjablonka.com/blog/posts/a_wise_owl/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/writing_erc/index.html</loc>
+    <lastmod>2026-09-07T08:42:37.825Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/backprop/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.714Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/visualizing_the_tail_end/index.html</loc>
     <lastmod>2025-10-01T18:22:30.871Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/ai_scientists/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.562Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/building_an_llm_agent/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.820Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/harder/index.html</loc>
+    <loc>https://kjablonka.com/blog/posts/materials_intelligence/index.html</loc>
     <lastmod>2025-10-01T18:22:30.822Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/take_it_easy/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.871Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/write_early/index.html</loc>
-    <lastmod>2025-10-31T07:18:46.773Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/reviewing/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture/index.html</loc>
-    <lastmod>2026-01-27T10:27:23.869Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/researchers_stuff/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.846Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/mil/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.830Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/blog/posts/evaluation_performance_generative_molecular_models/index.html</loc>
     <lastmod>2025-10-01T18:22:30.822Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/new_kinds_ai_scientists/index.html</loc>
-    <lastmod>2026-06-09T18:27:15.058Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/openclaw/index.html</loc>
-    <lastmod>2026-03-04T10:12:13.782Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/context/index.html</loc>
+    <loc>https://kjablonka.com/blog/posts/data_shape/index.html</loc>
     <lastmod>2025-10-01T18:22:30.821Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/bad_language/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.714Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/ai4science_european_academia/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.561Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/index.html</loc>
-    <lastmod>2026-09-01T06:46:10.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/notes.html</loc>
-    <lastmod>2026-09-01T06:46:10.632Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/teaching.html</loc>
-    <lastmod>2026-09-01T12:31:22.522Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/research.html</loc>
-    <lastmod>2026-09-01T12:56:12.455Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/earlier-work.html</loc>
-    <lastmod>2026-08-31T20:23:50.145Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/openings.html</loc>
-    <lastmod>2026-08-31T20:23:50.150Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/building_an_llm/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.716Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/blog/posts/ai_thinking/index.html</loc>
     <lastmod>2025-10-01T18:22:30.566Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/data_shape/index.html</loc>
+    <loc>https://kjablonka.com/blog/posts/building_an_llm/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.716Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/openings.html</loc>
+    <lastmod>2026-08-31T20:23:50.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/earlier-work.html</loc>
+    <lastmod>2026-08-31T20:23:50.145Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/research.html</loc>
+    <lastmod>2026-09-01T12:56:12.455Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/teaching.html</loc>
+    <lastmod>2026-09-01T12:31:22.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/notes.html</loc>
+    <lastmod>2026-09-01T06:46:10.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/index.html</loc>
+    <lastmod>2026-09-07T07:09:34.833Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/ai4science_european_academia/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.561Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/bad_language/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.714Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kjablonka.com/blog/posts/context/index.html</loc>
     <lastmod>2025-10-01T18:22:30.821Z</lastmod>
   </url>
   <url>
@@ -121,48 +101,32 @@
     <lastmod>2025-10-01T18:22:30.657Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/scientific_freedom/index.html</loc>
-    <lastmod>2026-03-25T16:26:22.691Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/researchers_stuff/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.846Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/on_impactful_research/index.html</loc>
-    <lastmod>2025-10-14T11:00:19.846Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/reviewing/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.851Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/bayesian_optimization_materials/index.html</loc>
-    <lastmod>2026-04-15T11:40:03.167Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/mil/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.830Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/manifold/geometry_blog.html</loc>
-    <lastmod>2025-12-29T11:11:42.636Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/materials_intelligence/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.822Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kjablonka.com/blog/posts/visualizing_the_tail_end/index.html</loc>
+    <loc>https://kjablonka.com/blog/posts/take_it_easy/index.html</loc>
     <lastmod>2025-10-01T18:22:30.871Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/backprop/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.714Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/harder/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.822Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/writing_erc/index.html</loc>
-    <lastmod>2025-10-01T19:02:50.579Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/building_an_llm_agent/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.820Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/a_wise_owl/index.html</loc>
-    <lastmod>2025-10-01T18:22:30.556Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/ai_scientists/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.562Z</lastmod>
   </url>
   <url>
-    <loc>https://kjablonka.com/blog/posts/finances/index.html</loc>
-    <lastmod>2026-03-20T14:55:56.402Z</lastmod>
+    <loc>https://kjablonka.com/blog/posts/why_llm/index.html</loc>
+    <lastmod>2025-10-01T18:22:30.871Z</lastmod>
   </url>
   <url>
     <loc>https://kjablonka.com/scratch/coding-with-me/index.html</loc>
@@ -174,6 +138,6 @@
   </url>
   <url>
     <loc>https://kjablonka.com/colophon.html</loc>
-    <lastmod>2026-09-01T06:49:07.835Z</lastmod>
+    <lastmod>2026-09-07T07:09:34.832Z</lastmod>
   </url>
 </urlset>

@@ -257,9 +257,9 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> load_dotenv()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>LLM-powered agents have caught a lot of an attention. They are interesting, because they allow us to couple the flexibility of LLMs with the power of robust tools or knowledge bases.</p>
-<p>In the chemical sciences, this approach has been popularized by <a href="https://arxiv.org/abs/2304.05376">ChemCrow</a> and <a href="https://www.nature.com/articles/s41586-023-06792-0">Coscientist</a>. In those systems, the LLMs had access to tools such as reaction planner and a cloud laboratory and, in this way, could plan and perform experiments autonomously.</p>
-<p>While it might seem that these systems are very complex, they are are surprisingly simple. Unfortunately, this simplicity is sometimes <a href="https://hamel.dev/blog/posts/prompt/">hidden below layers of abstractions in libraries and frameworks</a>.</p>
+<p>LLM-powered agents have caught a lot of attention. They are interesting, because they allow us to couple the flexibility of LLMs with the power of robust tools or knowledge bases.</p>
+<p>In the chemical sciences, this approach has been popularized by <a href="https://arxiv.org/abs/2304.05376">ChemCrow</a> and <a href="https://www.nature.com/articles/s41586-023-06792-0">Coscientist</a>. In those systems, the LLMs had access to tools such as a reaction planner and a cloud laboratory and, in this way, could plan and perform experiments autonomously.</p>
+<p>While it might seem that these systems are very complex, they are surprisingly simple. Unfortunately, this simplicity is sometimes <a href="https://hamel.dev/blog/posts/prompt/">hidden below layers of abstractions in libraries and frameworks</a>.</p>
 <p>In this post, we will implement a simple agent from scratch.</p>
 <p>Our goal is to answer simple questions about molecules (such as the number of hydrogen bond donors) reliably.</p>
 <p>If we simply prompt an LLM to answer the question about hydrogen bond donors, it might give us something like the completion shown below.</p>
@@ -315,7 +315,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://haystack.deepset.ai/blog/introducing-haystack-agents/agents.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from HayStack (by deepset) illustrating the ReaAct loop.</figcaption>
+<figcaption>Figure taken from HayStack (by deepset) illustrating the ReAct loop.</figcaption>
 </figure>
 </div>
 <p>This is inspired by chain-of-thought prompting, which has been shown to be effective in improving the performance of LLMs on a variety of tasks.</p>
@@ -453,7 +453,7 @@ Final Answer: The number of hydrogen bond donors in the molecule [C@H]([C@@H]([C
 </div>
 </div>
 <p>The model hallucinated! It gave us everything, including the final answer. This is not what we wanted. We wanted to only have the model select the tool, generate the input and then observe the output.</p>
-<p>It seems that we need to stop it from jumping ahead to quickly. Luckily, we can do this quite easily by stopping the generation at the word “Observation”.</p>
+<p>It seems that we need to stop it from jumping ahead too quickly. Luckily, we can do this quite easily by stopping the generation at the word “Observation”.</p>
 <div id="cell-36" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> completion(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> <span class="st">'gpt-3.5-turbo'</span>,</span>
@@ -476,7 +476,7 @@ Action Input: [C@H]([C@@H]([C@@H](C(=O)[O-])O)O)[C@H]C(=O)
 </div>
 </div>
 <p>That already looks way better! We now need to only extract the <code>Action Input</code> and pass it to our tool. Let’s do that next.</p>
-<p>For that we will all thought/observation cycle continue until we have a final answer. We can do this with a <code>while</code> loop that we will run until we have a final answer.</p>
+<p>For that we will let the thought/observation cycle continue until we have a final answer. We can do this with a <code>while</code> loop that we will run until we have a final answer.</p>
 <div id="cell-38" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_question(prompt, tools):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    scratchpad <span class="op">=</span> <span class="st">""</span></span>
@@ -574,7 +574,7 @@ Final Answer: The number of hydrogen bond donors in the molecule is 2.</code></p
 </div>
 <div class="callout-body-container callout-body">
 <p>We can make the system much more robust by constraining the generation of the LLM. For instance, we could constrain it to only return a special kind of JSON.</p>
-<p>This works, because we can make the LLM sample only a subset of tokens from the vocabulary. Many LLM providers give access to such functionality via what is called <a href="https://platform.openai.com/docs/guides/text-generation/json-mode">JSON mode</a> or <a href="https://platform.openai.com/docs/guides/function-calling">function calling</a>. Some packages such as <a href="https://jxnl.github.io/instructor/why/">instructor</a> specialize on this functionality.</p>
+<p>This works, because we can make the LLM sample only a subset of tokens from the vocabulary. Many LLM providers give access to such functionality via what is called <a href="https://platform.openai.com/docs/guides/text-generation/json-mode">JSON mode</a> or <a href="https://platform.openai.com/docs/guides/function-calling">function calling</a>. Some packages such as <a href="https://jxnl.github.io/instructor/why/">instructor</a> specialize in this functionality.</p>
 </div>
 </div>
 <div id="cell-46" class="cell" data-execution_count="46">
@@ -742,7 +742,7 @@ Message:  Final Answer: The number of hydrogen bond donors in aspirin is 1.</cod
 <li>Use the tools to answer questions</li>
 <li>Self-heal in case of errors</li>
 </ul>
-<p>While out system is still very simple, it hopefully illustrates the power and potential of LLM-powered agents.</p>
+<p>While our system is still very simple, it hopefully illustrates the power and potential of LLM-powered agents.</p>
 </section>
 <section id="outlook-beyond-hard-coding-prompts" class="level2">
 <h2 class="anchored" data-anchor-id="outlook-beyond-hard-coding-prompts">Outlook: Beyond hard-coding prompts</h2>

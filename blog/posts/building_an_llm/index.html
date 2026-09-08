@@ -275,10 +275,10 @@ window.Quarto = {
 </header>
 
 
-<p>Molecules can be represented in multitude of ways. One of the most widely used representations is to use text, for example in the so-called SMILES notation. In SMILES notation, a molecule is represented as a string of characters, where each character represents an atom or a bond. For example, the SMILES notation for ethanol is <code>CCO</code>. The one for benzene is <code>c1ccccc1</code>. You see that hydrogen atoms are typically omitted in SMILES notation, and that lower case letters are used for aromatic atoms. There is a <a href="http://opensmiles.org/opensmiles.html">full grammar for SMILES notation</a> and <a href="https://www.cell.com/patterns/pdf/S2666-3899(22)00206-9.pdf">various alternative representations</a>, but we will stick to this simple version for this notebook.</p>
+<p>Molecules can be represented in a multitude of ways. One of the most widely used representations is to use text, for example in the so-called SMILES notation. In SMILES notation, a molecule is represented as a string of characters, where each character represents an atom or a bond. For example, the SMILES notation for ethanol is <code>CCO</code>. The one for benzene is <code>c1ccccc1</code>. You see that hydrogen atoms are typically omitted in SMILES notation, and that lower case letters are used for aromatic atoms. There is a <a href="http://opensmiles.org/opensmiles.html">full grammar for SMILES notation</a> and <a href="https://www.cell.com/patterns/pdf/S2666-3899(22)00206-9.pdf">various alternative representations</a>, but we will stick to this simple version for this notebook.</p>
 <p>Important problems that our final solution will need to be able to solve are:</p>
 <ul>
-<li>dealing with inputs of different lengths (e.g, different number of atoms in different molecules)</li>
+<li>dealing with inputs of different lengths (e.g., different numbers of atoms in different molecules)</li>
 <li>incorporating information about the semantic meaning of the atoms in the molecule (to obtain meaningful molecules, the model, e.g., should probably “know” what kind of bonds carbon can form)</li>
 <li>dealing with the interaction between atoms in the molecule (not all arrangements of atoms are equally likely)</li>
 </ul>
@@ -406,7 +406,7 @@ Note
 </div>
 <section id="converting-tokens-into-ids" class="level4">
 <h4 class="anchored" data-anchor-id="converting-tokens-into-ids">Converting tokens into IDs</h4>
-<p>For inputing tokens into a model, we will need to convert them into numbers.</p>
+<p>For inputting tokens into a model, we will need to convert them into numbers.</p>
 <p>To do so, we will set up a “vocabulary” which is a dictionary that maps tokens to integers. The vocabulary also defines the tokens that are known to the model.</p>
 </section>
 <section id="special-tokens" class="level4">
@@ -589,7 +589,7 @@ Note
 <span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>        padded_sequence[:<span class="bu">len</span>(sequence)] <span class="op">=</span> sequence</span>
 <span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> padded_sequence</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>You hopefully note something very interesting in this dataset: Based on one SMILES, we can create multiple training examples, because we can slide a window over the SMILES and predict the next token. (Note that our implementation is relatively naiive and is optimized to make this point clear. In practice, you should use dedicated methods, e.g., from the <code>transformers</code> library, to create language model datasets.)</p>
+<p>You hopefully note something very interesting in this dataset: Based on one SMILES, we can create multiple training examples, because we can slide a window over the SMILES and predict the next token. (Note that our implementation is relatively naive and is optimized to make this point clear. In practice, you should use dedicated methods, e.g., from the <code>transformers</code> library, to create language model datasets.)</p>
 </section>
 </section>
 <section id="a-simple-bigram-model" class="level2">
@@ -669,7 +669,7 @@ Embedding layers are often perceived as a fancy operation that we apply to encod
 <div id="cell-40" class="cell" data-execution_count="268">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>bigram <span class="op">=</span> BigramModel(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Given a token ID, the model predict how likely each token of the vocabulary is to be the next. Right now, the model is not trained, so it will predict the next token randomly.</p>
+<p>Given a token ID, the model predicts how likely each token of the vocabulary is to be the next. Right now, the model is not trained, so it will predict the next token randomly.</p>
 <div id="cell-42" class="cell" data-execution_count="269">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>F.softmax(bigram(torch.tensor([<span class="dv">1</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -730,7 +730,7 @@ Embedding layers are often perceived as a fancy operation that we apply to encod
 <span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To evaluate the model performance, we will use the helper function below.</p>
-<p>As performance metric we will use perplexity. Perplexity is a metric that measures how well a probability model predicts a sample. It is defined as <span class="math inline">\(2^H\)</span>, where <span class="math inline">\(H\)</span> is the cross entropy loss. The lower the perplexity, the better the model.</p>
+<p>As performance metric we will use perplexity. Perplexity is a metric that measures how well a probability model predicts a sample. It is defined as <span class="math inline">\(\exp(H)\)</span>, where <span class="math inline">\(H\)</span> is the cross entropy loss (in nats). The lower the perplexity, the better the model.</p>
 <p>To better understand it, let’s recall a few things:</p>
 <p>LLMs are trained to predict the probability of a word given the previous words. For instance, in the sentence “She went to the…”, the model predicts the probability of what the next word could be (e.g., store, park, etc.).</p>
 <p><em>Cross entropy</em> is a measure of the difference between two probability distributions - in this case, the distribution predicted by the model and the actual distribution of words in the language. A lower cross-entropy means the model’s predictions are closer to the actual distribution. We can calculate it as follows:</p>
@@ -758,8 +758,8 @@ Embedding layers are often perceived as a fancy operation that we apply to encod
 <h3 class="anchored" data-anchor-id="training-the-model">Training the model</h3>
 <p>To train the model, we will use a simple training loop and the Adam optimizer.</p>
 <p>The role of the <code>Adam</code> optimizer is to update the parameters of the model using a technique called <a href="http://d2l.ai/chapter_optimization/minibatch-sgd.html">mini-batch stochastic gradient descent</a>. The idea is that we update the weights in the direction of the gradient of the loss function, which we estimate on a small batch of data. The learning rate controls how big the steps are that we take in the direction of the gradient.</p>
-<p>Setting learning rate is not trivial, you can find more background <a href="https://www.jeremyjordan.me/nn-learning-rate/">here</a>.</p>
-<p>It is import to remember to use the <code>zero_grad</code> function to clear the gradients before computing the gradients for the current batch. Also, remember to call <code>loss.backward()</code> to compute the gradients for the current batch.</p>
+<p>Setting the learning rate is not trivial, you can find more background <a href="https://www.jeremyjordan.me/nn-learning-rate/">here</a>.</p>
+<p>It is important to remember to use the <code>zero_grad</code> function to clear the gradients before computing the gradients for the current batch. Also, remember to call <code>loss.backward()</code> to compute the gradients for the current batch.</p>
 <p>For now, we will use a very simple approach (to reuse our old dataloader) and just predict the second token given the first one.</p>
 <div id="cell-48" class="cell" data-execution_count="290">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> BigramModel(<span class="bu">len</span>(tokenizer))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1140,7 +1140,7 @@ Epoch 9, iter 3000, train loss 1.570, val perplexity 4.79183</code></pre>
 </section>
 <section id="making-tokens-talk-using-attention" class="level2">
 <h2 class="anchored" data-anchor-id="making-tokens-talk-using-attention">Making tokens talk using attention</h2>
-<p>In our bigram models we made predictions based on the previous word. This is clearly not enough to make good predictions. We can improve our model by taking into more past tokens into account.</p>
+<p>In our bigram models we made predictions based on the previous word. This is clearly not enough to make good predictions. We can improve our model by taking more past tokens into account.</p>
 <p>One naïve way to incorporate more context into our model might be to simply “pool” (features of) the preceding tokens. This kind of pooling is similar to what we do in GNNs, e.g., to combine node embeddings.</p>
 <p>A very simple pooling operation is the average of the embeddings of the preceding tokens. Later, when we will implement self-attention, we will not use a simple average, but a special weighted average. The code for that will use similar ideas (in particular, the causal mask).</p>
 <div id="cell-59" class="cell" data-execution_count="371">
@@ -1204,7 +1204,7 @@ Epoch 9, iter 3000, train loss 1.570, val perplexity 4.79183</code></pre>
 <p>In the simple average we used above, all past tokens were treated equally. However, it might be useful to <em>pay more attention</em> to certain tokens than to others. That is, we want to gather information from the past – but do this in a data-dependent way. The attention mechanism allows us to do this.</p>
 <p>The attention mechanism does this by having a query vector <span class="math inline">\(q\)</span> and a key vector <span class="math inline">\(k\)</span> for each token. We then define “similarity” or “relevance” between two tokens <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> as the dot product between their query and key vectors, which we derive from the embeddings of the tokens by multiplying them with the learnable weight matrices <span class="math inline">\(W_q\)</span> and <span class="math inline">\(W_k\)</span>.</p>
 <p><span class="math display">\[
-\text{sim}(i, j) = a(i, h) = q_ik_j^T = \text{emb}_i W_q W_k^T \text{emb}_j^T
+\text{sim}(i, j) = a(i, j) = q_ik_j^T = \text{emb}_i W_q W_k^T \text{emb}_j^T
 \]</span></p>
 <p>Note that this gives us now a way to refine the <code>weight_matrix</code> we used above. Instead of weighting all tokens equally, we can now learn a weight matrix that tells us how much attention to pay to each token.</p>
 <p>To start the implementation, we will first derive query and key vectors from the embeddings. We will then compute the similarity matrix and apply the softmax function to normalize the weights.</p>
@@ -1324,7 +1324,7 @@ Epoch 9, iter 3000, train loss 1.570, val perplexity 4.79183</code></pre>
 </div>
 </div>
 </div>
-<p>This has an important impact when we apply <code>softmax</code>. Positive and negative “outliers” will be “sequeezed” to 1 and 0. You can test this by creating a 1D tensor (<code>a</code>) and applying softmax on it. Then multiply the values in the tensor (<code>a</code>) and again apply softmax.</p>
+<p>This has an important impact when we apply <code>softmax</code>. Positive and negative “outliers” will be “squeezed” to 1 and 0. You can test this by creating a 1D tensor (<code>a</code>) and applying softmax on it. Then multiply the values in the tensor (<code>a</code>) and again apply softmax.</p>
 <div id="cell-84" class="cell" data-execution_count="383">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(F.softmax(torch.tensor([<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>])),F.softmax(torch.tensor([<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>])<span class="op">*</span><span class="dv">100</span>) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1762,7 +1762,7 @@ Epoch 9, iter 3000, train loss 1.099, val perplexity 3.03002</code></pre>
 <pre><code>'C33O4N4S4=ON[C@@H](S)NN'</code></pre>
 </div>
 </div>
-<p>This is not a good model for generating molecules yet … (even though our validation loss is lower.</p>
+<p>This is not a good model for generating molecules yet … (even though our validation loss is lower).</p>
 </section>
 </section>
 <section id="interlude-additional-perspectives-on-attention" class="level2">
@@ -1786,16 +1786,19 @@ Epoch 9, iter 3000, train loss 1.099, val perplexity 3.03002</code></pre>
 <ul>
 <li>Given that we have been introducing the attention mechanism as a way to compute a weighted average of values, the analogy to a kernel is quite natural.</li>
 </ul>
-<p>To understand this a bit better, let us introduce <a href="https://en.wikipedia.org/wiki/Kernel_regression">kernel smoothing</a>. Again, it is nothing else then a weighted average. In this weighted average, the weights are determined by a kernel function.</p>
+<p>To understand this a bit better, let us introduce <a href="https://en.wikipedia.org/wiki/Kernel_regression">kernel smoothing</a>. Again, it is nothing else than a weighted average. In this weighted average, the weights are determined by a kernel function.</p>
 <p><span class="math display">\[
 \sum_{i=1}^n y_i \frac{K\left(x_i, x_o\right)}{\sum_{j=1}^n K\left(x_j, x_o\right)},
 \]</span></p>
 <p>where <span class="math inline">\((x_1, y_1), \dots, (x_n, y_n)\)</span> are the training points and <span class="math inline">\(x_o\)</span> is the point at which we want to make a prediction.</p>
-<p>A common kernel function is the Gaussian kernel:</p>
+<p>A common choice is the Gaussian kernel</p>
+<p><span class="math display">\[
+K(x, x_o) = \exp\left(-\frac{\|x - x_o\|^2}{2\sigma^2}\right)
+\]</span></p>
+<p>where <span class="math inline">\(\sigma\)</span> is a hyperparameter. For the analogy to attention it is more convenient to use the exponential dot-product kernel</p>
 <p><span class="math display">\[
 K(x, x_o) = \exp\left(xx_o\right)
 \]</span></p>
-<p>where <span class="math inline">\(\sigma\)</span> is a hyperparameter.</p>
 <p>We are also free to add weights</p>
 <p><span class="math display">\[
 K(x, x_o) = \exp\left(\mathbf{w}_1 x  \mathbf{w}_2 x_o\right)
@@ -1903,7 +1906,7 @@ K(x, x_o) = \exp\left(\frac{\mathbf{w}_1 x  \mathbf{w}_2 x_o}{\sqrt{d}}\right)
 <section id="abstracting-transformers-into-blocks" class="level2">
 <h2 class="anchored" data-anchor-id="abstracting-transformers-into-blocks">Abstracting transformers into blocks</h2>
 <p>It turns out that we can improve the performance by performing the self-attention and feedforward multiple times. For this, it is useful to extract the reusable parts into a block.</p>
-<p>However, just making the model deeper can lead to problems with training. To avoid this, we will leverage two tricks: - we will use residual connections: they allow us to “skip” over layers. During optimization, there will be a “shortcut” to between the input and the output of the block. - we will use layer normalization: it allows us to normalize the activations of a layer - we will add dropout: it allows us to randomly drop activations during training. This can be seen as a form of regularization.</p>
+<p>However, just making the model deeper can lead to problems with training. To avoid this, we will leverage three tricks: - we will use residual connections: they allow us to “skip” over layers. During optimization, there will be a “shortcut” between the input and the output of the block. - we will use layer normalization: it allows us to normalize the activations of a layer - we will add dropout: it allows us to randomly drop activations during training. This can be seen as a form of regularization.</p>
 <p>We will apply layer norm twice: - once directly on the input - then before we pass the multihead attention output to the feedforward layer</p>
 <p>Note that <a href="https://magazine.sebastianraschka.com/p/why-the-original-transformer-figure">there is some debate</a> on where layer norm is optimally placed.</p>
 <blockquote class="twitter-tweet blockquote">

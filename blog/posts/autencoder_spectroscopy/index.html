@@ -260,7 +260,7 @@ window.Quarto = {
 <div class="toc-actions"><ul><li><a href="https://github.com/kjappelbaum/kjappelbaum.github.io/edit/main/blog/posts/autencoder_spectroscopy/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -306,11 +306,11 @@ window.Quarto = {
 <p>But just as ancient artifacts come to us covered in dirt and damaged by time (and occasionally by that one archaeologist who thought dynamite was a good excavation tool), our spectroscopic data arrives buried under multiple layers of contamination: such as</p>
 <ul>
 <li><em>noise</em> due to random fluctuations (“electrons having a dance party”)</li>
-<li><em>environmental interference</em>: for example, Water vapor and CO₂ absorption bands</li>
+<li><em>environmental interference</em>: for example, water vapor and CO₂ absorption bands</li>
 <li><em>instrumental artifacts</em>: baseline drift (“detector getting tired”)</li>
 <li><em>physical degradation</em>: sample fluorescence and aging effects</li>
 </ul>
-<p>Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you’ll remove the dirt, but you might also remove, well, everything else. One usecase of autoencoder is to do this in a better way.</p>
+<p>Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you’ll remove the dirt, but you might also remove, well, everything else. One use case of autoencoders is to do this in a better way.</p>
 </section>
 <section id="the-digital-archaeologists-toolkit" class="level2">
 <h2 class="anchored" data-anchor-id="the-digital-archaeologists-toolkit">The Digital Archaeologist’s Toolkit</h2>
@@ -325,7 +325,7 @@ window.Quarto = {
 </div>
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
-<div id="381134ea" class="cell" data-execution_count="2">
+<div id="dcf06d37" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ExcavationBrush(nn.Module):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, spectral_channels<span class="op">=</span><span class="dv">1000</span>, artifact_dimensions<span class="op">=</span><span class="dv">32</span>):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -355,7 +355,7 @@ window.Quarto = {
 </figure>
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
-<div id="6ddbb230" class="cell" data-execution_count="3">
+<div id="4557b647" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># It's like Google Maps, but for molecules</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encode_spectrum(encoder, noisy_spectrum):</span>
@@ -400,7 +400,7 @@ d_{\mathcal{Z}}(f_\phi(x_i), f_\phi(x_j)) \approx d_{\mathcal{X}}(x_i, x_j)
 </figure>
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
-<div id="d168bd82" class="cell" data-execution_count="4">
+<div id="36747243" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Reconstructor(nn.Module):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, artifact_dimensions<span class="op">=</span><span class="dv">32</span>, spectral_channels<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -431,7 +431,7 @@ d_{\mathcal{Z}}(f_\phi(x_i), f_\phi(x_j)) \approx d_{\mathcal{X}}(x_i, x_j)
 <p><span class="math display">\[
 \mathcal{L}_{\text{reconstruction}} = \|x - \hat{x}\|^2
 \]</span></p>
-<p>Where <span class="math inline">\((x)\)</span> is our original spectrum (the truth, the whole truth, and nothing but the truth) and <span class="math inline">\((\hat{x})\)</span> is our reconstruction.</p>
+<p>Where <span class="math inline">\(x\)</span> is our original spectrum (the truth, the whole truth, and nothing but the truth) and <span class="math inline">\(\hat{x}\)</span> is our reconstruction.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -476,7 +476,7 @@ p(x|z) = \frac{1}{(2\pi\sigma^2)^{n/2}} \exp\left(-\frac{\|x - f_\theta(z)\|^2}{
 <li>Regularization: “Stay humble, don’t overfit”</li>
 </ul>
 </section>
-<section id="the-manifold-hypothesis-why-this-archaeological-dig-makes-sense-at-all" class="level2">
+<section id="the-manifold-hypothesis-why-this-archaeological-dig-makes-sense-at-all" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-manifold-hypothesis-why-this-archaeological-dig-makes-sense-at-all">The Manifold Hypothesis: Why This Archaeological Dig Makes Sense At All</h2>
 <p>Let’s address a fundamental question: why should this even work? Shouldn’t compressing our beautiful high-dimensional spectrum lose valuable information? Welcome to the manifold hypothesis, the reason dimensionality reduction isn’t just mathematical vandalism.</p>
 <p>The manifold hypothesis suggests that high-dimensional data (like our spectroscopic signals) aren’t actually using all those dimensions effectively. Instead, the data lies on or near a lower-dimensional surface (a manifold) embedded in that high-dimensional space. It’s like discovering that what looks like a complex 3D sculpture is actually just a cleverly folded 2D sheet of paper.</p>
@@ -504,7 +504,7 @@ p(x|z) = \frac{1}{(2\pi\sigma^2)^{n/2}} \exp\left(-\frac{\|x - f_\theta(z)\|^2}{
 </div>
 </div>
 </div>
-<p>To visualize this, imagine our spectra are actually faces of ancient masks (stay with me here). Each mask has thousands of pixels (dimensions), but you could describe any mask with far fewer parameters: eye size, mouth width, nose shape, etc. That’s your manifold! Autoencoders discover these “facial features” of spectra automatically. ![You might be familiar with <a href="https://en.wikipedia.org/wiki/Eigenface">eigenfaces</a>, which are “basis vectors” of human faces one can derive with PCA.]</p>
+<div class="page-columns page-full"><p>To visualize this, imagine our spectra are actually faces of ancient masks (stay with me here). Each mask has thousands of pixels (dimensions), but you could describe any mask with far fewer parameters: eye size, mouth width, nose shape, etc. That’s your manifold! Autoencoders discover these “facial features” of spectra automatically. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">You might be familiar with <a href="https://en.wikipedia.org/wiki/Eigenface">eigenfaces</a>, which are “basis vectors” of human faces one can derive with PCA.</span></div></div>
 </section>
 <section id="from-classical-to-neural-the-connection-between-pca-and-linear-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="from-classical-to-neural-the-connection-between-pca-and-linear-autoencoders">From Classical to Neural: The Connection Between PCA and Linear Autoencoders</h2>
@@ -571,7 +571,7 @@ W_2 = U_k
 <section id="a-practical-example-finding-the-redundant-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
-<div id="9820423f" class="cell" data-execution_count="6">
+<div id="be2f228b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset with a redundant dimension</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_redundant_spectrum(num_samples<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Independent features</span></span>
@@ -645,9 +645,9 @@ Figure&nbsp;1
 </section>
 <section id="beyond-linear-maps-where-neural-networks-actually-shine" class="level2">
 <h2 class="anchored" data-anchor-id="beyond-linear-maps-where-neural-networks-actually-shine">Beyond Linear Maps: Where Neural Networks Actually Shine</h2>
-<p>Now we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
+<p>Now that we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
-<div id="f2eae27b" class="cell" data-execution_count="8">
+<div id="bcabd91c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NonlinearArchaeologist(nn.Module):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim<span class="op">=</span><span class="dv">1000</span>, latent_dim<span class="op">=</span><span class="dv">32</span>):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -708,7 +708,7 @@ Figure&nbsp;1
 <section id="the-probabilistic-excavation-variational-autoencoders" class="level2">
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
-<div id="c466182f" class="cell" data-execution_count="9">
+<div id="d4a47ea9" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilisticArchaeologist(nn.Module):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim<span class="op">=</span><span class="dv">1000</span>, latent_dim<span class="op">=</span><span class="dv">32</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -753,9 +753,9 @@ Figure&nbsp;1
 </div>
 <section id="manifold-cartography-the-kl-divergence-as-map-making" class="level3">
 <h3 class="anchored" data-anchor-id="manifold-cartography-the-kl-divergence-as-map-making">Manifold Cartography: The KL Divergence as Map-Making</h3>
-<p>Here’s where the VAE truly shines: it doesn’t just learn the manifold, it learns a <em>probabilistic</em> manifold with a well-behaved coordinate system. The VAE loss function has two terms:</p>
+<p>Here’s where the VAE truly shines: it doesn’t just learn the manifold, it learns a <em>probabilistic</em> manifold with a well-behaved coordinate system. The VAE loss function – the negative evidence lower bound (ELBO), which we minimize – has two terms:</p>
 <p><span class="math display">\[
-\mathcal{L}_{\text{VAE}} = \underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} - \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}
+\mathcal{L}_{\text{VAE}} = -\underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} + \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}
 \]</span></p>
 <p>The first part is our familiar reconstruction loss - “make the reconstruction look like the input.”</p>
 <p>The second part is the Kullback-Leibler divergence, which measures how much our learned distribution <span class="math inline">\(q_\phi(z|x)\)</span> differs from a prior distribution <span class="math inline">\(p(z)\)</span> (typically a standard normal distribution).</p>
@@ -784,7 +784,7 @@ Figure&nbsp;1
 <li>We can perform meaningful interpolation between spectra</li>
 <li>We can quantify uncertainty in our representations</li>
 </ol>
-<div id="677a78d9" class="cell" data-execution_count="10">
+<div id="58e4fea8" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vae_loss(reconstruction, x, mu, logvar, beta<span class="op">=</span><span class="fl">1.0</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate the VAE loss with reconstruction and KL terms"""</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reconstruction loss (how well does the output match the input?)</span></span>
@@ -1312,11 +1312,11 @@ Figure&nbsp;1
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>But just as ancient artifacts come to us covered in dirt and damaged by time (and occasionally by that one archaeologist who thought dynamite was a good excavation tool), our spectroscopic data arrives buried under multiple layers of contamination: such as </span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*noise* due to random fluctuations ("electrons having a dance party")</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*environmental interference*: for example, Water vapor and CO₂ absorption bands</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*environmental interference*: for example, water vapor and CO₂ absorption bands</span>
 <span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*instrumental artifacts*: baseline drift ("detector getting tired") </span>
 <span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*physical degradation*: sample fluorescence and aging effects</span>
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you'll remove the dirt, but you might also remove, well, everything else. One usecase of autoencoder is to do this in a better way. </span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you'll remove the dirt, but you might also remove, well, everything else. One use case of autoencoders is to do this in a better way. </span>
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Digital Archaeologist's Toolkit</span></span>
 <span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
@@ -1441,7 +1441,7 @@ Figure&nbsp;1
 <span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>\mathcal{L}_{\text{reconstruction}} = <span class="sc">\|</span>x - \hat{x}<span class="sc">\|</span>^2</span>
 <span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a>Where $(x)$ is our original spectrum (the truth, the whole truth, and nothing but the truth) and $(\hat{x})$ is our reconstruction.</span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a>Where $x$ is our original spectrum (the truth, the whole truth, and nothing but the truth) and $\hat{x}$ is our reconstruction.</span>
 <span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
 <span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why MSE Makes Statistical Sense</span></span>
@@ -1512,7 +1512,7 @@ Figure&nbsp;1
 <span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>To visualize this, imagine our spectra are actually faces of ancient masks (stay with me here). Each mask has thousands of pixels (dimensions), but you could describe any mask with far fewer parameters: eye size, mouth width, nose shape, etc. That's your manifold! Autoencoders discover these "facial features" of spectra automatically. </span>
-<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">You might be familiar with [eigenfaces](https://en.wikipedia.org/wiki/Eigenface), which are "basis vectors" of human faces one can derive with PCA.</span><span class="co">]</span>{.aside}</span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">You might be familiar with [eigenfaces](https://en.wikipedia.org/wiki/Eigenface), which are "basis vectors" of human faces one can derive with PCA.</span><span class="co">]</span>{.aside}</span>
 <span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
@@ -1690,7 +1690,7 @@ Figure&nbsp;1
 <span id="cb9-431"><a href="#cb9-431" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-432"><a href="#cb9-432" aria-hidden="true" tabindex="-1"></a><span class="fu">## Beyond Linear Maps: Where Neural Networks Actually Shine</span></span>
 <span id="cb9-433"><a href="#cb9-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-434"><a href="#cb9-434" aria-hidden="true" tabindex="-1"></a>Now we've seen that linear autoencoders are just PCA in disguise, let's talk about why we still bother with neural networks.</span>
+<span id="cb9-434"><a href="#cb9-434" aria-hidden="true" tabindex="-1"></a>Now that we've seen that linear autoencoders are just PCA in disguise, let's talk about why we still bother with neural networks.</span>
 <span id="cb9-435"><a href="#cb9-435" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-436"><a href="#cb9-436" aria-hidden="true" tabindex="-1"></a>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</span>
 <span id="cb9-437"><a href="#cb9-437" aria-hidden="true" tabindex="-1"></a></span>
@@ -1799,10 +1799,10 @@ Figure&nbsp;1
 <span id="cb9-544"><a href="#cb9-544" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-545"><a href="#cb9-545" aria-hidden="true" tabindex="-1"></a><span class="fu">### Manifold Cartography: The KL Divergence as Map-Making</span></span>
 <span id="cb9-546"><a href="#cb9-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-547"><a href="#cb9-547" aria-hidden="true" tabindex="-1"></a>Here's where the VAE truly shines: it doesn't just learn the manifold, it learns a *probabilistic* manifold with a well-behaved coordinate system. The VAE loss function has two terms:</span>
+<span id="cb9-547"><a href="#cb9-547" aria-hidden="true" tabindex="-1"></a>Here's where the VAE truly shines: it doesn't just learn the manifold, it learns a *probabilistic* manifold with a well-behaved coordinate system. The VAE loss function -- the negative evidence lower bound (ELBO), which we minimize -- has two terms:</span>
 <span id="cb9-548"><a href="#cb9-548" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-549"><a href="#cb9-549" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb9-550"><a href="#cb9-550" aria-hidden="true" tabindex="-1"></a>\mathcal{L}_{\text{VAE}} = \underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} - \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}</span>
+<span id="cb9-550"><a href="#cb9-550" aria-hidden="true" tabindex="-1"></a>\mathcal{L}_{\text{VAE}} = -\underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} + \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}</span>
 <span id="cb9-551"><a href="#cb9-551" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb9-552"><a href="#cb9-552" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-553"><a href="#cb9-553" aria-hidden="true" tabindex="-1"></a>The first part is our familiar reconstruction loss - "make the reconstruction look like the input."</span>

@@ -1,0 +1,344 @@
+---
+title: "The Geometry of Not Enough Data"
+subtitle: "On why overparameterized models work, when they fail, and what we're actually learning"
+date: "12/29/2025"
+image: ""
+sidebar: false
+categories:
+  - ml
+  - deeplearning
+bibliography: references.bib
+---
+
+```{=html}
+<style>
+.key-point {
+    background: #f8f6f1;
+    border-left: 3px solid #b8860b;
+    padding: 1.2em 1.5em;
+    margin: 1.8em 0;
+    border-radius: 0 4px 4px 0;
+}
+.aside-box {
+    background: #f0f0f0;
+    padding: 1em 1.2em;
+    margin: 1.5em 0;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+.aside-title {
+    font-weight: 600;
+    margin-bottom: 0.3em;
+    color: #555;
+}
+</style>
+```
+
+## The Puzzle of Too Many Parameters
+
+Monthly airline passengers from 1949 to 1960. You want to forecast the next few years. A linear model has 2 parameters. A cubic polynomial has 4. A degree-20 polynomial has 21.^[This example is from Andrew Gordon Wilson's [talk on the foundations of deep learning](https://www.youtube.com/watch?v=lhwk4ESlyMA).]
+
+Classical statistics warns against the high-parameter option. More parameters, more opportunities to chase noise instead of signal. The cubic should suffice.
+
+Yet modern deep learning uses models with billions of parameters trained on datasets that cover a vanishing fraction of possible inputs. By classical logic, these models should memorize their training data and fail on anything new. Still, they seem to ace very difficult benchmarks.
+
+## The Arithmetic of Impossibility
+
+A language model predicts the next token given all previous tokens:
+
+$$p(w_{1001} \mid w_{1000}, w_{999}, \ldots, w_1)$$
+
+With vocabulary $V \approx 100{,}000$ and context length $L \approx 8{,}000$, the input space contains:
+
+$$V^L = 100{,}000^{8{,}000} = 10^{40{,}000}$$
+
+possible sequences. Training corpora contain perhaps $10^{14}$ tokens. The ratio of observed to possible:
+
+$$\frac{10^{14}}{10^{40{,}000}} = 10^{-39{,}986}$$
+
+If every atom in the observable universe were a training example, we'd still have seen essentially nothing. The model encounters novel inputs on every forward pass, yet produces sensible outputs.
+
+The arithmetic says learning is impossible. The models work anyway. One of these must be wrong.
+
+## Real Data Is Not Random Data
+
+Sample an image uniformly at random from the space of all 256×256 RGB images. You get noise. Sample a million. Still noise. The space of natural images—photographs, paintings, anything a human would recognize—occupies a measure-zero subset of pixel space.
+
+A striking way to see this: take two random points in pixel space and walk linearly between them. Every step is noise. Now take two real images and walk between them along the data manifold (as a generative model learns to do). The intermediate points look like images—blurry perhaps, but recognizably structured.
+
+```{python}
+#| label: fig-random-walk
+#| fig-cap: "Walking through image space. Top: linear interpolation between random points yields noise throughout. Bottom: interpolation along a learned manifold produces structured images at every step."
+#| code-fold: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+
+fig, axes = plt.subplots(2, 6, figsize=(12, 4.5))
+
+# Top row: random walk in pixel space
+start_random = np.random.rand(32, 32, 3)
+end_random = np.random.rand(32, 32, 3)
+
+for i, alpha in enumerate(np.linspace(0, 1, 6)):
+    interp = (1 - alpha) * start_random + alpha * end_random
+    axes[0, i].imshow(interp)
+    axes[0, i].axis('off')
+    axes[0, i].set_title(f'α={alpha:.1f}', fontsize=10)
+
+axes[0, 0].set_ylabel('Random\ninterpolation', fontsize=11, rotation=0, ha='right', va='center')
+
+# Bottom row: "manifold" interpolation (simulated with smooth structure)
+for i, alpha in enumerate(np.linspace(0, 1, 6)):
+    freq_blend = 1.5 + alpha
+    x = np.linspace(-2, 2, 32)
+    y = np.linspace(-2, 2, 32)
+    X, Y = np.meshgrid(x, y)
+    
+    img = np.zeros((32, 32, 3))
+    base = 0.5 + 0.25 * np.sin(freq_blend * X + alpha * 2) * np.cos(freq_blend * Y - alpha)
+    img[:,:,0] = base + 0.15 * np.sin(X * 2 + alpha * 3)
+    img[:,:,1] = base + 0.1 * np.cos(Y * 3 - alpha * 2)
+    img[:,:,2] = base + 0.12 * np.sin((X - Y) * 2 + alpha)
+    img = np.clip(img, 0, 1)
+    
+    axes[1, i].imshow(img)
+    axes[1, i].axis('off')
+
+axes[1, 0].set_ylabel('Manifold\ninterpolation', fontsize=11, rotation=0, ha='right', va='center')
+
+plt.tight_layout()
+plt.show()
+```
+
+The same holds for text. Random token sequences are gibberish. Coherent sentences, paragraphs, arguments—these live on a thin subspace of token-sequence space, constrained by grammar, semantics, and the structure of ideas worth expressing.
+
+This resolves the arithmetic paradox. The impossibility proof assumes you need to cover the full input space. But the data we care about concentrates on a low-dimensional structure, and coverage of that structure is tractable.
+
+## The Manifold Hypothesis
+
+The standard formalization: data lies on or near a $d$-dimensional manifold $\mathcal{M}$ embedded in the ambient space $\mathbb{R}^D$, where $d \ll D$.
+
+Covering a $d$-dimensional manifold requires samples scaling as $\epsilon^{-d}$, not $\epsilon^{-D}$. If images live on a manifold of dimension 1,000 rather than filling a space of dimension 200,000, the sample complexity drops from astronomical to merely large.
+
+@pope2021intrinsic measured intrinsic dimensions of standard image datasets and found values in the hundreds to low thousands—far below ambient dimension, though not trivially small.
+
+::: {.aside-box}
+::: {.aside-title}
+A circularity to notice
+:::
+The manifold hypothesis is typically invoked after observing that deep learning works. Rarely does anyone estimate the intrinsic dimension before training and verify it's small enough for the available data. The hypothesis is plausible, but its use is often post-hoc rationalization.
+:::
+
+## The Geometry of Piecewise Linear Functions
+
+ReLU networks compute piecewise linear functions. Not approximately linear. Exactly linear, within each piece.
+
+The ReLU activation $\text{ReLU}(x) = \max(0, x)$ is piecewise linear with two pieces. Compositions of affine transformations and coordinate-wise ReLUs yield piecewise linear functions on convex polytopes. Within each polytope, the network computes $f(x) = Wx + b$ for some $W$ and $b$ specific to that region.
+
+```{python}
+#| label: fig-relu-regions
+#| fig-cap: "A ReLU network partitions the input space into convex polytopes. Within each region, the function is exactly affine."
+#| code-fold: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+n_units = 8
+
+w1 = np.random.randn(n_units, 2)
+b1 = np.random.randn(n_units) * 0.5
+w2 = np.random.randn(n_units) / np.sqrt(n_units)
+b2 = np.random.randn() * 0.2
+
+def forward(x, y):
+    inp = np.stack([x.flatten(), y.flatten()], axis=1)
+    hidden = np.maximum(0, inp @ w1.T + b1)
+    return (hidden @ w2 + b2).reshape(x.shape)
+
+g = 100
+xs = np.linspace(-2, 2, g)
+ys = np.linspace(-2, 2, g)
+X, Y = np.meshgrid(xs, ys)
+Z = forward(X, Y)
+
+fig, ax = plt.subplots(figsize=(7, 6))
+contour = ax.contourf(X, Y, Z, levels=30, cmap='RdBu')
+plt.colorbar(contour, ax=ax, label='f(x)')
+
+for i in range(n_units):
+    a, b = w1[i]
+    c = b1[i]
+    if abs(b) > 0.01:
+        line_x = np.array([-2, 2])
+        line_y = -(a * line_x + c) / b
+        if any(abs(line_y) < 2.5):
+            ax.plot(line_x, np.clip(line_y, -2, 2), 'k-', linewidth=0.8, alpha=0.5)
+    elif abs(a) > 0.01:
+        xi = -c / a
+        if abs(xi) < 2:
+            ax.axvline(xi, color='k', linewidth=0.8, alpha=0.5)
+
+ax.set_xlim(-2, 2)
+ax.set_ylim(-2, 2)
+ax.set_xlabel('$x_1$')
+ax.set_ylabel('$x_2$')
+ax.set_aspect('equal')
+plt.tight_layout()
+plt.show()
+```
+
+There's a topological way to think about this. A neural network progressively transforms the input space, stretching and folding it until the data becomes linearly separable.^[For visualizations of this perspective, see [Chris Olah's post on neural networks and topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/).] The network learns a coordinate system in which the problem is simple.
+
+The number of linear regions grows exponentially with depth. A network can have far more regions than training points. Most regions contain no data at all.
+
+## What Training Determines
+
+Consider a single linear region containing $n$ training points in $D$-dimensional space. The network computes $f(x) = Wx + b$ throughout this region. Training enforces:
+
+$$Wx^{(i)} + b = y^{(i)} \quad \text{for } i = 1, \ldots, n$$
+
+These are $n$ constraints on a gradient $W$ with $D$ components. When $n < D$—the typical case in high dimensions—infinitely many gradients satisfy the constraints.
+
+The training points span at most an $(n-1)$-dimensional subspace. Along directions in this subspace, the gradient is pinned down. Along orthogonal directions, it's arbitrary.
+
+This connects to a classical result in learning theory. The representer theorem says that in kernel methods, the optimal solution can be written as a linear combination of kernel evaluations at the training points—only the training data matters, and only along the directions it spans. The geometry here is analogous: training constrains the function along directions spanned by the data and nowhere else.
+
+If training data lies on a low-dimensional manifold, the constrained directions align with the manifold's tangent space. Normal directions—perpendicular to the manifold—remain free. Training pins down the function on the manifold but leaves it underdetermined elsewhere.
+
+::: {.key-point}
+Training determines the function along directions spanned by the data. Orthogonal directions are unconstrained. The function off the data manifold is not learned—it's an artifact of whatever the optimization happened to find/the initialization [@he2023side].
+:::
+
+## Pretraining as Learning the Manifold
+
+Large-scale pretraining can be understood as learning the data manifold itself. When a language model predicts the next token on a massive text corpus, it learns the structure of "valid text space"—which sequences are probable, which transitions are natural, what the local geometry of text looks like.
+
+This perspective is supported by work showing that deep networks learn representations capturing manifold structure [@bengio2013representation]. The hidden layers build a coordinate system aligned with the data manifold, making downstream tasks easier by providing a representation where relevant variation is explicit.
+
+This explains why pretraining helps so much. A randomly initialized network must simultaneously learn manifold structure and the task-specific function. A pretrained network already knows the manifold; fine-tuning only needs to learn the function on it.
+
+::: {.aside-box}
+::: {.aside-title}
+The role of scale
+:::
+Larger models and more data allow learning finer manifold details. This may partly explain "emergent abilities" in large language models—capabilities appearing suddenly at scale. The model may need enough capacity and data to capture relevant structure before certain tasks become possible.
+:::
+
+## Why the Underdetermined Directions Don't (Usually) Matter
+
+Three factors make underdetermination benign in practice.
+
+**The data manifold is where queries live.** If test data comes from the same distribution as training, test points lie on or near the same manifold. The underdetermined normal directions are never queried.
+
+**Neural networks prefer simple functions.** Not all functions consistent with training data are equally likely to emerge. Networks exhibit a bias toward low-complexity functions, formalizable via Kolmogorov complexity [@valle2019deep; @goldblum2023free]. The functions networks actually learn tend to be simple.
+
+**Real data is generated by simple processes.** Biological structures reflect evolutionary compression. Human artifacts encode low-dimensional intentions. The data we care about is often output of structured processes.
+
+The match between neural networks' simplicity bias and the simplicity of real-world data may be the deeper reason deep learning works. The manifold hypothesis is a geometric consequence of this match, not the fundamental explanation.
+
+
+## An Unexpected Success: Language Models for Chemistry
+
+In @jablonka2024leveraging, we fine-tuned large language models to predict chemical properties: bandgaps, photoswitching wavelengths, toxicity. Language models are trained on text, not molecules. The transfer seems absurd.
+
+Yet it works. Fine-tuned LLMs achieve competitive performance, sometimes matching purpose-built molecular models.
+
+The geometric interpretation: LLMs have learned inductive biases—preferences for compositional, hierarchical, smoothly-varying functions—that transfer across domains. Chemistry and language are (sometimes?) both structured. 
+
+::: {.aside-box}
+::: {.aside-title}
+Structure in chemistry
+:::
+In biology, evolution provides a strong prior. Existing structures have been selected for function, so [structure correlates with function](https://medium.com/@jkbjablonka/the-road-to-biology-2-0-will-pass-through-black-box-data-bbd00fabf959) in ways that learning can exploit. Chemistry lacks this selection pressure. The space of possible molecules wasn't shaped by any optimization process—we're exploring territory with no guarantee of low-dimensional structure. This may make chemical property prediction fundamentally harder than biological function prediction.
+:::
+
+## When Deep Learning Fails
+
+The geometric picture predicts specific failure modes, all involving queries that leave the training manifold.
+
+**Distribution shift.** @zech2018variable analyzed a deep learning model for detecting pneumonia in chest X-rays. The model achieved high accuracy—but partly by detecting which hospital the X-ray came from, using equipment artifacts like metal tokens. At a new hospital with different equipment, performance collapsed. The test manifold diverged from training.
+
+```{python}
+#| label: fig-shift
+#| fig-cap: "Distribution shift: the model extrapolates linearly into regions without training data."
+#| code-fold: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+train_x = np.linspace(-2, 1, 40)
+train_y = np.sin(train_x * 2) * 0.8
+test_x = np.linspace(0.5, 2.5, 25)
+test_y = np.sin(test_x * 2) * 0.8
+
+model_x = np.linspace(-2.5, 3, 200)
+slope = (train_y[-1] - train_y[-5]) / (train_x[-1] - train_x[-5])
+model_y = np.where(model_x <= 1, np.sin(model_x * 2) * 0.8, train_y[-1] + (model_x - 1) * slope)
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.axvspan(1, 3, alpha=0.1, color='red')
+ax.plot(model_x, model_y, 'k-', linewidth=2, label='Model')
+ax.scatter(train_x, train_y, c='#3b82f6', s=30, label='Training', zorder=5)
+ax.scatter(test_x, test_y, c='#dc2626', s=30, marker='x', label='Test (shifted)', zorder=5)
+ax.axvline(1, color='gray', linestyle=':', linewidth=1)
+ax.set_xlabel('x')
+ax.set_ylabel('f(x)')
+ax.set_xlim(-2.5, 3)
+ax.set_ylim(-1.5, 1.5)
+ax.legend(loc='upper right')
+plt.tight_layout()
+plt.show()
+```
+
+**Adversarial examples.** Small perturbations orthogonal to the data manifold move inputs into regions where the function is underdetermined. The output changes dramatically because the gradient in that direction was never constrained.
+
+**Extrapolation.** ReLU networks extend linearly beyond the convex hull of training data. If the true function curves, the linear extrapolation diverges.
+
+**High intrinsic dimension.** If data doesn't concentrate on a low-dimensional manifold, most directions are unconstrained and generalization fails.
+
+## The Problem of Missing Negative Examples
+
+A subtler failure mode matters enormously in practice: the model can only learn the manifold from data it sees.
+
+Consider predicting which chemical reactions succeed. Published literature overwhelmingly reports reactions that worked. Failed reactions—attempts producing no product, conditions causing decomposition—are rarely published. The model sees only one side of the decision boundary.
+
+This creates a systematic blind spot. The model learns what successful reactions look like but has no information about the landscape of failures. It can't distinguish "this will work" from "this is unlike anything I've seen." Both map to the same uncertainty—off the manifold of observed successes.
+
+To learn a manifold's boundary, you need to see both sides. Without negative examples, the learned manifold may be far too permissive.
+
+::: {.aside-box}
+::: {.aside-title}
+Verification versus generation
+:::
+This asymmetry suggests a strategy: verifying whether something is on the manifold is often easier than generating valid points. A verifier trained on both positive and negative examples can check a generator's outputs. This is the logic behind RLVR: creating systems that identify good outputs from bad is easier than creating systems that generate good outputs directly.^[As [noted by Amol Kapoor](https://12gramsofcarbon.com/p/deep-learning-is-applied-topology): "Creating systems that can identify good reasoning from bad is a much easier task than creating systems that can reason well to begin with."]
+:::
+
+## The Limits of the Framework
+
+The "real data is simple" argument works for perception, language, games—domains with abundant data from stable distributions. Scientific discovery is different. It seeks patterns in domains where structure is unknown (or questioning the structure is the point).
+
+The domains where machine learning would be most valuable—genuine discovery, not pattern-matching on known distributions—are exactly where the assumptions might not hold.
+
+
+## Conclusions
+
+The counting argument was correct: learning an arbitrary function over an input space of $10^{40{,}000}$ possible sequences is impossible with $10^{14}$ samples. But the functions we care about aren't arbitrary. They're generated by structured processes—physics, biology, human intention—that produce structured outputs.
+
+Neural networks work because they share this preference for structure. They're biased toward simple, compositional functions, and real data happens to be simple and compositional. The manifold hypothesis is a symptom of this alignment, not the cause.
+
+Understanding the geometry clarifies both successes and failures. Successes come from fitting smooth functions to structured data on low-dimensional manifolds. Failures come from queries leaving the manifold, shifting distributions, or domains where structure assumptions don't hold.
+
+For perception and pattern-matching, the framework suggests continued progress. For scientific discovery—finding patterns where structure is unknown—it counsels caution. The assumptions making deep learning work are precisely those we can't verify in genuinely novel domains.
+
+---
+
+*This post draws on work by Andrew Gordon Wilson on inductive bias and Bayesian deep learning, Ben Recht on what machine learning can and cannot do, and Mikhail Belkin on interpolation and generalization. The geometric intuitions build on [Chris Olah's writing on topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) and [Amol Kapoor's essays](https://12gramsofcarbon.com/p/deep-learning-is-applied-topology). Errors are my own.*
+
+## References
+
+::: {#refs}
+:::

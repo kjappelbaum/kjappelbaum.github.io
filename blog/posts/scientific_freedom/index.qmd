@@ -1,0 +1,79 @@
+---
+title: 'Science is Too Successful'
+description: <i>Is more even better?</i>
+sidebar: false
+categories:
+  - metascience
+  - peer-review
+  - scientific-freedom
+date: "03/25/2026"
+format:
+  html:
+    code-tools: true
+---
+
+I am, again, in a personal crisis about science, my career, and stuff like this. I should probably be doing something about that. Instead, I am writing a blog post.
+
+This is, I recognize, a form of procrastination. But it is also, maybe, a form of thinking — and as we all know, [writing is thinking](https://www.nature.com/articles/s44222-025-00323-4). Since the crisis is partly about not having enough time to think — because the time goes to administration, to procurement, to review rebuttals, to forms — perhaps writing about it counts as a small act of resistance. Or perhaps I'm rationalizing. Either way, here we are.
+
+## The money I can't spend
+
+I should start with something that will sound strange to most scientists: I have too much money. Not personally — personally, as I've written [elsewhere](https://kjablonka.com/blog/posts/finances/), due to my lack of prioritization of bureaucracy and administration, I pay for my research tools out of my own pocket. But my group has funding that sits unspent. Not because there's nothing to do with it, but because spending it responsibly would mean hiring more people, and hiring more people would most likely mean growing my group past the size where I can still understand what everyone is working on.
+
+At the moment, I keep my group small on purpose, and even so it's already hard. We just came back from a group retreat where I told everyone that I'm struggling to keep all our projects in my head, and that this means we're not leveraging my strengths in the way we should. If I doubled the group, I'd gain output (more publications) but lose whatever grasp I still have. I'd become even more a manager, not a scientist. The funding system would be delighted — a larger group, more publications, more "impact." But I would understand less about my own research, which is a trade I'm not willing to make.
+
+I would happily give the money back if it meant removing the administrative apparatus that comes with having it. The reporting, the oversight, the hierarchy, the coordination overhead — all of it exists because the money exists. The money was supposed to enable the science. Instead, a growing share of it pays for the system that manages the money. I am sometimes not sure who is working for whom.
+
+## How we got here
+
+None of this was built by villains. Science succeeded. It worked. Governments funded it, and the funding produced results, and the results justified more funding. The system grew — more researchers, more institutions, more publications, more money. Science is great, and we should all be grateful for having science.
+
+[But growth created coordination problems.](https://press.stripe.com/scientific-freedom) When you have ten researchers at an institute, you can talk to each of them over lunch. [When you have a thousand, you need an organizational chart, a procurement office, a grants administration team, an HR department, a compliance unit.](https://www.experimental-history.com/p/the-rise-and-fall-of-peer-review) Each layer solves a real problem. Each layer also costs money, takes time, and adds friction. And each layer, once established, develops its own logic, its own incentives, its own instinct for self-preservation.
+
+The funding also required a story. To justify public investment at this scale, science needed to promise something large. The story it told was: we produce truth. Give us money, and we will deliver facts about the world that are reliable, verified, and objective. This is my speculation — I haven't dug into the historical evidence for this reading, and I would be curious to see it tested (reach out to me!). Metrics also come from a different pressure — science consumes resources that could go to other things society values and needs, and there is an urge to justify that expense. So you build metrics, and metrics need oversight, and oversight needs administrators. And so the system grows — not to produce more understanding, but to demonstrate that it's delivering on its promises.
+
+Science doesn't produce truth. It produces better working hypotheses. That's a different thing, and it might imply a different kind of institution. A hypothesis is provisional. It's meant to be revised. It's useful precisely because it might be wrong. An institution built around truth needs to verify and control. An institution built around hypotheses needs to explore and tolerate uncertainty. We built the first kind and are now surprised that it doesn't feel like the second.
+
+## We also just got ICML reviews back
+
+I am writing this shortly after getting reviews back on our ICML papers, so I should be transparent that the timing is not a coincidence. Many of the reviews ask for more benchmarks, more models, more ablations. I don't see when this actually stops, and I don't see when adding this form of "more" adds to more insight.
+
+But I notice the same thing in myself when I review. The form has a field for strengths and a field for weaknesses. The weaknesses field is empty, and it's waiting for me to fill it. I have noticed that this field, by existing, changes what I do. Even when a paper is good — when I read it and think, yes, this is interesting, this advances understanding — I find myself (subconsciously) scanning for something to put in the weaknesses box. There is always another benchmark the authors didn't run, another model they didn't compare against, another dataset they didn't test on. These are technically valid criticisms. They are also, in most cases, beside the point. The paper taught me something. The missing benchmark would not have taught me more.
+
+The form asks for weaknesses, so I supply them. The authors write a rebuttal, addressing each weakness with more experiments, more comparisons, more pages. The paper gets longer. I'm not sure it gets better. The cycle consumes weeks of work on both sides, and the decision at the end — accept or reject — is, as multiple studies have shown, [sometimes barely more reliable than random assignment](https://arxiv.org/pdf/2109.09774). We all know this. We do it anyway.
+
+The request for "more" is the easiest criticism to make because it's unfalsifiable. There will always be another experiment you didn't run. If we require proof that something works on everything, we will never be done with anything, and we can stop the business of doing research in the first place. 
+
+And now we have AI reviews. Researchers submit papers, and on the other end, an LLM fills in the same form — strengths, weaknesses, questions for the authors — producing the shape of evaluation without necessarily having any understanding behind it. [Whatever relationship LLM-generated text has to semantic content and truth is always accidental or incidental.](https://www.argmin.net/p/information-transit-got-the-wrong) The conferences respond with detection policies, new rules, more oversight. The system treats the symptom by growing the apparatus. [Kevin Baker put it well: "Systems can persist in dysfunction indefinitely, and absurdity is not self-correcting."](https://artificialbureaucracy.substack.com/p/context-widows)
+
+I sometimes think about what peer review was before it scaled. When a field was small enough, a program committee sat in a room and discussed each paper. They argued, they disagreed, they changed their minds. The process was biased, clubby, and imperfect. But it happened at a human scale, which meant that understanding was at least possible. At the current scale, it's not. No committee can discuss thousands of submissions. So we distribute the work to anonymous individuals, give them forms, aggregate their scores, and pretend the numbers mean something. We scaled the process and lost the thing that made it work.
+
+## Science is human
+
+I think the thing I keep circling around is that science is a human activity. Understanding — the actual thing science is for — happens inside a human mind. A person reads a paper, thinks about it, connects it to what they already know, and updates their picture of how something works. That process doesn't scale. You can't make it faster by adding metrics. You can't outsource it to an AI and call the output "understanding." You can produce more papers, more data, more benchmarks, but understanding is still bounded by the pace at which a person can absorb and integrate ideas.
+
+Hartmut Rosa has written about this as a dissonance between the pace of production and the pace of comprehension. We publish more than anyone can read — and perhaps I am also producing blog posts at a higher pace than anyone cares to read. We produce data faster than anyone can analyze. We run experiments faster than anyone can think about what they mean. The institution optimizes for production. Understanding happens on its own schedule, and that schedule has not gotten faster. I honestly don't see how it can, unless we upgrade the human hardware — and the evidence from recent studies suggests that measured intelligence [is maybe even declining](https://www.bbc.com/future/article/20190709-has-humanity-reached-peak-intelligence).
+
+And the questions we choose to ask in science are, in the end, value judgments. What's worth studying? What matters? These are human decisions, rooted in human experience and human priorities. I think, on a societal level, we shouldn't leave these to an AI scientist or an optimization algorithm or a metric that rewards citation counts. The selection of questions is where human judgment matters most, and it's exactly the part of the process that gets squeezed when the system demands more output.
+
+If we're honest about this fact that science is irreducibly human — then we can start questioning the institutions we've built. Because many of them are, in a meaningful sense, inhuman. They operate at scales where no individual can comprehend the whole. They substitute measurement for judgment and volume for depth. They were built to manage a system too large for humans to manage, and in doing so they created an environment that is increasingly difficult for humans to do good work inside.
+
+## A German asking for austerity
+
+And now I am here: The German asking for austerity. But I think the answer, for at least parts of the system, is to want less. Not because cutting budgets is virtuous — I have lived through enough austerity discourse to know it isn't — but because some things that matter in science only survive at a scale where humans can still be fully present.
+
+Smaller groups where a PI understands every project. Peer review at a scale where people can discuss papers rather than fill in forms. Less pressure to produce more, and more room to understand what's already been produced. Fewer metrics, more trust. And I mean trust in the full human sense — I crave it, almost, from my institution. The feeling that they trust me to spend wisely the money I brought in through third-party funding. That they trust my judgment about whom I talk to, what I work on, how I run my group. The word "enough" as a legitimate answer to "how much?"
+
+Is more even better? More papers, more citations, more funding, more people, more benchmarks, more administration to manage all of the above? The system says yes. My experience says: past a certain point, more produces more of everything except the thing science is actually for.
+
+I would give back money to have less overhead. I would accept fewer publications to have deeper ones. In my group, we have already started saying no — to new projects, to quick workshop papers, to collaborations that would spread us thinner. At the retreat, we discussed doing even more of that. These are not popular positions in a system that equates growth with success. But I think they might be correct.
+
+And I also realize that this cannot be the universal prescription. We have important questions to answer and we need science to answer them. And I also recognize that a lot of great science happens in large groups and that humanity benefitted a lot from the growth of science. But I think we can also recognize that there are some things that only happen in small groups, and that we should be careful not to lose those things in the rush to produce more.
+
+## A caveat
+
+There is frustration in all of this, and frustration is not always a reliable guide to systemic problems. Maybe some of what bothers me is just the normal friction of working inside any institution. Maybe I could solve some of it by being more patient, more organized, better at administration. Maybe I am a person with a higher desire for freedom and trust than is usual, and maybe I am coupling some personal frustrations into what I'm presenting as a systemic critique. I don't claim to have perfectly separated the two. And I don't claim that any of what I describe is universally true or can be used as an answer for systemic problems.
+
+This blog post is itself a symptom. I am a researcher, procrastinating on my research, writing about why the system makes it hard to do research. In a system that worked, the frustration wouldn't accumulate to the point where it demands an essay. It should just be smoother from the start.
+
+Where, if not in academia, should we be willing to dream about what the thing could be? Where, if not among people whose job is to ask hard questions, should we ask whether our own institutions are the right ones? Maybe this is utopian. But we are in the business of ideas that sound unrealistic until someone tests them. The least we can do is extend that courtesy to ourselves.

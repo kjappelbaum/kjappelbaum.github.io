@@ -1,0 +1,17 @@
+---
+title: "Deep Networks as Elastic Origami"
+description: "A 20-minute lecture on the manifold hypothesis and viewing deep networks as elastic origami"
+image: ""
+sidebar: false
+categories:
+  - teaching
+  - deep learning
+  - manifolds
+date: "1/27/2026"
+---
+
+My first recorded lecture (20 min) covers the manifold hypothesis and how we can view deep networks as elastic origami.
+
+{{< video https://youtu.be/JPH0qrRefBo >}}
+
+The lecture explores how deep networks fold and transform data through high-dimensional space, much like origami shapes paper into new forms.

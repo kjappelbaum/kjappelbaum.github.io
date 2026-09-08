@@ -1,0 +1,24 @@
+---
+title: "Stop Guessing, Start Investing"
+description: "<i>A short course on Bayesian optimization for materials synthesis.</i>"
+sidebar: false
+categories:
+  - teaching
+  - bayesian optimization
+  - materials
+date: "4/15/2026"
+---
+
+A short course I developed on **Bayesian optimization in materials synthesis** — built around a single question: *ten experiments, five thousand euros, one unknown function — where do you put your experiments?*
+
+The course covers grid search and why it fails, the curse of dimensionality, Gaussian processes and the role of calibrated uncertainty, exploitation vs. exploration, Expected Improvement, and a handful of interactive demos. The recurring metaphor is that every experiment is an investment: a serious scientist does not spread the budget uniformly over a plan made before anything is known, but updates beliefs after each measurement and chooses the next experiment so it earns its keep.
+
+Use ← / → on your keyboard, the arrows in the corner, or a clicker to navigate.
+
+```{=html}
+<div style="position:relative;width:100%;padding-bottom:75%;margin:1.5em 0;border-radius:10px;overflow:hidden;border:1px solid #21262d">
+  <iframe src="slides.html" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allowfullscreen></iframe>
+</div>
+```
+
+[Open slides in a new tab →](slides.html){target="_blank"}

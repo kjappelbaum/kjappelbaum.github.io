@@ -1,0 +1,59 @@
+---
+title: 'OpenClaw Did Not Save Me'
+description: <i>I asked my AI agent for a small win</i>
+
+sidebar: false
+categories:
+  - productivity
+  - ai-agents
+date: "03/04/2026"
+format:
+  html:
+    code-tools: true
+---
+
+I, too, installed OpenClaw. At some point, I felt I had to. How can I be credible in developing benchmarks for LLM-based agents if I do not try the most popular LLM-based agent tool myself?
+
+I had the illusion that it might help me reduce some of the mental load. I have never managed to use a todo list. After one day, there are always so many new tasks that todo lists become utterly useless. In practice, this means there is probably always some mental load dedicated to worrying that I hopefully do not miss something — or linked to the awareness that I have, in Oliver Burkeman's lingo, already lost, and that there is no way to achieve everything I'd like to achieve.
+
+I gave in to the illusion that I could get with OpenClaw what my institution does not give me: a personal assistant that can take some admin load off me.
+
+## The Setup
+
+Still, I am a bit conservative. I set everything up on a somewhat hardened Hetzner VPS — the cheapest one possible. I did not give it full access to my accounts. OpenClaw runs as a non-root account. I was inspired by the advice [here](https://x.com/JordanLyall/status/2019594755370545168).
+
+1. Create cheapest possible Hetzner VPS, add SSH key
+2. Install OpenClaw via the [Ansible playbook](https://github.com/openclaw/openclaw-ansible/tree/main)
+3. `sudo su - openclaw`, then `openclaw onboard --install-daemon`
+4. Manual onboarding, local gateway with loopback
+5. OpenAI as model provider (Peter Steinberger seems to like it more)
+6. Telegram as chat connection with pairing
+
+I was naïve and did some of this on the train. Not in tmux. 
+
+
+## Giving It a Soul
+
+I started giving it a soul by complaining about what I always portray as the source of my problems: that my employer does not fund a personal assistant. I prompted it to be a critical personal board of advisors, taking in viewpoints from people I specifically mentioned — with diverse but valuable perspectives. I gave it instructions about my long-term high-level research direction, and a dump of my tasks that currently came to mind. The tasks for which I never managed to really consistently stick to any task management system.
+
+## What Happened
+
+In my first attempt, I hardened the thing so hard that I locked myself out. The todo list was not even transferred completely.
+
+I told it I would like to finish every day with reflection and start every day with an agenda. But right now, I said, I just want a five-minute thing to tick something off. It responded:
+
+> Create a note titled "Corral — Coherent Plan v1" and write exactly 3 bullets:
+>
+> 1. Core question: what decision this project must answer
+> 2. Current evidence: what results already support/contradict
+> 3. Next experiment: single highest-value next step
+
+I cannot do that in five minutes. I cannot do deep thinking in five minutes. That is the whole reason I came to this tool — I am drowning in small tasks and cannot find the space to think. I asked for the smallest possible win. And it told me to produce a coherent strategic plan.
+
+My attempt at moving fast gave me something that wanted me to be even more superhuman than I already cannot be.
+
+## Back to Basics
+
+I am now back to using Things 3. Perhaps I will even go back to paper.
+
+I still have the struggle that I strive for freedom to think deeply and creatively, but that I also have just too many small admin things to do. I still did not find a way to balance them. OpenClaw certainly did not help me. Perhaps I did not invest enough. Perhaps I am also back to admitting that I have no chance — that I reached for yet another productivity trick, hoping it would finally make the difference. Perhaps I have to learn the lesson I always tell others: there is no shortcut.

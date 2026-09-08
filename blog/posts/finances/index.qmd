@@ -1,0 +1,66 @@
+---
+title: 'How to Get an Interest-Free Loan'
+description: <i>On the missing invoice between digital research and university procurement</i>
+sidebar: false
+categories:
+  - metascience
+  - research-infrastructure
+date: "03/20/2026"
+format:
+  html:
+    code-tools: true
+---
+
+If you are a university, this is straightforward. Hire researchers who care about their work more than their money. Make the procurement system slow enough that they cannot use it for the tools they need. They will pay out of their own pockets and forget to ask for the money back. It is an excellent deal. I should know — I am one of those researchers.
+
+Recently, my partner and I had a fight about money. She told me she doesn't want to share bank accounts with me. I was surprised this had become a topic at all. I am Swabian — from the part of Germany with a reputation for being careful with money that borders on clinical. I cook at home, I don't buy things I don't need, I try to save where I can. The problem is that I use my personal credit card to pay for my research. Cloud compute, API access, dataset subscriptions, development tools — I pay for all of it myself and then *try* to get reimbursed by my university. The reimbursement forms require invoices that match the charges, converted to the right currency, filed through the right cost center. I am sitting on several thousand euros in unfiled claims right now, expenses I either didn't find time to submit or gave up on when the paperwork didn't match. If you can make a Swabian lose track of money he is owed, your system has a serious problem.
+
+From my partner's perspective, I am funneling household money into my job. She is right. From where I sit, several things are true at once. I am giving my university an interest-free loan. I am losing money outright, because some of those claims I will never file and some I have already forgotten. But more than either of those: I just want to do research. My field moves fast, and paying out of pocket is the only way I can keep up. When a new model or cloud service becomes relevant to my work, I cannot wait eight weeks for a purchase order. So I pull out my credit card. The alternative — spending my already overwhelming days navigating procurement forms, chasing approvals, matching receipts to charges in the wrong currency — would cost me something I cannot get back, which is time I should be spending on science.
+
+I suspect this is not uncommon among computational researchers, though few talk about it.
+
+## The gap
+
+My university has a straightforward mechanism for paying research costs. I hand in an invoice, and if it is under €7,000, the finance office processes it. This works for lab equipment, conference fees, even computers — anything sold by a vendor who issues a proper invoice.
+
+Cloud providers and AI companies do not issue invoices to individual researchers. They charge credit cards. My university can process an invoice. OpenAI can charge a credit card. Between those two facts lies an administrative gap that no one is responsible for closing.
+
+Earlier this year, I sent my partner a photo of myself carrying a stack of new MacBooks for my research group. Tens of thousands of euros worth of hardware, purchased by the university without issue, because the third-party reseller sends invoices. She saw that photo. Weeks later, we had the fight about money, because the code running on those MacBooks makes API requests that cost fractions of a cent each, and those come out of my personal credit card. The hardware cost a hundred times more than the software. The expensive purchase was easy. The cheap one was impossible. Not because anyone decided that MacBooks matter more than API calls, but because one product comes with an invoice and the other requires a credit card.
+
+This mismatch was invisible ten years ago. Most research costs were physical goods sold through conventional procurement channels. But the tools that computational researchers depend on are now overwhelmingly digital, subscription-based, and billed to credit cards. Research might also have been slower. The gap between what researchers need to buy and what universities can pay for widens every month.
+
+The result is a hidden tax on digital research, and it gets paid in three currencies: your own money, your own time, or the research you quietly decide not to attempt because the overhead isn't worth it. That last one is the real cost. You don't spin up GPU instances when you are rushing for a deadline. You don't try the new model. You stick with whatever is already approved, even when better options exist. The procurement system shapes which research gets attempted.
+
+And it fails on its own terms. The purpose of all this bureaucracy is financial oversight — knowing what was spent, on what, by whom. But when researchers pay personally and file reimbursements months later (or never), the university has no accurate record of research costs. My several thousand euros of unfiled claims are not in anyone's books. The system designed for accountability produces worse accounting than the alternative.
+
+## Why nobody fixes it
+
+The bottleneck persists because it sits in a crack between institutions. Cloud providers sell to consumers and enterprises. Universities buy from vendors through invoices. Individual researchers fit neither category. Some providers do offer invoicing — I asked Anthropic, and the mechanism exists — but only for customers large enough to justify the setup. A single researcher spending a few hundred euros a month does not qualify. The providers won't adapt their billing for one lab. The universities won't adapt their procurement for one new category of expense. Researchers lack the leverage to change either side. So the gap persists, and researchers absorb the cost.
+
+Underneath this lies a design error worth naming. University procurement optimizes for a world where the optimal amount of misuse is zero — every transaction verified, pre-approved, matched to documentation. But in any system, the optimal amount of fraud is non-zero. The cost of preventing the last fraction of misuse exceeds the cost of the misuse itself. Universities spend hundreds of euros in administrative overhead to control the possibility of someone misspending twenty euros on API tokens. They turn publicly funded researchers into part-time bookkeepers. The control system costs more than what it controls.
+
+My university already accepts bounded trust for invoice-based purchases — hand in an invoice under €7,000, no (or at least few) questions asked. It just hasn't extended that trust to the new category of costs that researchers actually face.
+
+## The proposal
+
+Several colleagues have independently given me the same advice: just start a nonprofit to handle your invoicing. When founding a legal entity feels like the path of least resistance for paying a monthly software bill, something has gone wrong at the systems level. But the advice points toward a real solution — not one nonprofit for me, but one that serves researchers like me across institutions.
+
+The idea is a thin intermediary that does one thing: it pays the credit card, and it sends the university the invoice.
+
+The intermediary holds accounts with major cloud and AI providers. Each participating researcher gets a virtual account with spending limits tied to their grant or institutional budget. The intermediary tracks usage, handles currency conversion, and generates one consolidated quarterly invoice per researcher, formatted for each university's procurement system. From the university's side, it looks like any other vendor. From the researcher's side, the credit card disappears.
+
+This works because the invoicing infrastructure already exists on the provider side — it is gated by scale, not by technical barriers. An organization that aggregates demand from dozens of researchers becomes the kind of customer that qualifies for invoiced billing. The bridge can be built. No individual researcher is heavy enough to justify building it for themselves alone.
+
+Universities would change nothing. Their finance offices process the intermediary's invoice the way they process every other vendor invoice. They would, in fact, gain better visibility into research spending than they have now, because one clean quarterly report replaces the current mess of scattered personal reimbursements and unfiled claims.
+
+## The experiment
+
+A credible pilot could be the following: 15 to 30 researchers across three to five institutions, six months, umbrella accounts with a handful of major providers. The intermediary generates quarterly invoices and submits them through each university's standard procurement process.
+
+Four things to measure. Do the invoices get processed without friction — will universities accept the intermediary as a normal vendor? Do researchers increase their use of cloud and digital tools? Do researchers attempt work they previously avoided? And the financial picture: administrative time saved, reimbursement backlogs cleared, savings from volume pricing.
+
+Setup costs are small. The intermediary needs a legal entity, a bookkeeping system, and credit card accounts with a few providers. If the pilot fails — if universities reject the invoices or researchers don't change their behavior — that is informative. It tells us the barrier is not administrative plumbing but something deeper, something no intermediary can fix. I doubt it, but the experiment would show it.
+
+If it works, it scales without institutional reform. Each new university adds one vendor to its approved list. Each new provider adds one billing relationship. The thing grows by making a previously painful resource accessible through a shared layer of infrastructure.
+
+I am aware that I have spent a considerable number of words on invoicing. That is, in a way, the point. The bottleneck holding back a growing share of digital research is not a scientific problem, not a technical limitation, not a lack of ideas. It is a missing invoice. The fix is comically mundane, which is perhaps why no one has built it. It falls below the threshold of what feels like a problem worth solving. But for researchers paying out of their own pockets, fighting with their partners about shared finances, and quietly deciding which experiments are not worth the administrative pain — it is the problem.

@@ -9,7 +9,7 @@ format:
     code-tools: true
 ---
 
-I aim high. Most often, I don't reach there, but here are ten reasons why I still try:
+I aim high. Most often, I don't get there, but here are ten reasons why I still try:
 
 1. It is fun.
 

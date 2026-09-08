@@ -23,7 +23,7 @@ include-in-header:
 
 It's easy to feel caught up in the (perceived) pressure to produce results quickly. Academia seems to prioritize speed and quantity over depth and quality, which can be overwhelming. But is this really true? If it is something you must rush to publish, is there any real value in it? Is it really of value if you need to "compete"? [@thiel2014competition] Is the project you are rushing to publish really the question that you are best positioned to answer and that you deeply care about? Isn't rushing things another form of cargo cult science? 
 
-What if, instead of frantically racing to publish, you took the time to slow down, breathe, and really dig into your research, the research you really care about and take pleasure in craftsmanship? 
+What if, instead of frantically racing to publish, you took the time to slow down, breathe, and really dig into your research, the research you really care about, and take pleasure in craftsmanship? 
 We must admit that we are not immune to the allure of "fast science." There's something undeniably exciting about chasing quick breakthroughs and racking up publications. Yet, this isn't the path to meaningful, impactful, sustainable research and happiness.
 
 Great outcomes take time and persistence. Take the story of Rosalind Franklin, whose research laid the groundwork for understanding the structure of DNA. Or consider the godfathers of deep learning, who persisted through the AI winter. Galileo took 18 years to finish and write up his pendulum experiments and Newton took four years for his initial writings about gravity. [@newport2024slow]

@@ -34,7 +34,7 @@ Systems science teaches us that emergent properties arise from interactions betw
 
 Yet current AI for science systems remain myopically focused on small subsets, failing to integrate broader contextual factors. We optimize binding energies while ignoring synthesis routes. We predict properties while ignoring cost, scalability, or environmental impact.
 
-Kenneth Stanley and Jeff Clune argue in "Greatness Cannot Be Planned" that optimizing for ambitious goals fails because the stepping stones to greatness are deceptive [@stanley2015].
+Kenneth Stanley and Joel Lehman argue in "Greatness Cannot Be Planned" that optimizing for ambitious goals fails because the stepping stones to greatness are deceptive [@stanley2015].
 
 In practice, designing materials with single goals that might seem sensible (e.g., optimize CO₂ binding energy) proves deceptive. Materials exist within complex systems, and myopically optimizing one metric prevents success.
 
@@ -44,7 +44,7 @@ Consider a battery material with perfect energy density that degrades after ten 
 
 This context problem connects to missing tacit knowledge in our AI systems.
 
-Philosopher-chemist Michael Polanyi famously observed: "We know more than we can tell" [@polanyi1966]. Much of this unverbalized knowledge drives scientific greatness.
+Philosopher-chemist Michael Polanyi famously observed: "We can know more than we can tell" [@polanyi1966]. Much of this unverbalized knowledge drives scientific greatness.
 
 Tacit knowledge helps scientists prune search spaces and recognize when experiments or spectra "don't look right." This intuition emerges from years of contextual experience—understanding how synthesis conditions affect structure, how processing history influences properties, how real-world operating conditions differ from laboratory ideals.
 

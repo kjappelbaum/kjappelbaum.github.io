@@ -19,7 +19,7 @@ Peer review is something most of us learn by doing, with little formal training.
 ### Impact Neutrality
 I rarely suggest rejection. This comes from my attempt to be "impact neutral" in reviewing, an approach I've found useful after reading [Jan Jensen's thoughts](https://proteinsandwavefunctions.blogspot.com/2016/01/writing-impact-neutral-review.html) and seeing the [PLoS ONE](https://en.wikipedia.org/wiki/PLOS_ONE#Publication_concept) model in action.
 
-By "relatively impact neutral," I mean I focus primarily on scientific soundness. I'll still praise work I find particularly important and note when novelty seems lacking, but these observations inform rather than dictate my recommendations. I try to keep acceptance/rejection opinions out of my review's main body. If there are forms, I do not fill them if I do not have to: knowledge work is notoriously difficult to measure [@drucker1999knowledge], and the stepping stones that lead to discoveries often cannot be anticipated [@stanley2015why].
+By "relatively impact neutral," I mean I focus primarily on scientific soundness. I'll still praise work I find particularly important and note when novelty seems lacking, but these observations inform rather than dictate my recommendations. I try to keep acceptance/rejection opinions out of my review's main body. If there are forms, I do not fill them in if I do not have to: knowledge work is notoriously difficult to measure [@drucker1999knowledge], and the stepping stones that lead to discoveries often cannot be anticipated [@stanley2015why].
 
 ### Looking for Value
 Even in papers I initially find underwhelming, I deliberately search for strengths. What makes this work add to our existing knowledge? How could the authors better emphasize these aspects?

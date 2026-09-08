@@ -24,7 +24,7 @@ Lately, I have been wondering a lot about what the biggest impact of generative 
 
 While [I see many upsides](https://kjablonka.com/blog/posts/why_llm/), I am also very puzzled and concerned by things happening to myself and many around me. 
 
-This week, the Atlantic ran an outstanding piece by Derek Thompson on [The anti-social century](https://www.theatlantic.com/magazine/archive/2025/02/american-loneliness-personality-politics/681091/), and last year, Kevin Roose [described how some people now run everything, every decision, every thought through Claude](https://www.nytimes.com/2024/12/13/technology/claude-ai-anthropic.html) and perhaps talk more to Claude to their friends. 
+This week, The Atlantic ran an outstanding piece by Derek Thompson on [The anti-social century](https://www.theatlantic.com/magazine/archive/2025/02/american-loneliness-personality-politics/681091/), and last year, Kevin Roose [described how some people now run everything, every decision, every thought through Claude](https://www.nytimes.com/2024/12/13/technology/claude-ai-anthropic.html) and perhaps talk more to Claude than to their friends. 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">i&#39;m starting to see differences between those who have integrated claude deeply into their lives and those who haven&#39;t. its still too early for me to put words on it... i think the ones who have feel better supported? it&#39;s been ~universally healthy so far from what i can tell</p>&mdash; Nick (@nickcammarata) <a href="https://twitter.com/nickcammarata/status/1862000614508777779?ref_src=twsrc%5Etfw">November 28, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -36,7 +36,7 @@ I had big hopes for the application of AI to education. I saw it as one of the m
 
 We have a tool in our hands that could do so much good. We could provide everyone with a personal tutor. We could use the models to bounce off ideas, think more critically, find loopholes, and brainstorm new ideas. 
 
-The challenge isn't just technological - it's deeply human: perhaps our human nature makes it too tempting to take shortcuts [@Easter2021-gx]. To just directly let Claude solve a coding or homework problem or to just let Claude be the best friend. 
+The challenge isn't just technological - it's deeply human: perhaps our human nature makes it too tempting to take shortcuts [@Easter2021-gx]. To just directly let Claude solve a coding or homework problem or to just let Claude be one's best friend. 
 
 This is worrying because, as the models continue to saturate all our benchmarks, [Very interestingly, in creating [our own benchmark for chemistry](https://arxiv.org/abs/2404.01475) our limiting factor was human ingenuity and knowledge in coming up with questions that are challenging enough for the models.]{.aside} [the marginal value of interesting, clear, and wise thought increases](https://fs.blog/why-write/). “Low hanging fruit” test solving and knowledge retrieval are being commoditized - but we still need people who can set the agenda and push thought beyond the current frontiers. 
 

@@ -16,7 +16,7 @@ Europe’s universities are caught between measured caution and the breakneck pa
 
 Imagine a director of university research budgets aiming for zero waste. Every euro precisely tracked, every grant stringently justified. At first glance, it sounds prudent—until innovation grinds to a halt. PIs slice projects into the smallest publishable nibble, chase citations instead of ideas, and hide minor shortcuts under the rug. Edwards and Roy call this the [perverse incentive](https://blog.regehr.org/archives/632): metrics as targets erode integrity and stifle creativity [@EdwardsRoy2017].
 
-In AI4Science bureaucracy does more than nudge corners: it constrains bright minds to granular targets and routine forms. We select researchers through [“Bestenauslese,”](https://de.wikipedia.org/wiki/Artikel_33_des_Grundgesetzes_f%C3%BCr_die_Bundesrepublik_Deutschland#Prinzip_der_Bestenauslese,_Art._33_Absatz_2_GG) ["Bestenauslese" ("selection of the best")  is Germany’s rigorous (ostensibly) merit‑based academic selection process for professors, involving multiple stages of peer review, public lectures, and politiekorale vetting to appoint only the top candidates. Ironically, those once hailed as the nation’s brightest are then often constrained by procedural minutiae that discourage bold thinking.
+In AI4Science bureaucracy does more than nudge corners: it constrains bright minds to granular targets and routine forms. We select researchers through [“Bestenauslese,”](https://de.wikipedia.org/wiki/Artikel_33_des_Grundgesetzes_f%C3%BCr_die_Bundesrepublik_Deutschland#Prinzip_der_Bestenauslese,_Art._33_Absatz_2_GG) ["Bestenauslese" ("selection of the best")  is Germany’s rigorous (ostensibly) merit‑based academic selection process for professors, involving multiple stages of peer review, public lectures, and collegial vetting to appoint only the top candidates. Ironically, those once hailed as the nation’s brightest are then often constrained by procedural minutiae that discourage bold thinking.
 ]{.aside} celebrating the "highest achievers", then tie them to Excel sheets and compliance checklists. Such perverse incentives shrink ambitions and discourage moonshots. Yet true leaps require room to experiment: some ideas will flop, data pipelines will fail, and yes, a few grants will yield nothing of note. That’s not waste alone; it’s the price of possibility. 
 
 
@@ -29,9 +29,9 @@ Similarly, Europe’s research ecosystem must decide its fraud‑rate equivalent
 
 ## Building the Right Ecosystem
 
-- *New Data Organizations.*  Establish mission‑driven entities whose sole purpose is to create and share scientific data at minimal cost per replicable datapoint. Fund them to accept researcher proposals, execute experiments—robotic or computational—and retain public rights so that every dataset becomes a reusable building block. Those organizations would also be best place to organize competitions such as CASP to measure real-world impact of AI innovations.
+- *New Data Organizations.*  Establish mission‑driven entities whose sole purpose is to create and share scientific data at minimal cost per replicable datapoint. Fund them to accept researcher proposals, execute experiments—robotic or computational—and retain public rights so that every dataset becomes a reusable building block. Those organizations would also be best placed to organize competitions such as CASP to measure real-world impact of AI innovations.
 
-- *Data as Public Good.*  Complement these organizations with micro‑grants for labs and individual researchers to curate and submit annotated datasets—including negative results—to a pan‑European repository. .
+- *Data as Public Good.*  Complement these organizations with micro‑grants for labs and individual researchers to curate and submit annotated datasets—including negative results—to a pan‑European repository.
 
 - *Engineering Partnerships and Product Teams.*  Embed research software engineers and product managers in academic groups to build, maintain and ship AI tools, applications and data products. Treat code libraries and computational platforms as first‑class research outputs, fostering shared solutions rather than isolated prototypes.
 
@@ -39,15 +39,15 @@ Similarly, Europe’s research ecosystem must decide its fraud‑rate equivalent
 
 Only by stepping beyond the lab walls—talking with clinicians, industry users, policy makers and citizens—can AI4Science tackle system‑level problems and rediscover its path toward truth. As Daniel Sarewitz argues [@Sarewitz2016], science must shed its ivory‑tower aloofness, embrace accountability, and co‑create solutions with the communities it aims to serve.
 
-Imagine an "Academic Free Zone" pilot in which select institutions are empowered to hire swiftly, manage their own budgets, and report not on form‑counts but on real societal outcomes. Such “bubbles of exploration”-intensive zones where shared optimism, dedicated infrastructure and a tolerable failure rate yield transformative breakthroughs might reflect the best of positive bubble dynamics [@Sargeant2025].
+Imagine an "Academic Free Zone" pilot in which select institutions are empowered to hire swiftly, manage their own budgets, and report not on form‑counts but on real societal outcomes. Such “bubbles of exploration” — intensive zones where shared optimism, dedicated infrastructure and a tolerable failure rate yield transformative breakthroughs — might reflect the best of positive bubble dynamics [@Sargeant2025].
 
 Rather than endless approvals, researchers would report toward tangible public benefits. In this way, we treat researchers as accountable professionals and align incentives with Europe's mission: ensuring that AI4Science delivers societal value, not just publication counts.
 
 ## Personal Reflections
 
-I often ask myself: "where can my AI4Science efforts matter most?". I want that a skill set as mine remains in public service: I worry about centralization of power in AI [@Harari2018].
+I often ask myself: "Where can my AI4Science efforts matter most?" I want a skill set like mine to remain in public service: I worry about centralization of power in AI [@Harari2018].
 Yet I share colleagues’ frustration at bureaucratic inertia: a promising algorithm may sit unused for years behind grant cycles and compliance checks. If Europe is serious about impact, we must dismantle these barriers.
 
 ## Trust‑Driven Transformation
 
-Europe’s strength is freedom[In the words of the Economist's Charlemange: "But in their own plodding way, Europeans have created a place where they are guaranteed rights to what others yearn for: life, liberty, and the pursuit of happiness." [@Charlemagne2025]]{.aside} [@Charlemagne2025]. By shifting incentives from bean‑counting to value‑driven autonomy, investing boldly in shared data and infrastructure, and tolerating a non‑zero rate of “waste,” we can lead the AI for Science revolution on our own terms.
+Europe’s strength is freedom[In the words of the Economist's Charlemagne: "But in their own plodding way, Europeans have created a place where they are guaranteed rights to what others yearn for: life, liberty, and the pursuit of happiness." [@Charlemagne2025]]{.aside} [@Charlemagne2025]. By shifting incentives from bean‑counting to value‑driven autonomy, investing boldly in shared data and infrastructure, and tolerating a non‑zero rate of “waste,” we can lead the AI for Science revolution on our own terms.

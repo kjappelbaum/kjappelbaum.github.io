@@ -43,7 +43,6 @@ To understand why different modeling approaches succeed or fail, we need to exam
 | Causality | Quantum mechanics | Partially hidden | Evolutionary force | Explicit |
 
 Let's examine each domain in detail to understand why they might require different modeling approaches:
-Here's Part 2, continuing with the domain-specific sections:
 
 ## Molecular Properties
 
@@ -81,8 +80,6 @@ Programming languages represent a fascinating case of highly structured but huma
 - **Explicit Causality**: Control flow and data dependencies are explicit
 - **Human-Created Rules**: Unlike physical laws, programming language rules are human-designed and well-documented
 - **Rich Training Data**: Vast amounts of self-documenting code examples and error messages are available
-
-Here's Part 3, continuing with the implications and conclusions:
 
 # Implications for Model Choice
 
@@ -127,7 +124,7 @@ This refined view explains several observed patterns in scientific machine learn
    - Pattern recognition and statistical approaches shine
    - Example: LLMs leveraging implicit knowledge from literature
 
-1. **Mixed-Structure Domains** (Biological Sequences):
+4. **Mixed-Structure Domains** (Biological Sequences):
    - Hybrid approaches combining structure and statistics work well
    - Balance between specialized architectures and statistical power
    - Example: AlphaFold's combination of structural constraints with evolutionary information

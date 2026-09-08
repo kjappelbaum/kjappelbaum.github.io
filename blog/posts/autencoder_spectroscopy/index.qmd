@@ -39,11 +39,11 @@ Every spectroscopic measurement is like an archaeological dig, except instead of
 But just as ancient artifacts come to us covered in dirt and damaged by time (and occasionally by that one archaeologist who thought dynamite was a good excavation tool), our spectroscopic data arrives buried under multiple layers of contamination: such as 
 
 - *noise* due to random fluctuations ("electrons having a dance party")
-- *environmental interference*: for example, Water vapor and CO₂ absorption bands
+- *environmental interference*: for example, water vapor and CO₂ absorption bands
 - *instrumental artifacts*: baseline drift ("detector getting tired") 
 - *physical degradation*: sample fluorescence and aging effects
 
-Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you'll remove the dirt, but you might also remove, well, everything else. One usecase of autoencoder is to do this in a better way. 
+Traditional smoothing techniques are the equivalent of using a bulldozer to dust off a delicate vase. Sure, you'll remove the dirt, but you might also remove, well, everything else. One use case of autoencoders is to do this in a better way. 
 
 ## The Digital Archaeologist's Toolkit
 
@@ -168,7 +168,7 @@ $$
 \mathcal{L}_{\text{reconstruction}} = \|x - \hat{x}\|^2
 $$
 
-Where $(x)$ is our original spectrum (the truth, the whole truth, and nothing but the truth) and $(\hat{x})$ is our reconstruction.
+Where $x$ is our original spectrum (the truth, the whole truth, and nothing but the truth) and $\hat{x}$ is our reconstruction.
 
 ::: {.callout-tip collapse="true"}
 ## Why MSE Makes Statistical Sense
@@ -239,7 +239,7 @@ The goal of our autoencoder is to learn this manifold—the archaeological site 
 :::
 
 To visualize this, imagine our spectra are actually faces of ancient masks (stay with me here). Each mask has thousands of pixels (dimensions), but you could describe any mask with far fewer parameters: eye size, mouth width, nose shape, etc. That's your manifold! Autoencoders discover these "facial features" of spectra automatically. 
-![You might be familiar with [eigenfaces](https://en.wikipedia.org/wiki/Eigenface), which are "basis vectors" of human faces one can derive with PCA.]{.aside}
+[You might be familiar with [eigenfaces](https://en.wikipedia.org/wiki/Eigenface), which are "basis vectors" of human faces one can derive with PCA.]{.aside}
 
 ```{python}
 #| echo: false
@@ -417,7 +417,7 @@ The difference is that nonlinear autoencoders can capture more complex manifolds
 
 ## Beyond Linear Maps: Where Neural Networks Actually Shine
 
-Now we've seen that linear autoencoders are just PCA in disguise, let's talk about why we still bother with neural networks.
+Now that we've seen that linear autoencoders are just PCA in disguise, let's talk about why we still bother with neural networks.
 
 The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.
 
@@ -526,10 +526,10 @@ class ProbabilisticArchaeologist(nn.Module):
 
 ### Manifold Cartography: The KL Divergence as Map-Making
 
-Here's where the VAE truly shines: it doesn't just learn the manifold, it learns a *probabilistic* manifold with a well-behaved coordinate system. The VAE loss function has two terms:
+Here's where the VAE truly shines: it doesn't just learn the manifold, it learns a *probabilistic* manifold with a well-behaved coordinate system. The VAE loss function -- the negative evidence lower bound (ELBO), which we minimize -- has two terms:
 
 $$
-\mathcal{L}_{\text{VAE}} = \underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} - \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}
+\mathcal{L}_{\text{VAE}} = -\underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{Reconstruction: Make it look right}} + \underbrace{D_{\text{KL}}(q_\phi(z|x) \| p(z))}_{\text{KL divergence: Keep it reasonable}}
 $$
 
 The first part is our familiar reconstruction loss - "make the reconstruction look like the input."

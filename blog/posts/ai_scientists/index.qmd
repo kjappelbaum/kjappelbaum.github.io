@@ -29,9 +29,9 @@ The concern isn't that AI scientists will be poorly designed, but rather that th
 
 Science has never been value-neutral, though we often pretend otherwise. Every research program embeds choices about what questions matter, what methods are legitimate, what constitutes adequate evidence [@Huff_2017;@Bronowski_1961].
 
-Take computer vision's relationship with ImageNet. This single benchmark, created by a particular research community with specific assumptions about visual recognition, shaped an entire field for over a decade. It privileged approaches that performed well on a large, static, pre-labeled photographs [@dotan2019value0laden].
+Take computer vision's relationship with ImageNet. This single benchmark, created by a particular research community with specific assumptions about visual recognition, shaped an entire field for over a decade. It privileged approaches that performed well on large, static, pre-labeled photographs [@dotan2019value0laden].
 
-These kind of value-laden choices are the along the entire chain of (AI) research [@dehghani2021benchmark; @hooker2020hardware; @alampara2025lessons].
+These kinds of value-laden choices are along the entire chain of (AI) research [@dehghani2021benchmark; @hooker2020hardware; @alampara2025lessons].
 
 
 ## Concentration and Its Discontents
@@ -48,7 +48,7 @@ According to Thomas Kuhn's philosophy of science, science alternates between per
 Crucially, Kuhn observed that normal science "often suppresses fundamental novelties because those novelties are necessarily subversive of its basic commitments."
 
 AI scientists, optimized on existing scientific literature, might end up being just sophisticated normal science machines. 
-They could excel at incremental advances within current paradigms but struggle with the radical reconceptualization that drives scientific revolutions. This is because current paradigms of machine learning systems easily question their foundational assumptions because those assumptions are embedded in their training data and optimization targets . It's an inevitable consequence of how these systems work: They are trained to maximize the likelihood of the training data. 
+They could excel at incremental advances within current paradigms but struggle with the radical reconceptualization that drives scientific revolutions. This is because current paradigms of machine learning systems cannot easily question their foundational assumptions, because those assumptions are embedded in their training data and optimization targets. It's an inevitable consequence of how these systems work: They are trained to maximize the likelihood of the training data. 
 But it suggests that a science dominated by AI scientists might become extraordinarily good at certain kinds of progress while systematically failing at others.
 
 ## Toward Epistemic Pluralism

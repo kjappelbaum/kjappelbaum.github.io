@@ -1,6 +1,6 @@
 ---
 title: 'Developing an intuition for backpropagation'
-description: <i>Efficient long-distant errorpropagation</i>
+description: <i>Efficient long-distance error propagation</i>
 image: ""
 sidebar: false
 categories:
@@ -279,18 +279,18 @@ Here, we want to understand how to systematically tune the weights to achieve th
 ```
 
 
-When we think of the tiny neural network in the widget above one might think of many different ways for optimizing the weights (line strenghts) of this model.
+When we think of the tiny neural network in the widget above one might think of many different ways for optimizing the weights (line strengths) of this model.
 
 
 ### Option 1: Randomly choose weights 
 One option you might try is to randomly try different weight values to then find one that minimizes the difference between ground truth and prediction (i.e., minimizes the loss). 
 While we might be lucky for this toy example, we can imagine that it might take a long time until we guessed all the weights in a billion-parameter model (e.g. GPT-3) correctly. 
 
-Using a strategy like a grid search (in which you loop over a range of possible weight values for all weights) will also only work for small models (think of the $100^4$ combinations you would have to just try of 100 trial values for 4 weights). 
+Using a strategy like a grid search (in which you loop over a range of possible weight values for all weights) will also only work for small models (think of the $100^4$ combinations you would have to try for just 100 trial values of 4 weights). 
 
 ### Option 2: Using numerical gradients 
 
-When we think of our neural network, the loss forms a landscape, that can be very complex. In our simple example below, it looks as follows:
+When we think of our neural network, the loss forms a landscape that can be very complex. In our simple example below, it looks as follows:
 
 ```{python}
 import numpy as np
@@ -351,7 +351,7 @@ plt.ylabel('$w_2^1$ values')
 plt.show()
 ```
 
-To create this plot, we keep two weights fixed, vary two others and then analyze how the loss looks like.
+To create this plot, we keep two weights fixed, vary two others and then analyze what the loss looks like.
 We see that there is a clear structure that might remind us of a hilly landscape. 
 
 With the random search we have been randomly jumping around on this landscape. But seeing this image, we might also decide that we want to follow the path downhill; ultimately, our goal is to find the valley (the lowest loss).
@@ -365,11 +365,11 @@ $$
 
 Based on the formula above, we might decide to compute a gradient numerically using [finite differences](https://en.wikipedia.org/wiki/Finite_difference).
 
-The problem is that we need to perform _many evaluations_ of the loss to make it work (one per weight, which can be a lot for current frontier models). In addition, we add up errors because $h$ will be different from $0$ (truncation error) and because be have to work with machine precision and hence add rounding errors.
+The problem is that we need to perform _many evaluations_ of the loss to make it work (one per weight, which can be a lot for current frontier models). In addition, we add up errors because $h$ will be different from $0$ (truncation error) and because we have to work with machine precision and hence add rounding errors.
 
 ::: {.callout-note}
 
-If we compute numerical gradients, we have two main sources of error. One stems from the fact that $h$ in the euqation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numberical problems (rounding errors) as two almost identical numbers are substracted and then divided by a very small number. 
+If we compute numerical gradients, we have two main sources of error. One stems from the fact that $h$ in the equation above is not exactly 0. This is known as truncation error. On the other hand, the finite difference equation leads to numerical problems (rounding errors) as two almost identical numbers are subtracted and then divided by a very small number. 
 
 ```{python}
 import numpy as np
@@ -416,10 +416,10 @@ plt.show()
 
 ### Option 3: Analytical gradients
 
-Obviously, we could save many evaluations when we could write down the derviates for a given functions. 
+Obviously, we could save many evaluations if we could write down the derivatives for a given function. 
 However, for our neural networks we cannot do this by hand. 
 
-The question is thus how we _efficiently_ compute the gradient of function such as a neural network.
+The question is thus how we _efficiently_ compute the gradient of a function such as a neural network.
 
 ## Evaluating analytical gradients for any function: Backpropagation
 
@@ -465,10 +465,10 @@ With
 - $y$ the position of the bicycle 
 - $z$ the position of the walking man 
 
-The rate of change in relative positions is given by terms like $\frac{\mathrm{d}x}{\mathrm{d}y}$, which gives us the change in relative position of bicycle and car. It we now aim to compute the rate of change of relative position of car to the walking man, $\frac{\mathrm{d}x}{\mathrm{d}z}$, we find 
+The rate of change in relative positions is given by terms like $\frac{\mathrm{d}x}{\mathrm{d}y}$, which gives us the change in relative position of bicycle and car. If we now aim to compute the rate of change of relative position of car to the walking man, $\frac{\mathrm{d}x}{\mathrm{d}z}$, we find 
 
 $$
-\frac{\mathrm{d}x}{\mathrm{d}x} = \frac{\mathrm{d}x}{\mathrm{d}y} \frac{\mathrm{d}y}{\mathrm{d}z} = \underbrace{2}_{\text{car twice as fast as bicycle}} \cdot \underbrace{4}_{\text{bicycle is four times as fast as walking man}} = 8 
+\frac{\mathrm{d}x}{\mathrm{d}z} = \frac{\mathrm{d}x}{\mathrm{d}y} \frac{\mathrm{d}y}{\mathrm{d}z} = \underbrace{2}_{\text{car twice as fast as bicycle}} \cdot \underbrace{4}_{\text{bicycle is four times as fast as walking man}} = 8 
 $$
     
 :::
@@ -476,7 +476,7 @@ $$
 
 ### Computing derivatives as in calculus 101
 
-In neural networks, we nest functions. That is, will end up differentiating compound expression of the form 
+In neural networks, we nest functions. That is, we will end up differentiating compound expressions of the form 
 
 $$
 {\displaystyle h(x)=f(g(x))}
@@ -503,15 +503,15 @@ $$
 $$
 
 
-Puh! That was a lot of copying and pasting and quite error prone. And it might be quite costly to just directly evaluate such an expression (we might end up with an exponentially large expression, "expression swell").
+Phew! That was a lot of copying and pasting and quite error prone. And it might be quite costly to just directly evaluate such an expression (we might end up with an exponentially large expression, "expression swell").
 
 There must be a better way.
 
 ### Making it efficient with caching 
 
-One thing that we can observe is that we need to do the same computation several times. For instance, $wx +b$ is evaluated two times. We code trade off space and time complexity by caching this using an intermediate variable. 
+One thing that we can observe is that we need to do the same computation several times. For instance, $wx +b$ is evaluated two times. We can trade off space and time complexity by caching this using an intermediate variable. 
 
-If we do this systematically, we can very efficiently compute gradients -- in a form that is symmetric to the computation of the function itself (and those with basically the same cost). 
+If we do this systematically, we can very efficiently compute gradients -- in a form that is symmetric to the computation of the function itself (and thus with basically the same cost). 
 
 #### General computation with intermediate values
 
@@ -521,7 +521,7 @@ $$
 f(x,y,z) = (x+y)z
 $$
 
-It can be convienient to introduce the following intermediate variable
+It can be convenient to introduce the following intermediate variable
 
 
 $$
@@ -537,7 +537,7 @@ $$
 and also compute some partial derivatives 
 
 $$
-\frac{\partial f}{\partial q} = z \quad \frac{\partial f}{\partial z} = q
+\frac{\partial f}{\partial p} = z \quad \frac{\partial f}{\partial z} = p
 $$
 
 and we also know how to differentiate $p$ for $x$ and $y$:
@@ -549,7 +549,7 @@ $$
 Using the _chain rule_ we can combine those findings, as the chain rule states that we need to multiply the gradients to chain them: 
 
 $$
-\frac{\partial f(p,z)}{\partial x} = \frac{\partial f(p, x)}{\partial p}  \frac{\partial p(x,y)}{\partial x} 
+\frac{\partial f(p,z)}{\partial x} = \frac{\partial f(p, z)}{\partial p}  \frac{\partial p(x,y)}{\partial x} 
 $$
 
 This typically means that two numbers are multiplied. 
@@ -613,10 +613,10 @@ For the other intermediate variables we have:
 
 $$
 \begin{align}
-\frac{\mathrm{d}f}{\mathrm{d} t_{n-1}} &= \frac{\mathrm{d}f}{\mathrm{d}f_{n}} \frac{\mathrm{d}f_{n}}{\mathrm{d}t_{n-1}} \\
-\frac{\mathrm{d}f}{\mathrm{d} t_{n-2}} &= \frac{\mathrm{d}f}{\mathrm{d}f_{n}} \frac{\mathrm{d}f_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}f_{n-1}}{\mathrm{d}t_{n-2}} \\
-\frac{\mathrm{d}f}{\mathrm{d} t_{n-3}} &= \frac{\mathrm{d}f}{\mathrm{d}f_{n}} \frac{\mathrm{d}f_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}f_{n-1}}{\mathrm{d}t_{n-2}} \frac{\mathrm{d}f_{n-2}}{\mathrm{d}t_{n-3}} \\
-\frac{\mathrm{d}f}{\mathrm{d} t_i} &= \frac{\mathrm{d}f}{\mathrm{d}f_{n}} \frac{\mathrm{d}f_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}f_{n-1}}{\mathrm{d}t_{n-2}} \ldots \frac{\mathrm{d}f_{i+1}}{\mathrm{d}t_{i}}
+\frac{\mathrm{d}f}{\mathrm{d} t_{n-1}} &= \frac{\mathrm{d}f}{\mathrm{d}t_{n}} \frac{\mathrm{d}t_{n}}{\mathrm{d}t_{n-1}} \\
+\frac{\mathrm{d}f}{\mathrm{d} t_{n-2}} &= \frac{\mathrm{d}f}{\mathrm{d}t_{n}} \frac{\mathrm{d}t_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}t_{n-1}}{\mathrm{d}t_{n-2}} \\
+\frac{\mathrm{d}f}{\mathrm{d} t_{n-3}} &= \frac{\mathrm{d}f}{\mathrm{d}t_{n}} \frac{\mathrm{d}t_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}t_{n-1}}{\mathrm{d}t_{n-2}} \frac{\mathrm{d}t_{n-2}}{\mathrm{d}t_{n-3}} \\
+\frac{\mathrm{d}f}{\mathrm{d} t_i} &= \frac{\mathrm{d}f}{\mathrm{d}t_{n}} \frac{\mathrm{d}t_{n}}{\mathrm{d}t_{n-1}} \frac{\mathrm{d}t_{n-1}}{\mathrm{d}t_{n-2}} \ldots \frac{\mathrm{d}t_{i+1}}{\mathrm{d}t_{i}}
 \end{align} 
 $$
 
@@ -627,7 +627,7 @@ Note that many of the terms we computed can be reused.
 
 Neural networks are more complicated circuits -- nested functions.
 
-Let's assume a very simply case
+Let's assume a very simple case
 
 $$
 y=\frac{1}{1+\exp (-(wx+b))}.
@@ -664,7 +664,7 @@ $$
 As we would like again get the derivative w.r.t to the output like the loss
 
 $$
-L = (t_6-y)^2, 
+L = (t_6-t)^2, 
 $$
 
 which we can write down with some more evaluations 
@@ -688,7 +688,7 @@ $$
 \frac{\partial t_7}{\partial t_6} & = 1 \\
 \frac{\partial t_6}{\partial t_5} &=  -1/t_5^2 \\
 \frac{\partial t_5}{\partial t_4} &= 1\\
-\frac{\partial t_4}{\partial t_3} &= \exp(t_3) t_3 \\
+\frac{\partial t_4}{\partial t_3} &= \exp(t_3) \\
 \frac{\partial t_3}{\partial t_2} &= - 1\\
 \frac{\partial t_2}{\partial t_1} &= 1 \\
 \frac{\partial t_1}{\partial w} &= x
@@ -699,17 +699,17 @@ Armed with those partial derivatives, we can now multiply them to get the final 
 
 $$
 \begin{align}
-\frac{\partial t_8}{\partial t_6} &= \frac{\partial t_8}{\partial t_7} \frac{\partial t_7}{\partial t_6} = 2 t_7 \cdot 1 = 2(t_6 -y) \\
-\frac{\partial t_8}{\partial t_5} &= \frac{\partial t_8}{\partial t_6} \frac{\partial t_6}{\partial t_5} = 2(t_6 -y) \cdot  \left(-\frac{1}{t_5^2} \right) =  -2/t_5^2 (t_6 -y) \\
-\frac{\partial t_8}{\partial t_4} &= \frac{\partial t_8}{\partial t_5} \frac{\partial t_5}{\partial t_4} = -2/t_5^2 (t_6 -y) \cdot 1 = -2/t_5^2 (t_6 -y) \\
-\frac{\partial t_8}{\partial t_3} &= \frac{\partial t_8}{\partial t_4} \frac{\partial t_4}{\partial t_3} = -2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 = -2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 \\
-\frac{\partial t_8}{\partial t_2} &= \frac{\partial t_8}{\partial t_3} \frac{\partial t_3}{\partial t_2} = -2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 \cdot -1 = 2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 \\
-\frac{\partial t_8}{\partial t_1} &= \frac{\partial t_8}{\partial t_2} \frac{\partial t_2}{\partial t_1} =  2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 \\
-\frac{\partial t_8}{\partial w} &= \frac{\partial t_8}{\partial t_1} \frac{\partial t_1}{\partial w} = 2/t_5^2 (t_6 -y) \cdot \exp(t_3) t_3 \cdot x
+\frac{\partial t_8}{\partial t_6} &= \frac{\partial t_8}{\partial t_7} \frac{\partial t_7}{\partial t_6} = 2 t_7 \cdot 1 = 2(t_6 -t) \\
+\frac{\partial t_8}{\partial t_5} &= \frac{\partial t_8}{\partial t_6} \frac{\partial t_6}{\partial t_5} = 2(t_6 -t) \cdot  \left(-\frac{1}{t_5^2} \right) =  -2/t_5^2 (t_6 -t) \\
+\frac{\partial t_8}{\partial t_4} &= \frac{\partial t_8}{\partial t_5} \frac{\partial t_5}{\partial t_4} = -2/t_5^2 (t_6 -t) \cdot 1 = -2/t_5^2 (t_6 -t) \\
+\frac{\partial t_8}{\partial t_3} &= \frac{\partial t_8}{\partial t_4} \frac{\partial t_4}{\partial t_3} = -2/t_5^2 (t_6 -y) \cdot \exp(t_3) = -2/t_5^2 (t_6 -t) \cdot \exp(t_3) \\
+\frac{\partial t_8}{\partial t_2} &= \frac{\partial t_8}{\partial t_3} \frac{\partial t_3}{\partial t_2} = -2/t_5^2 (t_6 -t) \cdot \exp(t_3) \cdot -1 = 2/t_5^2 (t_6 -t) \cdot \exp(t_3) \\
+\frac{\partial t_8}{\partial t_1} &= \frac{\partial t_8}{\partial t_2} \frac{\partial t_2}{\partial t_1} =  2/t_5^2 (t_6 -t) \cdot \exp(t_3) \\
+\frac{\partial t_8}{\partial w} &= \frac{\partial t_8}{\partial t_1} \frac{\partial t_1}{\partial w} = 2/t_5^2 (t_6 -t) \cdot \exp(t_3) \cdot x
 \end{align}
 $$
 
-In practice, we would use autodifferentiation using a datastructure as follows to keep track of the computation graph.
+In practice, we would use autodifferentiation using a data structure as follows to keep track of the computation graph.
 
 ```{python}
 # code taken from https://github.com/karpathy/micrograd/blob/master/trace_graph.ipynb
@@ -1005,21 +1005,21 @@ If you prefer watching a short video over reading you can see me go through the 
 
 ## Resources 
 
-1. [Andrej Karpathy "Hacker's guide to Neural Networks"](https://karpathy.github.io/neuralnets/) inspired the comparison between random search and gradient descent. The same ideas are used in the [cs231n lecture notes](https://cs231n.github.io/optimization-1/) since he taught this class. The chain rule example is taken from the [c231n lecture notes](https://cs231n.github.io/optimization-2/)
+1. [Andrej Karpathy "Hacker's guide to Neural Networks"](https://karpathy.github.io/neuralnets/) inspired the comparison between random search and gradient descent. The same ideas are used in the [cs231n lecture notes](https://cs231n.github.io/optimization-1/) since he taught this class. The chain rule example is taken from the [cs231n lecture notes](https://cs231n.github.io/optimization-2/)
 
-2. [Andrej Karparthy recorded a lecture in which he builds an autodiff system from scratch](https://www.youtube.com/watch?v=PaCmpygFfXo) and it inspired many parts of the notebooks, some parts (the `Value` class) are taken from his lecture.
+2. [Andrej Karpathy recorded a lecture in which he builds an autodiff system from scratch](https://www.youtube.com/watch?v=PaCmpygFfXo) and it inspired many parts of the notebooks, some parts (the `Value` class) are taken from his lecture.
 
 3. [Deisenroth et al. "Mathematics of Machine Learning"](https://mml-book.github.io/) has a beautiful chapter about backprop and autodiff.
 
-4. [Mark Saroufim "Automatic Differentiation Step by Step"](https://marksaroufim.medium.com/automatic-differentiation-step-by-step-24240f97a6e6) has an intuitive explaination of dual numbers and has a good resource section, including [](https://www.youtube.com/watch?v=Rs0uRQJdIcg&list=WL&index=8&t=149s)
+4. [Mark Saroufim "Automatic Differentiation Step by Step"](https://marksaroufim.medium.com/automatic-differentiation-step-by-step-24240f97a6e6) has an intuitive explanation of dual numbers and has a good resource section, including [this talk](https://www.youtube.com/watch?v=Rs0uRQJdIcg&list=WL&index=8&t=149s)
 
 5. [Automatic Differentiation in Machine Learning: a Survey](http://arxiv.org/abs/1502.05767) is a great survey that clarifies many terms. 
 
 6. [Michael Nielsen's book](http://neuralnetworksanddeeplearning.com/chap2.html) highlights some of the "hidden" assumptions. 
 
-7. [Brandon Rohrer](https://e2eml.school/how_backpropagation_works) has a very intuitive of the chain rule in terms of the shower rate (similar to the bicycle/car/man example above).
+7. [Brandon Rohrer](https://e2eml.school/how_backpropagation_works) has a very intuitive explanation of the chain rule in terms of the shower rate (similar to the bicycle/car/man example above).
 
-8. [Deep Learning Systems Lecture at CMU](https://dlsyscourse.org/lectures/) has a detailed slides on the algorithmic details behind autodiff.
+8. [Deep Learning Systems Lecture at CMU](https://dlsyscourse.org/lectures/) has detailed slides on the algorithmic details behind autodiff.
 
 9. [Differentiation for Hackers](https://github.com/MikeInnes/diff-zoo/tree/master/src) has nice Julia code that showcases what makes autodiff special (and different from symbolic and numeric differentiation).
 
@@ -1033,7 +1033,7 @@ As with many popular things, there is some debate on "who was first". You can fi
 
 #### "Original" Backprop Paper
 
-In the context of training neural networks, backpropagation was popularized in a beatiful paper by [David E. Rumelhart et al.](https://www.nature.com/articles/323533a0) It is beautiful and you should read it. 
+In the context of training neural networks, backpropagation was popularized in a beautiful paper by [David E. Rumelhart et al.](https://www.nature.com/articles/323533a0) It is beautiful and you should read it. 
 
 ### Backpropagation and Lagrangian 
 
@@ -1074,13 +1074,13 @@ Backpropagation is a special case of reverse mode autodiff.
 Which mode is more efficient depends on whether the input dimension is smaller than the output dimension.
 If the output dimension is smaller than the input dimension (which is the case for training neural networks) the reverse mode is more efficient as only one application of the reverse mode is needed to compute the gradients. 
 
-The forward mode, however is of $\mathcal{O(n)}$, where $n$ is the number of inputs. If the number of inputs is small (or even just one) and the number of outputs is large, e.g. $\mathbb{R} \to \mathbb{R^m}$, then the forward mode will be more efficient.
+The forward mode, however, is of $\mathcal{O}(n)$, where $n$ is the number of inputs. If the number of inputs is small (or even just one) and the number of outputs is large, e.g. $\mathbb{R} \to \mathbb{R^m}$, then the forward mode will be more efficient.
 
 
 ### Symbolic differentiation vs. numerical differentiation vs. autodiff
 
-- Numerical differentiation involves computing a term like $\frac{\partial f}{\partial x_i} \approx \frac{f(x+h) - f(x)}{h}$ for a small $h$. While this is might be relatively easy to implement, but requires $\mathcal{O(n)}$ evaluations for $n$ gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).
-- Symbolic differentation can be performed with systems like Maple, Sympy, or Mathematica. This gives us _expressions_ for the derivatives, which might grow exponentially large (in blind application).
+- Numerical differentiation involves computing a term like $\frac{\partial f}{\partial x_i} \approx \frac{f(x+h) - f(x)}{h}$ for a small $h$. While this might be relatively easy to implement, it requires $\mathcal{O}(n)$ evaluations for $n$ gradients, and can be numerically unstable (dividing by small number, subtracting two numbers of almost the same value).
+- Symbolic differentiation can be performed with systems like Maple, Sympy, or Mathematica. This gives us _expressions_ for the derivatives, which might grow exponentially large (in blind application).
 
 ```{python}
 import sympy 
@@ -1109,10 +1109,10 @@ $$
 and 
 
 $$
-(v+\dot{v}\epsilon)(u+\dot{u}\epsilon) = (vu) + (v\dot{u} + \dot{u}v)\epsilon
+(v+\dot{v}\epsilon)(u+\dot{u}\epsilon) = (vu) + (v\dot{u} + \dot{v}u)\epsilon
 $$
 
-Now, keep in mind that the Tyalor series of a function $f(x)
+Now, keep in mind the Taylor series of a function $f(x)$:
 
 $$
 f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!} (x-a)^2 + \frac{f'''(a)}{3!} (x-a)^3 
@@ -1124,7 +1124,7 @@ $$
 f(a + \dot{v}\epsilon) = f(a) + f'(a)(a + \dot{v}\epsilon -a) +  \frac{f''(a)}{2!} (a + \dot{v}\epsilon -a)^2 + \frac{f'''(a)}{3!} (a + \dot{v}\epsilon -a)^3 
 $$
 
-not that, per definition, all terms with $\epsilon^2$ or higher powers will vanish. Therefore, we will be left with 
+note that, per definition, all terms with $\epsilon^2$ or higher powers will vanish. Therefore, we will be left with 
 
 $$
 f(a + \dot{v}\epsilon) = f(a) + f'(a)\dot{v}\epsilon
@@ -1136,7 +1136,7 @@ $$
 \left. \frac{\mathrm{d}f}{\mathrm{d}x}\right|_{x=a} = \text{epsilon coefficient}(\text{dual version}(f)(a+1\epsilon))
 $$
 
-This means that we directly compute f(x) and the derivative (scaled by $\dot{v}$). Thus, we can simulatanously compute the values of functions and derivatives. A naiive implementation might look as follows
+This means that we directly compute f(x) and the derivative (scaled by $\dot{v}$). Thus, we can simultaneously compute the values of functions and derivatives. A naive implementation might look as follows
 
 
 ```{python}
@@ -1204,6 +1204,6 @@ Autodiff, and thus differentiable programs, are now becoming a first-class citiz
 
 In the field of computational materials science a few nice examples include 
 
-- [jax-md](https://github.com/jax-md/jax-md): Which allows one to differentia through full MD simulations, to do things like [the design of kinetic pathways](https://www.pnas.org/doi/abs/10.1073/pnas.2024083118)
+- [jax-md](https://github.com/jax-md/jax-md): Which allows one to differentiate through full MD simulations, to do things like [the design of kinetic pathways](https://www.pnas.org/doi/abs/10.1073/pnas.2024083118)
 - [optimization of a Hückel model implemented in jax](https://doi.org/10.1063/5.0137103)
 - [inverse design of pores](https://www.nature.com/articles/s41524-023-01080-x)

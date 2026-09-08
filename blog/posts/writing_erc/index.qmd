@@ -7,7 +7,7 @@ categories:
   - academia
   - writing
   - grants
-date: "1/15/2025"
+date: "10/1/2025"
 bibliography: references.bib
 format:
   html:

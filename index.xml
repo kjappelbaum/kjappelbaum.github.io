@@ -14,8 +14,8 @@
 <title>Kevin Maik Jablonka</title>
 <link>https://kjablonka.com/</link>
 </image>
-<generator>quarto-1.8.24</generator>
-<lastBuildDate>Mon, 08 Jun 2026 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.43</generator>
+<lastBuildDate>Tue, 09 Jun 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Why solving urgent problems relies on a different kind of “AI scientist”</title>
   <link>https://kjablonka.com/blog/posts/new_kinds_ai_scientists/</link>
@@ -51,7 +51,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>ai</category>
   <category>science</category>
   <guid>https://kjablonka.com/blog/posts/new_kinds_ai_scientists/</guid>
-  <pubDate>Mon, 08 Jun 2026 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/new_kinds_ai_scientists" medium="image"/>
 </item>
 <item>
@@ -77,7 +77,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>bayesian optimization</category>
   <category>materials</category>
   <guid>https://kjablonka.com/blog/posts/bayesian_optimization_materials/</guid>
-  <pubDate>Tue, 14 Apr 2026 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Science is Too Successful</title>
@@ -142,7 +142,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>peer-review</category>
   <category>scientific-freedom</category>
   <guid>https://kjablonka.com/blog/posts/scientific_freedom/</guid>
-  <pubDate>Tue, 24 Mar 2026 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Get an Interest-Free Loan</title>
@@ -196,7 +196,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>metascience</category>
   <category>research-infrastructure</category>
   <guid>https://kjablonka.com/blog/posts/finances/</guid>
-  <pubDate>Thu, 19 Mar 2026 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>OpenClaw Did Not Save Me</title>
@@ -255,7 +255,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>productivity</category>
   <category>ai-agents</category>
   <guid>https://kjablonka.com/blog/posts/openclaw/</guid>
-  <pubDate>Tue, 03 Mar 2026 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep Networks as Elastic Origami</title>
@@ -276,7 +276,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
   <category>deep learning</category>
   <category>manifolds</category>
   <guid>https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture/</guid>
-  <pubDate>Mon, 26 Jan 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 27 Jan 2026 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/deep_learning_mechanisms_lecture" medium="image"/>
 </item>
 <item>
@@ -334,7 +334,7 @@ Figure&nbsp;1: More data is not the same as more understanding. A map that recor
 <div aria-describedby="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -657,7 +657,7 @@ background-color: null;
 font-style: inherit;">'center'</span>)</span>
 <span id="cb1-38"></span>
 <span id="cb1-39">plt.tight_layout()</span>
-<span id="cb1-40">plt.show()</span></code></pre></div></div>
+<span id="cb1-40">plt.show()</span></code></pre></div>
 </details>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-random-walk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -689,7 +689,7 @@ Figure&nbsp;1
 <div aria-describedby="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -960,7 +960,7 @@ font-style: inherit;">'$x_2$'</span>)</span>
 background-color: null;
 font-style: inherit;">'equal'</span>)</span>
 <span id="cb2-45">plt.tight_layout()</span>
-<span id="cb2-46">plt.show()</span></code></pre></div></div>
+<span id="cb2-46">plt.show()</span></code></pre></div>
 </details>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-relu-regions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1024,7 +1024,7 @@ Figure&nbsp;2
 <div aria-describedby="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -1254,7 +1254,7 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'upper right'</span>)</span>
 <span id="cb3-24">plt.tight_layout()</span>
-<span id="cb3-25">plt.show()</span></code></pre></div></div>
+<span id="cb3-25">plt.show()</span></code></pre></div>
 </details>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-shift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1334,7 +1334,7 @@ Zech, John R, Marcus A Badgeley, Manway Liu, Anthony B Costa, Joseph J Titano, a
   <category>ml</category>
   <category>deeplearning</category>
   <guid>https://kjablonka.com/blog/posts/manifold/geometry_blog.html</guid>
-  <pubDate>Sun, 28 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 29 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/manifold" medium="image"/>
 </item>
 <item>
@@ -1382,7 +1382,7 @@ Zech, John R, Marcus A Badgeley, Manway Liu, Anthony B Costa, Joseph J Titano, a
  ]]></description>
   <category>academia</category>
   <guid>https://kjablonka.com/blog/posts/write_early/</guid>
-  <pubDate>Thu, 30 Oct 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 31 Oct 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/write_early" medium="image"/>
 </item>
 <item>
@@ -1422,7 +1422,7 @@ Zech, John R, Marcus A Badgeley, Manway Liu, Anthony B Costa, Joseph J Titano, a
  ]]></description>
   <category>academia</category>
   <guid>https://kjablonka.com/blog/posts/on_impactful_research/</guid>
-  <pubDate>Mon, 13 Oct 2025 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 14 Oct 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/on_impactful_research" medium="image"/>
 </item>
 <item>
@@ -1550,7 +1550,7 @@ Minto, Barbara. 2009. <em>The Pyramid Principle: Logic in Writing and Thinking</
   <category>writing</category>
   <category>grants</category>
   <guid>https://kjablonka.com/blog/posts/writing_erc/</guid>
-  <pubDate>Tue, 30 Sep 2025 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>All of AI is Context Engineering</title>
@@ -1617,7 +1617,7 @@ Stanley, Kenneth O., and Joel Clune. 2015. <em>Why Greatness Cannot Be Planned: 
   <category>ai</category>
   <category>science</category>
   <guid>https://kjablonka.com/blog/posts/context/</guid>
-  <pubDate>Mon, 04 Aug 2025 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 05 Aug 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/context" medium="image"/>
 </item>
 <item>
@@ -1718,7 +1718,7 @@ Paul, Kari. 2019. <span>“<span>‘Disastrous’</span> Lack of Diversity in AI
   <category>ai</category>
   <category>science</category>
   <guid>https://kjablonka.com/blog/posts/ai_scientists/</guid>
-  <pubDate>Sat, 31 May 2025 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Jun 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/ai_scientists" medium="image"/>
 </item>
 <item>
@@ -1791,7 +1791,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
   <category>academia</category>
   <category>Europe</category>
   <guid>https://kjablonka.com/blog/posts/ai4science_european_academia/</guid>
-  <pubDate>Thu, 24 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 25 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Autoencoders as Digital Archaeologists for Spectroscopic Data</title>
@@ -1835,7 +1835,7 @@ Sargeant, Leah Libresco. 2025. <span>“Are We Under‐bubbled?”</span> <em>Th
 <p>The first phase in our archeology mission begins by cleaning the artifacts we find: removing the sand, cleaning them. We can think of it as removing the unnecessary. Similarly, our spectroscopic application starts with removing the unnecessary and “compressing” the spectrum to its essentials.</p>
 <p>In the simplest form this can be done using a sequence of linear layers:</p>
 <div id="dcf06d37" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">class</span> ExcavationBrush(nn.Module):</span>
@@ -1901,7 +1901,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre></div></div>
+font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre></div>
 </div>
 <p>The encoder takes our high-dimensional spectrum and compresses it into something more manageable. But this isn’t a simple compression algorithm: the model learns which features matter most, like an experienced archaeologist who can tell the difference between “priceless artifact” and “rock that looks vaguely interesting.”</p>
 </section>
@@ -1915,7 +1915,7 @@ font-style: inherit;">self</span>.compressor(buried_spectrum)</span></code></pre
 </div>
 <p>The latent space is our archaeological museum’s storage room—not the fancy public galleries with mood lighting and gift shops, but the back room where things actually get done. Here, each spectrum becomes a neat little index card with just the essential information.</p>
 <div id="4557b647" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># In our latent space, each spectrum becomes coordinates on an ancient map</span></span>
 <span id="cb2-2"><span class="co" style="color: #5E5E5E;
@@ -1933,16 +1933,16 @@ font-style: inherit;"># Returns a point in hyperspace</span></span>
 <span id="cb2-5">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></div>
+font-style: inherit;">return</span> latent_artifacts</span></code></pre></div>
 </div>
 <p>But this is no ordinary storage room. It’s a magical space where similar artifacts naturally cluster together, like teenagers at a high school cafeteria. Polymers hang out in their valley, ceramics claim the mountain peaks, and metal oxides spread across their plains like they own the place.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The Math Behind Clustering
+The Math Behind Clustering
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1968,7 +1968,7 @@ font-style: inherit;">return</span> latent_artifacts</span></code></pre></div></
 </div>
 <p>Using only our compressed representation (those index cards), we attempt to reconstruct the original spectrum. It’s like trying to rebuild a dinosaur from a few bones and a lot of imagination, except our imagination is constrained by mathematics.</p>
 <div id="36747243" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">class</span> Reconstructor(nn.Module):</span>
@@ -2034,7 +2034,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>.reconstruction_process(artifact_description)</span></code></pre></div></div>
+font-style: inherit;">self</span>.reconstruction_process(artifact_description)</span></code></pre></div>
 </div>
 <p>The decoder takes our compressed representation and attempts to rebuild the original spectrum. If we’ve done our job right (and haven’t accidentally trained our network to just output pictures of cats), the reconstruction should be faithful to the original.</p>
 </section>
@@ -2046,12 +2046,12 @@ font-style: inherit;">self</span>.reconstruction_process(artifact_description)</
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathcal%7BL%7D_%7B%5Ctext%7Breconstruction%7D%7D%20=%20%5C%7Cx%20-%20%5Chat%7Bx%7D%5C%7C%5E2%0A"></p>
 <p>Where <img src="https://latex.codecogs.com/png.latex?x"> is our original spectrum (the truth, the whole truth, and nothing but the truth) and <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bx%7D"> is our reconstruction.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Why MSE Makes Statistical Sense
+Why MSE Makes Statistical Sense
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2084,12 +2084,12 @@ font-style: inherit;">self</span>.reconstruction_process(artifact_description)</
 <p>Let’s address a fundamental question: why should this even work? Shouldn’t compressing our beautiful high-dimensional spectrum lose valuable information? Welcome to the manifold hypothesis, the reason dimensionality reduction isn’t just mathematical vandalism.</p>
 <p>The manifold hypothesis suggests that high-dimensional data (like our spectroscopic signals) aren’t actually using all those dimensions effectively. Instead, the data lies on or near a lower-dimensional surface (a manifold) embedded in that high-dimensional space. It’s like discovering that what looks like a complex 3D sculpture is actually just a cleverly folded 2D sheet of paper.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Why spectroscopic data probably lives on a manifold
+Why spectroscopic data probably lives on a manifold
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2113,12 +2113,12 @@ font-style: inherit;">self</span>.reconstruction_process(artifact_description)</
 <h2 class="anchored" data-anchor-id="from-classical-to-neural-the-connection-between-pca-and-linear-autoencoders">From Classical to Neural: The Connection Between PCA and Linear Autoencoders</h2>
 <p>Long before neural networks were cool, archaeologists (well, statisticians) had their own dimensionality reduction technique: Principal Component Analysis, or PCA.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The Mathematical Connection Between PCA and Linear Autoencoders
+The Mathematical Connection Between PCA and Linear Autoencoders
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2165,7 +2165,7 @@ font-style: inherit;">self</span>.reconstruction_process(artifact_description)</
 <h3 class="anchored" data-anchor-id="a-practical-example-finding-the-redundant-dimension">A Practical Example: Finding the Redundant Dimension</h3>
 <p>Let’s make this concrete with an example. Imagine we have a spectrum where two neighboring wavelengths always vary together—perhaps due to a broad absorption band or some instrumental correlation.</p>
 <div id="be2f228b" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a dataset with a redundant dimension</span></span>
 <span id="cb4-2"><span class="kw" style="color: #003B4F;
@@ -2342,7 +2342,7 @@ font-style: inherit;">self</span>.decoder.weight.data <span class="op" style="co
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>.encoder.weight.data.t()</span></code></pre></div></div>
+font-style: inherit;">self</span>.encoder.weight.data.t()</span></code></pre></div>
 </div>
 <p>When we train this model, it should learn to identify dimension 3 as redundant (since it’s nearly identical to dimension 2). Also dimension 4 is only a linear combination of other dimensions. A 3-dimensional latent space will capture all the variance in the 5-dimensional input.</p>
 <div id="fig-pca" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
@@ -2350,7 +2350,7 @@ font-style: inherit;">self</span>.encoder.weight.data.t()</span></code></pre></d
 <div aria-describedby="fig-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generate redundant spectrum</span></span>
 <span id="cb5-2">spectra <span class="op" style="color: #5E5E5E;
@@ -2445,7 +2445,7 @@ font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.5</span>)</span>
 <span id="cb5-23">plt.tight_layout()</span>
-<span id="cb5-24">plt.show()</span></code></pre></div></div>
+<span id="cb5-24">plt.show()</span></code></pre></div>
 </details>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2462,7 +2462,7 @@ Figure&nbsp;1
 <p>Now that we’ve seen that linear autoencoders are just PCA in disguise, let’s talk about why we still bother with neural networks.</p>
 <p>The magic happens when we add nonlinearities: those lovely activation functions like ReLU, sigmoid, or tanh. These allow autoencoders to learn complex, curved manifolds that PCA could never dream of capturing.</p>
 <div id="bcabd91c" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">class</span> NonlinearArchaeologist(nn.Module):</span>
@@ -2533,15 +2533,15 @@ font-style: inherit;">512</span>),</span>
 <span id="cb6-19">            nn.Linear(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">512</span>, input_dim)</span>
-<span id="cb6-20">        )</span></code></pre></div></div>
+<span id="cb6-20">        )</span></code></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The Power of Nonlinearity
+The Power of Nonlinearity
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2575,7 +2575,7 @@ font-style: inherit;">512</span>, input_dim)</span>
 <h2 class="anchored" data-anchor-id="the-probabilistic-excavation-variational-autoencoders">The Probabilistic Excavation: Variational Autoencoders</h2>
 <p>What if our archaeologist isn’t completely certain about what they’ve found? Enter <a href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">the Variational Autoencoder (VAE)</a>—the probabilistic archaeologist who deals in uncertainties rather than absolutes.</p>
 <div id="d4a47ea9" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">class</span> ProbabilisticArchaeologist(nn.Module):</span>
@@ -2741,7 +2741,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></div></div>
+font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></div>
 </div>
 <section id="manifold-cartography-the-kl-divergence-as-map-making" class="level3">
 <h3 class="anchored" data-anchor-id="manifold-cartography-the-kl-divergence-as-map-making">Manifold Cartography: The KL Divergence as Map-Making</h3>
@@ -2755,7 +2755,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Why the KL Term Matters for the Manifold
+Why the KL Term Matters for the Manifold
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2775,7 +2775,7 @@ font-style: inherit;">self</span>.decoder(z), mu, logvar</span></code></pre></di
 <li>We can quantify uncertainty in our representations</li>
 </ol>
 <div id="58e4fea8" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> vae_loss(reconstruction, x, mu, logvar, beta<span class="op" style="color: #5E5E5E;
@@ -2837,7 +2837,7 @@ font-style: inherit;">return</span> recon_loss <span class="op" style="color: #5
 background-color: null;
 font-style: inherit;">+</span> beta <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">*</span> kl_loss</span></code></pre></div></div>
+font-style: inherit;">*</span> kl_loss</span></code></pre></div>
 </div>
 <p>By adjusting the β parameter, we can control the trade-off between reconstruction quality and the “niceness” of our latent space. Higher β values force the latent space to be more like a standard normal distribution, while lower values prioritize reconstruction accuracy.</p>
 <p>This gives us a powerful tool for exploring the manifold of spectroscopic data - not just finding it, but mapping it in a way that makes it useful for generation, interpolation, and understanding the underlying physical parameters.</p>
@@ -2865,7 +2865,7 @@ font-style: inherit;">*</span> kl_loss</span></code></pre></div></div>
   <category>machine-learning</category>
   <category>teaching</category>
   <guid>https://kjablonka.com/blog/posts/autencoder_spectroscopy/</guid>
-  <pubDate>Tue, 22 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 23 Apr 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/autencoder_spectroscopy/cover.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
@@ -2958,7 +2958,7 @@ Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned:
   <category>peer review</category>
   <category>scientific community</category>
   <guid>https://kjablonka.com/blog/posts/reviewing/</guid>
-  <pubDate>Fri, 04 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 05 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Beyond the Era of Accidental Discovery</title>
@@ -3021,7 +3021,7 @@ Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned:
  ]]></description>
   <category>science</category>
   <guid>https://kjablonka.com/blog/posts/materials_intelligence/</guid>
-  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>10 Reasons to Aim Higher. And Higher.</title>
@@ -3056,7 +3056,7 @@ Stanley, Kenneth O., and Joel Lehman. 2015. <em>Why Greatness Cannot Be Planned:
  ]]></description>
   <category>life</category>
   <guid>https://kjablonka.com/blog/posts/harder/</guid>
-  <pubDate>Sat, 01 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Dear Claude: Are We Getting Too Close?</title>
@@ -3123,7 +3123,7 @@ Yanai, Itai, and Martin J. Lercher. 2024. <span>“It Takes Two to Think.”</sp
   <category>academia</category>
   <category>society</category>
   <guid>https://kjablonka.com/blog/posts/ai_thinking/</guid>
-  <pubDate>Sat, 11 Jan 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 12 Jan 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/ai_thinking" medium="image"/>
 </item>
 <item>
@@ -3350,44 +3350,76 @@ White, Andrew D. 2023. <span>“The Future of Chemistry Is Language.”</span> <
 </div></section></div> ]]></description>
   <category>llm</category>
   <guid>https://kjablonka.com/blog/posts/data_shape/</guid>
-  <pubDate>Wed, 08 Jan 2025 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 09 Jan 2025 00:00:00 GMT</pubDate>
   <media:content url="https://kjablonka.com/blog/posts/data_shape" medium="image"/>
 </item>
 <item>
-  <title>A wise bird</title>
-  <link>https://kjablonka.com/blog/posts/a_wise_owl/</link>
+  <title>Trust Me, There’s a Method to This Madness</title>
+  <link>https://kjablonka.com/blog/posts/why_llm/</link>
   <description><![CDATA[ 
 
 
 
 
-<p>As I reflect on the past and on the upcoming year, I really enjoyed <a href="https://en.wikipedia.org/wiki/A_Wise_Old_Owl">Rockefeller’s favorite poem</a> <span class="citation" data-cites="Housel2020-tx">(Housel 2020)</span>.</p>
+<p>Even though I work in a chemistry department, much of the recent work in my team has been focused on Large Language Models (LLMs) - or, more generally, frontier models. This isn’t a departure from chemistry; rather, we believe these could be crucial building blocks for solving some of the most fundamental problems in chemistry and materials science.</p>
+<p><a href="https://calvinball.substack.com/p/a-preliminary-roadmap-for-ai-assisted">Sam Rodrigues</a> (as so often) put it best: Science is about doing things for the first time. What’s remarkable is that recent frontier models show sparks of an ability to perform impressive tasks they weren’t explicitly trained for. More importantly, they’re showing promising capabilities in developing what scientists have long considered crucial: good taste in choosing what is interesting. <span class="citation" data-cites="zhang2024omniopenendednessmodelshuman">(Zhang et al. 2024)</span> This intuition, traditionally developed through years of experience, can now be augmented by models that have synthesized patterns from vast amounts of scientific literature and data.</p>
+<p>One of the most striking inefficiencies in academic research is how knowledge dissipates: when a PhD student leaves after four years in the lab, their accumulated experience often vanishes with them. Imagine if we could capture and share all this tacit knowledge - the failed experiments, the subtle technique adjustments, the unwritten rules - through training models on lab notes and conversations <span class="citation" data-cites="Jablonka_2022">(Jablonka, Patiny, and Smit 2022)</span>.</p>
+<p>While recent research suggests that language isn’t necessarily used for reasoning <span class="citation" data-cites="reasoning">(Fedorenko, Piantadosi, and Gibson 2024)</span>, its flexibility makes it an unparalleled tool for communicating ideas, methods, and observations (just look at how synthesis protocols are reported). Yes, schemas, figures, and equations are crucial, but language remains our most versatile medium - and with multimodal approaches, we’re pushing to combine the best of all worlds <span class="citation" data-cites="alampara2024probinglimitationsmultimodallanguage">(Alampara et al. 2024)</span>. (And there are tons of things for which we will need to go beyond naively treating everything as text <span class="citation" data-cites="alampara2024mattextlanguagemodelsneed">(Alampara, Miret, and Jablonka 2024)</span>).</p>
+<p>However, the practical impact is already visible: tasks that once required a PhD thesis can now be accomplished within a Master’s project. During my PhD, training a model for a novel application without existing datasets would have consumed my entire PhD. Now, our team routinely collects custom datasets for new applications <span class="citation" data-cites="Schilling_Wilhelmi_2025">(Schilling-Wilhelmi et al. 2025)</span>. This scalability is crucial because science is inherently long-tailed: breakthrough innovations often emerge from unexpected corners of research and we have so many different instruments, techniques, and questions that only a scalable technique can have a shot at capturing any of it.</p>
+<p>Similarly, there have been tons of efforts in developing ontologies, defining APIs, and how to talk between different systems, and <a href="https://madices.github.io">I have been involved in those efforts</a>. But, I more and more come to the belief that we might be better off (at least for the long tail) just by letting models figure out how to talk to different things and build new tools in this way. Tools are the way science progresses. As Sydney Brenner noted, “Progress in science depends on new techniques, new discoveries and new ideas, probably in that order” <span class="citation" data-cites="Robertson_1980 Dyson_2012">(Robertson 1980; Dyson 2012)</span>.</p>
+<p>However, working with these models daily also <a href="https://michaelnotebook.com/optimism/index.html">raises concerns</a>. While there’s <a href="https://darioamodei.com/machines-of-loving-grace#4-peace-and-governance">significant</a> <a href="https://ia.samaltman.com">potential upside</a>, we who develop these tools bear responsibility for ensuring they benefit society. Beyond immediate concerns about bio- and chemical weapons <span class="citation" data-cites="peppin2025realityaibiorisk">(Peppin et al. 2025)</span>, I worry about <a href="https://www.argmin.net/p/too-much-information">information overflow</a> and the proliferation of bullshit <span class="citation" data-cites="Frankfurt2005">(Frankfurt 2005)</span> and disinformation of all sorts <span class="citation" data-cites="Europol2023">(Europol 2023)</span> along with a possibility to further increase inequalities (with some dominant players accumulating nation-state-like power and Orwellian centralization of “truth”).</p>
+<p>The relative lack of some governments’ investment in building AI expertise is concerning, as is the potential erosion of critical thinking skills in some quarters. “We live in a society exquisitely dependent on science and technology, in which hardly anyone knows anything about science and technology” <span class="citation" data-cites="Sagan1990">(Sagan 1990)</span>. And, clearly, the scope reaches beyond knowing things about science and technology, and perhaps even makes a general liberal arts education more valuable than ever.</p>
 <blockquote class="blockquote">
-<p>A wise old owl lived in an oak,</p>
-<p>The more he saw, the less he spoke</p>
-<p>The less he spoke, the more he heard,</p>
-<p>Now, wasn’t he a wise old bird?</p>
+<p>For progress there is no cure. Any attempt to find automatically safe channels for the present explosive variety of progress must lead to frustration. The only safety possible is relative, and it lies in an intelligent exercise of day-to-day judgement… these transformations are not a priori predictable and… most contemporary “first guesses” concerning them are wrong…</p>
+<p><a href="https://sseh.uchicago.edu/doc/von_Neumann_1955.pdf">CAN WE SURVIVE TECHNOLOGY? by John von Neumann</a></p>
 </blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://kjablonka.com/blog/posts/a_wise_owl/owl.jpeg" class="img-fluid figure-img"></p>
-<figcaption>We need more wise owls.</figcaption>
-</figure>
-</div>
 
-
-<!-- -->
 
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-Housel2020-tx" class="csl-entry">
-Housel, Morgan. 2020. <em>The Psychology of Money</em>. Petersfield, England: Harriman House Publishing.
+<div id="ref-alampara2024mattextlanguagemodelsneed" class="csl-entry">
+Alampara, Nawaf, Santiago Miret, and Kevin Maik Jablonka. 2024. <span>“MatText: Do Language Models Need More Than Text &amp; Scale for Materials Modeling?”</span> <a href="https://arxiv.org/abs/2406.17295">https://arxiv.org/abs/2406.17295</a>.
+</div>
+<div id="ref-alampara2024probinglimitationsmultimodallanguage" class="csl-entry">
+Alampara, Nawaf, Mara Schilling-Wilhelmi, Martiño Ríos-García, Indrajeet Mandal, Pranav Khetarpal, Hargun Singh Grover, N. M. Anoop Krishnan, and Kevin Maik Jablonka. 2024. <span>“Probing the Limitations of Multimodal Language Models for Chemistry and Materials Research.”</span> <a href="https://arxiv.org/abs/2411.16955">https://arxiv.org/abs/2411.16955</a>.
+</div>
+<div id="ref-Dyson_2012" class="csl-entry">
+Dyson, Freeman J. 2012. <span>“Is Science Mostly Driven by Ideas or by Tools?”</span> <em>Science</em> 338 (6113): 1426–27. <a href="https://doi.org/10.1126/science.1232773">https://doi.org/10.1126/science.1232773</a>.
+</div>
+<div id="ref-Europol2023" class="csl-entry">
+Europol. 2023. <span>“Criminal Use of ChatGPT: A Cautionary Tale about Large Language Models.”</span> 2023. <a href="https://www.europol.europa.eu/media-press/newsroom/news/criminal-use-of-chatgpt-cautionary-tale-about-large-language-models">https://www.europol.europa.eu/media-press/newsroom/news/criminal-use-of-chatgpt-cautionary-tale-about-large-language-models</a>.
+</div>
+<div id="ref-reasoning" class="csl-entry">
+Fedorenko, Evelina, Steven T. Piantadosi, and Edward A. F. Gibson. 2024. <span>“Language Is Primarily a Tool for Communication Rather Than Thought.”</span> <em>Nature</em> 630 (8017): 575–86. <a href="https://doi.org/10.1038/s41586-024-07522-w">https://doi.org/10.1038/s41586-024-07522-w</a>.
+</div>
+<div id="ref-Frankfurt2005" class="csl-entry">
+Frankfurt, Harry G. 2005. <em>On Bullshit</em>. Princeton University Press.
+</div>
+<div id="ref-Jablonka_2022" class="csl-entry">
+Jablonka, Kevin Maik, Luc Patiny, and Berend Smit. 2022. <span>“Making the Collective Knowledge of Chemistry Open and Machine Actionable.”</span> <em>Nature Chemistry</em> 14 (4): 365–76. <a href="https://doi.org/10.1038/s41557-022-00910-7">https://doi.org/10.1038/s41557-022-00910-7</a>.
+</div>
+<div id="ref-peppin2025realityaibiorisk" class="csl-entry">
+Peppin, Aidan, Anka Reuel, Stephen Casper, Elliot Jones, Andrew Strait, Usman Anwar, Anurag Agrawal, et al. 2025. <span>“The Reality of AI and Biorisk.”</span> <a href="https://arxiv.org/abs/2412.01946">https://arxiv.org/abs/2412.01946</a>.
+</div>
+<div id="ref-Robertson_1980" class="csl-entry">
+Robertson, Miranda. 1980. <span>“Biology in the 1980s, Plus or Minus a Decade.”</span> <em>Nature</em> 285 (5764): 358–59. <a href="https://doi.org/10.1038/285358a0">https://doi.org/10.1038/285358a0</a>.
+</div>
+<div id="ref-Sagan1990" class="csl-entry">
+Sagan, Carl. 1990. <em>Why We Need to Understand Science</em>. Vol. 14. 3.
+</div>
+<div id="ref-Schilling_Wilhelmi_2025" class="csl-entry">
+Schilling-Wilhelmi, Mara, Martiño Ríos-García, Sherjeel Shabih, María Victoria Gil, Santiago Miret, Christoph T. Koch, José A. Márquez, and Kevin Maik Jablonka. 2025. <span>“From Text to Insight: Large Language Models for Chemical Data Extraction.”</span> <em>Chemical Society Reviews</em>. <a href="https://doi.org/10.1039/d4cs00913d">https://doi.org/10.1039/d4cs00913d</a>.
+</div>
+<div id="ref-zhang2024omniopenendednessmodelshuman" class="csl-entry">
+Zhang, Jenny, Joel Lehman, Kenneth Stanley, and Jeff Clune. 2024. <span>“OMNI: Open-Endedness via Models of Human Notions of Interestingness.”</span> <a href="https://arxiv.org/abs/2306.01711">https://arxiv.org/abs/2306.01711</a>.
 </div>
 </div></section></div> ]]></description>
-  <category>life</category>
-  <guid>https://kjablonka.com/blog/posts/a_wise_owl/</guid>
-  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
+  <category>academia</category>
+  <category>llm</category>
+  <guid>https://kjablonka.com/blog/posts/why_llm/</guid>
+  <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://kjablonka.com/blog/posts/why_llm" medium="image"/>
 </item>
 </channel>
 </rss>

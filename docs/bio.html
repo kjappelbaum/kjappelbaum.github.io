@@ -281,38 +281,88 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
 
 <section class="bio-section" id="copy-ready-bios" aria-labelledby="copy-ready-title">
   <div class="bio-section-heading">
-    <h2 id="copy-ready-title" class="anchored">Bio lengths</h2>
+    <h2 id="copy-ready-title" class="anchored">Bios</h2>
   </div>
+
+  <p>The work reaches chemists, machine learning researchers, companies, funders, and students, and each of them needs a different account of it. Below are tailored biographies for those audiences; take whichever fits and edit freely.</p>
 
   <div data-tabs="">
-  <div class="bio-tablist" role="tablist" aria-label="Biography length">
-    <button id="bio-tab-brief" type="button" role="tab" aria-selected="true" aria-controls="bio-panel-brief" tabindex="0" data-tab="brief">Short bio · 50 words</button>
-    <button id="bio-tab-talk" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-talk" tabindex="-1" data-tab="talk">Talk intro · 100 words</button>
-    <button id="bio-tab-full" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-full" tabindex="-1" data-tab="full">Full · 200 words</button>
+  <div class="bio-tablist" role="tablist" aria-label="Biography by audience">
+    <button id="bio-tab-academic-short" type="button" role="tab" aria-selected="true" aria-controls="bio-panel-academic-short" tabindex="0" data-tab="academic-short">Academic · short</button>
+    <button id="bio-tab-academic-long" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-academic-long" tabindex="-1" data-tab="academic-long">Academic · long</button>
+    <button id="bio-tab-industry" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-industry" tabindex="-1" data-tab="industry">Industry</button>
+    <button id="bio-tab-infrastructure" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-infrastructure" tabindex="-1" data-tab="infrastructure">Research infrastructure</button>
+    <button id="bio-tab-students" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-students" tabindex="-1" data-tab="students">Students</button>
+    <button id="bio-tab-press" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-press" tabindex="-1" data-tab="press">Press</button>
+    <button id="bio-tab-shortest" type="button" role="tab" aria-selected="false" aria-controls="bio-panel-shortest" tabindex="-1" data-tab="shortest">Shortest</button>
   </div>
 
-  <div class="bio-panel" id="bio-panel-brief" role="tabpanel" aria-labelledby="bio-tab-brief" data-panel="brief">
+  <div class="bio-panel" id="bio-panel-academic-short" role="tabpanel" aria-labelledby="bio-tab-academic-short" data-panel="academic-short">
     <div class="bio-panel-toolbar">
-      <button class="copy-button" type="button" data-copy-bio="brief">Copy text</button>
+      <button class="copy-button" type="button" data-copy-bio="academic-short">Copy text</button>
     </div>
-    <p data-bio-copy="">Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena. He develops AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment. His work has made oxidation states computable, inferred molecular structures from spectra, and revealed unexpected behaviour in an operating carbon-capture plant.</p>
-    <p class="copy-status" aria-live="polite" data-copy-status="brief"></p>
+    <p data-bio-copy="">Kevin Maik Jablonka is an Independent Research Group Leader at Friedrich Schiller University Jena, where he heads a Carl Zeiss Foundation research group and leads LAMALab. The group develops AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment. His work has made oxidation states computable, inferred molecular structures directly from raw spectra, and revealed unexpected behaviour in an operating carbon-capture plant. He is a Google Research Scholar and Co-Speaker of NFDI FAIRmat.</p>
+    <p class="copy-status" aria-live="polite" data-copy-status="academic-short"></p>
   </div>
 
-  <div class="bio-panel" id="bio-panel-talk" role="tabpanel" aria-labelledby="bio-tab-talk" data-panel="talk" hidden="">
+  <div class="bio-panel" id="bio-panel-academic-long" role="tabpanel" aria-labelledby="bio-tab-academic-long" data-panel="academic-long" hidden="">
     <div class="bio-panel-toolbar">
-      <button class="copy-button" type="button" data-copy-bio="talk">Copy text</button>
+      <button class="copy-button" type="button" data-copy-bio="academic-long">Copy text</button>
     </div>
-    <p data-bio-copy="">Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena. He develops AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment. His work has made oxidation states computable, inferred molecular structures from spectra, and revealed unexpected behaviour in an operating carbon-capture plant. He combines chemistry and machine learning with psychometrics and econometrics to make scientific measurement, uncertainty, and judgement explicit. LAMALab works with psychologists and social scientists to test where model and expert judgements agree, where they fail, and which evidence changes them. These tests connect model conclusions to experiments and decisions.</p>
-    <p class="copy-status" aria-live="polite" data-copy-status="talk"></p>
+    <div data-bio-copy="">
+      <p>Kevin Maik Jablonka is an Independent Research Group Leader at Friedrich Schiller University Jena, where he heads a Carl Zeiss Foundation research group and leads LAMALab. He is a member of the Center for Energy and Environmental Chemistry Jena and the Jena Center for Soft Matter, and is affiliated with HIPOLE Jena, the Michael Stifel Center, and the Acceleration Consortium in Toronto. LAMALab develops AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment. The group combines chemistry and machine learning with psychometrics and econometrics to make measurement, uncertainty, and judgement explicit, and works with psychologists and social scientists to test where model and expert judgements agree and where they fail. His work has made oxidation states computable, inferred molecular structures directly from raw spectra, and revealed unexpected behaviour in an operating carbon-capture plant. LAMALab created ChemPile, ChemBench, and MaCBench as shared infrastructure others can inspect and extend.</p>
+      <p>Jablonka has received a Google Research Scholar Award, the Helmholtz AI Award for Best Digital Resource for ChemPile, and the Dimitris N. Chorafas Foundation Award for his EPFL doctoral thesis, and was elected to the Junge Akademie Mainz. He has been awarded more than €4M as principal investigator or project lead. He is Co-Speaker of NFDI FAIRmat, an Area Chair for NeurIPS 2026, a co-organiser of the 2027 Faraday Discussion on Digital Chemical Discovery, and the initiator of the first global chemical-sciences LLM hackathon. Recent work has appeared in <em>Nature Chemistry</em>, <em>Nature Computational Science</em>, <em>Nature Communications</em>, <em>Science Advances</em>, and the NeurIPS main proceedings.</p>
+    </div>
+    <p class="copy-status" aria-live="polite" data-copy-status="academic-long"></p>
   </div>
 
-  <div class="bio-panel" id="bio-panel-full" role="tabpanel" aria-labelledby="bio-tab-full" data-panel="full" hidden="">
+  <div class="bio-panel" id="bio-panel-industry" role="tabpanel" aria-labelledby="bio-tab-industry" data-panel="industry" hidden="">
     <div class="bio-panel-toolbar">
-      <button class="copy-button" type="button" data-copy-bio="full">Copy text</button>
+      <button class="copy-button" type="button" data-copy-bio="industry">Copy text</button>
     </div>
-    <p data-bio-copy="">Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena. He develops AI as a scientific instrument: making chemical concepts measurable and turning raw observations into the next experiment. His work has made oxidation states computable, inferred molecular structures from spectra, and revealed unexpected behaviour in an operating carbon-capture plant. His programme spans end-to-end learning: from the measurements scientists actually make, through representations and models, to recommendations they can test. Actionable recommendations depend on measurements, representations, experiments, and the tacit knowledge connecting them; each link must remain open to scrutiny. Scientists should be able to determine what a model learned, challenge its representation, and locate its limits before acting on it. LAMALab created ChemPile, ChemBench, and MaCBench as shared infrastructure others can inspect and extend. Psychometrics, econometrics, psychology, and social science help the group study measurement and judgement in models and people. He is a Google Research Scholar. At LAMALab, scientific freedom rests on radical openness, trust, and kindness. Ideas, data, code, and failures are shared early; close collaboration passes on tacit knowledge while each researcher develops an independent direction. He wants LAMALab's legacy to be new understanding, resources others build on, and people who lead programmes of their own.</p>
-    <p class="copy-status" aria-live="polite" data-copy-status="full"></p>
+    <div data-bio-copy="">
+      <p>Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena, where his group builds AI systems that return decisions chemists and engineers can act on rather than predictions they cannot check. His work has inferred molecular structures directly from raw spectra, made oxidation states computable, and revealed unexpected behaviour in an operating carbon-capture plant.</p>
+      <p>He leads a work package in the CARE-O-SENE consortium and its awarded follow-up, and runs the Intel–Merck MatAssist project. LAMALab’s evaluation suites, ChemBench and MaCBench, test whether chemical and multimodal models are fit for the tasks companies want to deploy them for; its ChemPile corpus received the Helmholtz AI Award for Best Digital Resource. Jablonka has received a Google Research Scholar Award and an NVIDIA Academic Grant, and advises on where these systems help and where they do not.</p>
+    </div>
+    <p class="copy-status" aria-live="polite" data-copy-status="industry"></p>
+  </div>
+
+  <div class="bio-panel" id="bio-panel-infrastructure" role="tabpanel" aria-labelledby="bio-tab-infrastructure" data-panel="infrastructure" hidden="">
+    <div class="bio-panel-toolbar">
+      <button class="copy-button" type="button" data-copy-bio="infrastructure">Copy text</button>
+    </div>
+    <div data-bio-copy="">
+      <p>Kevin Maik Jablonka is an Independent Research Group Leader at Friedrich Schiller University Jena and Co-Speaker of NFDI FAIRmat, the German national research-data infrastructure consortium for materials science, where he works to make materials data machine-actionable. His research asks what a model has actually learned, which representation makes a conclusion possible, and where that conclusion fails: the questions that decide whether AI results in the sciences can be trusted and built upon.</p>
+      <p>LAMALab turns that work into public infrastructure. ChemPile, ChemBench, and MaCBench are open datasets and evaluation suites that let anyone inspect, test, and extend the claims made for chemical AI; ChemPile received the Helmholtz AI Award for Best Digital Resource. Jablonka reviews grants for the ERC, DFG, FWF, NWO, A*STAR and ScaDS.AI, represents HZB/HIPOLE in Helmholtz programme-oriented funding evaluations, and teaches a course on the critical aspects of AI jointly with sociologists. He has been awarded more than €4M as principal investigator or project lead, holds a Carl Zeiss Foundation research group, and is an elected member of the Junge Akademie Mainz.</p>
+    </div>
+    <p class="copy-status" aria-live="polite" data-copy-status="infrastructure"></p>
+  </div>
+
+  <div class="bio-panel" id="bio-panel-students" role="tabpanel" aria-labelledby="bio-tab-students" data-panel="students" hidden="">
+    <div class="bio-panel-toolbar">
+      <button class="copy-button" type="button" data-copy-bio="students">Copy text</button>
+    </div>
+    <div data-bio-copy="">
+      <p>Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena, a group of eleven doctoral researchers and a postdoctoral researcher working on AI for chemistry and materials science. He has supervised 26 appointments since 2021; alumni have gone on to graduate study in the United States and to research roles in industry.</p>
+      <p>At LAMALab, scientific freedom rests on trust, kindness, and candour: ideas, data, code, and failures are shared early, and his role is to protect time for thought, ask hard questions, and help each researcher develop an independent direction. In 2025 the group received the Best Research Environment award from Die Junge Akademie and the Volkswagen Foundation. Jablonka teaches a course on the critical aspects of AI jointly with sociology and a graduate seminar in cheminformatics, and publishes his teaching material openly. He did his PhD at EPFL, where his thesis received the Dimitris N. Chorafas Foundation Award, and is a member of the Helmholtz Leadership Academy.</p>
+    </div>
+    <p class="copy-status" aria-live="polite" data-copy-status="students"></p>
+  </div>
+
+  <div class="bio-panel" id="bio-panel-press" role="tabpanel" aria-labelledby="bio-tab-press" data-panel="press" hidden="">
+    <div class="bio-panel-toolbar">
+      <button class="copy-button" type="button" data-copy-bio="press">Copy text</button>
+    </div>
+    <p data-bio-copy="">Kevin Maik Jablonka is a chemist who leads an AI research group at Friedrich Schiller University Jena. He works on making artificial intelligence useful to science beyond prediction: his group has taught machines to read raw spectroscopic measurements and name the molecule that produced them, turned a textbook chemical concept into something a computer can calculate, and found unexpected behaviour in a working carbon-capture plant. He also builds the public tests, ChemBench and MaCBench, that show what today’s AI models can and cannot do in chemistry. He has received a Google Research Scholar Award and was elected to the Junge Akademie Mainz. He writes about AI and research practice at kjablonka.com.</p>
+    <p class="copy-status" aria-live="polite" data-copy-status="press"></p>
+  </div>
+
+  <div class="bio-panel" id="bio-panel-shortest" role="tabpanel" aria-labelledby="bio-tab-shortest" data-panel="shortest" hidden="">
+    <div class="bio-panel-toolbar">
+      <button class="copy-button" type="button" data-copy-bio="shortest">Copy text</button>
+    </div>
+    <p data-bio-copy="">Kevin Maik Jablonka leads LAMALab at Friedrich Schiller University Jena.</p>
+    <p class="copy-status" aria-live="polite" data-copy-status="shortest"></p>
   </div>
   </div>
 </section>
@@ -339,7 +389,7 @@ gtag('config', 'G-S9W9LVHXJK', { 'anonymize_ip': true});
   <div class="bio-panel" id="cv-panel-career" role="tabpanel" aria-labelledby="cv-tab-career" data-panel="career">
     <ol class="career-timeline">
       <li><span class="career-date"><time datetime="2023">2023</time>—present</span><div><strong>Independent Research Group Leader</strong><span>Carl Zeiss Foundation Research Group, Friedrich Schiller University Jena. Member of the Center for Energy and Environmental Chemistry Jena and the Jena Center for Soft Matter; affiliated with HIPOLE Jena, the Michael Stifel Center, and the Acceleration Consortium in Toronto. Co-Speaker of NFDI FAIRmat. Eleven doctoral researchers and one postdoctoral researcher; 26 appointments supervised since 2021, whose alumni have gone on to graduate study in the United States and to research roles in industry.</span></div></li>
-      <li><span class="career-date"><time datetime="2024">2024</time>—present</span><div><strong>Independent contractor, AI evaluation and red teaming</strong><span>OpenAI.</span></div></li>
+      <li><span class="career-date"><time datetime="2024">2024</time>—<time datetime="2025">2025</time></span><div><strong>Independent contractor, AI evaluation and red teaming</strong><span>OpenAI.</span></div></li>
       <li><span class="career-date"><time datetime="2019">2019</time>—<time datetime="2023">2023</time></span><div><strong>PhD, Chemistry and Chemical Engineering</strong><span>EPFL; Dimitris N. Chorafas Foundation Award and top-8% thesis distinction. <a href="earlier-work.html">Work from that period</a>.</span></div></li>
       <li><span class="career-date"><time datetime="2017">2017</time>—<time datetime="2019">2019</time></span><div><strong>MSc, Chemistry</strong><span>EPFL; 5.95/6.00, second-highest GPA across all EPFL master’s graduates and highest in chemistry.</span></div></li>
       <li><span class="career-date"><time datetime="2014">2014</time>—<time datetime="2017">2017</time></span><div><strong>BSc, Chemistry</strong><span>Technical University of Munich; high distinction.</span></div></li>

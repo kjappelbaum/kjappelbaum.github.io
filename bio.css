@@ -147,8 +147,16 @@
   text-underline-offset: 0.18em;
 }
 
-.bio-panel > p[data-bio-copy] {
+.bio-panel > [data-bio-copy] {
   margin: 0;
+}
+
+.bio-panel > div[data-bio-copy] > p:first-child {
+  margin-top: 0;
+}
+
+.bio-panel > div[data-bio-copy] > p:last-child {
+  margin-bottom: 0;
 }
 
 .copy-status {

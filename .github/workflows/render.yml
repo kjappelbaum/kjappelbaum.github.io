@@ -3,8 +3,6 @@ name: Render the site
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "docs/**"
   pull_request:
   workflow_dispatch:
 
@@ -23,6 +21,9 @@ jobs:
     steps:
       - name: Check out the website
         uses: actions/checkout@v4
+        with:
+          # `quarto publish gh-pages` needs the gh-pages branch history.
+          fetch-depth: 0
 
       # Nothing on this site executes at render time (_quarto.yml sets
       # `execute: eval: false` and `freeze: auto`), so Quarto alone is enough.
@@ -31,19 +32,17 @@ jobs:
         with:
           version: "1.6.43"
 
+      # A pull request only has to prove the site still builds.
       - name: Render
+        if: github.event_name == 'pull_request'
         run: quarto render
 
-      # A pull request only has to prove the site still builds.
-      - name: Commit docs/ if it changed
+      # GitHub Pages serves the gh-pages branch, so that is what a push to
+      # main deploys to. The rendered site is not kept in the repository.
+      - name: Render and publish
         if: github.event_name != 'pull_request'
-        run: |
-          if [ -z "$(git status --porcelain docs)" ]; then
-            echo "::notice::docs/ is already up to date."
-            exit 0
-          fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git commit -m "Render the site"
-          git push
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

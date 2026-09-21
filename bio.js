@@ -65,7 +65,11 @@
       const status = page.querySelector(`[data-copy-status="${key}"]`);
       if (!source || !status) return;
 
-      const text = source.innerText.replace(/\s+/g, " ").trim();
+      const paragraphs = [...source.querySelectorAll("p")];
+      const text = (paragraphs.length ? paragraphs.map((p) => p.innerText) : [source.innerText])
+        .map((part) => part.replace(/\s+/g, " ").trim())
+        .filter(Boolean)
+        .join("\n\n");
       try {
         if (navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(text);

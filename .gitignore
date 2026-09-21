@@ -2,3 +2,6 @@
 .DS_Store
 **/*.quarto_ipynb
 _proposed/
+
+# The rendered site is deployed to the gh-pages branch, not tracked here.
+/docs/
